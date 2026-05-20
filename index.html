@@ -5,23 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0b">
 <meta name="color-scheme" content="dark light">
-<title>Leandro Sierra — Software & Product</title>
-<meta name="description" content="Leandro Sierra — architecte logiciel, produit & IA agentique. Paris & Avignon.">
+<title>Leandro Sierra — Software, Produit & IA agentique</title>
+<meta name="description" content="Leandro Sierra — architecte logiciel, produit & IA agentique. Vingt ans à concevoir des systèmes qui apprennent, observent et agissent. Paris & Avignon.">
+<meta property="og:title" content="Leandro Sierra — Software, Produit & IA agentique">
+<meta property="og:description" content="Architecte logiciel & IA agentique. Des systèmes qui apprennent, observent et agissent.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://leandro-sierra.com">
+<link rel="canonical" href="https://leandro-sierra.com">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Ctext x='50%25' y='62%25' text-anchor='middle' font-family='-apple-system,system-ui,sans-serif' font-weight='600' font-size='38' fill='%23f4f1ea'%3ELS%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --bg: #0a0a0b;
     --bg-elev: #131316;
+    --bg-card: #101013;
     --fg: #f4f1ea;
-    --fg-muted: #999388;
+    --fg-muted: #9b958a;
     --fg-dim: #5e5a52;
     --accent: #d4a44a;
+    --accent-soft: rgba(212, 164, 74, 0.14);
     --rule: #20201f;
-    --max: 720px;
+    --rule-hover: #34322d;
+    --max: 760px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
@@ -35,141 +44,237 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
   }
   ::selection { background: var(--accent); color: var(--bg); }
-  a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--fg-dim);
-      transition: border-color .2s, color .2s; }
-  a:hover { color: var(--accent); border-color: var(--accent); }
 
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 64px 32px 32px;
-          flex: 1; display: flex; flex-direction: column; gap: 80px; }
+  /* ── Whaou effect : halo lumineux animé en fond (CSS pur, 0 JS) ── */
+  .aura {
+    position: fixed;
+    inset: -20vmax;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(38vmax 38vmax at 22% 14%, rgba(212,164,74,0.10), transparent 60%),
+      radial-gradient(30vmax 30vmax at 82% 80%, rgba(120,140,210,0.07), transparent 62%);
+    filter: blur(20px);
+    animation: drift 22s var(--ease) infinite alternate;
+  }
+  @keyframes drift {
+    0%   { transform: translate3d(-3%, -2%, 0) scale(1); }
+    100% { transform: translate3d(4%, 3%, 0) scale(1.08); }
+  }
+  /* Grain subtil pour la texture "premium" */
+  .aura::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 3px 3px;
+    mix-blend-mode: overlay;
+  }
+
+  a { color: var(--fg); text-decoration: none; }
+
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: var(--max); margin: 0 auto; padding: clamp(56px, 12vh, 110px) 32px 40px;
+    flex: 1; display: flex; flex-direction: column; gap: clamp(64px, 11vh, 104px); width: 100%;
+  }
   @media (max-width: 600px) {
-    .wrap { padding: 48px 24px 24px; gap: 56px; }
+    .wrap { padding: 56px 22px 28px; gap: 64px; }
     body { font-size: 15px; }
   }
 
+  /* ── Entrée séquencée (fade + rise) ── */
+  .rise { opacity: 0; transform: translateY(18px); animation: rise .9s var(--ease) forwards; }
+  .rise.d1 { animation-delay: .05s; }
+  .rise.d2 { animation-delay: .14s; }
+  .rise.d3 { animation-delay: .24s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  /* ── Scroll-reveal (scroll-driven, CSS pur, fallback gracieux) ── */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      animation: revealIn linear forwards;
+      animation-timeline: view();
+      animation-range: entry 2% cover 22%;
+    }
+    @keyframes revealIn { to { opacity: 1; transform: none; } }
+  }
+
   /* Header */
-  header { display: flex; flex-direction: column; gap: 18px; }
+  header { display: flex; flex-direction: column; gap: 22px; }
+  .eyebrow {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em;
+    color: var(--accent); font-weight: 500;
+    display: inline-flex; align-items: center; gap: 9px; width: fit-content;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent-soft); animation: pulse 2.6s var(--ease) infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212,164,74,0.5); }
+    60% { box-shadow: 0 0 0 7px rgba(212,164,74,0); }
+  }
   .mark {
     font-family: 'Fraunces', serif;
-    font-size: clamp(38px, 7vw, 56px);
+    font-size: clamp(44px, 9vw, 78px);
     font-weight: 400;
-    letter-spacing: -0.025em;
-    line-height: 1.05;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
     color: var(--fg);
+    background: linear-gradient(180deg, #fbf8f1 0%, #cfc7b6 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
-  .mark .ampersand { color: var(--accent); font-style: italic; font-weight: 300; }
+  .mark .ampersand { color: var(--accent); font-style: italic; font-weight: 300; -webkit-text-fill-color: var(--accent); }
   .tagline {
-    font-size: 17px;
-    line-height: 1.5;
-    color: var(--fg-muted);
-    max-width: 56ch;
-    font-weight: 400;
+    font-size: clamp(17px, 2.3vw, 21px);
+    line-height: 1.55; color: var(--fg-muted); max-width: 52ch; font-weight: 400;
   }
   .tagline strong { color: var(--fg); font-weight: 500; }
 
   /* Sections */
-  section { display: flex; flex-direction: column; gap: 16px; }
+  section { display: flex; flex-direction: column; gap: 20px; }
   .section-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--fg-dim);
-    font-weight: 500;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--fg-dim); font-weight: 500;
+    display: flex; align-items: center; gap: 14px;
   }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
   .prose p { color: var(--fg-muted); }
-  .prose p + p { margin-top: 12px; }
+  .prose p + p { margin-top: 14px; }
   .prose strong { color: var(--fg); font-weight: 500; }
+  .prose em { color: var(--accent); font-style: normal; }
 
-  /* Work / list */
-  .work { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); }
+  /* ── Projets : cartes cliquables ── */
+  .work { display: flex; flex-direction: column; gap: 12px; }
   .work-item {
+    position: relative;
     display: grid;
-    grid-template-columns: 96px 1fr;
-    gap: 24px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--rule);
-    align-items: baseline;
+    grid-template-columns: 64px 1fr auto;
+    gap: 22px; align-items: center;
+    padding: 22px 22px;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.012), transparent);
+    transition: border-color .35s var(--ease), transform .35s var(--ease), background .35s var(--ease);
+    overflow: hidden;
   }
+  /* lueur dorée qui balaie au survol */
+  .work-item::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(120% 80% at 0% 0%, var(--accent-soft), transparent 55%);
+    opacity: 0; transition: opacity .4s var(--ease);
+  }
+  a.work-item:hover {
+    border-color: var(--rule-hover);
+    transform: translateY(-3px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.022), transparent);
+  }
+  a.work-item:hover::before { opacity: 1; }
   .work-item .year {
-    font-family: 'Fraunces', serif;
-    font-size: 14px;
-    color: var(--fg-dim);
-    font-feature-settings: 'tnum';
+    font-family: 'Fraunces', serif; font-size: 15px; color: var(--fg-dim);
+    font-feature-settings: 'tnum'; position: relative; z-index: 1;
   }
-  .work-item .body { display: flex; flex-direction: column; gap: 4px; }
-  .work-item .title { font-weight: 500; color: var(--fg); }
+  .work-item .body { display: flex; flex-direction: column; gap: 5px; position: relative; z-index: 1; min-width: 0; }
+  .work-item .title { font-weight: 600; color: var(--fg); font-size: 16.5px; letter-spacing: -0.01em; }
+  .work-item .stack { font-size: 12px; color: var(--accent); letter-spacing: 0.02em; font-weight: 500; }
   .work-item .desc { font-size: 14px; color: var(--fg-muted); line-height: 1.55; }
-  @media (max-width: 480px) {
-    .work-item { grid-template-columns: 56px 1fr; gap: 16px; }
+  .work-item .go {
+    position: relative; z-index: 1; flex-shrink: 0;
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 1px solid var(--rule); color: var(--fg-dim);
+    display: grid; place-items: center; font-size: 15px;
+    transition: all .35s var(--ease);
+  }
+  a.work-item:hover .go {
+    border-color: var(--accent); color: var(--accent);
+    transform: rotate(-45deg) scale(1.06);
+    background: var(--accent-soft);
+  }
+  .work-item .go .live { display:none; }
+  .work-item.is-live .badge {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--accent); border: 1px solid var(--accent-soft);
+    background: var(--accent-soft); padding: 2px 7px; border-radius: 20px;
+    align-self: flex-start; margin-top: 2px; font-weight: 600;
+  }
+  @media (max-width: 560px) {
+    .work-item { grid-template-columns: 1fr auto; gap: 14px; padding: 18px; }
+    .work-item .year { grid-column: 1; font-size: 13px; }
+    .work-item .body { grid-column: 1 / -1; grid-row: 2; }
+    .work-item .go { grid-column: 2; grid-row: 1; }
   }
 
   /* Contact */
-  .contact { display: flex; flex-direction: column; gap: 16px; }
+  .contact { display: flex; flex-direction: column; gap: 18px; }
   .contact-link {
-    display: inline-flex; align-items: center; gap: 12px;
+    display: inline-flex; align-items: center; gap: 14px;
     font-family: 'Fraunces', serif;
-    font-size: clamp(20px, 3.5vw, 26px);
-    font-weight: 400;
-    color: var(--fg);
-    border-bottom: 1px solid var(--fg-dim);
-    padding-bottom: 4px;
-    width: fit-content;
-    transition: color .2s, border-color .2s, transform .2s;
+    font-size: clamp(24px, 4.5vw, 34px);
+    font-weight: 400; color: var(--fg);
+    width: fit-content; padding-bottom: 6px;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0% 1.5px; background-position: 0 100%; background-repeat: no-repeat;
+    transition: color .3s var(--ease), background-size .4s var(--ease);
   }
-  .contact-link:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
-  .contact-link .arrow {
-    display: inline-block;
-    transition: transform .25s ease;
+  .contact-link:hover { color: var(--accent); background-size: 100% 1.5px; }
+  .contact-link .arrow { display: inline-block; transition: transform .3s var(--ease); }
+  .contact-link:hover .arrow { transform: translate(5px, -5px); }
+  .contact-note { font-size: 14px; color: var(--fg-dim); max-width: 46ch; }
+  .socials { display: flex; gap: 22px; margin-top: 4px; flex-wrap: wrap; }
+  .socials a {
+    font-size: 13px; color: var(--fg-muted); letter-spacing: 0.02em;
+    border-bottom: 1px solid transparent; transition: color .25s, border-color .25s; padding-bottom: 2px;
   }
-  .contact-link:hover .arrow { transform: translate(4px, -4px); }
-  .contact-note { font-size: 14px; color: var(--fg-dim); }
+  .socials a:hover { color: var(--accent); border-color: var(--accent); }
 
   /* Footer */
   footer {
-    border-top: 1px solid var(--rule);
-    padding: 24px 32px;
-    color: var(--fg-dim);
-    font-size: 12px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    max-width: var(--max);
-    margin: 0 auto;
-    width: 100%;
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--rule); padding: 26px 32px;
+    color: var(--fg-dim); font-size: 12px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    max-width: var(--max); margin: 0 auto; width: 100%;
   }
-  footer a { border: 0; color: var(--fg-dim); }
+  footer a { color: var(--fg-dim); transition: color .25s; }
   footer a:hover { color: var(--accent); }
 
-  /* Light theme support (rare) */
+  @media (prefers-reduced-motion: reduce) {
+    *, .aura, .rise, .reveal { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+  }
   @media (prefers-color-scheme: light) {
     :root {
-      --bg: #faf8f3;
-      --bg-elev: #f0ede5;
-      --fg: #1a1a1d;
-      --fg-muted: #5a564d;
-      --fg-dim: #9a958a;
-      --accent: #a17a2d;
-      --rule: #e6e2d8;
+      --bg: #faf8f3; --bg-elev: #f0ede5; --bg-card: #fffdf8;
+      --fg: #1a1a1d; --fg-muted: #5a564d; --fg-dim: #9a958a;
+      --accent: #a17a2d; --accent-soft: rgba(161,122,45,0.10);
+      --rule: #e6e2d8; --rule-hover: #d4cfc2;
     }
+    .mark { background: linear-gradient(180deg, #2a2823 0%, #56503f 100%); -webkit-background-clip: text; background-clip: text; }
   }
 </style>
 </head>
 <body>
 
+<div class="aura" aria-hidden="true"></div>
+
 <div class="wrap">
 
   <header>
-    <h1 class="mark">Leandro Sierra</h1>
-    <p class="tagline">
+    <span class="eyebrow rise d1"><span class="dot"></span>Disponible pour collaborations</span>
+    <h1 class="mark rise d1">Leandro Sierra</h1>
+    <p class="tagline rise d2">
       <strong>Architecte logiciel</strong>, produit <span class="ampersand">&amp;</span> IA agentique.
       Je conçois et bâtis des systèmes qui apprennent, observent et agissent —
       du backend à l'interface, du local au cloud.
     </p>
   </header>
 
-  <section class="prose">
+  <section class="prose reveal">
     <div class="section-label">À propos</div>
     <p>
       Vingt ans à designer et coder des produits qui tiennent : du backend Java/Spring
@@ -177,67 +282,86 @@
       TypeScript, Node) et l'infrastructure cloud-native (Docker, Coolify, Hetzner).
     </p>
     <p>
-      Mon focus actuel : <strong>l'IA agentique au quotidien</strong> — des agents qui
+      Mon focus actuel : <em>l'IA agentique au quotidien</em> — des agents qui
       observent, mémorisent, raisonnent avec les meilleurs modèles, et agissent
       avec discernement. Locale, privée, intégrée.
     </p>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="section-label">Travaux récents</div>
     <div class="work">
+
       <article class="work-item">
         <div class="year">2026</div>
         <div class="body">
           <div class="title">Ada — agent personnel autonome</div>
+          <div class="stack">Python · Claude · vector memory · PyInstaller A/B</div>
           <div class="desc">
-            Agent local Windows, OAuth Claude, mémoire vectorielle, vision,
-            voix, automation desktop. Self-evolution + déploiement A/B.
+            Agent local Windows : OAuth Claude, mémoire vectorielle, vision, voix,
+            automation desktop. Auto-évolution &amp; déploiement A/B continu.
           </div>
         </div>
+        <span class="go" aria-hidden="true">·</span>
       </article>
-      <article class="work-item">
+
+      <a class="work-item is-live" href="https://pop.leandro-sierra.com" target="_blank" rel="noopener">
         <div class="year">2025</div>
         <div class="body">
           <div class="title">Pop — démocratie participative</div>
+          <div class="stack">React Native · Expo · Spring Boot · MySQL</div>
           <div class="desc">
-            Application mobile (React Native / Expo) + backend Spring Boot
-            pour le débat citoyen, propositions de loi et budgets.
+            Application mobile &amp; web pour le débat citoyen : propositions de loi,
+            budgets participatifs, votes géolocalisés.
           </div>
+          <span class="badge">En ligne</span>
         </div>
-      </article>
-      <article class="work-item">
+        <span class="go" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="work-item is-live" href="https://hierarchie.leandro-sierra.com" target="_blank" rel="noopener">
         <div class="year">2024</div>
         <div class="body">
           <div class="title">Hierarchie — atlas géographique vivant</div>
+          <div class="stack">Vite · React · Fastify · data-viz</div>
           <div class="desc">
-            Visualisation interactive des hiérarchies administratives,
-            time-travel sur 200 ans de découpages.
+            Visualisation interactive du monde : frontières, structures tectoniques,
+            exploration cartographique. Conçu pour le grand public.
           </div>
+          <span class="badge">En ligne</span>
         </div>
-      </article>
-      <article class="work-item">
+        <span class="go" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="work-item is-live" href="https://babybox.leandro-sierra.com" target="_blank" rel="noopener">
         <div class="year">2024</div>
         <div class="body">
           <div class="title">Babybox — suivi parental</div>
+          <div class="stack">React · Node · Prisma · Postgres</div>
           <div class="desc">
-            Plateforme React + Node pour le tracking des premiers mois,
-            backend transactionnel Prisma/Postgres.
+            Plateforme de tracking des premiers mois de bébé : sommeil, repas,
+            courbes. Backend transactionnel, interface apaisée.
           </div>
+          <span class="badge">En ligne</span>
         </div>
-      </article>
+        <span class="go" aria-hidden="true">↗</span>
+      </a>
+
     </div>
   </section>
 
-  <section class="contact">
+  <section class="contact reveal">
     <div class="section-label">Contact</div>
     <a class="contact-link" href="mailto:leandrosierra1@gmail.com?subject=Bonjour%20Leandro">
       <span>leandrosierra1@gmail.com</span>
       <span class="arrow" aria-hidden="true">↗</span>
     </a>
     <p class="contact-note">
-      Pour une question, une opportunité, ou juste pour discuter.
+      Pour une question, une opportunité, ou juste pour échanger sur l'IA agentique et le produit.
     </p>
+    <div class="socials">
+      <a href="https://github.com/leandrosierra" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
   </section>
 
 </div>
