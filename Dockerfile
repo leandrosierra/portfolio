@@ -6,6 +6,7 @@ FROM nginx:alpine
 
 # Copie le site + config nginx avec headers de securite stricts.
 COPY index.html /usr/share/nginx/html/index.html
+COPY security_headers.conf /etc/nginx/snippets/security_headers.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
