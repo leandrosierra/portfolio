@@ -1,12 +1,13 @@
 # Portfolio — leandro-sierra.com
 
-Site personnel monopage, statique, servi par nginx:alpine dans un container
-Coolify. ~40 MB d'image, HEALTHCHECK inclus, CSP stricte.
+Site personnel one-page, statique, servi par nginx:alpine dans un container
+Coolify. ~40 MB d'image, HEALTHCHECK inclus, CSP compatible i18n + AdSense.
 
 ## Stack
 
-- HTML/CSS pur, aucun JS d'application
-- Polices : Fraunces (display) + Inter (body) depuis Google Fonts
+- HTML/CSS/JS vanilla, sans build step
+- I18n client : FR, EN, ES, PT
+- Navigation flottante gauche + grille produits filtree
 - nginx:alpine avec headers de securite stricts (CSP, HSTS, etc.)
 - Docker HEALTHCHECK wget pour Coolify
 

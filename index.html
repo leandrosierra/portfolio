@@ -3,376 +3,846 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0a0a0b">
-<meta name="color-scheme" content="dark light">
-<title>Leandro Sierra — Software, Produit & IA agentique</title>
-<meta name="description" content="Leandro Sierra — architecte logiciel, produit & IA agentique. Vingt ans à concevoir des systèmes qui apprennent, observent et agissent. Paris & Avignon.">
-<meta property="og:title" content="Leandro Sierra — Software, Produit & IA agentique">
-<meta property="og:description" content="Architecte logiciel & IA agentique. Des systèmes qui apprennent, observent et agissent.">
+<meta name="theme-color" content="#f7f8f2">
+<meta name="color-scheme" content="light">
+<title>Leandro Sierra - AI products, software and autonomous systems</title>
+<meta name="description" content="Leandro Sierra builds AI products, agentic systems and compliance-ready web applications. Portfolio, products and live tools.">
+<meta property="og:title" content="Leandro Sierra - AI products and autonomous systems">
+<meta property="og:description" content="A one-page portfolio for AI products, agentic systems and live software experiments.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://leandro-sierra.com">
 <link rel="canonical" href="https://leandro-sierra.com">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Ctext x='50%25' y='62%25' text-anchor='middle' font-family='-apple-system,system-ui,sans-serif' font-weight='600' font-size='38' fill='%23f4f1ea'%3ELS%3C/text%3E%3C/svg%3E">
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3481333024960723"
-     crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111314'/%3E%3Ctext x='50%25' y='60%25' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='34' fill='%23f7f8f2'%3ELS%3C/text%3E%3C/svg%3E">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3481333024960723" crossorigin="anonymous"></script>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; }
   :root {
-    --bg: #0a0a0b;
-    --bg-elev: #131316;
-    --bg-card: #101013;
-    --fg: #f4f1ea;
-    --fg-muted: #9b958a;
-    --fg-dim: #5e5a52;
-    --accent: #d4a44a;
-    --accent-soft: rgba(212, 164, 74, 0.14);
-    --rule: #20201f;
-    --rule-hover: #34322d;
-    --max: 760px;
-    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --bg: #f7f8f2;
+    --surface: #ffffff;
+    --ink: #111314;
+    --muted: #5c6464;
+    --quiet: #8a9290;
+    --line: #d9ded8;
+    --line-strong: #b8c0bc;
+    --teal: #0f766e;
+    --teal-soft: #d9f2ee;
+    --amber: #b45309;
+    --blue: #2563eb;
+    --rose: #be123c;
+    --shadow: 0 18px 48px rgba(17, 19, 20, 0.10);
+    --max: 1180px;
   }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  html { scroll-behavior: smooth; }
   body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'Inter', -apple-system, system-ui, sans-serif;
-    font-size: 16px;
-    line-height: 1.65;
-    font-feature-settings: 'cv11', 'ss01';
-    -webkit-font-smoothing: antialiased;
+    margin: 0;
     min-height: 100vh;
+    background:
+      linear-gradient(90deg, rgba(17,19,20,.035) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(17,19,20,.035) 1px, transparent 1px),
+      var(--bg);
+    background-size: 48px 48px;
+    color: var(--ink);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+  .skip {
+    position: fixed;
+    left: 16px;
+    top: -80px;
+    z-index: 20;
+    background: var(--ink);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+  }
+  .skip:focus { top: 16px; }
+
+  .side-nav {
+    position: fixed;
+    z-index: 10;
+    left: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 214px;
+    padding: 12px;
+    border: 1px solid rgba(17,19,20,.10);
+    border-radius: 8px;
+    background: rgba(255,255,255,.82);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(18px);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 8px 12px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 8px;
+  }
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    color: white;
+    background: var(--ink);
+    font-weight: 800;
+    font-size: 13px;
+  }
+  .brand-copy { min-width: 0; }
+  .brand-copy strong { display: block; font-size: 13px; line-height: 1.1; }
+  .brand-copy span { color: var(--quiet); font-size: 11px; }
+  .nav-links {
+    display: grid;
+    gap: 3px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 36px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 650;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
+    outline: none;
+    color: var(--ink);
+    background: var(--teal-soft);
+  }
+  .nav-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 99px;
+    background: currentColor;
+    opacity: .58;
+  }
+  .lang-switch {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+  .lang-switch button {
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--muted);
+    min-height: 32px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 750;
+  }
+  .lang-switch button:hover,
+  .lang-switch button.is-active {
+    color: var(--ink);
+    border-color: var(--line-strong);
+    background: #f1f4ed;
+  }
+
+  main {
+    width: min(var(--max), calc(100% - 320px));
+    margin-left: max(292px, calc((100vw - var(--max)) / 2 + 160px));
+    padding: 38px 26px 44px;
+  }
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    align-content: center;
+    gap: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .status-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255,255,255,.68);
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pulse {
+    width: 9px;
+    height: 9px;
+    border-radius: 99px;
+    background: var(--teal);
+    box-shadow: 0 0 0 5px rgba(15,118,110,.13);
+  }
+  h1 {
+    max-width: 900px;
+    margin: 0;
+    font-size: clamp(56px, 8vw, 118px);
+    line-height: .9;
+    letter-spacing: 0;
+  }
+  .lead {
+    max-width: 760px;
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(18px, 2.1vw, 25px);
+    line-height: 1.45;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid var(--ink);
+    border-radius: 8px;
+    background: var(--ink);
+    color: white;
+    font-weight: 750;
+  }
+  .button.secondary {
+    background: rgba(255,255,255,.65);
+    color: var(--ink);
+    border-color: var(--line-strong);
+  }
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    max-width: 820px;
+  }
+  .metric {
+    min-height: 100px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px;
+    background: rgba(255,255,255,.72);
+  }
+  .metric strong {
+    display: block;
+    font-size: 30px;
+    line-height: 1;
+  }
+  .metric span {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .section {
+    padding: 86px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+    gap: 42px;
+    align-items: end;
+    margin-bottom: 30px;
+  }
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--teal);
+    font-size: 12px;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  h2 {
+    margin: 0;
+    max-width: 760px;
+    font-size: clamp(34px, 4.6vw, 62px);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+  .section-copy {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .capabilities {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .capability,
+  .product-card,
+  .contact-panel {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255,255,255,.72);
+  }
+  .capability {
+    padding: 22px;
+    min-height: 190px;
+  }
+  .capability b {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 17px;
+  }
+  .capability p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .filter {
+    min-height: 34px;
+    padding: 7px 11px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255,255,255,.70);
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 750;
+  }
+  .filter:hover,
+  .filter.is-active {
+    color: var(--ink);
+    border-color: var(--teal);
+    background: var(--teal-soft);
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .product-card {
     display: flex;
     flex-direction: column;
-    position: relative;
-    overflow-x: hidden;
+    min-height: 244px;
+    padding: 18px;
+    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
   }
-  ::selection { background: var(--accent); color: var(--bg); }
-
-  /* ── Whaou effect : halo lumineux animé en fond (CSS pur, 0 JS) ── */
-  .aura {
-    position: fixed;
-    inset: -20vmax;
-    z-index: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(38vmax 38vmax at 22% 14%, rgba(212,164,74,0.10), transparent 60%),
-      radial-gradient(30vmax 30vmax at 82% 80%, rgba(120,140,210,0.07), transparent 62%);
-    filter: blur(20px);
-    animation: drift 22s var(--ease) infinite alternate;
-  }
-  @keyframes drift {
-    0%   { transform: translate3d(-3%, -2%, 0) scale(1); }
-    100% { transform: translate3d(4%, 3%, 0) scale(1.08); }
-  }
-  /* Grain subtil pour la texture "premium" */
-  .aura::after {
-    content: ""; position: absolute; inset: 0;
-    background-image: radial-gradient(rgba(255,255,255,0.018) 1px, transparent 1px);
-    background-size: 3px 3px;
-    mix-blend-mode: overlay;
-  }
-
-  a { color: var(--fg); text-decoration: none; }
-
-  .wrap {
-    position: relative; z-index: 1;
-    max-width: var(--max); margin: 0 auto; padding: clamp(56px, 12vh, 110px) 32px 40px;
-    flex: 1; display: flex; flex-direction: column; gap: clamp(64px, 11vh, 104px); width: 100%;
-  }
-  @media (max-width: 600px) {
-    .wrap { padding: 56px 22px 28px; gap: 64px; }
-    body { font-size: 15px; }
-  }
-
-  /* ── Entrée séquencée (fade + rise) ── */
-  .rise { opacity: 0; transform: translateY(18px); animation: rise .9s var(--ease) forwards; }
-  .rise.d1 { animation-delay: .05s; }
-  .rise.d2 { animation-delay: .14s; }
-  .rise.d3 { animation-delay: .24s; }
-  @keyframes rise { to { opacity: 1; transform: none; } }
-
-  /* ── Scroll-reveal (scroll-driven, CSS pur, fallback gracieux) ── */
-  @supports (animation-timeline: view()) {
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      animation: revealIn linear forwards;
-      animation-timeline: view();
-      animation-range: entry 2% cover 22%;
-    }
-    @keyframes revealIn { to { opacity: 1; transform: none; } }
-  }
-
-  /* Header */
-  header { display: flex; flex-direction: column; gap: 22px; }
-  .eyebrow {
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em;
-    color: var(--accent); font-weight: 500;
-    display: inline-flex; align-items: center; gap: 9px; width: fit-content;
-  }
-  .eyebrow .dot {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
-    box-shadow: 0 0 0 0 var(--accent-soft); animation: pulse 2.6s var(--ease) infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(212,164,74,0.5); }
-    60% { box-shadow: 0 0 0 7px rgba(212,164,74,0); }
-  }
-  .mark {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(44px, 9vw, 78px);
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 1.0;
-    color: var(--fg);
-    background: linear-gradient(180deg, #fbf8f1 0%, #cfc7b6 100%);
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .mark .ampersand { color: var(--accent); font-style: italic; font-weight: 300; -webkit-text-fill-color: var(--accent); }
-  .tagline {
-    font-size: clamp(17px, 2.3vw, 21px);
-    line-height: 1.55; color: var(--fg-muted); max-width: 52ch; font-weight: 400;
-  }
-  .tagline strong { color: var(--fg); font-weight: 500; }
-
-  /* Sections */
-  section { display: flex; flex-direction: column; gap: 20px; }
-  .section-label {
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em;
-    color: var(--fg-dim); font-weight: 500;
-    display: flex; align-items: center; gap: 14px;
-  }
-  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
-  .prose p { color: var(--fg-muted); }
-  .prose p + p { margin-top: 14px; }
-  .prose strong { color: var(--fg); font-weight: 500; }
-  .prose em { color: var(--accent); font-style: normal; }
-
-  /* ── Projets : cartes cliquables ── */
-  .work { display: flex; flex-direction: column; gap: 12px; }
-  .work-item {
-    position: relative;
-    display: grid;
-    grid-template-columns: 64px 1fr auto;
-    gap: 22px; align-items: center;
-    padding: 22px 22px;
-    border: 1px solid var(--rule);
-    border-radius: 14px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.012), transparent);
-    transition: border-color .35s var(--ease), transform .35s var(--ease), background .35s var(--ease);
-    overflow: hidden;
-  }
-  /* lueur dorée qui balaie au survol */
-  .work-item::before {
-    content: ""; position: absolute; inset: 0;
-    background: radial-gradient(120% 80% at 0% 0%, var(--accent-soft), transparent 55%);
-    opacity: 0; transition: opacity .4s var(--ease);
-  }
-  a.work-item:hover {
-    border-color: var(--rule-hover);
+  .product-card:hover {
     transform: translateY(-3px);
-    background: linear-gradient(180deg, rgba(255,255,255,0.022), transparent);
+    border-color: var(--line-strong);
+    box-shadow: 0 14px 30px rgba(17,19,20,.08);
   }
-  a.work-item:hover::before { opacity: 1; }
-  .work-item .year {
-    font-family: 'Fraunces', serif; font-size: 15px; color: var(--fg-dim);
-    font-feature-settings: 'tnum'; position: relative; z-index: 1;
+  .product-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
   }
-  .work-item .body { display: flex; flex-direction: column; gap: 5px; position: relative; z-index: 1; min-width: 0; }
-  .work-item .title { font-weight: 600; color: var(--fg); font-size: 16.5px; letter-spacing: -0.01em; }
-  .work-item .stack { font-size: 12px; color: var(--accent); letter-spacing: 0.02em; font-weight: 500; }
-  .work-item .desc { font-size: 14px; color: var(--fg-muted); line-height: 1.55; }
-  .work-item .go {
-    position: relative; z-index: 1; flex-shrink: 0;
-    width: 38px; height: 38px; border-radius: 50%;
-    border: 1px solid var(--rule); color: var(--fg-dim);
-    display: grid; place-items: center; font-size: 15px;
-    transition: all .35s var(--ease);
+  .product-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    color: white;
+    background: var(--ink);
+    font-size: 18px;
   }
-  a.work-item:hover .go {
-    border-color: var(--accent); color: var(--accent);
-    transform: rotate(-45deg) scale(1.06);
-    background: var(--accent-soft);
+  .category {
+    color: var(--teal);
+    background: var(--teal-soft);
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 850;
+    white-space: nowrap;
   }
-  .work-item .go .live { display:none; }
-  .work-item.is-live .badge {
-    font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--accent); border: 1px solid var(--accent-soft);
-    background: var(--accent-soft); padding: 2px 7px; border-radius: 20px;
-    align-self: flex-start; margin-top: 2px; font-weight: 600;
+  .product-card h3 {
+    margin: 0 0 9px;
+    font-size: 20px;
+    line-height: 1.15;
+    letter-spacing: 0;
   }
-  @media (max-width: 560px) {
-    .work-item { grid-template-columns: 1fr auto; gap: 14px; padding: 18px; }
-    .work-item .year { grid-column: 1; font-size: 13px; }
-    .work-item .body { grid-column: 1 / -1; grid-row: 2; }
-    .work-item .go { grid-column: 2; grid-row: 1; }
+  .product-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .product-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 20px;
+  }
+  .product-meta span {
+    color: var(--quiet);
+    font-size: 12px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .product-meta b {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    font-size: 16px;
   }
 
-  /* Contact */
-  .contact { display: flex; flex-direction: column; gap: 18px; }
-  .contact-link {
-    display: inline-flex; align-items: center; gap: 14px;
-    font-family: 'Fraunces', serif;
-    font-size: clamp(24px, 4.5vw, 34px);
-    font-weight: 400; color: var(--fg);
-    width: fit-content; padding-bottom: 6px;
-    background-image: linear-gradient(var(--accent), var(--accent));
-    background-size: 0% 1.5px; background-position: 0 100%; background-repeat: no-repeat;
-    transition: color .3s var(--ease), background-size .4s var(--ease);
+  .lab-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
-  .contact-link:hover { color: var(--accent); background-size: 100% 1.5px; }
-  .contact-link .arrow { display: inline-block; transition: transform .3s var(--ease); }
-  .contact-link:hover .arrow { transform: translate(5px, -5px); }
-  .contact-note { font-size: 14px; color: var(--fg-dim); max-width: 46ch; }
-  .socials { display: flex; gap: 22px; margin-top: 4px; flex-wrap: wrap; }
-  .socials a {
-    font-size: 13px; color: var(--fg-muted); letter-spacing: 0.02em;
-    border-bottom: 1px solid transparent; transition: color .25s, border-color .25s; padding-bottom: 2px;
+  .lab-item {
+    padding: 18px;
+    border-left: 4px solid var(--ink);
+    background: rgba(255,255,255,.62);
   }
-  .socials a:hover { color: var(--accent); border-color: var(--accent); }
+  .lab-item:nth-child(2) { border-left-color: var(--teal); }
+  .lab-item:nth-child(3) { border-left-color: var(--amber); }
+  .lab-item:nth-child(4) { border-left-color: var(--blue); }
+  .lab-item strong { display: block; margin-bottom: 8px; }
+  .lab-item span { color: var(--muted); }
 
-  /* Footer */
+  .contact-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: center;
+    padding: 26px;
+  }
+  .contact-panel p {
+    margin: 8px 0 0;
+    color: var(--muted);
+  }
   footer {
-    position: relative; z-index: 1;
-    border-top: 1px solid var(--rule); padding: 26px 32px;
-    color: var(--fg-dim); font-size: 12px;
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-    max-width: var(--max); margin: 0 auto; width: 100%;
+    padding: 26px 0 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    color: var(--quiet);
+    font-size: 13px;
   }
-  footer a { color: var(--fg-dim); transition: color .25s; }
-  footer a:hover { color: var(--accent); }
 
-  @media (prefers-reduced-motion: reduce) {
-    *, .aura, .rise, .reveal { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
-  }
-  @media (prefers-color-scheme: light) {
-    :root {
-      --bg: #faf8f3; --bg-elev: #f0ede5; --bg-card: #fffdf8;
-      --fg: #1a1a1d; --fg-muted: #5a564d; --fg-dim: #9a958a;
-      --accent: #a17a2d; --accent-soft: rgba(161,122,45,0.10);
-      --rule: #e6e2d8; --rule-hover: #d4cfc2;
+  @media (max-width: 1180px) {
+    .side-nav {
+      left: 16px;
+      right: 16px;
+      top: auto;
+      bottom: 14px;
+      transform: none;
+      width: auto;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 8px;
+      align-items: center;
     }
-    .mark { background: linear-gradient(180deg, #2a2823 0%, #56503f 100%); -webkit-background-clip: text; background-clip: text; }
+    .brand { border-bottom: 0; margin: 0; padding: 4px 6px; }
+    .brand-copy { display: none; }
+    .nav-links { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .nav-links a { justify-content: center; font-size: 0; padding: 8px; }
+    .nav-dot { width: 9px; height: 9px; }
+    .lang-switch { margin: 0; padding: 0; border-top: 0; min-width: 150px; }
+    main {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+      padding-bottom: 110px;
+    }
+  }
+  @media (max-width: 880px) {
+    .section-head,
+    .contact-panel {
+      grid-template-columns: 1fr;
+    }
+    .metrics,
+    .capabilities,
+    .product-grid,
+    .lab-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 620px) {
+    main { width: min(100% - 28px, var(--max)); padding-top: 24px; }
+    .hero { min-height: 82vh; }
+    .metrics,
+    .capabilities,
+    .product-grid,
+    .lab-list {
+      grid-template-columns: 1fr;
+    }
+    .side-nav {
+      grid-template-columns: 1fr;
+      padding: 8px;
+    }
+    .brand { display: none; }
+    .lang-switch { min-width: 0; }
+    .nav-links a { min-height: 30px; }
+    .section { padding: 64px 0; }
   }
 </style>
 </head>
 <body>
+<a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
 
-<div class="aura" aria-hidden="true"></div>
+<nav class="side-nav" aria-label="Portfolio">
+  <div class="brand" aria-label="Leandro Sierra">
+    <span class="brand-mark">LS</span>
+    <span class="brand-copy"><strong>Leandro Sierra</strong><span data-i18n="navRole">AI products</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home"><span class="nav-dot"></span><span data-i18n="navHome">Accueil</span></a></li>
+    <li><a href="#about"><span class="nav-dot"></span><span data-i18n="navAbout">Approche</span></a></li>
+    <li><a href="#products"><span class="nav-dot"></span><span data-i18n="navProducts">Produits</span></a></li>
+    <li><a href="#lab"><span class="nav-dot"></span><span data-i18n="navLab">Lab</span></a></li>
+    <li><a href="#contact"><span class="nav-dot"></span><span data-i18n="navContact">Contact</span></a></li>
+  </ul>
+  <div class="lang-switch" aria-label="Language">
+    <button type="button" data-lang="fr" class="is-active">FR</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="es">ES</button>
+    <button type="button" data-lang="pt">PT</button>
+  </div>
+</nav>
 
-<div class="wrap">
-
-  <header>
-    <span class="eyebrow rise d1"><span class="dot"></span>Disponible pour collaborations</span>
-    <h1 class="mark rise d1">Leandro Sierra</h1>
-    <p class="tagline rise d2">
-      <strong>Architecte logiciel</strong>, produit <span class="ampersand">&amp;</span> IA agentique.
-      Je conçois et bâtis des systèmes qui apprennent, observent et agissent —
-      du backend à l'interface, du local au cloud.
-    </p>
-  </header>
-
-  <section class="prose reveal">
-    <div class="section-label">À propos</div>
-    <p>
-      Vingt ans à designer et coder des produits qui tiennent : du backend Java/Spring
-      au tooling d'agents autonomes, en passant par la stack web moderne (React,
-      TypeScript, Node) et l'infrastructure cloud-native (Docker, Coolify, Hetzner).
-    </p>
-    <p>
-      Mon focus actuel : <em>l'IA agentique au quotidien</em> — des agents qui
-      observent, mémorisent, raisonnent avec les meilleurs modèles, et agissent
-      avec discernement. Locale, privée, intégrée.
-    </p>
-  </section>
-
-  <section class="reveal">
-    <div class="section-label">Travaux récents</div>
-    <div class="work">
-
-      <article class="work-item">
-        <div class="year">2026</div>
-        <div class="body">
-          <div class="title">Ada — agent personnel autonome</div>
-          <div class="stack">Python · Claude · vector memory · PyInstaller A/B</div>
-          <div class="desc">
-            Agent local Windows : OAuth Claude, mémoire vectorielle, vision, voix,
-            automation desktop. Auto-évolution &amp; déploiement A/B continu.
-          </div>
-        </div>
-        <span class="go" aria-hidden="true">·</span>
-      </article>
-
-      <a class="work-item is-live" href="https://pop.leandro-sierra.com" target="_blank" rel="noopener">
-        <div class="year">2025</div>
-        <div class="body">
-          <div class="title">Pop — démocratie participative</div>
-          <div class="stack">React Native · Expo · Spring Boot · MySQL</div>
-          <div class="desc">
-            Application mobile &amp; web pour le débat citoyen : propositions de loi,
-            budgets participatifs, votes géolocalisés.
-          </div>
-          <span class="badge">En ligne</span>
-        </div>
-        <span class="go" aria-hidden="true">↗</span>
-      </a>
-
-      <a class="work-item is-live" href="https://hierarchie.leandro-sierra.com" target="_blank" rel="noopener">
-        <div class="year">2024</div>
-        <div class="body">
-          <div class="title">Hierarchie — atlas géographique vivant</div>
-          <div class="stack">Vite · React · Fastify · data-viz</div>
-          <div class="desc">
-            Visualisation interactive du monde : frontières, structures tectoniques,
-            exploration cartographique. Conçu pour le grand public.
-          </div>
-          <span class="badge">En ligne</span>
-        </div>
-        <span class="go" aria-hidden="true">↗</span>
-      </a>
-
-      <a class="work-item is-live" href="https://babybox.leandro-sierra.com" target="_blank" rel="noopener">
-        <div class="year">2024</div>
-        <div class="body">
-          <div class="title">Babybox — suivi parental</div>
-          <div class="stack">React · Node · Prisma · Postgres</div>
-          <div class="desc">
-            Plateforme de tracking des premiers mois de bébé : sommeil, repas,
-            courbes. Backend transactionnel, interface apaisée.
-          </div>
-          <span class="badge">En ligne</span>
-        </div>
-        <span class="go" aria-hidden="true">↗</span>
-      </a>
-
+<main id="main">
+  <section class="hero" id="home">
+    <span class="status-line"><span class="pulse"></span><span data-i18n="status">Produits IA en ligne, agent local en evolution continue</span></span>
+    <h1 data-i18n="heroTitle">Je construis des produits IA utiles, deployes et mesurables.</h1>
+    <p class="lead" data-i18n="heroLead">Architecte logiciel et product builder. Je transforme les contraintes reglementaires, les workflows metier et les idees d'agents autonomes en webapps simples a utiliser.</p>
+    <div class="hero-actions">
+      <a class="button" href="#products" data-i18n="heroPrimary">Voir les produits</a>
+      <a class="button secondary" href="mailto:leandrosierra1@gmail.com?subject=Portfolio%20Leandro" data-i18n="heroSecondary">Me contacter</a>
+    </div>
+    <div class="metrics" aria-label="Portfolio metrics">
+      <div class="metric"><strong>34</strong><span data-i18n="metricProducts">produits deployes</span></div>
+      <div class="metric"><strong>1</strong><span data-i18n="metricAgent">agent personnel autonome</span></div>
+      <div class="metric"><strong>4</strong><span data-i18n="metricLangs">langues dans cette page</span></div>
+      <div class="metric"><strong>24/7</strong><span data-i18n="metricInfra">infra Coolify supervisee</span></div>
     </div>
   </section>
 
-  <section class="contact reveal">
-    <div class="section-label">Contact</div>
-    <a class="contact-link" href="mailto:leandrosierra1@gmail.com?subject=Bonjour%20Leandro">
-      <span>leandrosierra1@gmail.com</span>
-      <span class="arrow" aria-hidden="true">↗</span>
-    </a>
-    <p class="contact-note">
-      Pour une question, une opportunité, ou juste pour échanger sur l'IA agentique et le produit.
-    </p>
-    <div class="socials">
-      <a href="https://github.com/leandrosierra" target="_blank" rel="noopener">GitHub ↗</a>
+  <section class="section" id="about">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow" data-i18n="aboutEyebrow">Approche</span>
+        <h2 data-i18n="aboutTitle">Une page claire pour un ecosysteme produit dense.</h2>
+      </div>
+      <p class="section-copy" data-i18n="aboutCopy">Je travaille vite, mais avec une architecture sobre : une promesse lisible, des parcours courts, des produits deployes, et une base technique capable d'evoluer sans friction.</p>
+    </div>
+    <div class="capabilities">
+      <article class="capability"><b data-i18n="cap1Title">Agentic software</b><p data-i18n="cap1Copy">Agents locaux, memoire, outils, boucles de validation et deploiement progressif.</p></article>
+      <article class="capability"><b data-i18n="cap2Title">Compliance products</b><p data-i18n="cap2Copy">Webapps rapides pour transformer une reglementation complexe en action concrete.</p></article>
+      <article class="capability"><b data-i18n="cap3Title">Cloud pragmatic</b><p data-i18n="cap3Copy">Docker, Coolify, Hetzner, monitoring et livraison continue sans usine inutile.</p></article>
     </div>
   </section>
 
-</div>
+  <section class="section" id="products">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow" data-i18n="productsEyebrow">Produits en cours</span>
+        <h2 data-i18n="productsTitle">Les outils live de l'atelier.</h2>
+      </div>
+      <p class="section-copy" data-i18n="productsCopy">Tous les produits actuellement deployes sur le domaine leandro-sierra.com, avec un filtre par famille pour scanner vite.</p>
+    </div>
+    <div class="filters" role="list" aria-label="Product filters">
+      <button class="filter is-active" type="button" data-filter="all" data-i18n="filterAll">Tous</button>
+      <button class="filter" type="button" data-filter="ai" data-i18n="filterAi">IA</button>
+      <button class="filter" type="button" data-filter="reg" data-i18n="filterReg">Reglementaire</button>
+      <button class="filter" type="button" data-filter="ops" data-i18n="filterOps">Operations</button>
+      <button class="filter" type="button" data-filter="consumer" data-i18n="filterConsumer">Grand public</button>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </section>
 
-<footer>
-  <span>© 2026 Leandro Sierra</span>
-  <span>Paris · Avignon</span>
-</footer>
+  <section class="section" id="lab">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow" data-i18n="labEyebrow">Lab</span>
+        <h2 data-i18n="labTitle">Systemes que j'affine en continu.</h2>
+      </div>
+      <p class="section-copy" data-i18n="labCopy">Le portfolio n'est pas une vitrine figee : il reference les produits, l'agent local, l'infra et les experimentations qui avancent chaque semaine.</p>
+    </div>
+    <div class="lab-list">
+      <div class="lab-item"><strong>Ada</strong><span data-i18n="labAda">Agent personnel Windows avec memoire, voix, vision, outils et auto-evolution controlee.</span></div>
+      <div class="lab-item"><strong>Orbit</strong><span data-i18n="labOrbit">Usine de dev autonome pour deleguer la construction et la validation de features.</span></div>
+      <div class="lab-item"><strong>Coolify</strong><span data-i18n="labCoolify">PaaS personnel sur Hetzner, deploiements Docker et supervision des apps live.</span></div>
+      <div class="lab-item"><strong>AdSense</strong><span data-i18n="labAdsense">Compte configure, site en examen, CMP Google selectionnee pour le consentement.</span></div>
+    </div>
+  </section>
 
+  <section class="section" id="contact">
+    <div class="contact-panel">
+      <div>
+        <span class="eyebrow" data-i18n="contactEyebrow">Contact</span>
+        <h2 data-i18n="contactTitle">Un produit a clarifier, un agent a concevoir, une infra a simplifier ?</h2>
+        <p data-i18n="contactCopy">Je reponds avec un angle concret : ce qu'on peut livrer, mesurer et maintenir.</p>
+      </div>
+      <a class="button" href="mailto:leandrosierra1@gmail.com?subject=Bonjour%20Leandro">leandrosierra1@gmail.com</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Leandro Sierra</span>
+    <span>Paris · Avignon · <a href="https://github.com/leandrosierra" target="_blank" rel="noopener">GitHub</a></span>
+  </footer>
+</main>
+
+<script>
+const translations = {
+  fr: {
+    skip: "Aller au contenu", navRole: "Produits IA", navHome: "Accueil", navAbout: "Approche", navProducts: "Produits", navLab: "Lab", navContact: "Contact",
+    status: "Produits IA en ligne, agent local en evolution continue",
+    heroTitle: "Je construis des produits IA utiles, deployes et mesurables.",
+    heroLead: "Architecte logiciel et product builder. Je transforme les contraintes reglementaires, les workflows metier et les idees d'agents autonomes en webapps simples a utiliser.",
+    heroPrimary: "Voir les produits", heroSecondary: "Me contacter",
+    metricProducts: "produits deployes", metricAgent: "agent personnel autonome", metricLangs: "langues dans cette page", metricInfra: "infra Coolify supervisee",
+    aboutEyebrow: "Approche", aboutTitle: "Une page claire pour un ecosysteme produit dense.",
+    aboutCopy: "Je travaille vite, mais avec une architecture sobre : une promesse lisible, des parcours courts, des produits deployes, et une base technique capable d'evoluer sans friction.",
+    cap1Title: "Agentic software", cap1Copy: "Agents locaux, memoire, outils, boucles de validation et deploiement progressif.",
+    cap2Title: "Compliance products", cap2Copy: "Webapps rapides pour transformer une reglementation complexe en action concrete.",
+    cap3Title: "Cloud pragmatic", cap3Copy: "Docker, Coolify, Hetzner, monitoring et livraison continue sans usine inutile.",
+    productsEyebrow: "Produits en cours", productsTitle: "Les outils live de l'atelier.",
+    productsCopy: "Tous les produits actuellement deployes sur le domaine leandro-sierra.com, avec un filtre par famille pour scanner vite.",
+    filterAll: "Tous", filterAi: "IA", filterReg: "Reglementaire", filterOps: "Operations", filterConsumer: "Grand public",
+    labEyebrow: "Lab", labTitle: "Systemes que j'affine en continu.",
+    labCopy: "Le portfolio n'est pas une vitrine figee : il reference les produits, l'agent local, l'infra et les experimentations qui avancent chaque semaine.",
+    labAda: "Agent personnel Windows avec memoire, voix, vision, outils et auto-evolution controlee.",
+    labOrbit: "Usine de dev autonome pour deleguer la construction et la validation de features.",
+    labCoolify: "PaaS personnel sur Hetzner, deploiements Docker et supervision des apps live.",
+    labAdsense: "Compte configure, site en examen, CMP Google selectionnee pour le consentement.",
+    contactEyebrow: "Contact", contactTitle: "Un produit a clarifier, un agent a concevoir, une infra a simplifier ?",
+    contactCopy: "Je reponds avec un angle concret : ce qu'on peut livrer, mesurer et maintenir.",
+    open: "Ouvrir"
+  },
+  en: {
+    skip: "Skip to content", navRole: "AI products", navHome: "Home", navAbout: "Approach", navProducts: "Products", navLab: "Lab", navContact: "Contact",
+    status: "Live AI products, local agent under continuous evolution",
+    heroTitle: "I build useful, shipped and measurable AI products.",
+    heroLead: "Software architect and product builder. I turn regulatory constraints, business workflows and autonomous-agent ideas into web apps people can actually use.",
+    heroPrimary: "View products", heroSecondary: "Contact me",
+    metricProducts: "deployed products", metricAgent: "personal autonomous agent", metricLangs: "languages on this page", metricInfra: "supervised Coolify infra",
+    aboutEyebrow: "Approach", aboutTitle: "A clear page for a dense product ecosystem.",
+    aboutCopy: "I move fast with restrained architecture: a readable promise, short flows, deployed products and a technical base that can evolve without friction.",
+    cap1Title: "Agentic software", cap1Copy: "Local agents, memory, tools, validation loops and progressive deployment.",
+    cap2Title: "Compliance products", cap2Copy: "Fast web apps that turn complex regulation into concrete action.",
+    cap3Title: "Pragmatic cloud", cap3Copy: "Docker, Coolify, Hetzner, monitoring and continuous delivery without unnecessary machinery.",
+    productsEyebrow: "Current products", productsTitle: "The live tools from the workshop.",
+    productsCopy: "Every product currently deployed under leandro-sierra.com, grouped so the ecosystem is easy to scan.",
+    filterAll: "All", filterAi: "AI", filterReg: "Regulation", filterOps: "Operations", filterConsumer: "Consumer",
+    labEyebrow: "Lab", labTitle: "Systems I keep refining.",
+    labCopy: "This portfolio is not a frozen showcase: it references the products, local agent, infrastructure and experiments moving every week.",
+    labAda: "Personal Windows agent with memory, voice, vision, tools and controlled self-evolution.",
+    labOrbit: "Autonomous development factory for delegating feature construction and validation.",
+    labCoolify: "Personal PaaS on Hetzner, Docker deployments and live-app supervision.",
+    labAdsense: "Account configured, site under review, Google CMP selected for consent.",
+    contactEyebrow: "Contact", contactTitle: "A product to clarify, an agent to design, infra to simplify?",
+    contactCopy: "I answer from a concrete angle: what can be shipped, measured and maintained.",
+    open: "Open"
+  },
+  es: {
+    skip: "Ir al contenido", navRole: "Productos IA", navHome: "Inicio", navAbout: "Enfoque", navProducts: "Productos", navLab: "Lab", navContact: "Contacto",
+    status: "Productos IA en linea, agente local en evolucion continua",
+    heroTitle: "Construyo productos IA utiles, desplegados y medibles.",
+    heroLead: "Arquitecto de software y constructor de producto. Transformo restricciones regulatorias, flujos de negocio e ideas de agentes autonomos en webapps simples.",
+    heroPrimary: "Ver productos", heroSecondary: "Contactar",
+    metricProducts: "productos desplegados", metricAgent: "agente personal autonomo", metricLangs: "idiomas en esta pagina", metricInfra: "infra Coolify supervisada",
+    aboutEyebrow: "Enfoque", aboutTitle: "Una pagina clara para un ecosistema denso.",
+    aboutCopy: "Trabajo rapido con arquitectura sobria: promesa clara, flujos cortos, productos desplegados y una base tecnica que evoluciona sin friccion.",
+    cap1Title: "Software agentico", cap1Copy: "Agentes locales, memoria, herramientas, validacion y despliegue progresivo.",
+    cap2Title: "Productos regulatorios", cap2Copy: "Webapps rapidas para convertir regulacion compleja en accion concreta.",
+    cap3Title: "Cloud pragmatico", cap3Copy: "Docker, Coolify, Hetzner, monitoreo y entrega continua sin maquinaria innecesaria.",
+    productsEyebrow: "Productos activos", productsTitle: "Las herramientas live del taller.",
+    productsCopy: "Todos los productos desplegados bajo leandro-sierra.com, filtrados por familia para escanear rapido.",
+    filterAll: "Todos", filterAi: "IA", filterReg: "Regulacion", filterOps: "Operaciones", filterConsumer: "Publico",
+    labEyebrow: "Lab", labTitle: "Sistemas que sigo afinando.",
+    labCopy: "El portfolio no es una vitrina fija: referencia productos, agente local, infraestructura y experimentos que avanzan cada semana.",
+    labAda: "Agente personal Windows con memoria, voz, vision, herramientas y auto-evolucion controlada.",
+    labOrbit: "Fabrica autonoma de desarrollo para delegar construccion y validacion de features.",
+    labCoolify: "PaaS personal en Hetzner, despliegues Docker y supervision de apps live.",
+    labAdsense: "Cuenta configurada, sitio en revision, CMP Google seleccionada para consentimiento.",
+    contactEyebrow: "Contacto", contactTitle: "Un producto que aclarar, un agente que disenar, una infra que simplificar?",
+    contactCopy: "Respondo con un angulo concreto: que se puede entregar, medir y mantener.",
+    open: "Abrir"
+  },
+  pt: {
+    skip: "Ir para o conteudo", navRole: "Produtos IA", navHome: "Inicio", navAbout: "Abordagem", navProducts: "Produtos", navLab: "Lab", navContact: "Contato",
+    status: "Produtos IA online, agente local em evolucao continua",
+    heroTitle: "Construo produtos IA uteis, publicados e mensuraveis.",
+    heroLead: "Arquiteto de software e product builder. Transformo restricoes regulatórias, fluxos de negocio e ideias de agentes autonomos em webapps simples.",
+    heroPrimary: "Ver produtos", heroSecondary: "Contato",
+    metricProducts: "produtos publicados", metricAgent: "agente pessoal autonomo", metricLangs: "idiomas nesta pagina", metricInfra: "infra Coolify monitorada",
+    aboutEyebrow: "Abordagem", aboutTitle: "Uma pagina clara para um ecossistema denso.",
+    aboutCopy: "Trabalho rapido com arquitetura sobria: promessa legivel, fluxos curtos, produtos no ar e uma base tecnica que evolui sem atrito.",
+    cap1Title: "Software agentico", cap1Copy: "Agentes locais, memoria, ferramentas, ciclos de validacao e deploy progressivo.",
+    cap2Title: "Produtos regulatórios", cap2Copy: "Webapps rapidas para transformar regulacao complexa em acao concreta.",
+    cap3Title: "Cloud pragmatico", cap3Copy: "Docker, Coolify, Hetzner, monitoramento e entrega continua sem fabrica desnecessaria.",
+    productsEyebrow: "Produtos atuais", productsTitle: "As ferramentas live do laboratorio.",
+    productsCopy: "Todos os produtos atualmente publicados em leandro-sierra.com, filtrados por familia para leitura rapida.",
+    filterAll: "Todos", filterAi: "IA", filterReg: "Regulatorio", filterOps: "Operacoes", filterConsumer: "Publico",
+    labEyebrow: "Lab", labTitle: "Sistemas que continuo refinando.",
+    labCopy: "O portfolio nao e uma vitrine parada: referencia produtos, agente local, infra e experimentos que evoluem toda semana.",
+    labAda: "Agente pessoal Windows com memoria, voz, visao, ferramentas e auto-evolucao controlada.",
+    labOrbit: "Fabrica autonoma de desenvolvimento para delegar criacao e validacao de features.",
+    labCoolify: "PaaS pessoal na Hetzner, deploys Docker e supervisao das apps live.",
+    labAdsense: "Conta configurada, site em revisao, CMP Google selecionada para consentimento.",
+    contactEyebrow: "Contato", contactTitle: "Um produto para clarear, um agente para desenhar, uma infra para simplificar?",
+    contactCopy: "Respondo com um angulo concreto: o que pode ser entregue, medido e mantido.",
+    open: "Abrir"
+  }
+};
+
+const productText = {
+  accessibiliteexpress: { title: "Accessibilite Express", fr: "Audit rapide pour rendre un site plus lisible, accessible et actionnable.", en: "Fast accessibility audit for clearer, more usable websites.", es: "Auditoria rapida para hacer un sitio mas accesible y accionable.", pt: "Auditoria rapida para tornar um site mais acessivel e acionavel.", cat: "ops", icon: "A11Y" },
+  ageassuranceready: { title: "Age Assurance Ready", fr: "Preparation aux controles d'age et parcours de verification.", en: "Age-assurance preparation and verification flow readiness.", es: "Preparacion para control de edad y verificacion.", pt: "Preparacao para controle de idade e verificacao.", cat: "reg", icon: "18+" },
+  agentcommerceready: { title: "Agent Commerce Ready", fr: "Check-list produit pour vendre via agents et interfaces conversationnelles.", en: "Product readiness for agent-driven commerce.", es: "Preparacion de producto para comercio con agentes.", pt: "Preparacao de produto para comercio com agentes.", cat: "ai", icon: "AI" },
+  agentcostguard: { title: "Agent Cost Guard", fr: "Garde-fou pour suivre et maitriser les couts d'agents IA.", en: "Guardrails to track and control AI-agent costs.", es: "Control de costes para agentes IA.", pt: "Controle de custos para agentes IA.", cat: "ai", icon: "$" },
+  aicodeprovenanceready: { title: "AI Code Provenance Ready", fr: "Traçabilite du code genere par IA et preuves d'origine.", en: "AI-generated code provenance and evidence tracking.", es: "Trazabilidad del codigo generado por IA.", pt: "Rastreabilidade de codigo gerado por IA.", cat: "ai", icon: "{}" },
+  aipresencecheck: { title: "AI Presence Check", fr: "Verification de presence IA dans les processus et parcours produit.", en: "AI presence checks across product and process flows.", es: "Chequeo de presencia IA en procesos y producto.", pt: "Checagem de presenca IA em processos e produto.", cat: "ai", icon: "AI" },
+  autoentrepreneurai: { title: "Auto Entrepreneur AI", fr: "Assistant pratique pour micro-entrepreneurs et obligations recurrentes.", en: "Practical assistant for solo entrepreneurs and recurring obligations.", es: "Asistente practico para autonomos y obligaciones recurrentes.", pt: "Assistente pratico para autonomos e obrigacoes recorrentes.", cat: "ops", icon: "AE" },
+  babybox: { title: "Babybox", fr: "Suivi parental pour sommeil, repas et routines des premiers mois.", en: "Parenting tracker for sleep, feeding and early routines.", es: "Seguimiento parental de sueno, comida y rutinas.", pt: "Acompanhamento parental de sono, alimentacao e rotinas.", cat: "consumer", icon: "BB" },
+  batterypassportready: { title: "Battery Passport Ready", fr: "Preparation au passeport batterie et donnees produit associees.", en: "Battery passport readiness and product-data preparation.", es: "Preparacion para pasaporte de baterias.", pt: "Preparacao para passaporte de baterias.", cat: "reg", icon: "BAT" },
+  cbamready: { title: "CBAM Ready", fr: "Kit de preparation au mecanisme carbone aux frontieres.", en: "Readiness kit for carbon border adjustment obligations.", es: "Kit para obligaciones CBAM.", pt: "Kit para obrigacoes CBAM.", cat: "reg", icon: "CO2" },
+  craready: { title: "CRA Ready", fr: "Preparation au Cyber Resilience Act pour produits numeriques.", en: "Cyber Resilience Act readiness for digital products.", es: "Preparacion para Cyber Resilience Act.", pt: "Preparacao para Cyber Resilience Act.", cat: "reg", icon: "CRA" },
+  devaitools: { title: "DevAI Tools", fr: "Boite a outils pour developpeurs qui integrent l'IA.", en: "Toolkit for developers integrating AI.", es: "Herramientas para desarrolladores con IA.", pt: "Ferramentas para desenvolvedores com IA.", cat: "ai", icon: "DEV" },
+  devicesunsetcheck: { title: "Device Sunset Check", fr: "Controle de fin de support, risques et plan de remplacement.", en: "End-of-support checks, risks and replacement planning.", es: "Control de fin de soporte y reemplazo.", pt: "Controle de fim de suporte e substituicao.", cat: "ops", icon: "EOL" },
+  digitalproductpassportready: { title: "Digital Product Passport Ready", fr: "Preparation aux passeports numeriques produits.", en: "Readiness for digital product passports.", es: "Preparacion para pasaporte digital de producto.", pt: "Preparacao para passaporte digital de produto.", cat: "reg", icon: "DPP" },
+  doravendorready: { title: "DORA Vendor Ready", fr: "Preparation fournisseurs aux exigences DORA.", en: "Vendor readiness for DORA requirements.", es: "Preparacion de proveedores para DORA.", pt: "Preparacao de fornecedores para DORA.", cat: "reg", icon: "DOR" },
+  einvoicingfranceready: { title: "E-Invoicing France Ready", fr: "Preparation a la facture electronique francaise.", en: "French e-invoicing readiness.", es: "Preparacion para factura electronica francesa.", pt: "Preparacao para faturacao eletronica francesa.", cat: "reg", icon: "INV" },
+  factureelectroniqueready: { title: "Facture Electronique Ready", fr: "Parcours clair pour anticiper la reforme facture electronique.", en: "Clear path to prepare e-invoicing reform.", es: "Ruta clara para reforma de factura electronica.", pt: "Caminho claro para reforma da fatura eletronica.", cat: "reg", icon: "FE" },
+  fidaopenfinanceready: { title: "FiDA Open Finance Ready", fr: "Preparation aux obligations open finance europeennes.", en: "Open finance readiness for FiDA obligations.", es: "Preparacion open finance para FiDA.", pt: "Preparacao open finance para FiDA.", cat: "reg", icon: "FIDA" },
+  hierarchie: { title: "Hierarchie", fr: "Atlas vivant et exploration visuelle de structures geographiques.", en: "Living atlas for visual geographic exploration.", es: "Atlas vivo para exploracion geografica.", pt: "Atlas vivo para exploracao geografica.", cat: "consumer", icon: "MAP" },
+  immifrance: { title: "ImmiFrance", fr: "Aide a la lecture des parcours administratifs d'immigration.", en: "Guidance for navigating French immigration procedures.", es: "Guia para tramites de inmigracion francesa.", pt: "Guia para processos de imigracao francesa.", cat: "consumer", icon: "FR" },
+  instantpayready: { title: "Instant Pay Ready", fr: "Preparation aux paiements instantanes et impacts operationnels.", en: "Instant payment readiness and operational impact mapping.", es: "Preparacion para pagos instantaneos.", pt: "Preparacao para pagamentos instantaneos.", cat: "reg", icon: "PAY" },
+  mcpsecurityready: { title: "MCP Security Ready", fr: "Controle securite pour integrations MCP et outils agents.", en: "Security checks for MCP integrations and agent tools.", es: "Control de seguridad para MCP y agentes.", pt: "Controle de seguranca para MCP e agentes.", cat: "ai", icon: "MCP" },
+  methaneimportready: { title: "Methane Import Ready", fr: "Preparation aux obligations methane import et reporting.", en: "Methane import readiness and reporting preparation.", es: "Preparacion para importaciones de metano.", pt: "Preparacao para importacao de metano.", cat: "reg", icon: "CH4" },
+  nis2supplierkit: { title: "NIS2 Supplier Kit", fr: "Kit fournisseur pour exigences cyber NIS2.", en: "Supplier kit for NIS2 cyber requirements.", es: "Kit proveedor para requisitos NIS2.", pt: "Kit fornecedor para requisitos NIS2.", cat: "reg", icon: "NIS" },
+  opensourceforkshield: { title: "Open Source Fork Shield", fr: "Evaluation des risques de forks et dependances open source.", en: "Risk checks for forks and open-source dependencies.", es: "Riesgos de forks y dependencias open source.", pt: "Riscos de forks e dependencias open source.", cat: "ops", icon: "OSS" },
+  paytransparencyready: { title: "Pay Transparency Ready", fr: "Preparation aux exigences de transparence salariale.", en: "Readiness for pay transparency requirements.", es: "Preparacion para transparencia salarial.", pt: "Preparacao para transparencia salarial.", cat: "reg", icon: "PAY" },
+  pentestai: { title: "PentestAI", fr: "Laboratoire outille pour tests securite assistes par IA.", en: "AI-assisted security testing lab.", es: "Laboratorio de seguridad asistido por IA.", pt: "Laboratorio de seguranca assistido por IA.", cat: "ai", icon: "SEC" },
+  popbackend: { title: "Pop Backend", fr: "API et socle donnees du projet de participation citoyenne.", en: "API and data core for civic participation.", es: "API y datos para participacion ciudadana.", pt: "API e dados para participacao cidada.", cat: "ops", icon: "API" },
+  popmobile: { title: "Pop", fr: "Produit citoyen pour debats, propositions et participation locale.", en: "Civic product for debates, proposals and local participation.", es: "Producto civico para debates y participacion.", pt: "Produto civico para debates e participacao.", cat: "consumer", icon: "POP" },
+  portfolio: { title: "Portfolio", fr: "Cette webapp one-page, vitrine vivante des produits et systemes.", en: "This one-page web app, a living view of products and systems.", es: "Esta webapp one-page, vista viva de productos.", pt: "Esta webapp one-page, visao viva dos produtos.", cat: "ops", icon: "LS" },
+  postquantumready: { title: "Post Quantum Ready", fr: "Preparation aux risques cryptographiques post-quantiques.", en: "Readiness for post-quantum cryptography risks.", es: "Preparacion para riesgos post-cuánticos.", pt: "Preparacao para riscos pos-quanticos.", cat: "reg", icon: "PQC" },
+  ppwrready: { title: "PPWR Ready", fr: "Preparation au reglement emballages et dechets d'emballages.", en: "Readiness for packaging and packaging-waste regulation.", es: "Preparacion para reglamento de envases.", pt: "Preparacao para regulamento de embalagens.", cat: "reg", icon: "PPW" },
+  repowereugasimportready: { title: "REPowerEU Gas Import Ready", fr: "Preparation aux controles gaz import et donnees energie.", en: "Readiness for gas import controls and energy data.", es: "Preparacion para controles de importacion de gas.", pt: "Preparacao para controles de importacao de gas.", cat: "reg", icon: "GAS" },
+  softwareproductliabilityready: { title: "Software Product Liability Ready", fr: "Preparation aux risques de responsabilite produit logiciel.", en: "Readiness for software product-liability risk.", es: "Preparacion para responsabilidad de software.", pt: "Preparacao para responsabilidade de software.", cat: "reg", icon: "LAW" }
+};
+
+const products = [
+  ["accessibiliteexpress", "https://accessibiliteexpress.leandro-sierra.com"],
+  ["ageassuranceready", "https://ageassuranceready.leandro-sierra.com"],
+  ["agentcommerceready", "https://agentcommerceready.leandro-sierra.com"],
+  ["agentcostguard", "https://agentcostguard.leandro-sierra.com"],
+  ["aicodeprovenanceready", "https://aicodeprovenanceready.leandro-sierra.com"],
+  ["aipresencecheck", "https://aipresencecheck.leandro-sierra.com"],
+  ["autoentrepreneurai", "https://autoentrepreneurai.leandro-sierra.com"],
+  ["babybox", "https://babybox.leandro-sierra.com"],
+  ["batterypassportready", "https://batterypassportready.leandro-sierra.com"],
+  ["cbamready", "https://cbamready.leandro-sierra.com"],
+  ["craready", "https://craready.leandro-sierra.com"],
+  ["devaitools", "https://devai-tools.leandro-sierra.com"],
+  ["devicesunsetcheck", "https://devicesunsetcheck.leandro-sierra.com"],
+  ["digitalproductpassportready", "https://digitalproductpassportready.leandro-sierra.com"],
+  ["doravendorready", "https://doravendorready.leandro-sierra.com"],
+  ["einvoicingfranceready", "https://einvoicingfranceready.leandro-sierra.com"],
+  ["factureelectroniqueready", "https://factureelectroniqueready.leandro-sierra.com"],
+  ["fidaopenfinanceready", "https://fidaopenfinanceready.leandro-sierra.com"],
+  ["hierarchie", "https://hierarchie.leandro-sierra.com"],
+  ["immifrance", "https://immifrance.leandro-sierra.com"],
+  ["instantpayready", "https://instantpayready.leandro-sierra.com"],
+  ["mcpsecurityready", "https://mcpsecurityready.leandro-sierra.com"],
+  ["methaneimportready", "https://methaneimportready.leandro-sierra.com"],
+  ["nis2supplierkit", "https://nis2supplierkit.leandro-sierra.com"],
+  ["opensourceforkshield", "https://opensourceforkshield.leandro-sierra.com"],
+  ["paytransparencyready", "https://paytransparencyready.leandro-sierra.com"],
+  ["pentestai", "https://pentestai.leandro-sierra.com"],
+  ["popbackend", "https://api.pop.leandro-sierra.com"],
+  ["popmobile", "https://pop.leandro-sierra.com"],
+  ["portfolio", "https://leandro-sierra.com"],
+  ["postquantumready", "https://postquantumready.leandro-sierra.com"],
+  ["ppwrready", "https://ppwrready.leandro-sierra.com"],
+  ["repowereugasimportready", "https://repowereugasimportready.leandro-sierra.com"],
+  ["softwareproductliabilityready", "https://softwareproductliabilityready.leandro-sierra.com"]
+];
+
+const categoryLabels = {
+  fr: { ai: "IA", reg: "Reglementaire", ops: "Operations", consumer: "Grand public" },
+  en: { ai: "AI", reg: "Regulation", ops: "Operations", consumer: "Consumer" },
+  es: { ai: "IA", reg: "Regulacion", ops: "Operaciones", consumer: "Publico" },
+  pt: { ai: "IA", reg: "Regulatorio", ops: "Operacoes", consumer: "Publico" }
+};
+
+let lang = localStorage.getItem("portfolio-lang") || "fr";
+let filter = "all";
+
+function applyLanguage(nextLang) {
+  lang = translations[nextLang] ? nextLang : "fr";
+  localStorage.setItem("portfolio-lang", lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach((node) => {
+    const key = node.getAttribute("data-i18n");
+    if (translations[lang][key]) node.textContent = translations[lang][key];
+  });
+  document.querySelectorAll("[data-lang]").forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.lang === lang);
+  });
+  renderProducts();
+}
+
+function renderProducts() {
+  const grid = document.getElementById("productGrid");
+  const visible = products.filter(([key]) => filter === "all" || productText[key].cat === filter);
+  grid.innerHTML = visible.map(([key, url]) => {
+    const product = productText[key];
+    const copy = product[lang] || product.fr;
+    const label = categoryLabels[lang][product.cat];
+    return `
+      <a class="product-card" href="${url}" target="_blank" rel="noopener" data-category="${product.cat}">
+        <div class="product-top">
+          <span class="product-icon">${product.icon}</span>
+          <span class="category">${label}</span>
+        </div>
+        <h3>${product.title}</h3>
+        <p>${copy}</p>
+        <span class="product-meta"><span>${new URL(url).hostname}</span><b aria-label="${translations[lang].open}">↗</b></span>
+      </a>`;
+  }).join("");
+}
+
+document.querySelectorAll("[data-lang]").forEach((button) => {
+  button.addEventListener("click", () => applyLanguage(button.dataset.lang));
+});
+
+document.querySelectorAll("[data-filter]").forEach((button) => {
+  button.addEventListener("click", () => {
+    filter = button.dataset.filter;
+    document.querySelectorAll("[data-filter]").forEach((item) => item.classList.toggle("is-active", item === button));
+    renderProducts();
+  });
+});
+
+applyLanguage(lang);
+</script>
 </body>
 </html>
