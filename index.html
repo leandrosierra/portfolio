@@ -186,7 +186,13 @@
     transform: translateY(0);
   }
   .hero {
-    gap: 32px;
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+    gap: 34px;
+    align-items: center;
+  }
+  .hero-copy {
+    display: grid;
+    gap: 24px;
   }
   .status-line {
     display: inline-flex;
@@ -211,7 +217,7 @@
   h1 {
     max-width: 900px;
     margin: 0;
-    font-size: clamp(56px, 8vw, 118px);
+    font-size: clamp(72px, 9vw, 134px);
     line-height: .9;
     letter-spacing: 0;
   }
@@ -269,6 +275,73 @@
     color: var(--muted);
     font-size: 13px;
   }
+  .signal-board {
+    min-height: 520px;
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.94), rgba(247,248,242,.78)),
+      repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(17,19,20,.045) 32px);
+    box-shadow: var(--shadow);
+    padding: 18px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 18px;
+    overflow: hidden;
+  }
+  .board-top,
+  .board-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .board-top strong {
+    color: var(--ink);
+    font-size: 14px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .system-map {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 10px;
+  }
+  .system-tile {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255,255,255,.78);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 0;
+  }
+  .system-tile strong { font-size: 16px; line-height: 1.1; }
+  .system-tile span { color: var(--muted); font-size: 12px; font-weight: 700; }
+  .system-tile.primary {
+    grid-column: span 3;
+    grid-row: span 3;
+    background: var(--ink);
+    color: white;
+  }
+  .system-tile.primary span { color: rgba(255,255,255,.68); }
+  .system-tile.wide { grid-column: span 3; grid-row: span 2; }
+  .system-tile.tall { grid-column: span 2; grid-row: span 3; }
+  .system-tile.accent { border-color: rgba(15,118,110,.35); background: var(--teal-soft); }
+  .system-tile.blue { border-color: rgba(37,99,235,.28); background: #e7efff; }
+  .system-tile.rose { border-color: rgba(190,18,60,.24); background: #fff1f2; }
+  .board-bottom b {
+    color: var(--teal);
+    font-size: 18px;
+    line-height: 1;
+  }
 
   .section {
     gap: 22px;
@@ -318,6 +391,19 @@
     padding: 22px;
     min-height: 190px;
   }
+  .capability span {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 18px;
+    padding: 5px 8px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--quiet);
+    font-size: 11px;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
   .capability b {
     display: block;
     margin-bottom: 10px;
@@ -333,6 +419,31 @@
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 18px;
+  }
+  .product-console {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .console-stat {
+    min-height: 74px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255,255,255,.70);
+    padding: 12px 14px;
+  }
+  .console-stat strong {
+    display: block;
+    font-size: 26px;
+    line-height: 1;
+  }
+  .console-stat span {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 750;
   }
   .filter {
     min-height: 34px;
@@ -355,7 +466,7 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
-    max-height: calc(100vh - 300px);
+    max-height: calc(100vh - 382px);
     overflow: auto;
     padding-right: 6px;
     scrollbar-width: thin;
@@ -452,11 +563,28 @@
 
   .contact-panel {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
     gap: 24px;
     align-items: center;
     padding: 26px;
   }
+  .contact-route {
+    display: grid;
+    gap: 10px;
+  }
+  .contact-route span {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 750;
+  }
+  .contact-route b { color: var(--ink); }
+  .contact-route em { font-style: normal; }
   .contact-panel p {
     margin: 8px 0 0;
     color: var(--muted);
@@ -502,12 +630,22 @@
     footer { display: none; }
   }
   @media (max-width: 880px) {
+    .hero,
     .section-head,
     .contact-panel {
       grid-template-columns: 1fr;
     }
+    .signal-board { min-height: 300px; }
+    .system-map { grid-template-rows: repeat(3, 76px); }
+    .system-tile.primary,
+    .system-tile.wide,
+    .system-tile.tall {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
     .metrics,
     .capabilities,
+    .product-console,
     .product-grid,
     .lab-list {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -521,11 +659,15 @@
     .metrics {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+    .hero { gap: 18px; }
+    .hero-copy { gap: 16px; }
+    .signal-board { display: none; }
     .metric {
       min-height: 82px;
       padding: 12px;
     }
     .capabilities,
+    .product-console,
     .product-grid,
     .lab-list {
       grid-template-columns: 1fr;
@@ -566,18 +708,32 @@
 
 <main id="main">
   <section class="page hero is-active" id="home">
-    <span class="status-line"><span class="pulse"></span><span data-i18n="status">Produits IA en ligne, agent local en evolution continue</span></span>
-    <h1 data-i18n="heroTitle">Je construis des produits IA utiles, deployes et mesurables.</h1>
-    <p class="lead" data-i18n="heroLead">Architecte logiciel et product builder. Je transforme les contraintes reglementaires, les workflows metier et les idees d'agents autonomes en webapps simples a utiliser.</p>
-    <div class="hero-actions">
-      <a class="button" href="#products" data-i18n="heroPrimary">Voir les produits</a>
-      <a class="button secondary" href="mailto:leandrosierra1@gmail.com?subject=Portfolio%20Leandro" data-i18n="heroSecondary">Me contacter</a>
+    <div class="hero-copy">
+      <span class="status-line"><span class="pulse"></span><span data-i18n="status">Portfolio vivant, pilote par IA et produits en ligne</span></span>
+      <h1 data-i18n="heroTitle">Leandro Sierra</h1>
+      <p class="lead" data-i18n="heroLead">Je construis mon propre systeme : des produits IA utiles, une usine de dev autonome, une infra Coolify et Ada, l'agent local qui m'aide a operer plus vite.</p>
+      <div class="hero-actions">
+        <a class="button" href="#products" data-i18n="heroPrimary">Explorer le systeme</a>
+        <a class="button secondary" href="#lab" data-i18n="heroSecondary">Voir Ada et le lab</a>
+      </div>
+      <div class="metrics" aria-label="Portfolio metrics">
+        <div class="metric"><strong>36</strong><span data-i18n="metricProducts">produits deployes</span></div>
+        <div class="metric"><strong>1</strong><span data-i18n="metricAgent">agent personnel autonome</span></div>
+        <div class="metric"><strong>4</strong><span data-i18n="metricLangs">langues dans cette page</span></div>
+        <div class="metric"><strong>24/7</strong><span data-i18n="metricInfra">infra Coolify supervisee</span></div>
+      </div>
     </div>
-    <div class="metrics" aria-label="Portfolio metrics">
-      <div class="metric"><strong>36</strong><span data-i18n="metricProducts">produits deployes</span></div>
-      <div class="metric"><strong>1</strong><span data-i18n="metricAgent">agent personnel autonome</span></div>
-      <div class="metric"><strong>4</strong><span data-i18n="metricLangs">langues dans cette page</span></div>
-      <div class="metric"><strong>24/7</strong><span data-i18n="metricInfra">infra Coolify supervisee</span></div>
+    <div class="signal-board" aria-label="System map">
+      <div class="board-top"><span data-i18n="boardKicker">Systeme personnel</span><strong>Ada / Orbit / Products</strong></div>
+      <div class="system-map">
+        <div class="system-tile primary"><strong>Ada</strong><span data-i18n="boardAda">Memoire, voix, outils, auto-evolution</span></div>
+        <div class="system-tile wide accent"><strong>36</strong><span data-i18n="boardProducts">produits live relies a Coolify</span></div>
+        <div class="system-tile tall"><strong>Orbit</strong><span data-i18n="boardOrbit">flotte de dev autonome</span></div>
+        <div class="system-tile blue"><strong>EU</strong><span data-i18n="boardReg">reglementaire transforme en apps</span></div>
+        <div class="system-tile rose"><strong>POP</strong><span data-i18n="boardConsumer">interfaces utiles, pas vitrines</span></div>
+        <div class="system-tile wide"><strong>Hetzner</strong><span data-i18n="boardInfra">infra privee, Docker, monitoring</span></div>
+      </div>
+      <div class="board-bottom"><span data-i18n="boardBottom">pas un CV, un systeme en production</span><b>01</b></div>
     </div>
   </section>
 
@@ -587,12 +743,12 @@
         <span class="eyebrow" data-i18n="aboutEyebrow">Approche</span>
         <h2 data-i18n="aboutTitle">Une page claire pour un ecosysteme produit dense.</h2>
       </div>
-      <p class="section-copy" data-i18n="aboutCopy">Je travaille vite, mais avec une architecture sobre : une promesse lisible, des parcours courts, des produits deployes, et une base technique capable d'evoluer sans friction.</p>
+      <p class="section-copy" data-i18n="aboutCopy">Le portfolio doit montrer la maniere de travailler : transformer une contrainte en produit, instrumenter, deployer, mesurer, puis laisser l'agent aider a iterer.</p>
     </div>
     <div class="capabilities">
-      <article class="capability"><b data-i18n="cap1Title">Agentic software</b><p data-i18n="cap1Copy">Agents locaux, memoire, outils, boucles de validation et deploiement progressif.</p></article>
-      <article class="capability"><b data-i18n="cap2Title">Compliance products</b><p data-i18n="cap2Copy">Webapps rapides pour transformer une reglementation complexe en action concrete.</p></article>
-      <article class="capability"><b data-i18n="cap3Title">Cloud pragmatic</b><p data-i18n="cap3Copy">Docker, Coolify, Hetzner, monitoring et livraison continue sans usine inutile.</p></article>
+      <article class="capability"><span>01</span><b data-i18n="cap1Title">IA operatrice</b><p data-i18n="cap1Copy">Ada n'est pas une demo : elle lit, agit, deploie, se souvient et pousse le systeme dans le bon sens.</p></article>
+      <article class="capability"><span>02</span><b data-i18n="cap2Title">Produits en essaim</b><p data-i18n="cap2Copy">Chaque app est petite, ciblee, mesurable, et sert une niche concrete plutot qu'une promesse vague.</p></article>
+      <article class="capability"><span>03</span><b data-i18n="cap3Title">Infra sous controle</b><p data-i18n="cap3Copy">GitHub, Docker, Coolify, Hetzner et healthchecks : assez simple pour livrer souvent, assez robuste pour durer.</p></article>
     </div>
   </section>
 
@@ -603,6 +759,11 @@
         <h2 data-i18n="productsTitle">Les outils live de l'atelier.</h2>
       </div>
       <p class="section-copy" data-i18n="productsCopy">Tous les produits actuellement deployes sur le domaine leandro-sierra.com, avec un filtre par famille pour scanner vite.</p>
+    </div>
+    <div class="product-console" aria-label="Product system metrics">
+      <div class="console-stat"><strong id="productCount">36</strong><span data-i18n="consoleVisible">visibles dans ce filtre</span></div>
+      <div class="console-stat"><strong>4</strong><span data-i18n="consoleFamilies">familles produit</span></div>
+      <div class="console-stat"><strong>100%</strong><span data-i18n="consoleLive">liens publics surveilles</span></div>
     </div>
     <div class="filters" role="list" aria-label="Product filters">
       <button class="filter is-active" type="button" data-filter="all" data-i18n="filterAll">Tous</button>
@@ -635,9 +796,13 @@
       <div>
         <span class="eyebrow" data-i18n="contactEyebrow">Contact</span>
         <h2 data-i18n="contactTitle">Un produit a clarifier, un agent a concevoir, une infra a simplifier ?</h2>
-        <p data-i18n="contactCopy">Je reponds avec un angle concret : ce qu'on peut livrer, mesurer et maintenir.</p>
+        <p data-i18n="contactCopy">Le bon sujet pour moi : un produit a clarifier, un agent a concevoir, ou une operation trop lente a rendre autonome.</p>
       </div>
-      <a class="button" href="mailto:leandrosierra1@gmail.com?subject=Bonjour%20Leandro">leandrosierra1@gmail.com</a>
+      <div class="contact-route">
+        <span><b data-i18n="contactRoute1Label">Produit</b><em data-i18n="contactRoute1">clarifier et shipper</em></span>
+        <span><b data-i18n="contactRoute2Label">Agent</b><em data-i18n="contactRoute2">outiller et deleguer</em></span>
+        <a class="button" href="mailto:leandrosierra1@gmail.com?subject=Bonjour%20Leandro">leandrosierra1@gmail.com</a>
+      </div>
     </div>
   </section>
 
@@ -650,19 +815,21 @@
 <script>
 const translations = {
   fr: {
-    skip: "Aller au contenu", navRole: "Produits IA", navHome: "Accueil", navAbout: "Approche", navProducts: "Produits", navLab: "Lab", navContact: "Contact",
-    status: "Produits IA en ligne, agent local en evolution continue",
-    heroTitle: "Je construis des produits IA utiles, deployes et mesurables.",
-    heroLead: "Architecte logiciel et product builder. Je transforme les contraintes reglementaires, les workflows metier et les idees d'agents autonomes en webapps simples a utiliser.",
-    heroPrimary: "Voir les produits", heroSecondary: "Me contacter",
+    skip: "Aller au contenu", navRole: "Leandro OS", navHome: "Accueil", navAbout: "Approche", navProducts: "Produits", navLab: "Lab", navContact: "Contact",
+    status: "Portfolio vivant, pilote par IA et produits en ligne",
+    heroTitle: "Leandro Sierra",
+    heroLead: "Je construis mon propre systeme : des produits IA utiles, une usine de dev autonome, une infra Coolify et Ada, l'agent local qui m'aide a operer plus vite.",
+    heroPrimary: "Explorer le systeme", heroSecondary: "Voir Ada et le lab",
     metricProducts: "produits deployes", metricAgent: "agent personnel autonome", metricLangs: "langues dans cette page", metricInfra: "infra Coolify supervisee",
+    boardKicker: "Systeme personnel", boardAda: "Memoire, voix, outils, auto-evolution", boardProducts: "produits live relies a Coolify", boardOrbit: "flotte de dev autonome", boardReg: "reglementaire transforme en apps", boardConsumer: "interfaces utiles, pas vitrines", boardInfra: "infra privee, Docker, monitoring", boardBottom: "pas un CV, un systeme en production",
     aboutEyebrow: "Approche", aboutTitle: "Une page claire pour un ecosysteme produit dense.",
-    aboutCopy: "Je travaille vite, mais avec une architecture sobre : une promesse lisible, des parcours courts, des produits deployes, et une base technique capable d'evoluer sans friction.",
-    cap1Title: "Agentic software", cap1Copy: "Agents locaux, memoire, outils, boucles de validation et deploiement progressif.",
-    cap2Title: "Compliance products", cap2Copy: "Webapps rapides pour transformer une reglementation complexe en action concrete.",
-    cap3Title: "Cloud pragmatic", cap3Copy: "Docker, Coolify, Hetzner, monitoring et livraison continue sans usine inutile.",
+    aboutCopy: "Le portfolio doit montrer la maniere de travailler : transformer une contrainte en produit, instrumenter, deployer, mesurer, puis laisser l'agent aider a iterer.",
+    cap1Title: "IA operatrice", cap1Copy: "Ada n'est pas une demo : elle lit, agit, deploie, se souvient et pousse le systeme dans le bon sens.",
+    cap2Title: "Produits en essaim", cap2Copy: "Chaque app est petite, ciblee, mesurable, et sert une niche concrete plutot qu'une promesse vague.",
+    cap3Title: "Infra sous controle", cap3Copy: "GitHub, Docker, Coolify, Hetzner et healthchecks : assez simple pour livrer souvent, assez robuste pour durer.",
     productsEyebrow: "Produits en cours", productsTitle: "Les outils live de l'atelier.",
     productsCopy: "Tous les produits actuellement deployes sur le domaine leandro-sierra.com, avec un filtre par famille pour scanner vite.",
+    consoleVisible: "visibles dans ce filtre", consoleFamilies: "familles produit", consoleLive: "liens publics surveilles",
     filterAll: "Tous", filterAi: "IA", filterReg: "Reglementaire", filterOps: "Operations", filterConsumer: "Grand public",
     labEyebrow: "Lab", labTitle: "Systemes que j'affine en continu.",
     labCopy: "Le portfolio n'est pas une vitrine figee : il reference les produits, l'agent local, l'infra et les experimentations qui avancent chaque semaine.",
@@ -671,23 +838,26 @@ const translations = {
     labCoolify: "PaaS personnel sur Hetzner, deploiements Docker et supervision des apps live.",
     labAdsense: "Compte configure, site en examen, CMP Google selectionnee pour le consentement.",
     contactEyebrow: "Contact", contactTitle: "Un produit a clarifier, un agent a concevoir, une infra a simplifier ?",
-    contactCopy: "Je reponds avec un angle concret : ce qu'on peut livrer, mesurer et maintenir.",
+    contactCopy: "Le bon sujet pour moi : un produit a clarifier, un agent a concevoir, ou une operation trop lente a rendre autonome.",
+    contactRoute1Label: "Produit", contactRoute1: "clarifier et shipper", contactRoute2Label: "Agent", contactRoute2: "outiller et deleguer",
     open: "Ouvrir"
   },
   en: {
-    skip: "Skip to content", navRole: "AI products", navHome: "Home", navAbout: "Approach", navProducts: "Products", navLab: "Lab", navContact: "Contact",
-    status: "Live AI products, local agent under continuous evolution",
-    heroTitle: "I build useful, shipped and measurable AI products.",
-    heroLead: "Software architect and product builder. I turn regulatory constraints, business workflows and autonomous-agent ideas into web apps people can actually use.",
-    heroPrimary: "View products", heroSecondary: "Contact me",
+    skip: "Skip to content", navRole: "Leandro OS", navHome: "Home", navAbout: "Approach", navProducts: "Products", navLab: "Lab", navContact: "Contact",
+    status: "Living portfolio, AI-operated and product-backed",
+    heroTitle: "Leandro Sierra",
+    heroLead: "I am building my own system: useful AI products, an autonomous dev factory, Coolify infrastructure and Ada, the local agent that helps me operate faster.",
+    heroPrimary: "Explore the system", heroSecondary: "See Ada and the lab",
     metricProducts: "deployed products", metricAgent: "personal autonomous agent", metricLangs: "languages on this page", metricInfra: "supervised Coolify infra",
+    boardKicker: "Personal system", boardAda: "Memory, voice, tools, self-evolution", boardProducts: "live products wired to Coolify", boardOrbit: "autonomous dev fleet", boardReg: "regulation turned into apps", boardConsumer: "useful interfaces, not showcases", boardInfra: "private infra, Docker, monitoring", boardBottom: "not a resume, a production system",
     aboutEyebrow: "Approach", aboutTitle: "A clear page for a dense product ecosystem.",
-    aboutCopy: "I move fast with restrained architecture: a readable promise, short flows, deployed products and a technical base that can evolve without friction.",
-    cap1Title: "Agentic software", cap1Copy: "Local agents, memory, tools, validation loops and progressive deployment.",
-    cap2Title: "Compliance products", cap2Copy: "Fast web apps that turn complex regulation into concrete action.",
-    cap3Title: "Pragmatic cloud", cap3Copy: "Docker, Coolify, Hetzner, monitoring and continuous delivery without unnecessary machinery.",
+    aboutCopy: "The portfolio should show the operating method: turn a constraint into a product, instrument it, deploy it, measure it, then let the agent help iterate.",
+    cap1Title: "Operator AI", cap1Copy: "Ada is not a demo: she reads, acts, deploys, remembers and keeps pushing the system in the right direction.",
+    cap2Title: "Product swarm", cap2Copy: "Each app is small, targeted, measurable, and serves a concrete niche instead of a vague promise.",
+    cap3Title: "Controlled infra", cap3Copy: "GitHub, Docker, Coolify, Hetzner and healthchecks: simple enough to ship often, robust enough to last.",
     productsEyebrow: "Current products", productsTitle: "The live tools from the workshop.",
     productsCopy: "Every product currently deployed under leandro-sierra.com, grouped so the ecosystem is easy to scan.",
+    consoleVisible: "visible in this filter", consoleFamilies: "product families", consoleLive: "public links monitored",
     filterAll: "All", filterAi: "AI", filterReg: "Regulation", filterOps: "Operations", filterConsumer: "Consumer",
     labEyebrow: "Lab", labTitle: "Systems I keep refining.",
     labCopy: "This portfolio is not a frozen showcase: it references the products, local agent, infrastructure and experiments moving every week.",
@@ -696,23 +866,26 @@ const translations = {
     labCoolify: "Personal PaaS on Hetzner, Docker deployments and live-app supervision.",
     labAdsense: "Account configured, site under review, Google CMP selected for consent.",
     contactEyebrow: "Contact", contactTitle: "A product to clarify, an agent to design, infra to simplify?",
-    contactCopy: "I answer from a concrete angle: what can be shipped, measured and maintained.",
+    contactCopy: "The right topic for me: a product to clarify, an agent to design, or an operation too slow to keep manual.",
+    contactRoute1Label: "Product", contactRoute1: "clarify and ship", contactRoute2Label: "Agent", contactRoute2: "tool and delegate",
     open: "Open"
   },
   es: {
-    skip: "Ir al contenido", navRole: "Productos IA", navHome: "Inicio", navAbout: "Enfoque", navProducts: "Productos", navLab: "Lab", navContact: "Contacto",
-    status: "Productos IA en linea, agente local en evolucion continua",
-    heroTitle: "Construyo productos IA utiles, desplegados y medibles.",
-    heroLead: "Arquitecto de software y constructor de producto. Transformo restricciones regulatorias, flujos de negocio e ideas de agentes autonomos en webapps simples.",
-    heroPrimary: "Ver productos", heroSecondary: "Contactar",
+    skip: "Ir al contenido", navRole: "Leandro OS", navHome: "Inicio", navAbout: "Enfoque", navProducts: "Productos", navLab: "Lab", navContact: "Contacto",
+    status: "Portfolio vivo, operado por IA y productos online",
+    heroTitle: "Leandro Sierra",
+    heroLead: "Estoy construyendo mi propio sistema: productos IA utiles, una fabrica autonoma de desarrollo, infra Coolify y Ada, el agente local que me ayuda a operar mas rapido.",
+    heroPrimary: "Explorar el sistema", heroSecondary: "Ver Ada y el lab",
     metricProducts: "productos desplegados", metricAgent: "agente personal autonomo", metricLangs: "idiomas en esta pagina", metricInfra: "infra Coolify supervisada",
+    boardKicker: "Sistema personal", boardAda: "Memoria, voz, herramientas, auto-evolucion", boardProducts: "productos live conectados a Coolify", boardOrbit: "flota autonoma de desarrollo", boardReg: "regulacion convertida en apps", boardConsumer: "interfaces utiles, no vitrinas", boardInfra: "infra privada, Docker, monitoreo", boardBottom: "no es un CV, es un sistema en produccion",
     aboutEyebrow: "Enfoque", aboutTitle: "Una pagina clara para un ecosistema denso.",
-    aboutCopy: "Trabajo rapido con arquitectura sobria: promesa clara, flujos cortos, productos desplegados y una base tecnica que evoluciona sin friccion.",
-    cap1Title: "Software agentico", cap1Copy: "Agentes locales, memoria, herramientas, validacion y despliegue progresivo.",
-    cap2Title: "Productos regulatorios", cap2Copy: "Webapps rapidas para convertir regulacion compleja en accion concreta.",
-    cap3Title: "Cloud pragmatico", cap3Copy: "Docker, Coolify, Hetzner, monitoreo y entrega continua sin maquinaria innecesaria.",
+    aboutCopy: "El portfolio debe mostrar el metodo: convertir una restriccion en producto, instrumentar, desplegar, medir y dejar que el agente ayude a iterar.",
+    cap1Title: "IA operadora", cap1Copy: "Ada no es una demo: lee, actua, despliega, recuerda y empuja el sistema en la direccion correcta.",
+    cap2Title: "Productos en enjambre", cap2Copy: "Cada app es pequena, precisa, medible y sirve una niche concreta en vez de una promesa vaga.",
+    cap3Title: "Infra bajo control", cap3Copy: "GitHub, Docker, Coolify, Hetzner y healthchecks: simple para enviar a menudo, robusto para durar.",
     productsEyebrow: "Productos activos", productsTitle: "Las herramientas live del taller.",
     productsCopy: "Todos los productos desplegados bajo leandro-sierra.com, filtrados por familia para escanear rapido.",
+    consoleVisible: "visibles en este filtro", consoleFamilies: "familias de producto", consoleLive: "links publicos monitorizados",
     filterAll: "Todos", filterAi: "IA", filterReg: "Regulacion", filterOps: "Operaciones", filterConsumer: "Publico",
     labEyebrow: "Lab", labTitle: "Sistemas que sigo afinando.",
     labCopy: "El portfolio no es una vitrina fija: referencia productos, agente local, infraestructura y experimentos que avanzan cada semana.",
@@ -721,23 +894,26 @@ const translations = {
     labCoolify: "PaaS personal en Hetzner, despliegues Docker y supervision de apps live.",
     labAdsense: "Cuenta configurada, sitio en revision, CMP Google seleccionada para consentimiento.",
     contactEyebrow: "Contacto", contactTitle: "Un producto que aclarar, un agente que disenar, una infra que simplificar?",
-    contactCopy: "Respondo con un angulo concreto: que se puede entregar, medir y mantener.",
+    contactCopy: "El buen tema para mi: un producto que aclarar, un agente que disenar, o una operacion demasiado lenta para seguir manual.",
+    contactRoute1Label: "Producto", contactRoute1: "aclarar y lanzar", contactRoute2Label: "Agente", contactRoute2: "equipar y delegar",
     open: "Abrir"
   },
   pt: {
-    skip: "Ir para o conteudo", navRole: "Produtos IA", navHome: "Inicio", navAbout: "Abordagem", navProducts: "Produtos", navLab: "Lab", navContact: "Contato",
-    status: "Produtos IA online, agente local em evolucao continua",
-    heroTitle: "Construo produtos IA uteis, publicados e mensuraveis.",
-    heroLead: "Arquiteto de software e product builder. Transformo restricoes regulatórias, fluxos de negocio e ideias de agentes autonomos em webapps simples.",
-    heroPrimary: "Ver produtos", heroSecondary: "Contato",
+    skip: "Ir para o conteudo", navRole: "Leandro OS", navHome: "Inicio", navAbout: "Abordagem", navProducts: "Produtos", navLab: "Lab", navContact: "Contato",
+    status: "Portfolio vivo, operado por IA e produtos online",
+    heroTitle: "Leandro Sierra",
+    heroLead: "Estou construindo meu proprio sistema: produtos IA uteis, uma fabrica autonoma de dev, infra Coolify e Ada, a agente local que me ajuda a operar mais rapido.",
+    heroPrimary: "Explorar o sistema", heroSecondary: "Ver Ada e o lab",
     metricProducts: "produtos publicados", metricAgent: "agente pessoal autonomo", metricLangs: "idiomas nesta pagina", metricInfra: "infra Coolify monitorada",
+    boardKicker: "Sistema pessoal", boardAda: "Memoria, voz, ferramentas, auto-evolucao", boardProducts: "produtos live ligados ao Coolify", boardOrbit: "frota autonoma de dev", boardReg: "regulacao transformada em apps", boardConsumer: "interfaces uteis, nao vitrines", boardInfra: "infra privada, Docker, monitoramento", boardBottom: "nao e um CV, e um sistema em producao",
     aboutEyebrow: "Abordagem", aboutTitle: "Uma pagina clara para um ecossistema denso.",
-    aboutCopy: "Trabalho rapido com arquitetura sobria: promessa legivel, fluxos curtos, produtos no ar e uma base tecnica que evolui sem atrito.",
-    cap1Title: "Software agentico", cap1Copy: "Agentes locais, memoria, ferramentas, ciclos de validacao e deploy progressivo.",
-    cap2Title: "Produtos regulatórios", cap2Copy: "Webapps rapidas para transformar regulacao complexa em acao concreta.",
-    cap3Title: "Cloud pragmatico", cap3Copy: "Docker, Coolify, Hetzner, monitoramento e entrega continua sem fabrica desnecessaria.",
+    aboutCopy: "O portfolio deve mostrar o metodo: transformar uma restricao em produto, instrumentar, publicar, medir e deixar a agente ajudar a iterar.",
+    cap1Title: "IA operadora", cap1Copy: "Ada nao e uma demo: ela le, age, publica, lembra e empurra o sistema na direcao certa.",
+    cap2Title: "Produtos em enxame", cap2Copy: "Cada app e pequena, precisa, mensuravel e serve uma niche concreta em vez de uma promessa vaga.",
+    cap3Title: "Infra sob controle", cap3Copy: "GitHub, Docker, Coolify, Hetzner e healthchecks: simples para publicar sempre, robusto para durar.",
     productsEyebrow: "Produtos atuais", productsTitle: "As ferramentas live do laboratorio.",
     productsCopy: "Todos os produtos atualmente publicados em leandro-sierra.com, filtrados por familia para leitura rapida.",
+    consoleVisible: "visiveis neste filtro", consoleFamilies: "familias de produto", consoleLive: "links publicos monitorados",
     filterAll: "Todos", filterAi: "IA", filterReg: "Regulatorio", filterOps: "Operacoes", filterConsumer: "Publico",
     labEyebrow: "Lab", labTitle: "Sistemas que continuo refinando.",
     labCopy: "O portfolio nao e uma vitrine parada: referencia produtos, agente local, infra e experimentos que evoluem toda semana.",
@@ -746,7 +922,8 @@ const translations = {
     labCoolify: "PaaS pessoal na Hetzner, deploys Docker e supervisao das apps live.",
     labAdsense: "Conta configurada, site em revisao, CMP Google selecionada para consentimento.",
     contactEyebrow: "Contato", contactTitle: "Um produto para clarear, um agente para desenhar, uma infra para simplificar?",
-    contactCopy: "Respondo com um angulo concreto: o que pode ser entregue, medido e mantido.",
+    contactCopy: "O bom assunto para mim: um produto para clarear, um agente para desenhar, ou uma operacao lenta demais para continuar manual.",
+    contactRoute1Label: "Produto", contactRoute1: "clarear e publicar", contactRoute2Label: "Agente", contactRoute2: "equipar e delegar",
     open: "Abrir"
   }
 };
@@ -857,6 +1034,8 @@ function applyLanguage(nextLang) {
 function renderProducts() {
   const grid = document.getElementById("productGrid");
   const visible = products.filter(([key]) => filter === "all" || productText[key].cat === filter);
+  const count = document.getElementById("productCount");
+  if (count) count.textContent = visible.length;
   grid.innerHTML = visible.map(([key, url]) => {
     const product = productText[key];
     const copy = product[lang] || product.fr;
@@ -909,6 +1088,15 @@ document.querySelectorAll("[data-filter]").forEach((button) => {
 });
 
 window.addEventListener("popstate", () => showSection(window.location.hash.slice(1), false));
+window.addEventListener("keydown", (event) => {
+  if (!["ArrowUp", "ArrowDown", "PageUp", "PageDown"].includes(event.key)) return;
+  const active = document.querySelector(".page.is-active");
+  const index = sectionIds.indexOf(active ? active.id : "home");
+  const direction = event.key === "ArrowUp" || event.key === "PageUp" ? -1 : 1;
+  const next = sectionIds[(index + direction + sectionIds.length) % sectionIds.length];
+  event.preventDefault();
+  showSection(next);
+});
 
 applyLanguage(lang);
 showSection(window.location.hash.slice(1), false);
