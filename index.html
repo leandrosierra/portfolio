@@ -280,8 +280,8 @@
     border: 1px solid var(--line-strong);
     border-radius: 8px;
     background:
-      linear-gradient(135deg, rgba(255,255,255,.94), rgba(247,248,242,.78)),
-      repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(17,19,20,.045) 32px);
+      linear-gradient(135deg, rgba(255,255,255,.96), rgba(247,248,242,.82)),
+      repeating-linear-gradient(90deg, transparent, transparent 43px, rgba(17,19,20,.04) 44px);
     box-shadow: var(--shadow);
     padding: 18px;
     display: grid;
@@ -309,8 +309,8 @@
   }
   .system-map {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 1.15fr .8fr .8fr;
     gap: 10px;
   }
   .system-tile {
@@ -320,23 +320,40 @@
     padding: 14px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 10px;
     min-height: 0;
   }
-  .system-tile strong { font-size: 16px; line-height: 1.1; }
-  .system-tile span { color: var(--muted); font-size: 12px; font-weight: 700; }
+  .system-tile strong { font-size: 26px; line-height: 1; }
+  .system-tile span {
+    color: var(--quiet);
+    font-size: 11px;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .system-tile em {
+    color: var(--muted);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.35;
+  }
   .system-tile.primary {
-    grid-column: span 3;
-    grid-row: span 3;
     background: var(--ink);
     color: white;
   }
-  .system-tile.primary span { color: rgba(255,255,255,.68); }
-  .system-tile.wide { grid-column: span 3; grid-row: span 2; }
-  .system-tile.tall { grid-column: span 2; grid-row: span 3; }
+  .system-tile.primary span,
+  .system-tile.primary em { color: rgba(255,255,255,.70); }
+  .system-tile.orbit {
+    border-color: rgba(15,118,110,.34);
+    background: var(--teal-soft);
+  }
+  .system-tile.wide { grid-column: span 2; }
   .system-tile.accent { border-color: rgba(15,118,110,.35); background: var(--teal-soft); }
   .system-tile.blue { border-color: rgba(37,99,235,.28); background: #e7efff; }
   .system-tile.rose { border-color: rgba(190,18,60,.24); background: #fff1f2; }
+  .system-tile.wide strong { font-size: 44px; }
   .board-bottom b {
     color: var(--teal);
     font-size: 18px;
@@ -636,13 +653,10 @@
       grid-template-columns: 1fr;
     }
     .signal-board { min-height: 300px; }
-    .system-map { grid-template-rows: repeat(3, 76px); }
-    .system-tile.primary,
-    .system-tile.wide,
-    .system-tile.tall {
-      grid-column: span 2;
-      grid-row: span 1;
-    }
+    .system-map { grid-template-rows: repeat(3, minmax(82px, auto)); }
+    .system-tile.wide { grid-column: span 2; }
+    .system-tile strong { font-size: 20px; }
+    .system-tile.wide strong { font-size: 30px; }
     .metrics,
     .capabilities,
     .product-console,
@@ -709,29 +723,29 @@
 <main id="main">
   <section class="page hero is-active" id="home">
     <div class="hero-copy">
-      <span class="status-line"><span class="pulse"></span><span data-i18n="status">Portfolio vivant, pilote par IA et produits en ligne</span></span>
+      <span class="status-line"><span class="pulse"></span><span data-i18n="status">Portfolio vivant, pilote par Ada et Orbit</span></span>
       <h1 data-i18n="heroTitle">Leandro Sierra</h1>
-      <p class="lead" data-i18n="heroLead">Je construis mon propre systeme : des produits IA utiles, une usine de dev autonome, une infra Coolify et Ada, l'agent local qui m'aide a operer plus vite.</p>
+      <p class="lead" data-i18n="heroLead">Je construis mon propre systeme : Ada pour agir, comprendre et se souvenir ; Orbit pour produire ; et une galaxie de produits IA qui en decoulent.</p>
       <div class="hero-actions">
         <a class="button" href="#products" data-i18n="heroPrimary">Explorer le systeme</a>
         <a class="button secondary" href="#lab" data-i18n="heroSecondary">Voir Ada et le lab</a>
       </div>
       <div class="metrics" aria-label="Portfolio metrics">
-        <div class="metric"><strong>36</strong><span data-i18n="metricProducts">produits deployes</span></div>
-        <div class="metric"><strong>1</strong><span data-i18n="metricAgent">agent personnel autonome</span></div>
+        <div class="metric"><strong>36</strong><span data-i18n="metricProducts">produits publics</span></div>
+        <div class="metric"><strong>2</strong><span data-i18n="metricAgent">moteurs personnels</span></div>
         <div class="metric"><strong>4</strong><span data-i18n="metricLangs">langues dans cette page</span></div>
-        <div class="metric"><strong>24/7</strong><span data-i18n="metricInfra">infra Coolify supervisee</span></div>
+        <div class="metric"><strong>100%</strong><span data-i18n="metricInfra">systeme cree en interne</span></div>
       </div>
     </div>
     <div class="signal-board" aria-label="System map">
       <div class="board-top"><span data-i18n="boardKicker">Systeme personnel</span><strong>Ada / Orbit / Products</strong></div>
       <div class="system-map">
-        <div class="system-tile primary"><strong>Ada</strong><span data-i18n="boardAda">Memoire, voix, outils, auto-evolution</span></div>
-        <div class="system-tile wide accent"><strong>36</strong><span data-i18n="boardProducts">produits live relies a Coolify</span></div>
-        <div class="system-tile tall"><strong>Orbit</strong><span data-i18n="boardOrbit">flotte de dev autonome</span></div>
-        <div class="system-tile blue"><strong>EU</strong><span data-i18n="boardReg">reglementaire transforme en apps</span></div>
-        <div class="system-tile rose"><strong>POP</strong><span data-i18n="boardConsumer">interfaces utiles, pas vitrines</span></div>
-        <div class="system-tile wide"><strong>Hetzner</strong><span data-i18n="boardInfra">infra privee, Docker, monitoring</span></div>
+        <div class="system-tile primary"><span>ADA</span><strong data-i18n="boardAdaTitle">Agent personnel</strong><em data-i18n="boardAda">Memoire, voix, vision, outils et execution locale.</em></div>
+        <div class="system-tile orbit"><span>ORBIT</span><strong data-i18n="boardOrbitTitle">Usine autonome</strong><em data-i18n="boardOrbit">Builders, validation, release gate et livraison produit.</em></div>
+        <div class="system-tile wide accent"><span>PRODUCTS</span><strong>36</strong><em data-i18n="boardProducts">produits issus du duo Ada + Orbit.</em></div>
+        <div class="system-tile blue"><span>FOCUS</span><strong data-i18n="boardReg">Reglementaire</strong><em data-i18n="boardRegCopy">Transformer les obligations en outils clairs.</em></div>
+        <div class="system-tile rose"><span>FOCUS</span><strong data-i18n="boardConsumer">Usage</strong><em data-i18n="boardConsumerCopy">Des interfaces pratiques, pas des vitrines.</em></div>
+        <div class="system-tile wide"><span>LOOP</span><strong data-i18n="boardInfra">Idee -> produit -> iteration</strong><em data-i18n="boardInfraCopy">Un portefeuille vivant, gere par mes propres agents.</em></div>
       </div>
       <div class="board-bottom"><span data-i18n="boardBottom">pas un CV, un systeme en production</span><b>01</b></div>
     </div>
@@ -743,12 +757,12 @@
         <span class="eyebrow" data-i18n="aboutEyebrow">Approche</span>
         <h2 data-i18n="aboutTitle">Une page claire pour un ecosysteme produit dense.</h2>
       </div>
-      <p class="section-copy" data-i18n="aboutCopy">Le portfolio doit montrer la maniere de travailler : transformer une contrainte en produit, instrumenter, deployer, mesurer, puis laisser l'agent aider a iterer.</p>
+      <p class="section-copy" data-i18n="aboutCopy">Le portfolio doit montrer la maniere de travailler : Ada observe et agit, Orbit construit, les produits sortent, puis le systeme apprend de chaque iteration.</p>
     </div>
     <div class="capabilities">
-      <article class="capability"><span>01</span><b data-i18n="cap1Title">IA operatrice</b><p data-i18n="cap1Copy">Ada n'est pas une demo : elle lit, agit, deploie, se souvient et pousse le systeme dans le bon sens.</p></article>
+      <article class="capability"><span>01</span><b data-i18n="cap1Title">Ada, l'operatrice</b><p data-i18n="cap1Copy">Ada n'est pas une demo : elle lit, agit, se souvient, parle, regarde et pousse le systeme dans le bon sens.</p></article>
       <article class="capability"><span>02</span><b data-i18n="cap2Title">Produits en essaim</b><p data-i18n="cap2Copy">Chaque app est petite, ciblee, mesurable, et sert une niche concrete plutot qu'une promesse vague.</p></article>
-      <article class="capability"><span>03</span><b data-i18n="cap3Title">Infra sous controle</b><p data-i18n="cap3Copy">GitHub, Docker, Coolify, Hetzner et healthchecks : assez simple pour livrer souvent, assez robuste pour durer.</p></article>
+      <article class="capability"><span>03</span><b data-i18n="cap3Title">Orbit, l'atelier</b><p data-i18n="cap3Copy">Orbit orchestre les builders, les validations et les releases pour transformer les idees en produits reels.</p></article>
     </div>
   </section>
 
@@ -758,12 +772,12 @@
         <span class="eyebrow" data-i18n="productsEyebrow">Produits en cours</span>
         <h2 data-i18n="productsTitle">Les outils live de l'atelier.</h2>
       </div>
-      <p class="section-copy" data-i18n="productsCopy">Tous les produits actuellement deployes sur le domaine leandro-sierra.com, avec un filtre par famille pour scanner vite.</p>
+      <p class="section-copy" data-i18n="productsCopy">Les produits publics qui decoulent du systeme Ada + Orbit, avec un filtre par famille pour scanner vite.</p>
     </div>
     <div class="product-console" aria-label="Product system metrics">
       <div class="console-stat"><strong id="productCount">36</strong><span data-i18n="consoleVisible">visibles dans ce filtre</span></div>
       <div class="console-stat"><strong>4</strong><span data-i18n="consoleFamilies">familles produit</span></div>
-      <div class="console-stat"><strong>100%</strong><span data-i18n="consoleLive">liens publics surveilles</span></div>
+      <div class="console-stat"><strong>A+O</strong><span data-i18n="consoleLive">gere par Ada et Orbit</span></div>
     </div>
     <div class="filters" role="list" aria-label="Product filters">
       <button class="filter is-active" type="button" data-filter="all" data-i18n="filterAll">Tous</button>
@@ -781,13 +795,13 @@
         <span class="eyebrow" data-i18n="labEyebrow">Lab</span>
         <h2 data-i18n="labTitle">Systemes que j'affine en continu.</h2>
       </div>
-      <p class="section-copy" data-i18n="labCopy">Le portfolio n'est pas une vitrine figee : il reference les produits, l'agent local, l'infra et les experimentations qui avancent chaque semaine.</p>
+      <p class="section-copy" data-i18n="labCopy">Le lab met en avant les deux creations qui rendent le portefeuille possible : Ada pour operer, Orbit pour produire.</p>
     </div>
     <div class="lab-list">
       <div class="lab-item"><strong>Ada</strong><span data-i18n="labAda">Agent personnel Windows avec memoire, voix, vision, outils et auto-evolution controlee.</span></div>
       <div class="lab-item"><strong>Orbit</strong><span data-i18n="labOrbit">Usine de dev autonome pour deleguer la construction et la validation de features.</span></div>
-      <div class="lab-item"><strong>Coolify</strong><span data-i18n="labCoolify">PaaS personnel sur Hetzner, deploiements Docker et supervision des apps live.</span></div>
-      <div class="lab-item"><strong>AdSense</strong><span data-i18n="labAdsense">Compte configure, site en examen, CMP Google selectionnee pour le consentement.</span></div>
+      <div class="lab-item"><strong>Products</strong><span data-i18n="labProducts">Portefeuille d'apps issues d'Ada et Orbit, pensees pour etre simples, utiles et rapides a lancer.</span></div>
+      <div class="lab-item"><strong>Leandro OS</strong><span data-i18n="labSystem">Une maniere de travailler ou l'agent, l'atelier et les produits s'ameliorent ensemble.</span></div>
     </div>
   </section>
 
@@ -795,7 +809,7 @@
     <div class="contact-panel">
       <div>
         <span class="eyebrow" data-i18n="contactEyebrow">Contact</span>
-        <h2 data-i18n="contactTitle">Un produit a clarifier, un agent a concevoir, une infra a simplifier ?</h2>
+        <h2 data-i18n="contactTitle">Un produit a clarifier, un agent a concevoir, un systeme a rendre autonome ?</h2>
         <p data-i18n="contactCopy">Le bon sujet pour moi : un produit a clarifier, un agent a concevoir, ou une operation trop lente a rendre autonome.</p>
       </div>
       <div class="contact-route">
@@ -808,7 +822,7 @@
 
   <footer>
     <span>© 2026 Leandro Sierra</span>
-    <span>Paris · Avignon · <a href="https://github.com/leandrosierra" target="_blank" rel="noopener">GitHub</a></span>
+    <span>Paris · Avignon · Ada + Orbit</span>
   </footer>
 </main>
 
@@ -816,112 +830,112 @@
 const translations = {
   fr: {
     skip: "Aller au contenu", navRole: "Leandro OS", navHome: "Accueil", navAbout: "Approche", navProducts: "Produits", navLab: "Lab", navContact: "Contact",
-    status: "Portfolio vivant, pilote par IA et produits en ligne",
+    status: "Portfolio vivant, pilote par Ada et Orbit",
     heroTitle: "Leandro Sierra",
-    heroLead: "Je construis mon propre systeme : des produits IA utiles, une usine de dev autonome, une infra Coolify et Ada, l'agent local qui m'aide a operer plus vite.",
+    heroLead: "Je construis mon propre systeme : Ada pour agir, comprendre et se souvenir ; Orbit pour produire ; et une galaxie de produits IA qui en decoulent.",
     heroPrimary: "Explorer le systeme", heroSecondary: "Voir Ada et le lab",
-    metricProducts: "produits deployes", metricAgent: "agent personnel autonome", metricLangs: "langues dans cette page", metricInfra: "infra Coolify supervisee",
-    boardKicker: "Systeme personnel", boardAda: "Memoire, voix, outils, auto-evolution", boardProducts: "produits live relies a Coolify", boardOrbit: "flotte de dev autonome", boardReg: "reglementaire transforme en apps", boardConsumer: "interfaces utiles, pas vitrines", boardInfra: "infra privee, Docker, monitoring", boardBottom: "pas un CV, un systeme en production",
+    metricProducts: "produits publics", metricAgent: "moteurs personnels", metricLangs: "langues dans cette page", metricInfra: "systeme cree en interne",
+    boardKicker: "Systeme personnel", boardAdaTitle: "Agent personnel", boardAda: "Memoire, voix, vision, outils et execution locale.", boardProducts: "produits issus du duo Ada + Orbit.", boardOrbitTitle: "Usine autonome", boardOrbit: "Builders, validation, release gate et livraison produit.", boardReg: "Reglementaire", boardRegCopy: "Transformer les obligations en outils clairs.", boardConsumer: "Usage", boardConsumerCopy: "Des interfaces pratiques, pas des vitrines.", boardInfra: "Idee -> produit -> iteration", boardInfraCopy: "Un portefeuille vivant, gere par mes propres agents.", boardBottom: "pas un CV, un systeme en production",
     aboutEyebrow: "Approche", aboutTitle: "Une page claire pour un ecosysteme produit dense.",
-    aboutCopy: "Le portfolio doit montrer la maniere de travailler : transformer une contrainte en produit, instrumenter, deployer, mesurer, puis laisser l'agent aider a iterer.",
-    cap1Title: "IA operatrice", cap1Copy: "Ada n'est pas une demo : elle lit, agit, deploie, se souvient et pousse le systeme dans le bon sens.",
+    aboutCopy: "Le portfolio doit montrer la maniere de travailler : Ada observe et agit, Orbit construit, les produits sortent, puis le systeme apprend de chaque iteration.",
+    cap1Title: "Ada, l'operatrice", cap1Copy: "Ada n'est pas une demo : elle lit, agit, se souvient, parle, regarde et pousse le systeme dans le bon sens.",
     cap2Title: "Produits en essaim", cap2Copy: "Chaque app est petite, ciblee, mesurable, et sert une niche concrete plutot qu'une promesse vague.",
-    cap3Title: "Infra sous controle", cap3Copy: "GitHub, Docker, Coolify, Hetzner et healthchecks : assez simple pour livrer souvent, assez robuste pour durer.",
+    cap3Title: "Orbit, l'atelier", cap3Copy: "Orbit orchestre les builders, les validations et les releases pour transformer les idees en produits reels.",
     productsEyebrow: "Produits en cours", productsTitle: "Les outils live de l'atelier.",
-    productsCopy: "Tous les produits actuellement deployes sur le domaine leandro-sierra.com, avec un filtre par famille pour scanner vite.",
-    consoleVisible: "visibles dans ce filtre", consoleFamilies: "familles produit", consoleLive: "liens publics surveilles",
+    productsCopy: "Les produits publics qui decoulent du systeme Ada + Orbit, avec un filtre par famille pour scanner vite.",
+    consoleVisible: "visibles dans ce filtre", consoleFamilies: "familles produit", consoleLive: "gere par Ada et Orbit",
     filterAll: "Tous", filterAi: "IA", filterReg: "Reglementaire", filterOps: "Operations", filterConsumer: "Grand public",
     labEyebrow: "Lab", labTitle: "Systemes que j'affine en continu.",
-    labCopy: "Le portfolio n'est pas une vitrine figee : il reference les produits, l'agent local, l'infra et les experimentations qui avancent chaque semaine.",
+    labCopy: "Le lab met en avant les deux creations qui rendent le portefeuille possible : Ada pour operer, Orbit pour produire.",
     labAda: "Agent personnel Windows avec memoire, voix, vision, outils et auto-evolution controlee.",
     labOrbit: "Usine de dev autonome pour deleguer la construction et la validation de features.",
-    labCoolify: "PaaS personnel sur Hetzner, deploiements Docker et supervision des apps live.",
-    labAdsense: "Compte configure, site en examen, CMP Google selectionnee pour le consentement.",
-    contactEyebrow: "Contact", contactTitle: "Un produit a clarifier, un agent a concevoir, une infra a simplifier ?",
+    labProducts: "Portefeuille d'apps issues d'Ada et Orbit, pensees pour etre simples, utiles et rapides a lancer.",
+    labSystem: "Une maniere de travailler ou l'agent, l'atelier et les produits s'ameliorent ensemble.",
+    contactEyebrow: "Contact", contactTitle: "Un produit a clarifier, un agent a concevoir, un systeme a rendre autonome ?",
     contactCopy: "Le bon sujet pour moi : un produit a clarifier, un agent a concevoir, ou une operation trop lente a rendre autonome.",
     contactRoute1Label: "Produit", contactRoute1: "clarifier et shipper", contactRoute2Label: "Agent", contactRoute2: "outiller et deleguer",
     open: "Ouvrir"
   },
   en: {
     skip: "Skip to content", navRole: "Leandro OS", navHome: "Home", navAbout: "Approach", navProducts: "Products", navLab: "Lab", navContact: "Contact",
-    status: "Living portfolio, AI-operated and product-backed",
+    status: "Living portfolio, operated by Ada and Orbit",
     heroTitle: "Leandro Sierra",
-    heroLead: "I am building my own system: useful AI products, an autonomous dev factory, Coolify infrastructure and Ada, the local agent that helps me operate faster.",
+    heroLead: "I am building my own system: Ada to act, understand and remember; Orbit to produce; and a constellation of AI products that come from both.",
     heroPrimary: "Explore the system", heroSecondary: "See Ada and the lab",
-    metricProducts: "deployed products", metricAgent: "personal autonomous agent", metricLangs: "languages on this page", metricInfra: "supervised Coolify infra",
-    boardKicker: "Personal system", boardAda: "Memory, voice, tools, self-evolution", boardProducts: "live products wired to Coolify", boardOrbit: "autonomous dev fleet", boardReg: "regulation turned into apps", boardConsumer: "useful interfaces, not showcases", boardInfra: "private infra, Docker, monitoring", boardBottom: "not a resume, a production system",
+    metricProducts: "public products", metricAgent: "personal engines", metricLangs: "languages on this page", metricInfra: "system built in-house",
+    boardKicker: "Personal system", boardAdaTitle: "Personal agent", boardAda: "Memory, voice, vision, tools and local execution.", boardProducts: "products born from Ada + Orbit.", boardOrbitTitle: "Autonomous factory", boardOrbit: "Builders, validation, release gate and product delivery.", boardReg: "Regulation", boardRegCopy: "Turn obligations into clear tools.", boardConsumer: "Use", boardConsumerCopy: "Practical interfaces, not showcases.", boardInfra: "Idea -> product -> iteration", boardInfraCopy: "A living portfolio managed by my own agents.", boardBottom: "not a resume, a production system",
     aboutEyebrow: "Approach", aboutTitle: "A clear page for a dense product ecosystem.",
-    aboutCopy: "The portfolio should show the operating method: turn a constraint into a product, instrument it, deploy it, measure it, then let the agent help iterate.",
-    cap1Title: "Operator AI", cap1Copy: "Ada is not a demo: she reads, acts, deploys, remembers and keeps pushing the system in the right direction.",
+    aboutCopy: "The portfolio should show the operating method: Ada observes and acts, Orbit builds, products emerge, then the system learns from every iteration.",
+    cap1Title: "Ada, the operator", cap1Copy: "Ada is not a demo: she reads, acts, remembers, speaks, sees and keeps pushing the system in the right direction.",
     cap2Title: "Product swarm", cap2Copy: "Each app is small, targeted, measurable, and serves a concrete niche instead of a vague promise.",
-    cap3Title: "Controlled infra", cap3Copy: "GitHub, Docker, Coolify, Hetzner and healthchecks: simple enough to ship often, robust enough to last.",
+    cap3Title: "Orbit, the workshop", cap3Copy: "Orbit orchestrates builders, validation and releases to turn ideas into real products.",
     productsEyebrow: "Current products", productsTitle: "The live tools from the workshop.",
-    productsCopy: "Every product currently deployed under leandro-sierra.com, grouped so the ecosystem is easy to scan.",
-    consoleVisible: "visible in this filter", consoleFamilies: "product families", consoleLive: "public links monitored",
+    productsCopy: "The public products that come from the Ada + Orbit system, grouped so the ecosystem is easy to scan.",
+    consoleVisible: "visible in this filter", consoleFamilies: "product families", consoleLive: "managed by Ada and Orbit",
     filterAll: "All", filterAi: "AI", filterReg: "Regulation", filterOps: "Operations", filterConsumer: "Consumer",
     labEyebrow: "Lab", labTitle: "Systems I keep refining.",
-    labCopy: "This portfolio is not a frozen showcase: it references the products, local agent, infrastructure and experiments moving every week.",
+    labCopy: "The lab highlights the two creations that make the portfolio possible: Ada to operate, Orbit to produce.",
     labAda: "Personal Windows agent with memory, voice, vision, tools and controlled self-evolution.",
     labOrbit: "Autonomous development factory for delegating feature construction and validation.",
-    labCoolify: "Personal PaaS on Hetzner, Docker deployments and live-app supervision.",
-    labAdsense: "Account configured, site under review, Google CMP selected for consent.",
-    contactEyebrow: "Contact", contactTitle: "A product to clarify, an agent to design, infra to simplify?",
+    labProducts: "A portfolio of apps born from Ada and Orbit, designed to be simple, useful and fast to launch.",
+    labSystem: "A way of working where the agent, the workshop and the products improve together.",
+    contactEyebrow: "Contact", contactTitle: "A product to clarify, an agent to design, a system to make autonomous?",
     contactCopy: "The right topic for me: a product to clarify, an agent to design, or an operation too slow to keep manual.",
     contactRoute1Label: "Product", contactRoute1: "clarify and ship", contactRoute2Label: "Agent", contactRoute2: "tool and delegate",
     open: "Open"
   },
   es: {
     skip: "Ir al contenido", navRole: "Leandro OS", navHome: "Inicio", navAbout: "Enfoque", navProducts: "Productos", navLab: "Lab", navContact: "Contacto",
-    status: "Portfolio vivo, operado por IA y productos online",
+    status: "Portfolio vivo, operado por Ada y Orbit",
     heroTitle: "Leandro Sierra",
-    heroLead: "Estoy construyendo mi propio sistema: productos IA utiles, una fabrica autonoma de desarrollo, infra Coolify y Ada, el agente local que me ayuda a operar mas rapido.",
+    heroLead: "Estoy construyendo mi propio sistema: Ada para actuar, comprender y recordar; Orbit para producir; y una galaxia de productos IA que nacen de ambos.",
     heroPrimary: "Explorar el sistema", heroSecondary: "Ver Ada y el lab",
-    metricProducts: "productos desplegados", metricAgent: "agente personal autonomo", metricLangs: "idiomas en esta pagina", metricInfra: "infra Coolify supervisada",
-    boardKicker: "Sistema personal", boardAda: "Memoria, voz, herramientas, auto-evolucion", boardProducts: "productos live conectados a Coolify", boardOrbit: "flota autonoma de desarrollo", boardReg: "regulacion convertida en apps", boardConsumer: "interfaces utiles, no vitrinas", boardInfra: "infra privada, Docker, monitoreo", boardBottom: "no es un CV, es un sistema en produccion",
+    metricProducts: "productos publicos", metricAgent: "motores personales", metricLangs: "idiomas en esta pagina", metricInfra: "sistema creado internamente",
+    boardKicker: "Sistema personal", boardAdaTitle: "Agente personal", boardAda: "Memoria, voz, vision, herramientas y ejecucion local.", boardProducts: "productos nacidos de Ada + Orbit.", boardOrbitTitle: "Fabrica autonoma", boardOrbit: "Builders, validacion, release gate y entrega producto.", boardReg: "Regulacion", boardRegCopy: "Convertir obligaciones en herramientas claras.", boardConsumer: "Uso", boardConsumerCopy: "Interfaces practicas, no vitrinas.", boardInfra: "Idea -> producto -> iteracion", boardInfraCopy: "Un portfolio vivo gestionado por mis propios agentes.", boardBottom: "no es un CV, es un sistema en produccion",
     aboutEyebrow: "Enfoque", aboutTitle: "Una pagina clara para un ecosistema denso.",
-    aboutCopy: "El portfolio debe mostrar el metodo: convertir una restriccion en producto, instrumentar, desplegar, medir y dejar que el agente ayude a iterar.",
-    cap1Title: "IA operadora", cap1Copy: "Ada no es una demo: lee, actua, despliega, recuerda y empuja el sistema en la direccion correcta.",
+    aboutCopy: "El portfolio debe mostrar el metodo: Ada observa y actua, Orbit construye, los productos salen, y el sistema aprende de cada iteracion.",
+    cap1Title: "Ada, la operadora", cap1Copy: "Ada no es una demo: lee, actua, recuerda, habla, ve y empuja el sistema en la direccion correcta.",
     cap2Title: "Productos en enjambre", cap2Copy: "Cada app es pequena, precisa, medible y sirve una niche concreta en vez de una promesa vaga.",
-    cap3Title: "Infra bajo control", cap3Copy: "GitHub, Docker, Coolify, Hetzner y healthchecks: simple para enviar a menudo, robusto para durar.",
+    cap3Title: "Orbit, el taller", cap3Copy: "Orbit orquesta builders, validacion y releases para convertir ideas en productos reales.",
     productsEyebrow: "Productos activos", productsTitle: "Las herramientas live del taller.",
-    productsCopy: "Todos los productos desplegados bajo leandro-sierra.com, filtrados por familia para escanear rapido.",
-    consoleVisible: "visibles en este filtro", consoleFamilies: "familias de producto", consoleLive: "links publicos monitorizados",
+    productsCopy: "Los productos publicos que nacen del sistema Ada + Orbit, filtrados por familia para escanear rapido.",
+    consoleVisible: "visibles en este filtro", consoleFamilies: "familias de producto", consoleLive: "gestionado por Ada y Orbit",
     filterAll: "Todos", filterAi: "IA", filterReg: "Regulacion", filterOps: "Operaciones", filterConsumer: "Publico",
     labEyebrow: "Lab", labTitle: "Sistemas que sigo afinando.",
-    labCopy: "El portfolio no es una vitrina fija: referencia productos, agente local, infraestructura y experimentos que avanzan cada semana.",
+    labCopy: "El lab destaca las dos creaciones que hacen posible el portfolio: Ada para operar, Orbit para producir.",
     labAda: "Agente personal Windows con memoria, voz, vision, herramientas y auto-evolucion controlada.",
     labOrbit: "Fabrica autonoma de desarrollo para delegar construccion y validacion de features.",
-    labCoolify: "PaaS personal en Hetzner, despliegues Docker y supervision de apps live.",
-    labAdsense: "Cuenta configurada, sitio en revision, CMP Google seleccionada para consentimiento.",
-    contactEyebrow: "Contacto", contactTitle: "Un producto que aclarar, un agente que disenar, una infra que simplificar?",
+    labProducts: "Portfolio de apps nacidas de Ada y Orbit, pensadas para ser simples, utiles y rapidas de lanzar.",
+    labSystem: "Una forma de trabajar donde el agente, el taller y los productos mejoran juntos.",
+    contactEyebrow: "Contacto", contactTitle: "Un producto que aclarar, un agente que disenar, un sistema que autonomizar?",
     contactCopy: "El buen tema para mi: un producto que aclarar, un agente que disenar, o una operacion demasiado lenta para seguir manual.",
     contactRoute1Label: "Producto", contactRoute1: "aclarar y lanzar", contactRoute2Label: "Agente", contactRoute2: "equipar y delegar",
     open: "Abrir"
   },
   pt: {
     skip: "Ir para o conteudo", navRole: "Leandro OS", navHome: "Inicio", navAbout: "Abordagem", navProducts: "Produtos", navLab: "Lab", navContact: "Contato",
-    status: "Portfolio vivo, operado por IA e produtos online",
+    status: "Portfolio vivo, operado por Ada e Orbit",
     heroTitle: "Leandro Sierra",
-    heroLead: "Estou construindo meu proprio sistema: produtos IA uteis, uma fabrica autonoma de dev, infra Coolify e Ada, a agente local que me ajuda a operar mais rapido.",
+    heroLead: "Estou construindo meu proprio sistema: Ada para agir, compreender e lembrar; Orbit para produzir; e uma galaxia de produtos IA que nascem dos dois.",
     heroPrimary: "Explorar o sistema", heroSecondary: "Ver Ada e o lab",
-    metricProducts: "produtos publicados", metricAgent: "agente pessoal autonomo", metricLangs: "idiomas nesta pagina", metricInfra: "infra Coolify monitorada",
-    boardKicker: "Sistema pessoal", boardAda: "Memoria, voz, ferramentas, auto-evolucao", boardProducts: "produtos live ligados ao Coolify", boardOrbit: "frota autonoma de dev", boardReg: "regulacao transformada em apps", boardConsumer: "interfaces uteis, nao vitrines", boardInfra: "infra privada, Docker, monitoramento", boardBottom: "nao e um CV, e um sistema em producao",
+    metricProducts: "produtos publicos", metricAgent: "motores pessoais", metricLangs: "idiomas nesta pagina", metricInfra: "sistema criado internamente",
+    boardKicker: "Sistema pessoal", boardAdaTitle: "Agente pessoal", boardAda: "Memoria, voz, visao, ferramentas e execucao local.", boardProducts: "produtos nascidos de Ada + Orbit.", boardOrbitTitle: "Fabrica autonoma", boardOrbit: "Builders, validacao, release gate e entrega produto.", boardReg: "Regulatorio", boardRegCopy: "Transformar obrigacoes em ferramentas claras.", boardConsumer: "Uso", boardConsumerCopy: "Interfaces praticas, nao vitrines.", boardInfra: "Ideia -> produto -> iteracao", boardInfraCopy: "Um portfolio vivo gerido pelos meus proprios agentes.", boardBottom: "nao e um CV, e um sistema em producao",
     aboutEyebrow: "Abordagem", aboutTitle: "Uma pagina clara para um ecossistema denso.",
-    aboutCopy: "O portfolio deve mostrar o metodo: transformar uma restricao em produto, instrumentar, publicar, medir e deixar a agente ajudar a iterar.",
-    cap1Title: "IA operadora", cap1Copy: "Ada nao e uma demo: ela le, age, publica, lembra e empurra o sistema na direcao certa.",
+    aboutCopy: "O portfolio deve mostrar o metodo: Ada observa e age, Orbit constroi, os produtos saem, e o sistema aprende a cada iteracao.",
+    cap1Title: "Ada, a operadora", cap1Copy: "Ada nao e uma demo: ela le, age, lembra, fala, ve e empurra o sistema na direcao certa.",
     cap2Title: "Produtos em enxame", cap2Copy: "Cada app e pequena, precisa, mensuravel e serve uma niche concreta em vez de uma promessa vaga.",
-    cap3Title: "Infra sob controle", cap3Copy: "GitHub, Docker, Coolify, Hetzner e healthchecks: simples para publicar sempre, robusto para durar.",
+    cap3Title: "Orbit, o atelier", cap3Copy: "Orbit orquestra builders, validacao e releases para transformar ideias em produtos reais.",
     productsEyebrow: "Produtos atuais", productsTitle: "As ferramentas live do laboratorio.",
-    productsCopy: "Todos os produtos atualmente publicados em leandro-sierra.com, filtrados por familia para leitura rapida.",
-    consoleVisible: "visiveis neste filtro", consoleFamilies: "familias de produto", consoleLive: "links publicos monitorados",
+    productsCopy: "Os produtos publicos que nascem do sistema Ada + Orbit, filtrados por familia para leitura rapida.",
+    consoleVisible: "visiveis neste filtro", consoleFamilies: "familias de produto", consoleLive: "gerido por Ada e Orbit",
     filterAll: "Todos", filterAi: "IA", filterReg: "Regulatorio", filterOps: "Operacoes", filterConsumer: "Publico",
     labEyebrow: "Lab", labTitle: "Sistemas que continuo refinando.",
-    labCopy: "O portfolio nao e uma vitrine parada: referencia produtos, agente local, infra e experimentos que evoluem toda semana.",
+    labCopy: "O lab destaca as duas criacoes que tornam o portfolio possivel: Ada para operar, Orbit para produzir.",
     labAda: "Agente pessoal Windows com memoria, voz, visao, ferramentas e auto-evolucao controlada.",
     labOrbit: "Fabrica autonoma de desenvolvimento para delegar criacao e validacao de features.",
-    labCoolify: "PaaS pessoal na Hetzner, deploys Docker e supervisao das apps live.",
-    labAdsense: "Conta configurada, site em revisao, CMP Google selecionada para consentimento.",
-    contactEyebrow: "Contato", contactTitle: "Um produto para clarear, um agente para desenhar, uma infra para simplificar?",
+    labProducts: "Portfolio de apps nascidas de Ada e Orbit, pensadas para serem simples, uteis e rapidas de lancar.",
+    labSystem: "Uma forma de trabalhar onde a agente, o atelier e os produtos melhoram juntos.",
+    contactEyebrow: "Contato", contactTitle: "Um produto para clarear, um agente para desenhar, um sistema para autonomizar?",
     contactCopy: "O bom assunto para mim: um produto para clarear, um agente para desenhar, ou uma operacao lenta demais para continuar manual.",
     contactRoute1Label: "Produto", contactRoute1: "clarear e publicar", contactRoute2Label: "Agente", contactRoute2: "equipar e delegar",
     open: "Abrir"
