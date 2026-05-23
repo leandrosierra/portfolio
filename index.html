@@ -32,10 +32,14 @@
     --shadow: 0 18px 48px rgba(17, 19, 20, 0.10);
     --max: 1180px;
   }
-  html { scroll-behavior: smooth; }
+  html {
+    height: 100%;
+    overflow: hidden;
+  }
   body {
     margin: 0;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
     background:
       linear-gradient(90deg, rgba(17,19,20,.035) 1px, transparent 1px),
       linear-gradient(180deg, rgba(17,19,20,.035) 1px, transparent 1px),
@@ -117,7 +121,8 @@
     font-weight: 650;
   }
   .nav-links a:hover,
-  .nav-links a:focus-visible {
+  .nav-links a:focus-visible,
+  .nav-links a.is-active {
     outline: none;
     color: var(--ink);
     background: var(--teal-soft);
@@ -156,15 +161,32 @@
 
   main {
     width: min(var(--max), calc(100% - 320px));
+    height: 100vh;
     margin-left: max(292px, calc((100vw - var(--max)) / 2 + 160px));
     padding: 38px 26px 44px;
+    position: relative;
+    overflow: hidden;
   }
-  .hero {
-    min-height: 92vh;
+  .page {
+    position: absolute;
+    inset: 38px 26px 44px;
     display: grid;
     align-content: center;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(14px);
+    transition: opacity .22s ease, transform .22s ease, visibility .22s ease;
+  }
+  .page.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .hero {
     gap: 32px;
-    border-bottom: 1px solid var(--line);
   }
   .status-line {
     display: inline-flex;
@@ -249,8 +271,7 @@
   }
 
   .section {
-    padding: 86px 0;
-    border-bottom: 1px solid var(--line);
+    gap: 22px;
   }
   .section-head {
     display: grid;
@@ -334,6 +355,10 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
+    max-height: calc(100vh - 300px);
+    overflow: auto;
+    padding-right: 6px;
+    scrollbar-width: thin;
   }
   .product-card {
     display: flex;
@@ -437,7 +462,10 @@
     color: var(--muted);
   }
   footer {
-    padding: 26px 0 10px;
+    position: fixed;
+    right: 24px;
+    bottom: 18px;
+    z-index: 4;
     display: flex;
     justify-content: space-between;
     gap: 18px;
@@ -466,9 +494,12 @@
     .lang-switch { margin: 0; padding: 0; border-top: 0; min-width: 150px; }
     main {
       width: min(var(--max), calc(100% - 36px));
+      height: 100vh;
       margin: 0 auto;
-      padding-bottom: 110px;
+      padding: 26px 18px 120px;
     }
+    .page { inset: 26px 18px 120px; }
+    footer { display: none; }
   }
   @media (max-width: 880px) {
     .section-head,
@@ -483,9 +514,17 @@
     }
   }
   @media (max-width: 620px) {
-    main { width: min(100% - 28px, var(--max)); padding-top: 24px; }
-    .hero { min-height: 82vh; }
-    .metrics,
+    main { width: min(100% - 28px, var(--max)); padding-top: 22px; }
+    .page { inset: 22px 0 118px; }
+    h1 { font-size: clamp(42px, 13vw, 64px); }
+    .lead { font-size: 16px; }
+    .metrics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .metric {
+      min-height: 82px;
+      padding: 12px;
+    }
     .capabilities,
     .product-grid,
     .lab-list {
@@ -498,12 +537,12 @@
     .brand { display: none; }
     .lang-switch { min-width: 0; }
     .nav-links a { min-height: 30px; }
-    .section { padding: 64px 0; }
+    .product-grid { max-height: calc(100vh - 310px); }
   }
 </style>
 </head>
 <body>
-<a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
+<a class="skip" href="#home" data-i18n="skip">Aller au contenu</a>
 
 <nav class="side-nav" aria-label="Portfolio">
   <div class="brand" aria-label="Leandro Sierra">
@@ -511,7 +550,7 @@
     <span class="brand-copy"><strong>Leandro Sierra</strong><span data-i18n="navRole">AI products</span></span>
   </div>
   <ul class="nav-links">
-    <li><a href="#home"><span class="nav-dot"></span><span data-i18n="navHome">Accueil</span></a></li>
+    <li><a href="#home" class="is-active"><span class="nav-dot"></span><span data-i18n="navHome">Accueil</span></a></li>
     <li><a href="#about"><span class="nav-dot"></span><span data-i18n="navAbout">Approche</span></a></li>
     <li><a href="#products"><span class="nav-dot"></span><span data-i18n="navProducts">Produits</span></a></li>
     <li><a href="#lab"><span class="nav-dot"></span><span data-i18n="navLab">Lab</span></a></li>
@@ -526,7 +565,7 @@
 </nav>
 
 <main id="main">
-  <section class="hero" id="home">
+  <section class="page hero is-active" id="home">
     <span class="status-line"><span class="pulse"></span><span data-i18n="status">Produits IA en ligne, agent local en evolution continue</span></span>
     <h1 data-i18n="heroTitle">Je construis des produits IA utiles, deployes et mesurables.</h1>
     <p class="lead" data-i18n="heroLead">Architecte logiciel et product builder. Je transforme les contraintes reglementaires, les workflows metier et les idees d'agents autonomes en webapps simples a utiliser.</p>
@@ -542,7 +581,7 @@
     </div>
   </section>
 
-  <section class="section" id="about">
+  <section class="page section" id="about">
     <div class="section-head">
       <div>
         <span class="eyebrow" data-i18n="aboutEyebrow">Approche</span>
@@ -557,7 +596,7 @@
     </div>
   </section>
 
-  <section class="section" id="products">
+  <section class="page section" id="products">
     <div class="section-head">
       <div>
         <span class="eyebrow" data-i18n="productsEyebrow">Produits en cours</span>
@@ -575,7 +614,7 @@
     <div class="product-grid" id="productGrid"></div>
   </section>
 
-  <section class="section" id="lab">
+  <section class="page section" id="lab">
     <div class="section-head">
       <div>
         <span class="eyebrow" data-i18n="labEyebrow">Lab</span>
@@ -591,7 +630,7 @@
     </div>
   </section>
 
-  <section class="section" id="contact">
+  <section class="page section" id="contact">
     <div class="contact-panel">
       <div>
         <span class="eyebrow" data-i18n="contactEyebrow">Contact</span>
@@ -795,6 +834,7 @@ const categoryLabels = {
 
 let lang = localStorage.getItem("portfolio-lang") || "fr";
 let filter = "all";
+const sectionIds = ["home", "about", "products", "lab", "contact"];
 
 function applyLanguage(nextLang) {
   lang = translations[nextLang] ? nextLang : "fr";
@@ -830,8 +870,30 @@ function renderProducts() {
   }).join("");
 }
 
+function showSection(sectionId, updateHash = true) {
+  const target = sectionIds.includes(sectionId) ? sectionId : "home";
+  document.querySelectorAll(".page").forEach((section) => {
+    section.classList.toggle("is-active", section.id === target);
+  });
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
+    link.classList.toggle("is-active", link.getAttribute("href") === `#${target}`);
+  });
+  if (updateHash && window.location.hash !== `#${target}`) {
+    history.pushState(null, "", `#${target}`);
+  }
+}
+
 document.querySelectorAll("[data-lang]").forEach((button) => {
   button.addEventListener("click", () => applyLanguage(button.dataset.lang));
+});
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const sectionId = link.getAttribute("href").slice(1);
+    if (!sectionIds.includes(sectionId)) return;
+    event.preventDefault();
+    showSection(sectionId);
+  });
 });
 
 document.querySelectorAll("[data-filter]").forEach((button) => {
@@ -842,7 +904,10 @@ document.querySelectorAll("[data-filter]").forEach((button) => {
   });
 });
 
+window.addEventListener("popstate", () => showSection(window.location.hash.slice(1), false));
+
 applyLanguage(lang);
+showSection(window.location.hash.slice(1), false);
 </script>
 </body>
 </html>
