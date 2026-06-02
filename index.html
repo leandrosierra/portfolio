@@ -1,1043 +1,719 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f7f8f2">
+<meta name="theme-color" content="#f5f7f8">
 <meta name="color-scheme" content="light">
-<title>Leandro Sierra - AI products, software and autonomous systems</title>
-<meta name="description" content="Leandro Sierra builds AI products, agentic systems and compliance-ready web applications. Portfolio, products and live tools.">
-<meta property="og:title" content="Leandro Sierra - AI products and autonomous systems">
-<meta property="og:description" content="A one-page portfolio for AI products, agentic systems and live software experiments.">
+<title>Leandro Sierra - Internet products and AI software</title>
+<meta name="description" content="Portfolio of internet products designed by Leandro Sierra: AI tools, compliance products, operational software and public web applications.">
+<meta property="og:title" content="Leandro Sierra - Product portfolio">
+<meta property="og:description" content="A concise portfolio of AI, compliance and internet software products designed by Leandro Sierra.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://leandro-sierra.com">
 <link rel="canonical" href="https://leandro-sierra.com">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111314'/%3E%3Ctext x='50%25' y='60%25' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='34' fill='%23f7f8f2'%3ELS%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0d10'/%3E%3Cpath d='M16 42h31v6H16zM16 16h7v26h-7zM29 16h7v26h-7zM42 16h7v26h-7z' fill='%23f7f9fb'/%3E%3C/svg%3E">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3481333024960723" crossorigin="anonymous"></script>
 <style>
   * { box-sizing: border-box; }
   :root {
-    --bg: #f7f8f2;
-    --surface: #ffffff;
-    --ink: #111314;
-    --muted: #5c6464;
-    --quiet: #8a9290;
-    --line: #d9ded8;
-    --line-strong: #b8c0bc;
-    --teal: #0f766e;
-    --teal-soft: #d9f2ee;
-    --amber: #b45309;
-    --blue: #2563eb;
-    --rose: #be123c;
-    --shadow: 0 18px 48px rgba(17, 19, 20, 0.10);
-    --max: 1180px;
+    --bg: #f5f7f8;
+    --panel: #ffffff;
+    --ink: #0b0d10;
+    --muted: #59616a;
+    --quiet: #858e98;
+    --line: #dce2e7;
+    --line-strong: #b9c3cc;
+    --blue: #1f6feb;
+    --green: #138a63;
+    --red: #c2415b;
+    --amber: #b77712;
+    --violet: #6d5bd0;
+    --max: 1260px;
   }
-  html {
-    height: 100%;
-    overflow: hidden;
-  }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    height: 100vh;
-    overflow: hidden;
     background:
-      linear-gradient(90deg, rgba(17,19,20,.035) 1px, transparent 1px),
-      linear-gradient(180deg, rgba(17,19,20,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(11, 13, 16, .045) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(11, 13, 16, .045) 1px, transparent 1px),
       var(--bg);
-    background-size: 48px 48px;
+    background-size: 40px 40px;
     color: var(--ink);
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     line-height: 1.5;
     letter-spacing: 0;
     -webkit-font-smoothing: antialiased;
   }
   a { color: inherit; text-decoration: none; }
   button { font: inherit; }
-  .skip {
-    position: fixed;
-    left: 16px;
-    top: -80px;
-    z-index: 20;
-    background: var(--ink);
-    color: white;
-    padding: 10px 14px;
-    border-radius: 8px;
+  .shell {
+    width: min(var(--max), calc(100% - 40px));
+    margin: 0 auto;
   }
-  .skip:focus { top: 16px; }
-
-  .side-nav {
-    position: fixed;
-    z-index: 10;
-    left: 22px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 214px;
-    padding: 12px;
-    border: 1px solid rgba(17,19,20,.10);
-    border-radius: 8px;
-    background: rgba(255,255,255,.82);
-    box-shadow: var(--shadow);
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid rgba(11, 13, 16, .08);
+    background: rgba(245, 247, 248, .88);
     backdrop-filter: blur(18px);
+  }
+  .topbar .shell {
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
   }
   .brand {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 12px;
-    padding: 8px 8px 12px;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 8px;
+    min-width: 0;
   }
-  .brand-mark {
+  .mark {
     width: 34px;
     height: 34px;
     border-radius: 8px;
     display: grid;
     place-items: center;
-    color: white;
     background: var(--ink);
-    font-weight: 800;
-    font-size: 13px;
-  }
-  .brand-copy { min-width: 0; }
-  .brand-copy strong { display: block; font-size: 13px; line-height: 1.1; }
-  .brand-copy span { color: var(--quiet); font-size: 11px; }
-  .nav-links {
-    display: grid;
-    gap: 3px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .nav-links a {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    min-height: 36px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 650;
-  }
-  .nav-links a:hover,
-  .nav-links a:focus-visible,
-  .nav-links a.is-active {
-    outline: none;
-    color: var(--ink);
-    background: var(--teal-soft);
-  }
-  .nav-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 99px;
-    background: currentColor;
-    opacity: .58;
-  }
-  .lang-switch {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid var(--line);
-  }
-  .lang-switch button {
-    border: 1px solid transparent;
-    border-radius: 8px;
-    background: transparent;
-    color: var(--muted);
-    min-height: 32px;
-    cursor: pointer;
+    color: white;
     font-size: 12px;
-    font-weight: 750;
-  }
-  .lang-switch button:hover,
-  .lang-switch button.is-active {
-    color: var(--ink);
-    border-color: var(--line-strong);
-    background: #f1f4ed;
-  }
-
-  main {
-    width: min(var(--max), calc(100% - 320px));
-    height: 100vh;
-    margin-left: max(292px, calc((100vw - var(--max)) / 2 + 160px));
-    padding: 38px 26px 44px;
-    position: relative;
-    overflow: hidden;
-  }
-  .page {
-    position: absolute;
-    inset: 38px 26px 44px;
-    display: grid;
-    align-content: center;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(14px);
-    transition: opacity .22s ease, transform .22s ease, visibility .22s ease;
-  }
-  .page.is-active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-  .hero {
-    grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
-    gap: 34px;
-    align-items: center;
-  }
-  .hero-copy {
-    display: grid;
-    gap: 24px;
-  }
-  .status-line {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    width: fit-content;
-    padding: 8px 12px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: rgba(255,255,255,.68);
-    color: var(--muted);
-    font-size: 13px;
     font-weight: 700;
   }
-  .pulse {
-    width: 9px;
-    height: 9px;
-    border-radius: 99px;
-    background: var(--teal);
-    box-shadow: 0 0 0 5px rgba(15,118,110,.13);
+  .brand strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 520;
+  }
+  .brand span {
+    display: block;
+    color: var(--quiet);
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav a, .lang button {
+    min-height: 34px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 7px 11px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 440;
+  }
+  .nav a:hover, .lang button:hover, .lang button.is-active {
+    color: var(--ink);
+    border-color: var(--line);
+    background: rgba(255, 255, 255, .74);
+  }
+  .lang {
+    display: flex;
+    gap: 4px;
+    padding-left: 8px;
+    border-left: 1px solid var(--line);
+  }
+  .hero {
+    min-height: calc(100vh - 68px);
+    display: grid;
+    grid-template-columns: minmax(0, .98fr) minmax(340px, .72fr);
+    gap: 54px;
+    align-items: center;
+    padding: 74px 0 64px;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 24px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 480;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 32px;
+    height: 1px;
+    background: var(--ink);
   }
   h1 {
-    max-width: 900px;
+    max-width: 890px;
     margin: 0;
-    font-size: clamp(72px, 9vw, 134px);
-    line-height: .9;
+    font-size: clamp(58px, 8.7vw, 132px);
+    line-height: .88;
     letter-spacing: 0;
+    font-weight: 300;
   }
-  .lead {
-    max-width: 760px;
-    margin: 0;
+  .hero p {
+    max-width: 720px;
+    margin: 26px 0 0;
     color: var(--muted);
-    font-size: clamp(18px, 2.1vw, 25px);
-    line-height: 1.45;
+    font-size: clamp(17px, 1.8vw, 24px);
+    line-height: 1.48;
+    font-weight: 360;
   }
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin-top: 34px;
   }
   .button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 9px;
     min-height: 44px;
     padding: 10px 16px;
     border: 1px solid var(--ink);
     border-radius: 8px;
     background: var(--ink);
     color: white;
-    font-weight: 750;
+    font-size: 14px;
+    font-weight: 520;
   }
   .button.secondary {
-    background: rgba(255,255,255,.65);
+    background: rgba(255, 255, 255, .68);
     color: var(--ink);
     border-color: var(--line-strong);
   }
-  .metrics {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
-    max-width: 820px;
-  }
-  .metric {
-    min-height: 100px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 16px;
-    background: rgba(255,255,255,.72);
-  }
-  .metric strong {
-    display: block;
-    font-size: 30px;
-    line-height: 1;
-  }
-  .metric span {
-    display: block;
-    margin-top: 8px;
-    color: var(--muted);
-    font-size: 13px;
-  }
-  .signal-board {
-    min-height: 520px;
+  .hero-board {
     border: 1px solid var(--line-strong);
     border-radius: 8px;
-    background:
-      linear-gradient(135deg, rgba(255,255,255,.96), rgba(247,248,242,.82)),
-      repeating-linear-gradient(90deg, transparent, transparent 43px, rgba(17,19,20,.04) 44px);
-    box-shadow: var(--shadow);
-    padding: 18px;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    gap: 18px;
+    background: rgba(255, 255, 255, .82);
+    box-shadow: 0 22px 70px rgba(11, 13, 16, .10);
     overflow: hidden;
   }
-  .board-top,
-  .board-bottom {
+  .board-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+    min-height: 52px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--line);
     color: var(--muted);
     font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: .08em;
+    font-weight: 520;
   }
-  .board-top strong {
-    color: var(--ink);
-    font-size: 14px;
-    letter-spacing: 0;
-    text-transform: none;
+  .board-leds {
+    display: flex;
+    gap: 6px;
   }
-  .system-map {
+  .board-leds span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--line-strong);
+  }
+  .board-leds span:nth-child(1) { background: var(--red); }
+  .board-leds span:nth-child(2) { background: var(--amber); }
+  .board-leds span:nth-child(3) { background: var(--green); }
+  .board-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: 1.15fr .8fr .8fr;
-    gap: 10px;
+    gap: 1px;
+    background: var(--line);
   }
-  .system-tile {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255,255,255,.78);
-    padding: 14px;
+  .board-cell {
+    min-height: 156px;
+    padding: 18px;
+    background: rgba(255, 255, 255, .92);
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    gap: 10px;
-    min-height: 0;
+    justify-content: space-between;
   }
-  .system-tile strong { font-size: 26px; line-height: 1; }
-  .system-tile span {
-    color: var(--quiet);
-    font-size: 11px;
-    font-weight: 850;
-    text-transform: uppercase;
-    letter-spacing: .08em;
+  .board-cell strong {
+    font-size: 38px;
+    line-height: 1;
+    font-weight: 330;
   }
-  .system-tile em {
+  .board-cell span {
     color: var(--muted);
     font-size: 13px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.35;
+    font-weight: 430;
   }
-  .system-tile.primary {
-    background: var(--ink);
-    color: white;
-  }
-  .system-tile.primary span,
-  .system-tile.primary em { color: rgba(255,255,255,.70); }
-  .system-tile.orbit {
-    border-color: rgba(15,118,110,.34);
-    background: var(--teal-soft);
-  }
-  .system-tile.wide { grid-column: span 2; }
-  .system-tile.accent { border-color: rgba(15,118,110,.35); background: var(--teal-soft); }
-  .system-tile.blue { border-color: rgba(37,99,235,.28); background: #e7efff; }
-  .system-tile.rose { border-color: rgba(190,18,60,.24); background: #fff1f2; }
-  .system-tile.wide strong { font-size: 44px; }
-  .board-bottom b {
-    color: var(--teal);
-    font-size: 18px;
-    line-height: 1;
-  }
-
-  .section {
-    gap: 22px;
+  .board-cell.wide { grid-column: span 2; }
+  .board-cell.wide strong { max-width: 480px; font-size: 28px; line-height: 1.14; }
+  section {
+    padding: 78px 0;
+    border-top: 1px solid rgba(11, 13, 16, .08);
   }
   .section-head {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
-    gap: 42px;
+    grid-template-columns: minmax(0, 1fr) minmax(290px, 440px);
+    gap: 44px;
     align-items: end;
     margin-bottom: 30px;
   }
-  .eyebrow {
-    display: inline-block;
-    margin-bottom: 12px;
-    color: var(--teal);
-    font-size: 12px;
-    font-weight: 850;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-  }
   h2 {
     margin: 0;
-    max-width: 760px;
-    font-size: clamp(34px, 4.6vw, 62px);
-    line-height: 1;
-    letter-spacing: 0;
+    font-size: clamp(34px, 5vw, 68px);
+    line-height: .98;
+    font-weight: 310;
   }
   .section-copy {
     margin: 0;
     color: var(--muted);
     font-size: 16px;
+    font-weight: 360;
   }
-
-  .capabilities {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .capability,
-  .product-card,
-  .contact-panel {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255,255,255,.72);
-  }
-  .capability {
-    padding: 22px;
-    min-height: 190px;
-  }
-  .capability span {
-    display: inline-flex;
-    width: fit-content;
-    margin-bottom: 18px;
-    padding: 5px 8px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    color: var(--quiet);
-    font-size: 11px;
-    font-weight: 850;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-  }
-  .capability b {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 17px;
-  }
-  .capability p {
-    margin: 0;
-    color: var(--muted);
-  }
-
   .filters {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 18px;
-  }
-  .product-console {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-  .console-stat {
-    min-height: 74px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255,255,255,.70);
-    padding: 12px 14px;
-  }
-  .console-stat strong {
-    display: block;
-    font-size: 26px;
-    line-height: 1;
-  }
-  .console-stat span {
-    display: block;
-    margin-top: 8px;
-    color: var(--muted);
-    font-size: 12px;
-    font-weight: 750;
+    margin: 0 0 22px;
   }
   .filter {
-    min-height: 34px;
-    padding: 7px 11px;
+    min-height: 36px;
     border: 1px solid var(--line);
-    border-radius: 999px;
-    background: rgba(255,255,255,.70);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .72);
     color: var(--muted);
+    padding: 7px 12px;
     cursor: pointer;
     font-size: 13px;
-    font-weight: 750;
+    font-weight: 460;
   }
-  .filter:hover,
-  .filter.is-active {
+  .filter:hover, .filter.is-active {
+    border-color: var(--ink);
     color: var(--ink);
-    border-color: var(--teal);
-    background: var(--teal-soft);
+    background: white;
   }
   .product-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    max-height: calc(100vh - 382px);
-    overflow: auto;
-    padding-right: 6px;
-    scrollbar-width: thin;
+    gap: 14px;
   }
   .product-card {
+    min-height: 374px;
     display: flex;
     flex-direction: column;
-    min-height: 244px;
-    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .76);
+    overflow: hidden;
     transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
   }
   .product-card:hover {
     transform: translateY(-3px);
     border-color: var(--line-strong);
-    box-shadow: 0 14px 30px rgba(17,19,20,.08);
+    box-shadow: 0 18px 42px rgba(11, 13, 16, .09);
   }
-  .product-top {
+  .visual {
+    height: 164px;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--accent) 10%, #ffffff);
+  }
+  .visual svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .product-body {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    flex: 1;
+    padding: 18px;
+  }
+  .product-kicker {
+    display: flex;
     justify-content: space-between;
     gap: 12px;
-    margin-bottom: 18px;
-  }
-  .product-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-    color: white;
-    background: var(--ink);
-    font-size: 18px;
-  }
-  .category {
-    color: var(--teal);
-    background: var(--teal-soft);
-    border-radius: 999px;
-    padding: 4px 8px;
-    font-size: 11px;
-    font-weight: 850;
-    white-space: nowrap;
+    margin-bottom: 14px;
+    color: var(--quiet);
+    font-size: 12px;
+    font-weight: 520;
+    text-transform: uppercase;
   }
   .product-card h3 {
-    margin: 0 0 9px;
-    font-size: 20px;
-    line-height: 1.15;
-    letter-spacing: 0;
+    margin: 0;
+    font-size: 23px;
+    line-height: 1.1;
+    font-weight: 380;
   }
   .product-card p {
-    margin: 0;
+    margin: 12px 0 0;
     color: var(--muted);
     font-size: 14px;
+    font-weight: 350;
   }
-  .product-meta {
+  .product-foot {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
     margin-top: auto;
-    padding-top: 20px;
-  }
-  .product-meta span {
+    padding-top: 22px;
     color: var(--quiet);
     font-size: 12px;
-    font-weight: 750;
-    text-transform: uppercase;
-    letter-spacing: .04em;
+    font-weight: 450;
   }
-  .product-meta b {
+  .product-foot b {
     width: 34px;
     height: 34px;
+    border: 1px solid var(--line);
     border-radius: 8px;
     display: grid;
     place-items: center;
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 420;
+  }
+  .stack {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .stack-item {
+    min-height: 172px;
     border: 1px solid var(--line);
-    font-size: 16px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .74);
+    padding: 20px;
   }
-
-  .lab-list {
+  .stack-item strong {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 390;
+  }
+  .stack-item span {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 350;
+  }
+  .contact {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .lab-item {
-    padding: 18px;
-    border-left: 4px solid var(--ink);
-    background: rgba(255,255,255,.62);
-  }
-  .lab-item:nth-child(2) { border-left-color: var(--teal); }
-  .lab-item:nth-child(3) { border-left-color: var(--amber); }
-  .lab-item:nth-child(4) { border-left-color: var(--blue); }
-  .lab-item strong { display: block; margin-bottom: 8px; }
-  .lab-item span { color: var(--muted); }
-
-  .contact-panel {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
-    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+    gap: 44px;
     align-items: center;
-    padding: 26px;
   }
-  .contact-route {
+  .contact-lines {
     display: grid;
     gap: 10px;
   }
-  .contact-route span {
+  .contact-lines a, .contact-lines span {
     display: flex;
     justify-content: space-between;
-    gap: 12px;
-    padding: 10px 12px;
+    gap: 16px;
     border: 1px solid var(--line);
     border-radius: 8px;
+    background: rgba(255, 255, 255, .76);
+    padding: 12px 14px;
     color: var(--muted);
-    font-size: 13px;
-    font-weight: 750;
+    font-size: 14px;
   }
-  .contact-route b { color: var(--ink); }
-  .contact-route em { font-style: normal; }
-  .contact-panel p {
-    margin: 8px 0 0;
-    color: var(--muted);
+  .contact-lines b {
+    color: var(--ink);
+    font-weight: 450;
   }
   footer {
-    position: fixed;
-    right: 24px;
-    bottom: 18px;
-    z-index: 4;
-    display: flex;
-    justify-content: space-between;
-    gap: 18px;
+    padding: 28px 0 42px;
     color: var(--quiet);
     font-size: 13px;
   }
-
-  @media (max-width: 1180px) {
-    .side-nav {
-      left: 16px;
-      right: 16px;
-      top: auto;
-      bottom: 14px;
-      transform: none;
-      width: auto;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 8px;
-      align-items: center;
-    }
-    .brand { border-bottom: 0; margin: 0; padding: 4px 6px; }
-    .brand-copy { display: none; }
-    .nav-links { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-    .nav-links a { justify-content: center; font-size: 0; padding: 8px; }
-    .nav-dot { width: 9px; height: 9px; }
-    .lang-switch { margin: 0; padding: 0; border-top: 0; min-width: 150px; }
-    main {
-      width: min(var(--max), calc(100% - 36px));
-      height: 100vh;
-      margin: 0 auto;
-      padding: 26px 18px 120px;
-    }
-    .page { inset: 26px 18px 120px; }
-    footer { display: none; }
+  @media (max-width: 1020px) {
+    .hero, .section-head, .contact { grid-template-columns: 1fr; }
+    .hero { min-height: auto; }
+    .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
-  @media (max-width: 880px) {
-    .hero,
-    .section-head,
-    .contact-panel {
-      grid-template-columns: 1fr;
-    }
-    .signal-board { min-height: 300px; }
-    .system-map { grid-template-rows: repeat(3, minmax(82px, auto)); }
-    .system-tile.wide { grid-column: span 2; }
-    .system-tile strong { font-size: 20px; }
-    .system-tile.wide strong { font-size: 30px; }
-    .metrics,
-    .capabilities,
-    .product-console,
-    .product-grid,
-    .lab-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-  @media (max-width: 620px) {
-    main { width: min(100% - 28px, var(--max)); padding-top: 22px; }
-    .page { inset: 22px 0 118px; }
-    h1 { font-size: clamp(42px, 13vw, 64px); }
-    .lead { font-size: 16px; }
-    .metrics {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .hero { gap: 18px; }
-    .hero-copy { gap: 16px; }
-    .signal-board { display: none; }
-    .metric {
-      min-height: 82px;
-      padding: 12px;
-    }
-    .capabilities,
-    .product-console,
-    .product-grid,
-    .lab-list {
-      grid-template-columns: 1fr;
-    }
-    .side-nav {
-      grid-template-columns: 1fr;
-      padding: 8px;
-    }
-    .brand { display: none; }
-    .lang-switch { min-width: 0; }
-    .nav-links a { min-height: 30px; }
-    .product-grid { max-height: calc(100vh - 310px); }
+  @media (max-width: 720px) {
+    .shell { width: min(100% - 24px, var(--max)); }
+    .topbar .shell { min-height: auto; padding: 12px 0; align-items: flex-start; }
+    .nav { display: none; }
+    .hero { padding: 52px 0 48px; }
+    h1 { font-size: clamp(46px, 16vw, 68px); }
+    .hero-board { display: none; }
+    section { padding: 56px 0; }
+    .section-head { gap: 18px; }
+    .product-grid, .stack { grid-template-columns: 1fr; }
+    .product-card { min-height: 338px; }
+    .visual { height: 148px; }
   }
 </style>
 </head>
 <body>
-<a class="skip" href="#home" data-i18n="skip">Aller au contenu</a>
-
-<nav class="side-nav" aria-label="Portfolio">
-  <div class="brand" aria-label="Leandro Sierra">
-    <span class="brand-mark">LS</span>
-    <span class="brand-copy"><strong>Leandro Sierra</strong><span data-i18n="navRole">AI products</span></span>
+<header class="topbar">
+  <div class="shell">
+    <a class="brand" href="#top" aria-label="Leandro Sierra">
+      <span class="mark">LS</span>
+      <span><strong>Leandro Sierra</strong><span data-i18n="role">AI product developer</span></span>
+    </a>
+    <nav class="nav" aria-label="Portfolio">
+      <a href="#products" data-i18n="navProducts">Products</a>
+      <a href="#stack" data-i18n="navStack">Stack</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
+      <span class="lang" aria-label="Language">
+        <button type="button" data-lang="en" class="is-active">EN</button>
+        <button type="button" data-lang="fr">FR</button>
+      </span>
+    </nav>
   </div>
-  <ul class="nav-links">
-    <li><a href="#home" class="is-active"><span class="nav-dot"></span><span data-i18n="navHome">Accueil</span></a></li>
-    <li><a href="#about"><span class="nav-dot"></span><span data-i18n="navAbout">Approche</span></a></li>
-    <li><a href="#products"><span class="nav-dot"></span><span data-i18n="navProducts">Produits</span></a></li>
-    <li><a href="#lab"><span class="nav-dot"></span><span data-i18n="navLab">Lab</span></a></li>
-    <li><a href="#contact"><span class="nav-dot"></span><span data-i18n="navContact">Contact</span></a></li>
-  </ul>
-  <div class="lang-switch" aria-label="Language">
-    <button type="button" data-lang="fr" class="is-active">FR</button>
-    <button type="button" data-lang="en">EN</button>
-    <button type="button" data-lang="es">ES</button>
-    <button type="button" data-lang="pt">PT</button>
+</header>
+
+<main id="top">
+  <div class="shell">
+    <section class="hero" aria-label="Intro">
+      <div>
+        <span class="eyebrow" data-i18n="eyebrow">Internet products, AI systems, production software</span>
+        <h1>Leandro Sierra</h1>
+        <p data-i18n="heroCopy">I design and ship focused web products: AI tools, regulatory assistants, operational software and useful public applications.</p>
+        <div class="hero-actions">
+          <a class="button" href="#products" data-i18n="seeProducts">View products</a>
+          <a class="button secondary" href="mailto:leandrosierra1@gmail.com" data-i18n="contactMe">Contact me</a>
+        </div>
+      </div>
+      <aside class="hero-board" aria-label="Portfolio metrics">
+        <div class="board-head">
+          <span>portfolio.leandro-sierra.com</span>
+          <span class="board-leds" aria-hidden="true"><span></span><span></span><span></span></span>
+        </div>
+        <div class="board-grid">
+          <div class="board-cell"><strong id="productTotal">0</strong><span data-i18n="metricProducts">published product lines</span></div>
+          <div class="board-cell"><strong>4</strong><span data-i18n="metricFamilies">software families</span></div>
+          <div class="board-cell"><strong>18+</strong><span data-i18n="metricYears">years building critical systems</span></div>
+          <div class="board-cell"><strong>FR/EN</strong><span data-i18n="metricMarket">available for remote work</span></div>
+          <div class="board-cell wide"><strong data-i18n="metricLine">From product idea to shipped web application.</strong><span data-i18n="metricLineSub">Architecture, UX, frontend, backend, AI integration, deployment.</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="products">
+      <div class="section-head">
+        <h2 data-i18n="productsTitle">Products designed and shipped.</h2>
+        <p class="section-copy" data-i18n="productsCopy">Short descriptions, direct links, one visual language. The point is simple: show the software, not decorate the process.</p>
+      </div>
+      <div class="filters" aria-label="Product filters">
+        <button class="filter is-active" type="button" data-filter="all" data-i18n="filterAll">All</button>
+        <button class="filter" type="button" data-filter="ai" data-i18n="filterAi">AI</button>
+        <button class="filter" type="button" data-filter="reg" data-i18n="filterReg">Regulation</button>
+        <button class="filter" type="button" data-filter="ops" data-i18n="filterOps">Operations</button>
+        <button class="filter" type="button" data-filter="public" data-i18n="filterPublic">Public apps</button>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section id="stack">
+      <div class="section-head">
+        <h2 data-i18n="stackTitle">Technical range, product focus.</h2>
+        <p class="section-copy" data-i18n="stackCopy">The portfolio covers the full delivery path: interface, data, automation, AI, security and deployment.</p>
+      </div>
+      <div class="stack">
+        <div class="stack-item"><strong>Frontend</strong><span data-i18n="stackFrontend">Modern responsive interfaces, dashboards, forms, product pages and conversion flows.</span></div>
+        <div class="stack-item"><strong>Backend</strong><span data-i18n="stackBackend">APIs, data models, workflow logic, authentication and operational services.</span></div>
+        <div class="stack-item"><strong>AI</strong><span data-i18n="stackAi">Agentic workflows, tool use, product copilots, classification and decision support.</span></div>
+        <div class="stack-item"><strong>Ops</strong><span data-i18n="stackOps">Docker, nginx, product deployment, monitoring basics and production hygiene.</span></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <div>
+          <span class="eyebrow" data-i18n="contactEyebrow">Available for focused product work</span>
+          <h2 data-i18n="contactTitle">A product to clarify, automate or ship?</h2>
+          <p class="section-copy" data-i18n="contactCopy">I work best on concrete internet products: a useful tool, a workflow to automate, an AI assistant to integrate, or an MVP that needs to feel serious from day one.</p>
+        </div>
+        <div class="contact-lines">
+          <a href="mailto:leandrosierra1@gmail.com"><b>Email</b><span>leandrosierra1@gmail.com</span></a>
+          <a href="https://www.linkedin.com/in/leandro-sierra-ai/" target="_blank" rel="noopener"><b>LinkedIn</b><span>leandro-sierra-ai</span></a>
+          <span><b>Location</b><span>Avignon / Remote</span></span>
+        </div>
+      </div>
+    </section>
   </div>
-</nav>
-
-<main id="main">
-  <section class="page hero is-active" id="home">
-    <div class="hero-copy">
-      <span class="status-line"><span class="pulse"></span><span data-i18n="status">Portfolio vivant, pilote par Ada et Orbit</span></span>
-      <h1 data-i18n="heroTitle">Leandro Sierra</h1>
-      <p class="lead" data-i18n="heroLead">Je construis mon propre systeme : Ada pour agir, comprendre et se souvenir ; Orbit pour produire ; et une galaxie de produits IA qui en decoulent.</p>
-      <div class="hero-actions">
-        <a class="button" href="#products" data-i18n="heroPrimary">Explorer le systeme</a>
-        <a class="button secondary" href="#lab" data-i18n="heroSecondary">Voir Ada et le lab</a>
-      </div>
-      <div class="metrics" aria-label="Portfolio metrics">
-        <div class="metric"><strong>36</strong><span data-i18n="metricProducts">produits publics</span></div>
-        <div class="metric"><strong>2</strong><span data-i18n="metricAgent">moteurs personnels</span></div>
-        <div class="metric"><strong>4</strong><span data-i18n="metricLangs">langues dans cette page</span></div>
-        <div class="metric"><strong>100%</strong><span data-i18n="metricSystem">systeme cree en interne</span></div>
-      </div>
-    </div>
-    <div class="signal-board" aria-label="System map">
-      <div class="board-top"><span data-i18n="boardKicker">Systeme personnel</span><strong>Ada / Orbit / Products</strong></div>
-      <div class="system-map">
-        <div class="system-tile primary"><span>ADA</span><strong data-i18n="boardAdaTitle">Agent personnel</strong><em data-i18n="boardAda">Memoire, voix, vision, outils et execution locale.</em></div>
-        <div class="system-tile orbit"><span>ORBIT</span><strong data-i18n="boardOrbitTitle">Usine autonome</strong><em data-i18n="boardOrbit">Builders, validation, release gate et livraison produit.</em></div>
-        <div class="system-tile wide accent"><span>PRODUCTS</span><strong>36</strong><em data-i18n="boardProducts">produits issus du duo Ada + Orbit.</em></div>
-        <div class="system-tile blue"><span>FOCUS</span><strong data-i18n="boardReg">Reglementaire</strong><em data-i18n="boardRegCopy">Transformer les obligations en outils clairs.</em></div>
-        <div class="system-tile rose"><span>FOCUS</span><strong data-i18n="boardConsumer">Usage</strong><em data-i18n="boardConsumerCopy">Des interfaces pratiques, pas des vitrines.</em></div>
-        <div class="system-tile wide"><span>LOOP</span><strong data-i18n="boardLoop">Idee -> produit -> iteration</strong><em data-i18n="boardLoopCopy">Un portefeuille vivant, gere par mes propres agents.</em></div>
-      </div>
-      <div class="board-bottom"><span data-i18n="boardBottom">pas un CV, un systeme en production</span><b>01</b></div>
-    </div>
-  </section>
-
-  <section class="page section" id="about">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow" data-i18n="aboutEyebrow">Approche</span>
-        <h2 data-i18n="aboutTitle">Une page claire pour un ecosysteme produit dense.</h2>
-      </div>
-      <p class="section-copy" data-i18n="aboutCopy">Le portfolio doit montrer la maniere de travailler : Ada observe et agit, Orbit construit, les produits sortent, puis le systeme apprend de chaque iteration.</p>
-    </div>
-    <div class="capabilities">
-      <article class="capability"><span>01</span><b data-i18n="cap1Title">Ada, l'operatrice</b><p data-i18n="cap1Copy">Ada n'est pas une demo : elle lit, agit, se souvient, parle, regarde et pousse le systeme dans le bon sens.</p></article>
-      <article class="capability"><span>02</span><b data-i18n="cap2Title">Produits en essaim</b><p data-i18n="cap2Copy">Chaque app est petite, ciblee, mesurable, et sert une niche concrete plutot qu'une promesse vague.</p></article>
-      <article class="capability"><span>03</span><b data-i18n="cap3Title">Orbit, l'atelier</b><p data-i18n="cap3Copy">Orbit orchestre les builders, les validations et les releases pour transformer les idees en produits reels.</p></article>
-    </div>
-  </section>
-
-  <section class="page section" id="products">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow" data-i18n="productsEyebrow">Produits en cours</span>
-        <h2 data-i18n="productsTitle">Les outils live de l'atelier.</h2>
-      </div>
-      <p class="section-copy" data-i18n="productsCopy">Les produits publics qui decoulent du systeme Ada + Orbit, avec un filtre par famille pour scanner vite.</p>
-    </div>
-    <div class="product-console" aria-label="Product system metrics">
-      <div class="console-stat"><strong id="productCount">36</strong><span data-i18n="consoleVisible">visibles dans ce filtre</span></div>
-      <div class="console-stat"><strong>4</strong><span data-i18n="consoleFamilies">familles produit</span></div>
-      <div class="console-stat"><strong>A+O</strong><span data-i18n="consoleLive">gere par Ada et Orbit</span></div>
-    </div>
-    <div class="filters" role="list" aria-label="Product filters">
-      <button class="filter is-active" type="button" data-filter="all" data-i18n="filterAll">Tous</button>
-      <button class="filter" type="button" data-filter="ai" data-i18n="filterAi">IA</button>
-      <button class="filter" type="button" data-filter="reg" data-i18n="filterReg">Reglementaire</button>
-      <button class="filter" type="button" data-filter="ops" data-i18n="filterOps">Operations</button>
-      <button class="filter" type="button" data-filter="consumer" data-i18n="filterConsumer">Grand public</button>
-    </div>
-    <div class="product-grid" id="productGrid"></div>
-  </section>
-
-  <section class="page section" id="lab">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow" data-i18n="labEyebrow">Lab</span>
-        <h2 data-i18n="labTitle">Systemes que j'affine en continu.</h2>
-      </div>
-      <p class="section-copy" data-i18n="labCopy">Le lab met en avant les deux creations qui rendent le portefeuille possible : Ada pour operer, Orbit pour produire.</p>
-    </div>
-    <div class="lab-list">
-      <div class="lab-item"><strong>Ada</strong><span data-i18n="labAda">Agent personnel Windows avec memoire, voix, vision, outils et auto-evolution controlee.</span></div>
-      <div class="lab-item"><strong>Orbit</strong><span data-i18n="labOrbit">Usine de dev autonome pour deleguer la construction et la validation de features.</span></div>
-      <div class="lab-item"><strong>Products</strong><span data-i18n="labProducts">Portefeuille d'apps issues d'Ada et Orbit, pensees pour etre simples, utiles et rapides a lancer.</span></div>
-      <div class="lab-item"><strong>Leandro OS</strong><span data-i18n="labSystem">Une maniere de travailler ou l'agent, l'atelier et les produits s'ameliorent ensemble.</span></div>
-    </div>
-  </section>
-
-  <section class="page section" id="contact">
-    <div class="contact-panel">
-      <div>
-        <span class="eyebrow" data-i18n="contactEyebrow">Contact</span>
-        <h2 data-i18n="contactTitle">Un produit a clarifier, un agent a concevoir, un systeme a rendre autonome ?</h2>
-        <p data-i18n="contactCopy">Le bon sujet pour moi : un produit a clarifier, un agent a concevoir, ou une operation trop lente a rendre autonome.</p>
-      </div>
-      <div class="contact-route">
-        <span><b data-i18n="contactRoute1Label">Produit</b><em data-i18n="contactRoute1">clarifier et shipper</em></span>
-        <span><b data-i18n="contactRoute2Label">Agent</b><em data-i18n="contactRoute2">outiller et deleguer</em></span>
-        <a class="button" href="mailto:leandrosierra1@gmail.com?subject=Bonjour%20Leandro">leandrosierra1@gmail.com</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <span>© 2026 Leandro Sierra</span>
-    <span>Paris · Avignon · Ada + Orbit</span>
-  </footer>
 </main>
 
+<footer>
+  <div class="shell">© 2026 Leandro Sierra. Internet products and AI software.</div>
+</footer>
+
 <script>
-const translations = {
-  fr: {
-    skip: "Aller au contenu", navRole: "Leandro OS", navHome: "Accueil", navAbout: "Approche", navProducts: "Produits", navLab: "Lab", navContact: "Contact",
-    status: "Portfolio vivant, pilote par Ada et Orbit",
-    heroTitle: "Leandro Sierra",
-    heroLead: "Je construis mon propre systeme : Ada pour agir, comprendre et se souvenir ; Orbit pour produire ; et une galaxie de produits IA qui en decoulent.",
-    heroPrimary: "Explorer le systeme", heroSecondary: "Voir Ada et le lab",
-    metricProducts: "produits publics", metricAgent: "moteurs personnels", metricLangs: "langues dans cette page", metricSystem: "systeme cree en interne",
-    boardKicker: "Systeme personnel", boardAdaTitle: "Agent personnel", boardAda: "Memoire, voix, vision, outils et execution locale.", boardProducts: "produits issus du duo Ada + Orbit.", boardOrbitTitle: "Usine autonome", boardOrbit: "Builders, validation, release gate et livraison produit.", boardReg: "Reglementaire", boardRegCopy: "Transformer les obligations en outils clairs.", boardConsumer: "Usage", boardConsumerCopy: "Des interfaces pratiques, pas des vitrines.", boardLoop: "Idee -> produit -> iteration", boardLoopCopy: "Un portefeuille vivant, gere par mes propres agents.", boardBottom: "pas un CV, un systeme en production",
-    aboutEyebrow: "Approche", aboutTitle: "Une page claire pour un ecosysteme produit dense.",
-    aboutCopy: "Le portfolio doit montrer la maniere de travailler : Ada observe et agit, Orbit construit, les produits sortent, puis le systeme apprend de chaque iteration.",
-    cap1Title: "Ada, l'operatrice", cap1Copy: "Ada n'est pas une demo : elle lit, agit, se souvient, parle, regarde et pousse le systeme dans le bon sens.",
-    cap2Title: "Produits en essaim", cap2Copy: "Chaque app est petite, ciblee, mesurable, et sert une niche concrete plutot qu'une promesse vague.",
-    cap3Title: "Orbit, l'atelier", cap3Copy: "Orbit orchestre les builders, les validations et les releases pour transformer les idees en produits reels.",
-    productsEyebrow: "Produits en cours", productsTitle: "Les outils live de l'atelier.",
-    productsCopy: "Les produits publics qui decoulent du systeme Ada + Orbit, avec un filtre par famille pour scanner vite.",
-    consoleVisible: "visibles dans ce filtre", consoleFamilies: "familles produit", consoleLive: "gere par Ada et Orbit",
-    filterAll: "Tous", filterAi: "IA", filterReg: "Reglementaire", filterOps: "Operations", filterConsumer: "Grand public",
-    labEyebrow: "Lab", labTitle: "Systemes que j'affine en continu.",
-    labCopy: "Le lab met en avant les deux creations qui rendent le portefeuille possible : Ada pour operer, Orbit pour produire.",
-    labAda: "Agent personnel Windows avec memoire, voix, vision, outils et auto-evolution controlee.",
-    labOrbit: "Usine de dev autonome pour deleguer la construction et la validation de features.",
-    labProducts: "Portefeuille d'apps issues d'Ada et Orbit, pensees pour etre simples, utiles et rapides a lancer.",
-    labSystem: "Une maniere de travailler ou l'agent, l'atelier et les produits s'ameliorent ensemble.",
-    contactEyebrow: "Contact", contactTitle: "Un produit a clarifier, un agent a concevoir, un systeme a rendre autonome ?",
-    contactCopy: "Le bon sujet pour moi : un produit a clarifier, un agent a concevoir, ou une operation trop lente a rendre autonome.",
-    contactRoute1Label: "Produit", contactRoute1: "clarifier et shipper", contactRoute2Label: "Agent", contactRoute2: "outiller et deleguer",
-    open: "Ouvrir"
-  },
+const copy = {
   en: {
-    skip: "Skip to content", navRole: "Leandro OS", navHome: "Home", navAbout: "Approach", navProducts: "Products", navLab: "Lab", navContact: "Contact",
-    status: "Living portfolio, operated by Ada and Orbit",
-    heroTitle: "Leandro Sierra",
-    heroLead: "I am building my own system: Ada to act, understand and remember; Orbit to produce; and a constellation of AI products that come from both.",
-    heroPrimary: "Explore the system", heroSecondary: "See Ada and the lab",
-    metricProducts: "public products", metricAgent: "personal engines", metricLangs: "languages on this page", metricSystem: "system built in-house",
-    boardKicker: "Personal system", boardAdaTitle: "Personal agent", boardAda: "Memory, voice, vision, tools and local execution.", boardProducts: "products born from Ada + Orbit.", boardOrbitTitle: "Autonomous factory", boardOrbit: "Builders, validation, release gate and product delivery.", boardReg: "Regulation", boardRegCopy: "Turn obligations into clear tools.", boardConsumer: "Use", boardConsumerCopy: "Practical interfaces, not showcases.", boardLoop: "Idea -> product -> iteration", boardLoopCopy: "A living portfolio managed by my own agents.", boardBottom: "not a resume, a production system",
-    aboutEyebrow: "Approach", aboutTitle: "A clear page for a dense product ecosystem.",
-    aboutCopy: "The portfolio should show the operating method: Ada observes and acts, Orbit builds, products emerge, then the system learns from every iteration.",
-    cap1Title: "Ada, the operator", cap1Copy: "Ada is not a demo: she reads, acts, remembers, speaks, sees and keeps pushing the system in the right direction.",
-    cap2Title: "Product swarm", cap2Copy: "Each app is small, targeted, measurable, and serves a concrete niche instead of a vague promise.",
-    cap3Title: "Orbit, the workshop", cap3Copy: "Orbit orchestrates builders, validation and releases to turn ideas into real products.",
-    productsEyebrow: "Current products", productsTitle: "The live tools from the workshop.",
-    productsCopy: "The public products that come from the Ada + Orbit system, grouped so the ecosystem is easy to scan.",
-    consoleVisible: "visible in this filter", consoleFamilies: "product families", consoleLive: "managed by Ada and Orbit",
-    filterAll: "All", filterAi: "AI", filterReg: "Regulation", filterOps: "Operations", filterConsumer: "Consumer",
-    labEyebrow: "Lab", labTitle: "Systems I keep refining.",
-    labCopy: "The lab highlights the two creations that make the portfolio possible: Ada to operate, Orbit to produce.",
-    labAda: "Personal Windows agent with memory, voice, vision, tools and controlled self-evolution.",
-    labOrbit: "Autonomous development factory for delegating feature construction and validation.",
-    labProducts: "A portfolio of apps born from Ada and Orbit, designed to be simple, useful and fast to launch.",
-    labSystem: "A way of working where the agent, the workshop and the products improve together.",
-    contactEyebrow: "Contact", contactTitle: "A product to clarify, an agent to design, a system to make autonomous?",
-    contactCopy: "The right topic for me: a product to clarify, an agent to design, or an operation too slow to keep manual.",
-    contactRoute1Label: "Product", contactRoute1: "clarify and ship", contactRoute2Label: "Agent", contactRoute2: "tool and delegate",
+    role: "AI product developer",
+    navProducts: "Products",
+    navStack: "Stack",
+    navContact: "Contact",
+    eyebrow: "Internet products, AI systems, production software",
+    heroCopy: "I design and ship focused web products: AI tools, regulatory assistants, operational software and useful public applications.",
+    seeProducts: "View products",
+    contactMe: "Contact me",
+    metricProducts: "published product lines",
+    metricFamilies: "software families",
+    metricYears: "years building critical systems",
+    metricMarket: "available for remote work",
+    metricLine: "From product idea to shipped web application.",
+    metricLineSub: "Architecture, UX, frontend, backend, AI integration, deployment.",
+    productsTitle: "Products designed and shipped.",
+    productsCopy: "Short descriptions, direct links, one visual language. The point is simple: show the software, not decorate the process.",
+    filterAll: "All",
+    filterAi: "AI",
+    filterReg: "Regulation",
+    filterOps: "Operations",
+    filterPublic: "Public apps",
+    stackTitle: "Technical range, product focus.",
+    stackCopy: "The portfolio covers the full delivery path: interface, data, automation, AI, security and deployment.",
+    stackFrontend: "Modern responsive interfaces, dashboards, forms, product pages and conversion flows.",
+    stackBackend: "APIs, data models, workflow logic, authentication and operational services.",
+    stackAi: "Agentic workflows, tool use, product copilots, classification and decision support.",
+    stackOps: "Docker, nginx, product deployment, monitoring basics and production hygiene.",
+    contactEyebrow: "Available for focused product work",
+    contactTitle: "A product to clarify, automate or ship?",
+    contactCopy: "I work best on concrete internet products: a useful tool, a workflow to automate, an AI assistant to integrate, or an MVP that needs to feel serious from day one.",
     open: "Open"
   },
-  es: {
-    skip: "Ir al contenido", navRole: "Leandro OS", navHome: "Inicio", navAbout: "Enfoque", navProducts: "Productos", navLab: "Lab", navContact: "Contacto",
-    status: "Portfolio vivo, operado por Ada y Orbit",
-    heroTitle: "Leandro Sierra",
-    heroLead: "Estoy construyendo mi propio sistema: Ada para actuar, comprender y recordar; Orbit para producir; y una galaxia de productos IA que nacen de ambos.",
-    heroPrimary: "Explorar el sistema", heroSecondary: "Ver Ada y el lab",
-    metricProducts: "productos publicos", metricAgent: "motores personales", metricLangs: "idiomas en esta pagina", metricSystem: "sistema creado internamente",
-    boardKicker: "Sistema personal", boardAdaTitle: "Agente personal", boardAda: "Memoria, voz, vision, herramientas y ejecucion local.", boardProducts: "productos nacidos de Ada + Orbit.", boardOrbitTitle: "Fabrica autonoma", boardOrbit: "Builders, validacion, release gate y entrega producto.", boardReg: "Regulacion", boardRegCopy: "Convertir obligaciones en herramientas claras.", boardConsumer: "Uso", boardConsumerCopy: "Interfaces practicas, no vitrinas.", boardLoop: "Idea -> producto -> iteracion", boardLoopCopy: "Un portfolio vivo gestionado por mis propios agentes.", boardBottom: "no es un CV, es un sistema en produccion",
-    aboutEyebrow: "Enfoque", aboutTitle: "Una pagina clara para un ecosistema denso.",
-    aboutCopy: "El portfolio debe mostrar el metodo: Ada observa y actua, Orbit construye, los productos salen, y el sistema aprende de cada iteracion.",
-    cap1Title: "Ada, la operadora", cap1Copy: "Ada no es una demo: lee, actua, recuerda, habla, ve y empuja el sistema en la direccion correcta.",
-    cap2Title: "Productos en enjambre", cap2Copy: "Cada app es pequena, precisa, medible y sirve una niche concreta en vez de una promesa vaga.",
-    cap3Title: "Orbit, el taller", cap3Copy: "Orbit orquesta builders, validacion y releases para convertir ideas en productos reales.",
-    productsEyebrow: "Productos activos", productsTitle: "Las herramientas live del taller.",
-    productsCopy: "Los productos publicos que nacen del sistema Ada + Orbit, filtrados por familia para escanear rapido.",
-    consoleVisible: "visibles en este filtro", consoleFamilies: "familias de producto", consoleLive: "gestionado por Ada y Orbit",
-    filterAll: "Todos", filterAi: "IA", filterReg: "Regulacion", filterOps: "Operaciones", filterConsumer: "Publico",
-    labEyebrow: "Lab", labTitle: "Sistemas que sigo afinando.",
-    labCopy: "El lab destaca las dos creaciones que hacen posible el portfolio: Ada para operar, Orbit para producir.",
-    labAda: "Agente personal Windows con memoria, voz, vision, herramientas y auto-evolucion controlada.",
-    labOrbit: "Fabrica autonoma de desarrollo para delegar construccion y validacion de features.",
-    labProducts: "Portfolio de apps nacidas de Ada y Orbit, pensadas para ser simples, utiles y rapidas de lanzar.",
-    labSystem: "Una forma de trabajar donde el agente, el taller y los productos mejoran juntos.",
-    contactEyebrow: "Contacto", contactTitle: "Un producto que aclarar, un agente que disenar, un sistema que autonomizar?",
-    contactCopy: "El buen tema para mi: un producto que aclarar, un agente que disenar, o una operacion demasiado lenta para seguir manual.",
-    contactRoute1Label: "Producto", contactRoute1: "aclarar y lanzar", contactRoute2Label: "Agente", contactRoute2: "equipar y delegar",
-    open: "Abrir"
-  },
-  pt: {
-    skip: "Ir para o conteudo", navRole: "Leandro OS", navHome: "Inicio", navAbout: "Abordagem", navProducts: "Produtos", navLab: "Lab", navContact: "Contato",
-    status: "Portfolio vivo, operado por Ada e Orbit",
-    heroTitle: "Leandro Sierra",
-    heroLead: "Estou construindo meu proprio sistema: Ada para agir, compreender e lembrar; Orbit para produzir; e uma galaxia de produtos IA que nascem dos dois.",
-    heroPrimary: "Explorar o sistema", heroSecondary: "Ver Ada e o lab",
-    metricProducts: "produtos publicos", metricAgent: "motores pessoais", metricLangs: "idiomas nesta pagina", metricSystem: "sistema criado internamente",
-    boardKicker: "Sistema pessoal", boardAdaTitle: "Agente pessoal", boardAda: "Memoria, voz, visao, ferramentas e execucao local.", boardProducts: "produtos nascidos de Ada + Orbit.", boardOrbitTitle: "Fabrica autonoma", boardOrbit: "Builders, validacao, release gate e entrega produto.", boardReg: "Regulatorio", boardRegCopy: "Transformar obrigacoes em ferramentas claras.", boardConsumer: "Uso", boardConsumerCopy: "Interfaces praticas, nao vitrines.", boardLoop: "Ideia -> produto -> iteracao", boardLoopCopy: "Um portfolio vivo gerido pelos meus proprios agentes.", boardBottom: "nao e um CV, e um sistema em producao",
-    aboutEyebrow: "Abordagem", aboutTitle: "Uma pagina clara para um ecossistema denso.",
-    aboutCopy: "O portfolio deve mostrar o metodo: Ada observa e age, Orbit constroi, os produtos saem, e o sistema aprende a cada iteracao.",
-    cap1Title: "Ada, a operadora", cap1Copy: "Ada nao e uma demo: ela le, age, lembra, fala, ve e empurra o sistema na direcao certa.",
-    cap2Title: "Produtos em enxame", cap2Copy: "Cada app e pequena, precisa, mensuravel e serve uma niche concreta em vez de uma promessa vaga.",
-    cap3Title: "Orbit, o atelier", cap3Copy: "Orbit orquestra builders, validacao e releases para transformar ideias em produtos reais.",
-    productsEyebrow: "Produtos atuais", productsTitle: "As ferramentas live do laboratorio.",
-    productsCopy: "Os produtos publicos que nascem do sistema Ada + Orbit, filtrados por familia para leitura rapida.",
-    consoleVisible: "visiveis neste filtro", consoleFamilies: "familias de produto", consoleLive: "gerido por Ada e Orbit",
-    filterAll: "Todos", filterAi: "IA", filterReg: "Regulatorio", filterOps: "Operacoes", filterConsumer: "Publico",
-    labEyebrow: "Lab", labTitle: "Sistemas que continuo refinando.",
-    labCopy: "O lab destaca as duas criacoes que tornam o portfolio possivel: Ada para operar, Orbit para produzir.",
-    labAda: "Agente pessoal Windows com memoria, voz, visao, ferramentas e auto-evolucao controlada.",
-    labOrbit: "Fabrica autonoma de desenvolvimento para delegar criacao e validacao de features.",
-    labProducts: "Portfolio de apps nascidas de Ada e Orbit, pensadas para serem simples, uteis e rapidas de lancar.",
-    labSystem: "Uma forma de trabalhar onde a agente, o atelier e os produtos melhoram juntos.",
-    contactEyebrow: "Contato", contactTitle: "Um produto para clarear, um agente para desenhar, um sistema para autonomizar?",
-    contactCopy: "O bom assunto para mim: um produto para clarear, um agente para desenhar, ou uma operacao lenta demais para continuar manual.",
-    contactRoute1Label: "Produto", contactRoute1: "clarear e publicar", contactRoute2Label: "Agente", contactRoute2: "equipar e delegar",
-    open: "Abrir"
+  fr: {
+    role: "concepteur de produits IA",
+    navProducts: "Produits",
+    navStack: "Stack",
+    navContact: "Contact",
+    eyebrow: "Produits internet, systèmes IA, logiciel en production",
+    heroCopy: "Je conçois et livre des produits web ciblés : outils IA, assistants réglementaires, logiciels opérationnels et applications publiques utiles.",
+    seeProducts: "Voir les produits",
+    contactMe: "Me contacter",
+    metricProducts: "lignes de produits publiées",
+    metricFamilies: "familles logicielles",
+    metricYears: "ans sur systèmes critiques",
+    metricMarket: "disponible à distance",
+    metricLine: "De l’idée produit à l’application web publiée.",
+    metricLineSub: "Architecture, UX, frontend, backend, intégration IA, déploiement.",
+    productsTitle: "Produits conçus et livrés.",
+    productsCopy: "Descriptions courtes, liens directs, langage visuel unique. L’objectif est simple : montrer les produits, pas décorer le processus.",
+    filterAll: "Tous",
+    filterAi: "IA",
+    filterReg: "Réglementaire",
+    filterOps: "Opérations",
+    filterPublic: "Apps publiques",
+    stackTitle: "Largeur technique, focus produit.",
+    stackCopy: "Le portfolio couvre toute la chaîne : interface, données, automatisation, IA, sécurité et déploiement.",
+    stackFrontend: "Interfaces modernes, dashboards, formulaires, pages produit et parcours de conversion.",
+    stackBackend: "APIs, modèles de données, logique métier, authentification et services opérationnels.",
+    stackAi: "Workflows agentiques, appels d’outils, copilotes produit, classification et aide à la décision.",
+    stackOps: "Docker, nginx, déploiement produit, bases de monitoring et hygiène de production.",
+    contactEyebrow: "Disponible pour du produit concret",
+    contactTitle: "Un produit à clarifier, automatiser ou publier ?",
+    contactCopy: "Je suis le plus utile sur des produits internet concrets : un outil utile, un workflow à automatiser, un assistant IA à intégrer, ou un MVP qui doit faire sérieux dès le premier jour.",
+    open: "Ouvrir"
   }
 };
 
-const productText = {
-  accessibiliteexpress: { title: "Accessibilite Express", fr: "Audit rapide pour rendre un site plus lisible, accessible et actionnable.", en: "Fast accessibility audit for clearer, more usable websites.", es: "Auditoria rapida para hacer un sitio mas accesible y accionable.", pt: "Auditoria rapida para tornar um site mais acessivel e acionavel.", cat: "ops", icon: "A11Y" },
-  ageassuranceready: { title: "Age Assurance Ready", fr: "Preparation aux controles d'age et parcours de verification.", en: "Age-assurance preparation and verification flow readiness.", es: "Preparacion para control de edad y verificacion.", pt: "Preparacao para controle de idade e verificacao.", cat: "reg", icon: "18+" },
-  agentcommerceready: { title: "Agent Commerce Ready", fr: "Check-list produit pour vendre via agents et interfaces conversationnelles.", en: "Product readiness for agent-driven commerce.", es: "Preparacion de producto para comercio con agentes.", pt: "Preparacao de produto para comercio com agentes.", cat: "ai", icon: "AI" },
-  agentcostguard: { title: "Agent Cost Guard", fr: "Garde-fou pour suivre et maitriser les couts d'agents IA.", en: "Guardrails to track and control AI-agent costs.", es: "Control de costes para agentes IA.", pt: "Controle de custos para agentes IA.", cat: "ai", icon: "$" },
-  aicodeprovenanceready: { title: "AI Code Provenance Ready", fr: "Traçabilite du code genere par IA et preuves d'origine.", en: "AI-generated code provenance and evidence tracking.", es: "Trazabilidad del codigo generado por IA.", pt: "Rastreabilidade de codigo gerado por IA.", cat: "ai", icon: "{}" },
-  aipresencecheck: { title: "AI Presence Check", fr: "Verification de presence IA dans les processus et parcours produit.", en: "AI presence checks across product and process flows.", es: "Chequeo de presencia IA en procesos y producto.", pt: "Checagem de presenca IA em processos e produto.", cat: "ai", icon: "AI" },
-  autoentrepreneurai: { title: "Auto Entrepreneur AI", fr: "Assistant pratique pour micro-entrepreneurs et obligations recurrentes.", en: "Practical assistant for solo entrepreneurs and recurring obligations.", es: "Asistente practico para autonomos y obligaciones recurrentes.", pt: "Assistente pratico para autonomos e obrigacoes recorrentes.", cat: "ops", icon: "AE" },
-  babybox: { title: "Babybox", fr: "Suivi parental pour sommeil, repas et routines des premiers mois.", en: "Parenting tracker for sleep, feeding and early routines.", es: "Seguimiento parental de sueno, comida y rutinas.", pt: "Acompanhamento parental de sono, alimentacao e rotinas.", cat: "consumer", icon: "BB" },
-  batterypassportready: { title: "Battery Passport Ready", fr: "Preparation au passeport batterie et donnees produit associees.", en: "Battery passport readiness and product-data preparation.", es: "Preparacion para pasaporte de baterias.", pt: "Preparacao para passaporte de baterias.", cat: "reg", icon: "BAT" },
-  cbamready: { title: "CBAM Ready", fr: "Kit de preparation au mecanisme carbone aux frontieres.", en: "Readiness kit for carbon border adjustment obligations.", es: "Kit para obligaciones CBAM.", pt: "Kit para obrigacoes CBAM.", cat: "reg", icon: "CO2" },
-  craready: { title: "CRA Ready", fr: "Preparation au Cyber Resilience Act pour produits numeriques.", en: "Cyber Resilience Act readiness for digital products.", es: "Preparacion para Cyber Resilience Act.", pt: "Preparacao para Cyber Resilience Act.", cat: "reg", icon: "CRA" },
-  devaitools: { title: "DevAI Tools", fr: "Boite a outils pour developpeurs qui integrent l'IA.", en: "Toolkit for developers integrating AI.", es: "Herramientas para desarrolladores con IA.", pt: "Ferramentas para desenvolvedores com IA.", cat: "ai", icon: "DEV" },
-  devicesunsetcheck: { title: "Device Sunset Check", fr: "Controle de fin de support, risques et plan de remplacement.", en: "End-of-support checks, risks and replacement planning.", es: "Control de fin de soporte y reemplazo.", pt: "Controle de fim de suporte e substituicao.", cat: "ops", icon: "EOL" },
-  digitalproductpassportready: { title: "Digital Product Passport Ready", fr: "Preparation aux passeports numeriques produits.", en: "Readiness for digital product passports.", es: "Preparacion para pasaporte digital de producto.", pt: "Preparacao para passaporte digital de produto.", cat: "reg", icon: "DPP" },
-  doravendorready: { title: "DORA Vendor Ready", fr: "Preparation fournisseurs aux exigences DORA.", en: "Vendor readiness for DORA requirements.", es: "Preparacion de proveedores para DORA.", pt: "Preparacao de fornecedores para DORA.", cat: "reg", icon: "DOR" },
-  einvoicingfranceready: { title: "E-Invoicing France Ready", fr: "Preparation a la facture electronique francaise.", en: "French e-invoicing readiness.", es: "Preparacion para factura electronica francesa.", pt: "Preparacao para faturacao eletronica francesa.", cat: "reg", icon: "INV" },
-  factureelectroniqueready: { title: "Facture Electronique Ready", fr: "Parcours clair pour anticiper la reforme facture electronique.", en: "Clear path to prepare e-invoicing reform.", es: "Ruta clara para reforma de factura electronica.", pt: "Caminho claro para reforma da fatura eletronica.", cat: "reg", icon: "FE" },
-  fidaopenfinanceready: { title: "FiDA Open Finance Ready", fr: "Preparation aux obligations open finance europeennes.", en: "Open finance readiness for FiDA obligations.", es: "Preparacion open finance para FiDA.", pt: "Preparacao open finance para FiDA.", cat: "reg", icon: "FIDA" },
-  gpsrready: { title: "GPSR Ready", fr: "Preparation au reglement securite generale des produits.", en: "General Product Safety Regulation readiness.", es: "Preparacion para el reglamento general de seguridad de productos.", pt: "Preparacao para o regulamento geral de seguranca de produtos.", cat: "reg", icon: "GPSR" },
-  hierarchie: { title: "Hierarchie", fr: "Atlas vivant et exploration visuelle de structures geographiques.", en: "Living atlas for visual geographic exploration.", es: "Atlas vivo para exploracion geografica.", pt: "Atlas vivo para exploracao geografica.", cat: "consumer", icon: "MAP" },
-  highriskaiclassifier: { title: "High Risk AI Classifier", fr: "Classement rapide des cas IA au regard des obligations high-risk.", en: "Fast AI use-case classification against high-risk obligations.", es: "Clasificacion rapida de casos IA frente a obligaciones de alto riesgo.", pt: "Classificacao rapida de casos IA perante obrigacoes de alto risco.", cat: "ai", icon: "HRA" },
-  immifrance: { title: "ImmiFrance", fr: "Aide a la lecture des parcours administratifs d'immigration.", en: "Guidance for navigating French immigration procedures.", es: "Guia para tramites de inmigracion francesa.", pt: "Guia para processos de imigracao francesa.", cat: "consumer", icon: "FR" },
-  instantpayready: { title: "Instant Pay Ready", fr: "Preparation aux paiements instantanes et impacts operationnels.", en: "Instant payment readiness and operational impact mapping.", es: "Preparacion para pagos instantaneos.", pt: "Preparacao para pagamentos instantaneos.", cat: "reg", icon: "PAY" },
-  mcpsecurityready: { title: "MCP Security Ready", fr: "Controle securite pour integrations MCP et outils agents.", en: "Security checks for MCP integrations and agent tools.", es: "Control de seguridad para MCP y agentes.", pt: "Controle de seguranca para MCP e agentes.", cat: "ai", icon: "MCP" },
-  methaneimportready: { title: "Methane Import Ready", fr: "Preparation aux obligations methane import et reporting.", en: "Methane import readiness and reporting preparation.", es: "Preparacion para importaciones de metano.", pt: "Preparacao para importacao de metano.", cat: "reg", icon: "CH4" },
-  nis2supplierkit: { title: "NIS2 Supplier Kit", fr: "Kit fournisseur pour exigences cyber NIS2.", en: "Supplier kit for NIS2 cyber requirements.", es: "Kit proveedor para requisitos NIS2.", pt: "Kit fornecedor para requisitos NIS2.", cat: "reg", icon: "NIS" },
-  opensourceforkshield: { title: "Open Source Fork Shield", fr: "Evaluation des risques de forks et dependances open source.", en: "Risk checks for forks and open-source dependencies.", es: "Riesgos de forks y dependencias open source.", pt: "Riscos de forks e dependencias open source.", cat: "ops", icon: "OSS" },
-  paytransparencyready: { title: "Pay Transparency Ready", fr: "Preparation aux exigences de transparence salariale.", en: "Readiness for pay transparency requirements.", es: "Preparacion para transparencia salarial.", pt: "Preparacao para transparencia salarial.", cat: "reg", icon: "PAY" },
-  pentestai: { title: "PentestAI", fr: "Laboratoire outille pour tests securite assistes par IA.", en: "AI-assisted security testing lab.", es: "Laboratorio de seguridad asistido por IA.", pt: "Laboratorio de seguranca assistido por IA.", cat: "ai", icon: "SEC" },
-  popbackend: { title: "Pop Backend", fr: "API et socle donnees du projet de participation citoyenne.", en: "API and data core for civic participation.", es: "API y datos para participacion ciudadana.", pt: "API e dados para participacao cidada.", cat: "ops", icon: "API" },
-  popmobile: { title: "Pop", fr: "Produit citoyen pour debats, propositions et participation locale.", en: "Civic product for debates, proposals and local participation.", es: "Producto civico para debates y participacion.", pt: "Produto civico para debates e participacao.", cat: "consumer", icon: "POP" },
-  portfolio: { title: "Portfolio", fr: "Cette webapp one-page, vitrine vivante des produits et systemes.", en: "This one-page web app, a living view of products and systems.", es: "Esta webapp one-page, vista viva de productos.", pt: "Esta webapp one-page, visao viva dos produtos.", cat: "ops", icon: "LS" },
-  postquantumready: { title: "Post Quantum Ready", fr: "Preparation aux risques cryptographiques post-quantiques.", en: "Readiness for post-quantum cryptography risks.", es: "Preparacion para riesgos post-cuánticos.", pt: "Preparacao para riscos pos-quanticos.", cat: "reg", icon: "PQC" },
-  ppwrready: { title: "PPWR Ready", fr: "Preparation au reglement emballages et dechets d'emballages.", en: "Readiness for packaging and packaging-waste regulation.", es: "Preparacion para reglamento de envases.", pt: "Preparacao para regulamento de embalagens.", cat: "reg", icon: "PPW" },
-  repowereugasimportready: { title: "REPowerEU Gas Import Ready", fr: "Preparation aux controles gaz import et donnees energie.", en: "Readiness for gas import controls and energy data.", es: "Preparacion para controles de importacion de gas.", pt: "Preparacao para controles de importacao de gas.", cat: "reg", icon: "GAS" },
-  softwareproductliabilityready: { title: "Software Product Liability Ready", fr: "Preparation aux risques de responsabilite produit logiciel.", en: "Readiness for software product-liability risk.", es: "Preparacion para responsabilidad de software.", pt: "Preparacao para responsabilidade de software.", cat: "reg", icon: "LAW" }
+const labels = {
+  en: { ai: "AI", reg: "Regulation", ops: "Operations", public: "Public app" },
+  fr: { ai: "IA", reg: "Réglementaire", ops: "Opérations", public: "App publique" }
 };
 
 const products = [
-  ["accessibiliteexpress", "https://accessibiliteexpress.leandro-sierra.com"],
-  ["ageassuranceready", "https://ageassuranceready.leandro-sierra.com"],
-  ["agentcommerceready", "https://agentcommerceready.leandro-sierra.com"],
-  ["agentcostguard", "https://agentcostguard.leandro-sierra.com"],
-  ["aicodeprovenanceready", "https://aicodeprovenanceready.leandro-sierra.com"],
-  ["aipresencecheck", "https://aipresencecheck.leandro-sierra.com"],
-  ["autoentrepreneurai", "https://autoentrepreneurai.leandro-sierra.com"],
-  ["babybox", "https://babybox.leandro-sierra.com"],
-  ["batterypassportready", "https://batterypassportready.leandro-sierra.com"],
-  ["cbamready", "https://cbamready.leandro-sierra.com"],
-  ["craready", "https://craready.leandro-sierra.com"],
-  ["devaitools", "https://devai-tools.leandro-sierra.com"],
-  ["devicesunsetcheck", "https://devicesunsetcheck.leandro-sierra.com"],
-  ["digitalproductpassportready", "https://digitalproductpassportready.leandro-sierra.com"],
-  ["doravendorready", "https://doravendorready.leandro-sierra.com"],
-  ["einvoicingfranceready", "https://einvoicingfranceready.leandro-sierra.com"],
-  ["factureelectroniqueready", "https://factureelectroniqueready.leandro-sierra.com"],
-  ["fidaopenfinanceready", "https://fidaopenfinanceready.leandro-sierra.com"],
-  ["gpsrready", "https://gpsrready.leandro-sierra.com"],
-  ["hierarchie", "https://hierarchie.leandro-sierra.com"],
-  ["highriskaiclassifier", "https://highriskaiclassifier.leandro-sierra.com"],
-  ["immifrance", "https://immifrance.leandro-sierra.com"],
-  ["instantpayready", "https://instantpayready.leandro-sierra.com"],
-  ["mcpsecurityready", "https://mcpsecurityready.leandro-sierra.com"],
-  ["methaneimportready", "https://methaneimportready.leandro-sierra.com"],
-  ["nis2supplierkit", "https://nis2supplierkit.leandro-sierra.com"],
-  ["opensourceforkshield", "https://opensourceforkshield.leandro-sierra.com"],
-  ["paytransparencyready", "https://paytransparencyready.leandro-sierra.com"],
-  ["pentestai", "https://pentestai.leandro-sierra.com"],
-  ["popbackend", "https://api.pop.leandro-sierra.com"],
-  ["popmobile", "https://pop.leandro-sierra.com"],
-  ["portfolio", "https://leandro-sierra.com"],
-  ["postquantumready", "https://postquantumready.leandro-sierra.com"],
-  ["ppwrready", "https://ppwrready.leandro-sierra.com"],
-  ["repowereugasimportready", "https://repowereugasimportready.leandro-sierra.com"],
-  ["softwareproductliabilityready", "https://softwareproductliabilityready.leandro-sierra.com"]
+  { id: "accessibiliteexpress", name: "Accessibilité Express", family: "ops", url: "https://accessibiliteexpress.leandro-sierra.com", en: "Fast accessibility audit for clearer, more usable websites.", fr: "Audit rapide pour rendre un site plus lisible, accessible et actionnable." },
+  { id: "ageassuranceready", name: "Age Assurance Ready", family: "reg", url: "https://ageassuranceready.leandro-sierra.com", en: "Preparation for age checks, assurance flows and verification readiness.", fr: "Préparation aux contrôles d’âge, parcours d’assurance et vérifications." },
+  { id: "agentcommerceready", name: "Agent Commerce Ready", family: "ai", url: "https://agentcommerceready.leandro-sierra.com", en: "Readiness checklist for products sold through conversational agents.", fr: "Checklist pour préparer un produit au commerce via agents conversationnels." },
+  { id: "agentcostguard", name: "Agent Cost Guard", family: "ai", url: "https://agentcostguard.leandro-sierra.com", en: "Cost guardrails for AI-agent workloads and tool usage.", fr: "Garde-fous de coûts pour workloads d’agents IA et appels d’outils." },
+  { id: "aicodeprovenanceready", name: "AI Code Provenance Ready", family: "ai", url: "https://aicodeprovenanceready.leandro-sierra.com", en: "Evidence trail for AI-generated code and software provenance.", fr: "Traçabilité du code généré par IA et preuves d’origine logicielle." },
+  { id: "aipresencecheck", name: "AI Presence Check", family: "ai", url: "https://aipresencecheck.leandro-sierra.com", en: "Checks where AI appears in product and operational flows.", fr: "Repère où l’IA intervient dans les parcours produit et opérationnels." },
+  { id: "autoentrepreneurai", name: "Auto Entrepreneur AI", family: "ops", url: "https://autoentrepreneurai.leandro-sierra.com", en: "Assistant for solo entrepreneurs, declarations and recurring obligations.", fr: "Assistant pour micro-entrepreneurs, déclarations et obligations récurrentes." },
+  { id: "babybox", name: "Babybox", family: "public", url: "https://babybox.leandro-sierra.com", en: "Parenting tracker for sleep, feeding and early routines.", fr: "Suivi parental pour sommeil, repas et routines des premiers mois." },
+  { id: "batterypassportready", name: "Battery Passport Ready", family: "reg", url: "https://batterypassportready.leandro-sierra.com", en: "Battery passport readiness and product-data preparation.", fr: "Préparation au passeport batterie et aux données produit associées." },
+  { id: "cbamready", name: "CBAM Ready", family: "reg", url: "https://cbamready.leandro-sierra.com", en: "Readiness kit for carbon border adjustment obligations.", fr: "Kit de préparation au mécanisme carbone aux frontières." },
+  { id: "craready", name: "CRA Ready", family: "reg", url: "https://craready.leandro-sierra.com", en: "Cyber Resilience Act preparation for digital products.", fr: "Préparation au Cyber Resilience Act pour produits numériques." },
+  { id: "devaitools", name: "DevAI Tools", family: "ai", url: "https://devai-tools.leandro-sierra.com", en: "Tooling for developers integrating AI into real products.", fr: "Boîte à outils pour développeurs qui intègrent l’IA dans des produits." },
+  { id: "devicesunsetcheck", name: "Device Sunset Check", family: "ops", url: "https://devicesunsetcheck.leandro-sierra.com", en: "End-of-support checks, risk view and replacement planning.", fr: "Contrôle de fin de support, risques et plan de remplacement." },
+  { id: "digitalproductpassportready", name: "Digital Product Passport Ready", family: "reg", url: "https://digitalproductpassportready.leandro-sierra.com", en: "Readiness path for digital product passports.", fr: "Parcours de préparation aux passeports numériques produits." },
+  { id: "doravendorready", name: "DORA Vendor Ready", family: "reg", url: "https://doravendorready.leandro-sierra.com", en: "Supplier readiness for DORA operational resilience requirements.", fr: "Préparation fournisseur aux exigences de résilience opérationnelle DORA." },
+  { id: "einvoicingfranceready", name: "E-Invoicing France Ready", family: "reg", url: "https://einvoicingfranceready.leandro-sierra.com", en: "French e-invoicing reform preparation.", fr: "Préparation à la réforme française de la facture électronique." },
+  { id: "factureelectroniqueready", name: "Facture Électronique Ready", family: "reg", url: "https://factureelectroniqueready.leandro-sierra.com", en: "Clear implementation path for e-invoicing obligations.", fr: "Parcours clair pour anticiper les obligations de facture électronique." },
+  { id: "fidaopenfinanceready", name: "FiDA Open Finance Ready", family: "reg", url: "https://fidaopenfinanceready.leandro-sierra.com", en: "Open-finance readiness for FiDA obligations.", fr: "Préparation open finance pour les obligations FiDA." },
+  { id: "gpsrready", name: "GPSR Ready", family: "reg", url: "https://gpsrready.leandro-sierra.com", en: "General Product Safety Regulation readiness.", fr: "Préparation au règlement sur la sécurité générale des produits." },
+  { id: "hierarchie", name: "Hiérarchie", family: "public", url: "https://hierarchie.leandro-sierra.com", en: "Visual exploration of geographic and administrative structures.", fr: "Exploration visuelle de structures géographiques et administratives." },
+  { id: "highriskaiclassifier", name: "High Risk AI Classifier", family: "ai", url: "https://highriskaiclassifier.leandro-sierra.com", en: "Fast AI use-case classification against high-risk obligations.", fr: "Classification rapide des cas IA face aux obligations high-risk." },
+  { id: "immifrance", name: "ImmiFrance", family: "public", url: "https://immifrance.leandro-sierra.com", en: "Guidance for navigating French immigration procedures.", fr: "Aide à la lecture des parcours administratifs d’immigration française." },
+  { id: "instantpayready", name: "Instant Pay Ready", family: "reg", url: "https://instantpayready.leandro-sierra.com", en: "Instant-payment readiness and operational impact mapping.", fr: "Préparation aux paiements instantanés et impacts opérationnels." },
+  { id: "mcpsecurityready", name: "MCP Security Ready", family: "ai", url: "https://mcpsecurityready.leandro-sierra.com", en: "Security checks for MCP integrations and agent toolchains.", fr: "Contrôles sécurité pour intégrations MCP et chaînes d’outils agents." },
+  { id: "methaneimportready", name: "Methane Import Ready", family: "reg", url: "https://methaneimportready.leandro-sierra.com", en: "Methane import readiness and reporting preparation.", fr: "Préparation aux obligations d’import méthane et reporting." },
+  { id: "nis2supplierkit", name: "NIS2 Supplier Kit", family: "reg", url: "https://nis2supplierkit.leandro-sierra.com", en: "Supplier kit for NIS2 cybersecurity requirements.", fr: "Kit fournisseur pour exigences cybersécurité NIS2." },
+  { id: "opensourceforkshield", name: "Open Source Fork Shield", family: "ops", url: "https://opensourceforkshield.leandro-sierra.com", en: "Risk checks for forks, dependencies and open-source exposure.", fr: "Évaluation des risques de forks, dépendances et exposition open source." },
+  { id: "paytransparencyready", name: "Pay Transparency Ready", family: "reg", url: "https://paytransparencyready.leandro-sierra.com", en: "Preparation for pay transparency requirements.", fr: "Préparation aux exigences de transparence salariale." },
+  { id: "pentestai", name: "PentestAI", family: "ai", url: "https://pentestai.leandro-sierra.com", en: "AI-assisted security testing lab.", fr: "Laboratoire outillé pour tests sécurité assistés par IA." },
+  { id: "popbackend", name: "Pop Backend", family: "ops", url: "https://api.pop.leandro-sierra.com", en: "API and data foundation for the civic participation product.", fr: "API et socle données du produit de participation citoyenne." },
+  { id: "pop", name: "Pop", family: "public", url: "https://pop.leandro-sierra.com", en: "Civic product for debates, proposals and local participation.", fr: "Produit citoyen pour débats, propositions et participation locale." },
+  { id: "portfolio", name: "Portfolio", family: "ops", url: "https://leandro-sierra.com", en: "The product index and technical presentation you are reading.", fr: "L’index produit et la présentation technique que vous consultez." },
+  { id: "postquantumready", name: "Post Quantum Ready", family: "reg", url: "https://postquantumready.leandro-sierra.com", en: "Preparation for post-quantum cryptography risks.", fr: "Préparation aux risques cryptographiques post-quantiques." },
+  { id: "ppwrready", name: "PPWR Ready", family: "reg", url: "https://ppwrready.leandro-sierra.com", en: "Readiness for packaging and packaging-waste regulation.", fr: "Préparation au règlement emballages et déchets d’emballages." },
+  { id: "repowereugasimportready", name: "REPowerEU Gas Import Ready", family: "reg", url: "https://repowereugasimportready.leandro-sierra.com", en: "Gas import controls and energy-data readiness.", fr: "Préparation aux contrôles gaz import et données énergie." },
+  { id: "softwareproductliabilityready", name: "Software Product Liability Ready", family: "reg", url: "https://softwareproductliabilityready.leandro-sierra.com", en: "Software product-liability risk preparation.", fr: "Préparation aux risques de responsabilité produit logiciel." }
 ];
 
-const categoryLabels = {
-  fr: { ai: "IA", reg: "Reglementaire", ops: "Operations", consumer: "Grand public" },
-  en: { ai: "AI", reg: "Regulation", ops: "Operations", consumer: "Consumer" },
-  es: { ai: "IA", reg: "Regulacion", ops: "Operaciones", consumer: "Publico" },
-  pt: { ai: "IA", reg: "Regulatorio", ops: "Operacoes", consumer: "Publico" }
+const accents = {
+  ai: "var(--blue)",
+  reg: "var(--green)",
+  ops: "var(--amber)",
+  public: "var(--violet)"
 };
 
-let lang = localStorage.getItem("portfolio-lang") || "fr";
-let filter = "all";
-const sectionIds = ["home", "about", "products", "lab", "contact"];
+let lang = localStorage.getItem("portfolio-lang") || "en";
+let activeFilter = "all";
+
+function hashCode(text) {
+  let hash = 0;
+  for (let i = 0; i < text.length; i += 1) hash = ((hash << 5) - hash + text.charCodeAt(i)) | 0;
+  return Math.abs(hash);
+}
+
+function productVisual(product) {
+  const h = hashCode(product.id);
+  const bars = [26 + (h % 48), 22 + ((h >> 3) % 52), 18 + ((h >> 5) % 56)];
+  const offset = h % 26;
+  const label = product.name.split(" ").map((part) => part[0]).join("").slice(0, 3).toUpperCase();
+  return `
+    <svg viewBox="0 0 520 250" role="img" aria-label="${product.name} interface illustration">
+      <rect width="520" height="250" fill="white"/>
+      <path d="M0 42H520M0 94H520M0 146H520M0 198H520M74 0V250M148 0V250M222 0V250M296 0V250M370 0V250M444 0V250" stroke="rgba(11,13,16,.06)" stroke-width="1"/>
+      <rect x="38" y="34" width="444" height="182" rx="8" fill="rgba(255,255,255,.82)" stroke="rgba(11,13,16,.16)"/>
+      <rect x="60" y="57" width="124" height="34" rx="6" fill="currentColor" opacity=".95"/>
+      <text x="76" y="80" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="700">${label}</text>
+      <rect x="60" y="115" width="${bars[0] + 80}" height="10" rx="5" fill="currentColor" opacity=".34"/>
+      <rect x="60" y="139" width="${bars[1] + 138}" height="10" rx="5" fill="currentColor" opacity=".22"/>
+      <rect x="60" y="163" width="${bars[2] + 106}" height="10" rx="5" fill="currentColor" opacity=".16"/>
+      <circle cx="${342 + offset}" cy="118" r="48" fill="none" stroke="currentColor" stroke-width="14" opacity=".18"/>
+      <path d="M${314 + offset} 118h${57 + offset / 4}M${342 + offset} 90v57" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity=".72"/>
+      <rect x="326" y="169" width="104" height="24" rx="6" fill="currentColor" opacity=".12"/>
+      <rect x="344" y="176" width="68" height="10" rx="5" fill="currentColor" opacity=".42"/>
+    </svg>`;
+}
+
+function renderProducts() {
+  const grid = document.getElementById("productGrid");
+  const filtered = products.filter((product) => activeFilter === "all" || product.family === activeFilter);
+  document.getElementById("productTotal").textContent = products.length;
+  grid.innerHTML = filtered.map((product) => {
+    const host = new URL(product.url).hostname;
+    return `
+      <a class="product-card" style="--accent:${accents[product.family]}" href="${product.url}" target="_blank" rel="noopener">
+        <div class="visual">${productVisual(product)}</div>
+        <div class="product-body">
+          <div class="product-kicker"><span>${labels[lang][product.family]}</span><span>${host}</span></div>
+          <h3>${product.name}</h3>
+          <p>${product[lang]}</p>
+          <div class="product-foot"><span>${copy[lang].open}</span><b aria-hidden="true">↗</b></div>
+        </div>
+      </a>`;
+  }).join("");
+}
 
 function applyLanguage(nextLang) {
-  lang = translations[nextLang] ? nextLang : "fr";
+  lang = copy[nextLang] ? nextLang : "en";
   localStorage.setItem("portfolio-lang", lang);
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach((node) => {
-    const key = node.getAttribute("data-i18n");
-    if (translations[lang][key]) node.textContent = translations[lang][key];
+    const key = node.dataset.i18n;
+    node.textContent = copy[lang][key] || node.textContent;
   });
   document.querySelectorAll("[data-lang]").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.lang === lang);
@@ -1045,75 +721,19 @@ function applyLanguage(nextLang) {
   renderProducts();
 }
 
-function renderProducts() {
-  const grid = document.getElementById("productGrid");
-  const visible = products.filter(([key]) => filter === "all" || productText[key].cat === filter);
-  const count = document.getElementById("productCount");
-  if (count) count.textContent = visible.length;
-  grid.innerHTML = visible.map(([key, url]) => {
-    const product = productText[key];
-    const copy = product[lang] || product.fr;
-    const label = categoryLabels[lang][product.cat];
-    return `
-      <a class="product-card" href="${url}" target="_blank" rel="noopener" data-category="${product.cat}">
-        <div class="product-top">
-          <span class="product-icon">${product.icon}</span>
-          <span class="category">${label}</span>
-        </div>
-        <h3>${product.title}</h3>
-        <p>${copy}</p>
-        <span class="product-meta"><span>${new URL(url).hostname}</span><b aria-label="${translations[lang].open}">↗</b></span>
-      </a>`;
-  }).join("");
-}
-
-function showSection(sectionId, updateHash = true) {
-  const target = sectionIds.includes(sectionId) ? sectionId : "home";
-  document.querySelectorAll(".page").forEach((section) => {
-    section.classList.toggle("is-active", section.id === target);
-  });
-  document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
-    link.classList.toggle("is-active", link.getAttribute("href") === `#${target}`);
-  });
-  if (updateHash && window.location.hash !== `#${target}`) {
-    history.pushState(null, "", `#${target}`);
-  }
-}
-
 document.querySelectorAll("[data-lang]").forEach((button) => {
   button.addEventListener("click", () => applyLanguage(button.dataset.lang));
 });
 
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const sectionId = link.getAttribute("href").slice(1);
-    if (!sectionIds.includes(sectionId)) return;
-    event.preventDefault();
-    showSection(sectionId);
-  });
-});
-
 document.querySelectorAll("[data-filter]").forEach((button) => {
   button.addEventListener("click", () => {
-    filter = button.dataset.filter;
+    activeFilter = button.dataset.filter;
     document.querySelectorAll("[data-filter]").forEach((item) => item.classList.toggle("is-active", item === button));
     renderProducts();
   });
 });
 
-window.addEventListener("popstate", () => showSection(window.location.hash.slice(1), false));
-window.addEventListener("keydown", (event) => {
-  if (!["ArrowUp", "ArrowDown", "PageUp", "PageDown"].includes(event.key)) return;
-  const active = document.querySelector(".page.is-active");
-  const index = sectionIds.indexOf(active ? active.id : "home");
-  const direction = event.key === "ArrowUp" || event.key === "PageUp" ? -1 : 1;
-  const next = sectionIds[(index + direction + sectionIds.length) % sectionIds.length];
-  event.preventDefault();
-  showSection(next);
-});
-
 applyLanguage(lang);
-showSection(window.location.hash.slice(1), false);
 </script>
 </body>
 </html>
