@@ -3,737 +3,462 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f5f7f8">
-<meta name="color-scheme" content="light">
-<title>Leandro Sierra - Internet products and AI software</title>
-<meta name="description" content="Portfolio of internet products designed by Leandro Sierra: AI tools, compliance products, operational software and public web applications.">
-<meta property="og:title" content="Leandro Sierra - Product portfolio">
-<meta property="og:description" content="A concise portfolio of AI, compliance and internet software products designed by Leandro Sierra.">
+<meta name="theme-color" content="#07080d">
+<meta name="color-scheme" content="dark">
+<title>Leandro Sierra — Internet products & AI software</title>
+<meta name="description" content="Portfolio of internet products built by Leandro Sierra: AI tools, regulatory readiness products, operational software and public web applications.">
+<meta property="og:title" content="Leandro Sierra — Product portfolio">
+<meta property="og:description" content="A live index of AI, compliance and internet software products built and shipped by Leandro Sierra.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://leandro-sierra.com">
 <link rel="canonical" href="https://leandro-sierra.com">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0d10'/%3E%3Cpath d='M16 42h31v6H16zM16 16h7v26h-7zM29 16h7v26h-7zM42 16h7v26h-7z' fill='%23f7f9fb'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307080d'/%3E%3Cpath d='M16 42h31v6H16zM16 16h7v26h-7zM29 16h7v26h-7zM42 16h7v26h-7z' fill='%23f4f5fb'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3481333024960723" crossorigin="anonymous"></script>
 <style>
-  * { box-sizing: border-box; }
-  :root {
-    --bg: #f5f7f8;
-    --panel: #ffffff;
-    --ink: #0b0d10;
-    --muted: #59616a;
-    --quiet: #858e98;
-    --line: #dce2e7;
-    --line-strong: #b9c3cc;
-    --blue: #1f6feb;
-    --green: #138a63;
-    --red: #c2415b;
-    --amber: #b77712;
-    --violet: #6d5bd0;
-    --max: 1260px;
-  }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background:
-      linear-gradient(90deg, rgba(11, 13, 16, .045) 1px, transparent 1px),
-      linear-gradient(180deg, rgba(11, 13, 16, .045) 1px, transparent 1px),
-      var(--bg);
-    background-size: 40px 40px;
-    color: var(--ink);
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    line-height: 1.5;
-    letter-spacing: 0;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: inherit; text-decoration: none; }
-  button { font: inherit; }
-  .shell {
-    width: min(var(--max), calc(100% - 40px));
-    margin: 0 auto;
-  }
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    border-bottom: 1px solid rgba(11, 13, 16, .08);
-    background: rgba(245, 247, 248, .88);
-    backdrop-filter: blur(18px);
-  }
-  .topbar .shell {
-    min-height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-  }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 0;
-  }
-  .mark {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-    background: var(--ink);
-    color: white;
-    font-size: 12px;
-    font-weight: 700;
-  }
-  .brand strong {
-    display: block;
-    font-size: 15px;
-    font-weight: 520;
-  }
-  .brand span {
-    display: block;
-    color: var(--quiet);
-    font-size: 12px;
-    font-weight: 400;
-  }
-  .nav {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .nav a, .lang button {
-    min-height: 34px;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    padding: 7px 11px;
-    background: transparent;
-    color: var(--muted);
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 440;
-  }
-  .nav a:hover, .lang button:hover, .lang button.is-active {
-    color: var(--ink);
-    border-color: var(--line);
-    background: rgba(255, 255, 255, .74);
-  }
-  .lang {
-    display: flex;
-    gap: 4px;
-    padding-left: 8px;
-    border-left: 1px solid var(--line);
-  }
-  .hero {
-    min-height: calc(100vh - 68px);
-    display: grid;
-    grid-template-columns: minmax(0, .98fr) minmax(340px, .72fr);
-    gap: 54px;
-    align-items: center;
-    padding: 74px 0 64px;
-  }
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    margin-bottom: 24px;
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 480;
-  }
-  .eyebrow::before {
-    content: "";
-    width: 32px;
-    height: 1px;
-    background: var(--ink);
-  }
-  h1 {
-    max-width: 890px;
-    margin: 0;
-    font-size: clamp(58px, 8.7vw, 132px);
-    line-height: .88;
-    letter-spacing: 0;
-    font-weight: 300;
-  }
-  .hero p {
-    max-width: 720px;
-    margin: 26px 0 0;
-    color: var(--muted);
-    font-size: clamp(17px, 1.8vw, 24px);
-    line-height: 1.48;
-    font-weight: 360;
-  }
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 34px;
-  }
-  .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 10px 16px;
-    border: 1px solid var(--ink);
-    border-radius: 8px;
-    background: var(--ink);
-    color: white;
-    font-size: 14px;
-    font-weight: 520;
-  }
-  .button.secondary {
-    background: rgba(255, 255, 255, .68);
-    color: var(--ink);
-    border-color: var(--line-strong);
-  }
-  .hero-board {
-    border: 1px solid var(--line-strong);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, .82);
-    box-shadow: 0 22px 70px rgba(11, 13, 16, .10);
-    overflow: hidden;
-  }
-  .board-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    min-height: 52px;
-    padding: 0 16px;
-    border-bottom: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 12px;
-    font-weight: 520;
-  }
-  .board-leds {
-    display: flex;
-    gap: 6px;
-  }
-  .board-leds span {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--line-strong);
-  }
-  .board-leds span:nth-child(1) { background: var(--red); }
-  .board-leds span:nth-child(2) { background: var(--amber); }
-  .board-leds span:nth-child(3) { background: var(--green); }
-  .board-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1px;
-    background: var(--line);
-  }
-  .board-cell {
-    min-height: 156px;
-    padding: 18px;
-    background: rgba(255, 255, 255, .92);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .board-cell strong {
-    font-size: 38px;
-    line-height: 1;
-    font-weight: 330;
-  }
-  .board-cell span {
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 430;
-  }
-  .board-cell.wide { grid-column: span 2; }
-  .board-cell.wide strong { max-width: 480px; font-size: 28px; line-height: 1.14; }
-  section {
-    padding: 78px 0;
-    border-top: 1px solid rgba(11, 13, 16, .08);
-  }
-  .section-head {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(290px, 440px);
-    gap: 44px;
-    align-items: end;
-    margin-bottom: 30px;
-  }
-  h2 {
-    margin: 0;
-    font-size: clamp(34px, 5vw, 68px);
-    line-height: .98;
-    font-weight: 310;
-  }
-  .section-copy {
-    margin: 0;
-    color: var(--muted);
-    font-size: 16px;
-    font-weight: 360;
-  }
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 0 0 22px;
-  }
-  .filter {
-    min-height: 36px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, .72);
-    color: var(--muted);
-    padding: 7px 12px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 460;
-  }
-  .filter:hover, .filter.is-active {
-    border-color: var(--ink);
-    color: var(--ink);
-    background: white;
-  }
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-  }
-  .product-card {
-    min-height: 374px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, .76);
-    overflow: hidden;
-    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-  }
-  .product-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--line-strong);
-    box-shadow: 0 18px 42px rgba(11, 13, 16, .09);
-  }
-  .visual {
-    height: 164px;
-    border-bottom: 1px solid var(--line);
-    background: color-mix(in srgb, var(--accent) 10%, #ffffff);
-  }
-  .visual svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-  .product-body {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 18px;
-  }
-  .product-kicker {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 14px;
-    color: var(--quiet);
-    font-size: 12px;
-    font-weight: 520;
-    text-transform: uppercase;
-  }
-  .product-card h3 {
-    margin: 0;
-    font-size: 23px;
-    line-height: 1.1;
-    font-weight: 380;
-  }
-  .product-card p {
-    margin: 12px 0 0;
-    color: var(--muted);
-    font-size: 14px;
-    font-weight: 350;
-  }
-  .product-foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: auto;
-    padding-top: 22px;
-    color: var(--quiet);
-    font-size: 12px;
-    font-weight: 450;
-  }
-  .product-foot b {
-    width: 34px;
-    height: 34px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-    color: var(--ink);
-    font-size: 15px;
-    font-weight: 420;
-  }
-  .stack {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
-  }
-  .stack-item {
-    min-height: 172px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, .74);
-    padding: 20px;
-  }
-  .stack-item strong {
-    display: block;
-    margin-bottom: 12px;
-    font-size: 20px;
-    font-weight: 390;
-  }
-  .stack-item span {
-    color: var(--muted);
-    font-size: 14px;
-    font-weight: 350;
-  }
-  .contact {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
-    gap: 44px;
-    align-items: center;
-  }
-  .contact-lines {
-    display: grid;
-    gap: 10px;
-  }
-  .contact-lines a, .contact-lines span {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, .76);
-    padding: 12px 14px;
-    color: var(--muted);
-    font-size: 14px;
-  }
-  .contact-lines b {
-    color: var(--ink);
-    font-weight: 450;
-  }
-  footer {
-    padding: 28px 0 42px;
-    color: var(--quiet);
-    font-size: 13px;
-  }
-  @media (max-width: 1020px) {
-    .hero, .section-head, .contact { grid-template-columns: 1fr; }
-    .hero { min-height: auto; }
-    .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .stack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  @media (max-width: 720px) {
-    .shell { width: min(100% - 24px, var(--max)); }
-    .topbar .shell { min-height: auto; padding: 12px 0; align-items: flex-start; }
-    .nav { display: none; }
-    .hero { padding: 52px 0 48px; }
-    h1 { font-size: clamp(46px, 16vw, 68px); }
-    .hero-board { display: none; }
-    section { padding: 56px 0; }
-    .section-head { gap: 18px; }
-    .product-grid, .stack { grid-template-columns: 1fr; }
-    .product-card { min-height: 338px; }
-    .visual { height: 148px; }
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #07080d;
+  --ink: #f4f5fb;
+  --ink-soft: #aab0c4;
+  --ink-dim: #717892;
+  --line: rgba(255,255,255,0.09);
+  --glass: rgba(255,255,255,0.035);
+  --accent: #7C9BFF;
+  --tint: #7C9BFF;
+}
+html, body { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Sora", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+::selection { background: color-mix(in oklch, var(--tint) 40%, transparent); color: #fff; }
+
+.stage { position: relative; height: 100vh; width: 100vw; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; }
+
+.bg-field { position: absolute; inset: 0; z-index: 0;
+  background: radial-gradient(120% 80% at 50% -10%, #11131f 0%, transparent 55%),
+             radial-gradient(100% 100% at 100% 110%, #0c0e18 0%, transparent 60%), var(--bg); }
+.bg-glow { position: absolute; z-index: 0; left: 25%; top: 52%; width: 46vw; height: 72vh;
+  transform: translate(-50%, -50%); filter: blur(48px); opacity: 0.5; pointer-events: none;
+  transition: background 0.7s ease;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--tint) 34%, transparent), transparent 72%); }
+.bg-grain { position: absolute; inset: 0; z-index: 1; opacity: 0.35; pointer-events: none; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"); }
+
+/* topbar */
+.topbar { position: relative; z-index: 6; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px clamp(22px, 4vw, 48px) 0; }
+.brand { display: flex; align-items: center; gap: 13px; flex: none; }
+.brand-mark { width: 34px; height: 34px; flex: none; }
+.brand-name { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.01em; }
+.brand-name small { display: block; font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 10.5px; letter-spacing: 0.03em; color: var(--ink-dim); margin-top: 1px; text-transform: uppercase; }
+.filters { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.filter { min-height: 34px; padding: 7px 14px; border-radius: 100px; border: 1px solid transparent; color: var(--ink-dim); font-size: 13px; transition: all 0.2s; }
+.filter:hover { color: var(--ink); }
+.filter.on { color: var(--ink); border-color: var(--line); background: var(--glass); }
+.filter.on::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 100px; background: currentColor; margin-right: 7px; vertical-align: middle; color: var(--tint); }
+.top-right { display: flex; align-items: center; gap: 8px; flex: none; }
+.lang { display: flex; gap: 2px; border: 1px solid var(--line); border-radius: 100px; padding: 3px; }
+.lang button { min-height: 28px; padding: 4px 11px; border-radius: 100px; font-size: 12px; color: var(--ink-dim); }
+.lang button.on { color: var(--ink); background: var(--glass); }
+.pill { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); padding: 8px 15px; border-radius: 100px; background: var(--glass); font-size: 13px; color: var(--ink-soft); transition: all 0.2s; }
+.pill:hover { color: var(--ink); border-color: color-mix(in oklch, var(--tint) 50%, var(--line)); }
+
+/* main */
+.main { position: relative; z-index: 4; display: grid; grid-template-columns: minmax(330px, 0.9fr) 1.1fr; align-items: center; min-height: 0; padding: 0 clamp(26px, 4vw, 60px); }
+
+/* slideshow */
+.slideshow { position: relative; height: 80vh; perspective: 1500px; perspective-origin: 60% 50%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  cursor: grab; touch-action: none; }
+.slideshow:active { cursor: grabbing; }
+.track { position: absolute; inset: 0; transform-style: preserve-3d; }
+.card { position: absolute; left: 50%; top: 50%; width: clamp(280px, 30vw, 392px); transform-style: preserve-3d; will-change: transform, opacity; -webkit-user-select: none; user-select: none; }
+.card-inner { position: relative; aspect-ratio: 16 / 10; border-radius: 18px; overflow: hidden; border: 1px solid var(--line);
+  background: linear-gradient(160deg, #13151f, #0a0b12); color: var(--tint);
+  box-shadow: 0 38px 76px -30px rgba(0,0,0,0.85), 0 2px 0 0 rgba(255,255,255,0.05) inset; transition: border-color 0.35s, box-shadow 0.35s; }
+.card.on .card-inner { border-color: color-mix(in oklch, var(--tint) 55%, var(--line));
+  box-shadow: 0 50px 90px -28px rgba(0,0,0,0.9), 0 0 0 1px color-mix(in oklch, var(--tint) 30%, transparent), 0 0 60px -12px color-mix(in oklch, var(--tint) 42%, transparent), 0 2px 0 0 rgba(255,255,255,0.06) inset; }
+.card-inner.on, .card.on .card-inner { }
+.card-inner::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 48%; z-index: 2; pointer-events: none; background: linear-gradient(to top, rgba(7,8,13,0.82), rgba(7,8,13,0.3) 55%, transparent); }
+.card-screen { position: absolute; inset: 0; }
+.card-screen svg { width: 100%; height: 100%; display: block; }
+.card-tag { position: absolute; left: 13px; top: 12px; z-index: 3; font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.82); background: rgba(0,0,0,0.32); border: 1px solid rgba(255,255,255,0.12); padding: 4px 9px; border-radius: 100px; backdrop-filter: blur(6px); }
+.card-host { position: absolute; right: 13px; top: 13px; z-index: 3; font-family: "JetBrains Mono", monospace; font-size: 9.5px; color: rgba(255,255,255,0.42); }
+.card-name { position: absolute; left: 15px; right: 15px; bottom: 13px; z-index: 3; font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 17px; line-height: 1.08; letter-spacing: -0.01em; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,0.6); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* rail */
+.rail { position: absolute; left: -6px; top: 12%; bottom: 12%; width: 3px; border-radius: 100px; background: rgba(255,255,255,0.08); z-index: 6; }
+.rail-thumb { position: absolute; left: -1.5px; width: 6px; height: 34px; border-radius: 100px; background: var(--tint); box-shadow: 0 0 14px color-mix(in oklch, var(--tint) 70%, transparent); transition: background 0.5s; }
+
+/* panel */
+.panel { position: relative; padding-left: clamp(18px, 4vw, 70px); max-width: 620px; }
+.panel-card > * { opacity: 1; }
+.panel-card.anim > * { animation: rise 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+@media (prefers-reduced-motion: reduce) { .panel-card.anim > * { animation: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(13px); } to { opacity: 1; transform: translateY(0); } }
+.p-eyebrow { display: flex; align-items: center; gap: 12px; font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--tint); margin-bottom: 20px; transition: color 0.5s; }
+.p-eyebrow .dash { width: 28px; height: 1px; background: currentColor; opacity: 0.6; }
+.p-name { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: clamp(34px, 4.6vw, 64px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 12px; }
+.p-host { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--ink-soft); margin-bottom: 26px; }
+.p-host b { color: var(--tint); font-weight: 500; }
+.p-desc { font-size: clamp(17px, 1.7vw, 21px); line-height: 1.45; color: var(--ink); margin-bottom: 30px; max-width: 500px; text-wrap: pretty; font-weight: 360; }
+.p-actions { display: flex; align-items: center; gap: 13px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500; padding: 13px 22px; border-radius: 12px; transition: all 0.25s; border: 1px solid transparent; }
+.btn-primary { background: var(--tint); color: #07080d; box-shadow: 0 10px 30px -10px color-mix(in oklch, var(--tint) 70%, transparent); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -12px color-mix(in oklch, var(--tint) 80%, transparent); }
+.btn-ghost { background: var(--glass); border-color: var(--line); color: var(--ink); }
+.btn-ghost:hover { border-color: color-mix(in oklch, var(--tint) 50%, var(--line)); }
+.btn svg { width: 16px; height: 16px; }
+.p-count { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--ink-dim); margin-left: 4px; }
+.p-count b { color: var(--ink); font-weight: 500; }
+
+/* footer */
+.footer { position: relative; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 0 clamp(22px, 4vw, 48px) 22px; font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--ink-dim); }
+.scroll-hint { display: flex; align-items: center; gap: 9px; }
+.scroll-hint .wheel { width: 17px; height: 26px; border: 1.5px solid var(--line); border-radius: 100px; position: relative; }
+.scroll-hint .wheel::after { content: ""; position: absolute; left: 50%; top: 5px; width: 3px; height: 6px; border-radius: 100px; background: var(--ink-soft); transform: translateX(-50%); animation: wheel 1.6s ease-in-out infinite; }
+@keyframes wheel { 0%,100% { opacity: 0; transform: translate(-50%,0); } 40% { opacity: 1; } 80% { opacity: 0; transform: translate(-50%,8px); } }
+.socials { display: flex; gap: 20px; }
+.socials a:hover { color: var(--tint); }
+
+@media (max-width: 860px) {
+  .main { grid-template-columns: 1fr; }
+  .slideshow { display: none; }
+  .panel { padding-left: 0; }
+  .filters { display: none; }
+  .scroll-hint { display: none; }
+  .footer { justify-content: space-between; }
+}
 </style>
 </head>
 <body>
-<header class="topbar">
-  <div class="shell">
-    <a class="brand" href="#top" aria-label="Leandro Sierra">
-      <span class="mark">LS</span>
-      <span><strong>Leandro Sierra</strong><span data-i18n="role">AI product developer</span></span>
-    </a>
-    <nav class="nav" aria-label="Portfolio">
-      <a href="#products" data-i18n="navProducts">Products</a>
-      <a href="#stack" data-i18n="navStack">Stack</a>
-      <a href="#contact" data-i18n="navContact">Contact</a>
-      <span class="lang" aria-label="Language">
-        <button type="button" data-lang="en" class="is-active">EN</button>
-        <button type="button" data-lang="fr">FR</button>
+<main class="stage" id="stage">
+  <div class="bg-field"></div>
+  <div class="bg-glow" id="glow"></div>
+  <div class="bg-grain"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Leandro Sierra">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 34 34" fill="none">
+          <ellipse cx="17" cy="17" rx="15" ry="15" stroke="var(--tint)" stroke-width="1.2" opacity="0.45"/>
+          <ellipse cx="17" cy="17" rx="15" ry="6.5" stroke="var(--ink-soft)" stroke-width="1" opacity="0.3"/>
+          <circle cx="17" cy="17" r="3.4" fill="var(--tint)"/>
+          <circle cx="32" cy="17" r="1.8" fill="#34D399"/>
+        </svg>
       </span>
-    </nav>
+      <span class="brand-name">Leandro Sierra<small data-i18n="role">AI product developer</small></span>
+    </a>
+    <nav class="filters" id="filters" aria-label="Product families"></nav>
+    <div class="top-right">
+      <span class="lang" id="lang" aria-label="Language">
+        <button data-lang="en" class="on">EN</button>
+        <button data-lang="fr">FR</button>
+      </span>
+      <a class="pill" href="https://github.com/leandrosierra" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="slideshow" id="slideshow">
+      <div class="rail"><div class="rail-thumb" id="railThumb"></div></div>
+      <div class="track" id="track"></div>
+    </div>
+    <div class="panel"><div class="panel-card" id="panel"></div></div>
   </div>
-</header>
 
-<main id="top">
-  <div class="shell">
-    <section class="hero" aria-label="Intro">
-      <div>
-        <span class="eyebrow" data-i18n="eyebrow">Internet products, AI systems, production software</span>
-        <h1>Leandro Sierra</h1>
-        <p data-i18n="heroCopy">I design and ship focused web products: AI tools, regulatory assistants, operational software and useful public applications.</p>
-        <div class="hero-actions">
-          <a class="button" href="#products" data-i18n="seeProducts">View products</a>
-          <a class="button secondary" href="mailto:leandrosierra1@gmail.com" data-i18n="contactMe">Contact me</a>
-        </div>
-      </div>
-      <aside class="hero-board" aria-label="Portfolio metrics">
-        <div class="board-head">
-          <span>portfolio.leandro-sierra.com</span>
-          <span class="board-leds" aria-hidden="true"><span></span><span></span><span></span></span>
-        </div>
-        <div class="board-grid">
-          <div class="board-cell"><strong id="productTotal">0</strong><span data-i18n="metricProducts">published product lines</span></div>
-          <div class="board-cell"><strong>4</strong><span data-i18n="metricFamilies">software families</span></div>
-          <div class="board-cell"><strong>18+</strong><span data-i18n="metricYears">years building critical systems</span></div>
-          <div class="board-cell"><strong>FR/EN</strong><span data-i18n="metricMarket">available for remote work</span></div>
-          <div class="board-cell wide"><strong data-i18n="metricLine">From product idea to shipped web application.</strong><span data-i18n="metricLineSub">Architecture, UX, frontend, backend, AI integration, deployment.</span></div>
-        </div>
-      </aside>
-    </section>
-
-    <section id="products">
-      <div class="section-head">
-        <h2 data-i18n="productsTitle">Products designed and shipped.</h2>
-        <p class="section-copy" data-i18n="productsCopy">Short descriptions, direct links, one visual language. The point is simple: show the software, not decorate the process.</p>
-      </div>
-      <div class="filters" aria-label="Product filters">
-        <button class="filter is-active" type="button" data-filter="all" data-i18n="filterAll">All</button>
-        <button class="filter" type="button" data-filter="ai" data-i18n="filterAi">AI</button>
-        <button class="filter" type="button" data-filter="reg" data-i18n="filterReg">Regulation</button>
-        <button class="filter" type="button" data-filter="ops" data-i18n="filterOps">Operations</button>
-        <button class="filter" type="button" data-filter="public" data-i18n="filterPublic">Public apps</button>
-      </div>
-      <div class="product-grid" id="productGrid"></div>
-    </section>
-
-    <section id="stack">
-      <div class="section-head">
-        <h2 data-i18n="stackTitle">Technical range, product focus.</h2>
-        <p class="section-copy" data-i18n="stackCopy">The portfolio covers the full delivery path: interface, data, automation, AI, security and deployment.</p>
-      </div>
-      <div class="stack">
-        <div class="stack-item"><strong>Frontend</strong><span data-i18n="stackFrontend">Modern responsive interfaces, dashboards, forms, product pages and conversion flows.</span></div>
-        <div class="stack-item"><strong>Backend</strong><span data-i18n="stackBackend">APIs, data models, workflow logic, authentication and operational services.</span></div>
-        <div class="stack-item"><strong>AI</strong><span data-i18n="stackAi">Agentic workflows, tool use, product copilots, classification and decision support.</span></div>
-        <div class="stack-item"><strong>Ops</strong><span data-i18n="stackOps">Docker, nginx, product deployment, monitoring basics and production hygiene.</span></div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="contact">
-        <div>
-          <span class="eyebrow" data-i18n="contactEyebrow">Available for focused product work</span>
-          <h2 data-i18n="contactTitle">A product to clarify, automate or ship?</h2>
-          <p class="section-copy" data-i18n="contactCopy">I work best on concrete internet products: a useful tool, a workflow to automate, an AI assistant to integrate, or an MVP that needs to feel serious from day one.</p>
-        </div>
-        <div class="contact-lines">
-          <a href="mailto:leandrosierra1@gmail.com"><b>Email</b><span>leandrosierra1@gmail.com</span></a>
-          <a href="https://www.linkedin.com/in/leandro-sierra-ai/" target="_blank" rel="noopener"><b>LinkedIn</b><span>leandro-sierra-ai</span></a>
-          <span><b>Location</b><span>Avignon / Remote</span></span>
-        </div>
-      </div>
-    </section>
-  </div>
+  <footer class="footer">
+    <div class="count"><span data-i18n="footerLeft">Live products</span> · <b id="famActive">—</b></div>
+    <div class="scroll-hint">
+      <span class="wheel"></span>
+      <span data-i18n="scrollHint">Scroll to explore</span>
+    </div>
+    <div class="socials">
+      <a href="/cdn-cgi/l/email-protection#741811151a10061b071d1106061545341319151d185a171b19"><span class="__cf_email__" data-cfemail="92fef7f3fcf6e0fde1fbf7e0e0f3a3d2f5fff3fbfebcf1fdff">[email&#160;protected]</span></a>
+      <a href="https://www.linkedin.com/in/leandro-sierra-ai/" target="_blank" rel="noopener">linkedin</a>
+      <span data-i18n="location">Avignon / Remote</span>
+    </div>
+  </footer>
 </main>
 
-<footer>
-  <div class="shell">© 2026 Leandro Sierra. Internet products and AI software.</div>
-</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ---------- data (real products) ---------- */
+const products = [
+  { id:"portfolio", name:"Portfolio", family:"ops", url:"https://leandro-sierra.com", en:"The product index and technical presentation you are reading.", fr:"L’index produit et la présentation technique que vous consultez." },
+  { id:"accessibiliteexpress", name:"Accessibilité Express", family:"ops", url:"https://accessibiliteexpress.leandro-sierra.com", en:"Fast accessibility audit for clearer, more usable websites.", fr:"Audit rapide pour rendre un site plus lisible, accessible et actionnable." },
+  { id:"ageassuranceready", name:"Age Assurance Ready", family:"reg", url:"https://ageassuranceready.leandro-sierra.com", en:"Preparation for age checks, assurance flows and verification readiness.", fr:"Préparation aux contrôles d’âge, parcours d’assurance et vérifications." },
+  { id:"agentcommerceready", name:"Agent Commerce Ready", family:"ai", url:"https://agentcommerceready.leandro-sierra.com", en:"Readiness checklist for products sold through conversational agents.", fr:"Checklist pour préparer un produit au commerce via agents conversationnels." },
+  { id:"agentcostguard", name:"Agent Cost Guard", family:"ai", url:"https://agentcostguard.leandro-sierra.com", en:"Cost guardrails for AI-agent workloads and tool usage.", fr:"Garde-fous de coûts pour workloads d’agents IA et appels d’outils." },
+  { id:"agenticcontainmentready", name:"ScopeLock", family:"ai", url:"https://agenticcontainmentready.leandro-sierra.com", en:"Webapp B2B pour DSI/RSSI qui doivent sécuriser des agents IA autonomes avec accès outils: inventaire des permissions, sandboxing, kill switch…", fr:"Webapp B2B pour DSI/RSSI qui doivent sécuriser des agents IA autonomes avec accès outils: inventaire des permissions, sandboxing, kill switch…" },
+  { id:"aicodeprovenanceready", name:"AI Code Provenance Ready", family:"ai", url:"https://aicodeprovenanceready.leandro-sierra.com", en:"Evidence trail for AI-generated code and software provenance.", fr:"Traçabilité du code généré par IA et preuves d’origine logicielle." },
+  { id:"aipresencecheck", name:"AI Presence Check", family:"ai", url:"https://aipresencecheck.leandro-sierra.com", en:"Checks where AI appears in product and operational flows.", fr:"Repère où l’IA intervient dans les parcours produit et opérationnels." },
+  { id:"algodesk", name:"AlgoDesk", family:"ai", url:"https://algodesk.leandro-sierra.com", en:"Outil de conformité EU Platform Work Directive pour opérateurs de plateformes numériques : audit algorithme de gestion, registre travailleurs de…", fr:"Outil de conformité EU Platform Work Directive pour opérateurs de plateformes numériques : audit algorithme de gestion, registre travailleurs de…" },
+  { id:"autoentrepreneurai", name:"Auto Entrepreneur AI", family:"ops", url:"https://autoentrepreneurai.leandro-sierra.com", en:"Assistant for solo entrepreneurs, declarations and recurring obligations.", fr:"Assistant pour micro-entrepreneurs, déclarations et obligations récurrentes." },
+  { id:"babybox", name:"Babybox", family:"public", url:"https://babybox.leandro-sierra.com", en:"Parenting tracker for sleep, feeding and early routines.", fr:"Suivi parental pour sommeil, repas et routines des premiers mois." },
+  { id:"batteryduediligenceready", name:"BatteryDueDiligenceReady", family:"reg", url:"https://batteryduediligenceready.leandro-sierra.com", en:"Pré-audit conformité EU Battery Regulation pour importateurs, marques e-bike/électronique/outillage et distributeurs: due diligence fournisseurs…", fr:"Pré-audit conformité EU Battery Regulation pour importateurs, marques e-bike/électronique/outillage et distributeurs: due diligence fournisseurs…" },
+  { id:"batterypassportready", name:"Battery Passport Ready", family:"reg", url:"https://batterypassportready.leandro-sierra.com", en:"Battery passport readiness and product-data preparation.", fr:"Préparation au passeport batterie et aux données produit associées." },
+  { id:"brandwave", name:"Brandwave", family:"ai", url:"https://brandwave.leandro-sierra.com", en:"Générateur IA de jingles et d'identité sonore de marque : saisir nom de marque, secteur, personnalité (bold/warm/playful/pro) → recevoir un jingle…", fr:"Générateur IA de jingles et d'identité sonore de marque : saisir nom de marque, secteur, personnalité (bold/warm/playful/pro) → recevoir un jingle…" },
+  { id:"carvia", name:"Carvia", family:"ai", url:"https://carvia.leandro-sierra.com", en:"Assistant IA de reconversion professionnelle : inventaire de compétences transférables, cartographie de carrières compatibles, gap analysis, plan de…", fr:"Assistant IA de reconversion professionnelle : inventaire de compétences transférables, cartographie de carrières compatibles, gap analysis, plan de…" },
+  { id:"caspeo", name:"Caspeo", family:"ai", url:"https://caspeo.leandro-sierra.com", en:"Wizard de conformité MiCA (Markets in Crypto-Assets) pour les prestataires de services sur crypto-actifs (CASPs) : auto-diagnostic licence, checklist…", fr:"Wizard de conformité MiCA (Markets in Crypto-Assets) pour les prestataires de services sur crypto-actifs (CASPs) : auto-diagnostic licence, checklist…" },
+  { id:"cbamready", name:"CBAM Ready", family:"reg", url:"https://cbamready.leandro-sierra.com", en:"Readiness kit for carbon border adjustment obligations.", fr:"Kit de préparation au mécanisme carbone aux frontières." },
+  { id:"clickfixdefensekit", name:"ClickFixDefenseKit", family:"reg", url:"https://clickfixdefensekit.leandro-sierra.com", en:"Kit de prévention ClickFix pour PME, agences web et MSP: audit de site, checklist anti-faux captcha/clipboard, mini-simulateur de sensibilisation…", fr:"Kit de prévention ClickFix pour PME, agences web et MSP: audit de site, checklist anti-faux captcha/clipboard, mini-simulateur de sensibilisation…" },
+  { id:"coloradoaiactready", name:"Ailex", family:"ai", url:"https://coloradoaiactready.leandro-sierra.com", en:"Diagnostic de préparation Colorado AI Act (SB 205) pour deployers de systèmes IA à haut risque en RH, fintech, assurance, santé, éducation et legaltech…", fr:"Diagnostic de préparation Colorado AI Act (SB 205) pour deployers de systèmes IA à haut risque en RH, fintech, assurance, santé, éducation et legaltech…" },
+  { id:"consularswitchguide", name:"ConsularSwitchGuide", family:"ai", url:"https://consularswitchguide.leandro-sierra.com", en:"Guide SEO multilingue et checklist de préparation pour étrangers concernés par le basculement vers le consular processing US: scénarios, documents…", fr:"Guide SEO multilingue et checklist de préparation pour étrangers concernés par le basculement vers le consular processing US: scénarios, documents…" },
+  { id:"copyleftforkaudit", name:"Copyleftforkaudit", family:"reg", url:"https://copyleftforkaudit.leandro-sierra.com", en:"Live product deployed at copyleftforkaudit.leandro-sierra.com.", fr:"Produit live déployé sur copyleftforkaudit.leandro-sierra.com." },
+  { id:"craready", name:"CRA Ready", family:"reg", url:"https://craready.leandro-sierra.com", en:"Cyber Resilience Act preparation for digital products.", fr:"Préparation au Cyber Resilience Act pour produits numériques." },
+  { id:"dataactready", name:"DataActReady", family:"reg", url:"https://dataactready.leandro-sierra.com", en:"Kit de conformité EU Data Act pour fabricants IoT, SaaS liés à des produits connectés et PME industrielles : diagnostic obligations data access, modèle…", fr:"Kit de conformité EU Data Act pour fabricants IoT, SaaS liés à des produits connectés et PME industrielles : diagnostic obligations data access, modèle…" },
+  { id:"datastoryai", name:"DataStoryAI", family:"ai", url:"https://datastoryai.leandro-sierra.com", en:"Visualisation de données + narrative IA automatique : transforme des CSV/Excel en dashboards interactifs avec explications rédigées par IA. Cible les…", fr:"Visualisation de données + narrative IA automatique : transforme des CSV/Excel en dashboards interactifs avec explications rédigées par IA. Cible les…" },
+  { id:"devaitools", name:"DevAI Tools", family:"ai", url:"https://devai-tools.leandro-sierra.com", en:"Tooling for developers integrating AI into real products.", fr:"Boîte à outils pour développeurs qui intègrent l’IA dans des produits." },
+  { id:"devicesunsetcheck", name:"Device Sunset Check", family:"ops", url:"https://devicesunsetcheck.leandro-sierra.com", en:"End-of-support checks, risk view and replacement planning.", fr:"Contrôle de fin de support, risques et plan de remplacement." },
+  { id:"digitaleuroready", name:"DigitalEuroReady", family:"reg", url:"https://digitaleuroready.leandro-sierra.com", en:"Diagnostic pour PSP, banques locales, fintechs et e-commerçants préparant l’acceptation/distribution du futur euro numérique: parcours wallet…", fr:"Diagnostic pour PSP, banques locales, fintechs et e-commerçants préparant l’acceptation/distribution du futur euro numérique: parcours wallet…" },
+  { id:"digitalproductpassportready", name:"Digital Product Passport Ready", family:"reg", url:"https://digitalproductpassportready.leandro-sierra.com", en:"Readiness path for digital product passports.", fr:"Parcours de préparation aux passeports numériques produits." },
+  { id:"disclo", name:"Disclo", family:"ai", url:"https://disclo.leandro-sierra.com", en:"Outil de préparation CSRD (Corporate Sustainability Reporting Directive) pour entreprises EU 250+ salariés : évaluation de matérialité double, collecte…", fr:"Outil de préparation CSRD (Corporate Sustainability Reporting Directive) pour entreprises EU 250+ salariés : évaluation de matérialité double, collecte…" },
+  { id:"doravendorready", name:"DORA Vendor Ready", family:"reg", url:"https://doravendorready.leandro-sierra.com", en:"Supplier readiness for DORA operational resilience requirements.", fr:"Préparation fournisseur aux exigences de résilience opérationnelle DORA." },
+  { id:"dutio", name:"Dutio", family:"public", url:"https://dutio.leandro-sierra.com", en:"Outil interactif de conformité douanière pour e-commerçants ciblant l'UE : calculateur de droits de douane post-de minimis (fin exemption <150€ au 1er…", fr:"Outil interactif de conformité douanière pour e-commerçants ciblant l'UE : calculateur de droits de douane post-de minimis (fin exemption <150€ au 1er…" },
+  { id:"einvoicingfranceready", name:"E-Invoicing France Ready", family:"reg", url:"https://einvoicingfranceready.leandro-sierra.com", en:"French e-invoicing reform preparation.", fr:"Préparation à la réforme française de la facture électronique." },
+  { id:"equive", name:"Equive", family:"ai", url:"https://equive.leandro-sierra.com", en:"Outil de conformité EU Pay Transparency Directive pour RH et DG : wizard d'évaluation des emplois à critères neutres, calcul et déclaration des écarts…", fr:"Outil de conformité EU Pay Transparency Directive pour RH et DG : wizard d'évaluation des emplois à critères neutres, calcul et déclaration des écarts…" },
+  { id:"factureelectroniqueready", name:"Facture Électronique Ready", family:"reg", url:"https://factureelectroniqueready.leandro-sierra.com", en:"Clear implementation path for e-invoicing obligations.", fr:"Parcours clair pour anticiper les obligations de facture électronique." },
+  { id:"fidaopenfinanceready", name:"FiDA Open Finance Ready", family:"reg", url:"https://fidaopenfinanceready.leandro-sierra.com", en:"Open-finance readiness for FiDA obligations.", fr:"Préparation open finance pour les obligations FiDA." },
+  { id:"focali", name:"Focali", family:"ai", url:"https://focali.leandro-sierra.com", en:"App de productivité conçue pour les cerveaux ADHD/neurodivergents : chunking de tâches adaptatif, time-boxing visuel, mode 'body doubling' virtuel…", fr:"App de productivité conçue pour les cerveaux ADHD/neurodivergents : chunking de tâches adaptatif, time-boxing visuel, mode 'body doubling' virtuel…" },
+  { id:"framepulse", name:"FramePulse", family:"ops", url:"https://framepulse.leandro-sierra.com", en:"Studio web grand public pour transformer une photo produit, une idée de post ou une annonce locale en storyboard court, variantes de hooks, assets…", fr:"Studio web grand public pour transformer une photo produit, une idée de post ou une annonce locale en storyboard court, variantes de hooks, assets…" },
+  { id:"friggo", name:"Friggo", family:"ai", url:"https://friggo.leandro-sierra.com", en:"Assistant IA de recettes personnalisées depuis les ingrédients disponibles dans le frigo ou placard : saisie rapide ou reconnaissance photo, recettes…", fr:"Assistant IA de recettes personnalisées depuis les ingrédients disponibles dans le frigo ou placard : saisie rapide ou reconnaissance photo, recettes…" },
+  { id:"gatelens", name:"GateLens", family:"ai", url:"https://gatelens.leandro-sierra.com", en:"Outil d'analyse de conformité Digital Markets Act (DMA) pour plateformes, entreprises tech et leurs partenaires commerciaux : diagnostic exposition…", fr:"Outil d'analyse de conformité Digital Markets Act (DMA) pour plateformes, entreprises tech et leurs partenaires commerciaux : diagnostic exposition…" },
+  { id:"gpsrready", name:"GPSR Ready", family:"reg", url:"https://gpsrready.leandro-sierra.com", en:"General Product Safety Regulation readiness.", fr:"Préparation au règlement sur la sécurité générale des produits." },
+  { id:"hierarchie", name:"Hiérarchie", family:"public", url:"https://hierarchie.leandro-sierra.com", en:"Visual exploration of geographic and administrative structures.", fr:"Exploration visuelle de structures géographiques et administratives." },
+  { id:"highriskaiclassifier", name:"High Risk AI Classifier", family:"ai", url:"https://highriskaiclassifier.leandro-sierra.com", en:"Fast AI use-case classification against high-risk obligations.", fr:"Classification rapide des cas IA face aux obligations high-risk." },
+  { id:"immifrance", name:"ImmiFrance", family:"public", url:"https://immifrance.leandro-sierra.com", en:"Guidance for navigating French immigration procedures.", fr:"Aide à la lecture des parcours administratifs d’immigration française." },
+  { id:"instantpayready", name:"Instant Pay Ready", family:"reg", url:"https://instantpayready.leandro-sierra.com", en:"Instant-payment readiness and operational impact mapping.", fr:"Préparation aux paiements instantanés et impacts opérationnels." },
+  { id:"kinora", name:"Kinora", family:"public", url:"https://kinora.leandro-sierra.com", en:"Coach sportif et nutritionnel IA en français : plans d'entraînement personnalisés (niveau, équipement, objectif), suivi nutrition avec calcul macros…", fr:"Coach sportif et nutritionnel IA en français : plans d'entraînement personnalisés (niveau, équipement, objectif), suivi nutrition avec calcul macros…" },
+  { id:"maplore", name:"Maplore", family:"public", url:"https://maplore.leandro-sierra.com", en:"App web grand public pour cartographier sa vie en voyages et lieux vécus : épingler les pays/villes visités, enrichir avec photos et souvenirs, générer…", fr:"App web grand public pour cartographier sa vie en voyages et lieux vécus : épingler les pays/villes visités, enrichir avec photos et souvenirs, générer…" },
+  { id:"mcpsecurityready", name:"MCP Security Ready", family:"ai", url:"https://mcpsecurityready.leandro-sierra.com", en:"Security checks for MCP integrations and agent toolchains.", fr:"Contrôles sécurité pour intégrations MCP et chaînes d’outils agents." },
+  { id:"mecanex", name:"Mecanex", family:"ops", url:"https://mecanex.leandro-sierra.com", en:"SaaS de mise en conformité au Règlement UE Machines 2023/1230 (obligatoire janvier 2027, remplace directive 2006/42) : checklist d'écart par rapport à…", fr:"SaaS de mise en conformité au Règlement UE Machines 2023/1230 (obligatoire janvier 2027, remplace directive 2006/42) : checklist d'écart par rapport à…" },
+  { id:"methaneimportready", name:"Methane Import Ready", family:"reg", url:"https://methaneimportready.leandro-sierra.com", en:"Methane import readiness and reporting preparation.", fr:"Préparation aux obligations d’import méthane et reporting." },
+  { id:"mondio", name:"Mondio", family:"public", url:"https://mondio.leandro-sierra.com", en:"Quiz quotidien de culture mondiale façon Wordle : une question par jour sur géographie, histoire, science, culture — résultat partageable, streak…", fr:"Quiz quotidien de culture mondiale façon Wordle : une question par jour sur géographie, histoire, science, culture — résultat partageable, streak…" },
+  { id:"nis2supplierkit", name:"NIS2 Supplier Kit", family:"reg", url:"https://nis2supplierkit.leandro-sierra.com", en:"Supplier kit for NIS2 cybersecurity requirements.", fr:"Kit fournisseur pour exigences cybersécurité NIS2." },
+  { id:"nixor", name:"Nixor", family:"ai", url:"https://nixor.leandro-sierra.com", en:"Plateforme de conformité NIS2 pour entreprises essentielles et importantes en Europe : classification entité (essentiel/important), inventaire…", fr:"Plateforme de conformité NIS2 pour entreprises essentielles et importantes en Europe : classification entité (essentiel/important), inventaire…" },
+  { id:"nomadico", name:"Nomadico", family:"public", url:"https://nomadico.leandro-sierra.com", en:"Hub de référence pour digital nomads francophones : base de données visas nomades avec calculateur d'éligibilité par nationalité/durée, comparateur…", fr:"Hub de référence pour digital nomads francophones : base de données visas nomades avec calculateur d'éligibilité par nationalité/durée, comparateur…" },
+  { id:"nostalgix", name:"Nostalgix", family:"public", url:"https://nostalgix.leandro-sierra.com", en:"Colorisation IA de photos N&B familiales et d'archives : upload d'une photo, résultat colorisé HD en 20 secondes, options de style (vintage, naturel…", fr:"Colorisation IA de photos N&B familiales et d'archives : upload d'une photo, résultat colorisé HD en 20 secondes, options de style (vintage, naturel…" },
+  { id:"opensourceforkshield", name:"Open Source Fork Shield", family:"ops", url:"https://opensourceforkshield.leandro-sierra.com", en:"Risk checks for forks, dependencies and open-source exposure.", fr:"Évaluation des risques de forks, dépendances et exposition open source." },
+  { id:"pawio", name:"Pawio", family:"public", url:"https://pawio.leandro-sierra.com", en:"Assistant santé animale IA pour propriétaires de chiens et chats : analyse de symptômes, conseils vétérinaires, carnet de santé numérique, rappels…", fr:"Assistant santé animale IA pour propriétaires de chiens et chats : analyse de symptômes, conseils vétérinaires, carnet de santé numérique, rappels…" },
+  { id:"paytransparencyready", name:"Pay Transparency Ready", family:"reg", url:"https://paytransparencyready.leandro-sierra.com", en:"Preparation for pay transparency requirements.", fr:"Préparation aux exigences de transparence salariale." },
+  { id:"pentestai", name:"PentestAI", family:"ai", url:"https://pentestai.leandro-sierra.com", en:"AI-assisted security testing lab.", fr:"Laboratoire outillé pour tests sécurité assistés par IA." },
+  { id:"pickora", name:"Pickora", family:"reg", url:"https://pickora.leandro-sierra.com", en:"App grand public de décision d’achat qui transforme liens produits, captures d’écran, besoins et budget en tableau comparatif visuel: fiches…", fr:"App grand public de décision d’achat qui transforme liens produits, captures d’écran, besoins et budget en tableau comparatif visuel: fiches…" },
+  { id:"pop", name:"Pop", family:"public", url:"https://pop.leandro-sierra.com", en:"Civic product for debates, proposals and local participation.", fr:"Produit citoyen pour débats, propositions et participation locale." },
+  { id:"popbackend", name:"Pop Backend", family:"ops", url:"https://api.pop.leandro-sierra.com", en:"API and data foundation for the civic participation product.", fr:"API et socle données du produit de participation citoyenne." },
+  { id:"postquantumready", name:"Post Quantum Ready", family:"reg", url:"https://postquantumready.leandro-sierra.com", en:"Preparation for post-quantum cryptography risks.", fr:"Préparation aux risques cryptographiques post-quantiques." },
+  { id:"ppwrready", name:"PPWR Ready", family:"reg", url:"https://ppwrready.leandro-sierra.com", en:"Readiness for packaging and packaging-waste regulation.", fr:"Préparation au règlement emballages et déchets d’emballages." },
+  { id:"repowereugasimportready", name:"REPowerEU Gas Import Ready", family:"reg", url:"https://repowereugasimportready.leandro-sierra.com", en:"Gas import controls and energy-data readiness.", fr:"Préparation aux contrôles gaz import et données énergie." },
+  { id:"revio", name:"Revio", family:"ai", url:"https://revio.leandro-sierra.com", en:"Journal de rêves IA avec interprétation personnalisée : saisie vocale ou texte au réveil, interprétation symbolique par IA (archétypes, émotions…", fr:"Journal de rêves IA avec interprétation personnalisée : saisie vocale ou texte au réveil, interprétation symbolique par IA (archétypes, émotions…" },
+  { id:"seafoodsanctionswatch", name:"SeafoodSanctionsWatch", family:"reg", url:"https://seafoodsanctionswatch.leandro-sierra.com", en:"Veille SEO-first pour importateurs, distributeurs et restaurateurs sur risques de sanctions seafood: pays/espèces à risque, pétitions/règles US-EU…", fr:"Veille SEO-first pour importateurs, distributeurs et restaurateurs sur risques de sanctions seafood: pays/espèces à risque, pétitions/règles US-EU…" },
+  { id:"siteblockingappealready", name:"SiteBlockingAppealReady", family:"reg", url:"https://siteblockingappealready.leandro-sierra.com", en:"Kit B2B pour sites légitimes, SaaS, médias, e-commerce et agences SEO qui détectent les blocages DNS/ISP/anti-piratage abusifs: monitoring…", fr:"Kit B2B pour sites légitimes, SaaS, médias, e-commerce et agences SEO qui détectent les blocages DNS/ISP/anti-piratage abusifs: monitoring…" },
+  { id:"softwareproductliabilityready", name:"Software Product Liability Ready", family:"reg", url:"https://softwareproductliabilityready.leandro-sierra.com", en:"Software product-liability risk preparation.", fr:"Préparation aux risques de responsabilité produit logiciel." },
+  { id:"solario", name:"Solario", family:"ai", url:"https://solario.leandro-sierra.com", en:"Simulateur interactif de rentabilité solaire pour propriétaires FR : saisie logement (surface, orientation, région) + consommation électrique → calcul…", fr:"Simulateur interactif de rentabilité solaire pour propriétaires FR : saisie logement (surface, orientation, région) + consommation électrique → calcul…" },
+  { id:"sonosphere", name:"Sonosphere", family:"ai", url:"https://sonosphere.leandro-sierra.com", en:"Globe interactif des sons ambiants du monde : cliquez sur n'importe quelle ville ou lieu emblématique pour écouter une ambiance sonore immersive…", fr:"Globe interactif des sons ambiants du monde : cliquez sur n'importe quelle ville ou lieu emblématique pour écouter une ambiance sonore immersive…" },
+  { id:"stateside", name:"Stateside", family:"ai", url:"https://stateside.leandro-sierra.com", en:"Guide SEO multilingue pour non-Américains souhaitant immigrer, travailler ou maintenir leur statut aux USA dans le contexte Trump 2026 (green card…", fr:"Guide SEO multilingue pour non-Américains souhaitant immigrer, travailler ou maintenir leur statut aux USA dans le contexte Trump 2026 (green card…" },
+  { id:"stylio", name:"Stylio", family:"ai", url:"https://stylio.leandro-sierra.com", en:"App grand public de stylisme IA : photo de garde-robe → inventaire visuel, suggestions de tenues du jour par IA selon météo/occasion, coach style…", fr:"App grand public de stylisme IA : photo de garde-robe → inventaire visuel, suggestions de tenues du jour par IA selon météo/occasion, coach style…" },
+  { id:"subsidra", name:"Subsidra", family:"ai", url:"https://subsidra.leandro-sierra.com", en:"Plateforme de conformité EU Foreign Subsidies Regulation (FSR) pour entreprises répondant à des marchés publics européens ou réalisant des M&A…", fr:"Plateforme de conformité EU Foreign Subsidies Regulation (FSR) pour entreprises répondant à des marchés publics européens ou réalisant des M&A…" },
+  { id:"synkly", name:"Synkly", family:"ai", url:"https://synkly.leandro-sierra.com", en:"Outil ESG simplifié pour PME soumises aux questionnaires supply chain de leurs grands donneurs d'ordre (post-directive Omnibus qui a sorti 80% des…", fr:"Outil ESG simplifié pour PME soumises aux questionnaires supply chain de leurs grands donneurs d'ordre (post-directive Omnibus qui a sorti 80% des…" },
+  { id:"tracio", name:"Tracio", family:"ai", url:"https://tracio.leandro-sierra.com", en:"App grand public de cartographie visuelle de sa vie : timeline interactive avec géolocalisation des souvenirs, jalons personnels, photos, IA qui aide à…", fr:"App grand public de cartographie visuelle de sa vie : timeline interactive avec géolocalisation des souvenirs, jalons personnels, photos, IA qui aide à…" },
+  { id:"verdeo", name:"Verdeo", family:"ai", url:"https://verdeo.leandro-sierra.com", en:"Outil d'audit des allégations environnementales pour équipes marketing et PME : vérifie la conformité EU Green Claims Directive (sanctions jusqu'à 4%…", fr:"Outil d'audit des allégations environnementales pour équipes marketing et PME : vérifie la conformité EU Green Claims Directive (sanctions jusqu'à 4%…" },
+  { id:"voicerightswatch", name:"VoiceRightsWatch", family:"reg", url:"https://voicerightswatch.leandro-sierra.com", en:"Centre de ressources et pré-audit pour créateurs, podcasteurs et familles sur les risques de clonage vocal IA : checklist consentement, modèles de…", fr:"Centre de ressources et pré-audit pour créateurs, podcasteurs et familles sur les risques de clonage vocal IA : checklist consentement, modèles de…" },
+  { id:"voxia", name:"Voxia", family:"reg", url:"https://voxia.leandro-sierra.com", en:"Plateforme SaaS de signalement interne anonyme conforme à la Directive EU Whistleblowing (2019/1937) pour entreprises 50+ salariés : canal de…", fr:"Plateforme SaaS de signalement interne anonyme conforme à la Directive EU Whistleblowing (2019/1937) pour entreprises 50+ salariés : canal de…" },
+  { id:"vpnblockwatch", name:"VPNBlockWatch", family:"ai", url:"https://vpnblockwatch.leandro-sierra.com", en:"Observatoire FR/EN des blocages VPN, DNS et accès contenus en Europe pour consommateurs, expatriés, streamers et petites équipes: alertes…", fr:"Observatoire FR/EN des blocages VPN, DNS et accès contenus en Europe pour consommateurs, expatriés, streamers et petites équipes: alertes…" },
+  { id:"wellova", name:"Wellova", family:"ai", url:"https://wellova.leandro-sierra.com", en:"Compagnon de bien-être émotionnel quotidien : check-in en 30 secondes (humeur, énergie, gratitude), Wellova construit une courbe de bien-être…", fr:"Compagnon de bien-être émotionnel quotidien : check-in en 30 secondes (humeur, énergie, gratitude), Wellova construit une courbe de bien-être…" },
+  { id:"workflowai", name:"WorkflowAI", family:"ai", url:"https://workflowai.leandro-sierra.com", en:"Orchestration d'agents IA pour PMEs : automatise les workflows métier (factures, emails, approvals, data entry) en coordonnant plusieurs micro-agents…", fr:"Orchestration d'agents IA pour PMEs : automatise les workflows métier (factures, emails, approvals, data entry) en coordonnant plusieurs micro-agents…" }
+];
 
-<script>
-const copy = {
+const TINT = { ai:"#5B8CFF", reg:"#34D399", ops:"#F2B33D", public:"#B388FF" };
+
+const i18n = {
   en: {
-    role: "AI product developer",
-    navProducts: "Products",
-    navStack: "Stack",
-    navContact: "Contact",
-    eyebrow: "Internet products, AI systems, production software",
-    heroCopy: "I design and ship focused web products: AI tools, regulatory assistants, operational software and useful public applications.",
-    seeProducts: "View products",
-    contactMe: "Contact me",
-    metricProducts: "published product lines",
-    metricFamilies: "software families",
-    metricYears: "years building critical systems",
-    metricMarket: "available for remote work",
-    metricLine: "From product idea to shipped web application.",
-    metricLineSub: "Architecture, UX, frontend, backend, AI integration, deployment.",
-    productsTitle: "Products designed and shipped.",
-    productsCopy: "Short descriptions, direct links, one visual language. The point is simple: show the software, not decorate the process.",
-    filterAll: "All",
-    filterAi: "AI",
-    filterReg: "Regulation",
-    filterOps: "Operations",
-    filterPublic: "Public apps",
-    stackTitle: "Technical range, product focus.",
-    stackCopy: "The portfolio covers the full delivery path: interface, data, automation, AI, security and deployment.",
-    stackFrontend: "Modern responsive interfaces, dashboards, forms, product pages and conversion flows.",
-    stackBackend: "APIs, data models, workflow logic, authentication and operational services.",
-    stackAi: "Agentic workflows, tool use, product copilots, classification and decision support.",
-    stackOps: "Docker, nginx, product deployment, monitoring basics and production hygiene.",
-    contactEyebrow: "Available for focused product work",
-    contactTitle: "A product to clarify, automate or ship?",
-    contactCopy: "I work best on concrete internet products: a useful tool, a workflow to automate, an AI assistant to integrate, or an MVP that needs to feel serious from day one.",
-    open: "Open"
+    role:"AI product developer", scrollHint:"Scroll to explore", footerLeft:"Live products",
+    location:"Avignon / Remote", open:"Open", source:"Source",
+    fam:{ ai:"AI", reg:"Regulation", ops:"Operations", public:"Public app" },
+    filt:{ all:"All", ai:"AI", reg:"Regulation", ops:"Operations", public:"Public" }
   },
   fr: {
-    role: "concepteur de produits IA",
-    navProducts: "Produits",
-    navStack: "Stack",
-    navContact: "Contact",
-    eyebrow: "Produits internet, systèmes IA, logiciel en production",
-    heroCopy: "Je conçois et livre des produits web ciblés : outils IA, assistants réglementaires, logiciels opérationnels et applications publiques utiles.",
-    seeProducts: "Voir les produits",
-    contactMe: "Me contacter",
-    metricProducts: "lignes de produits publiées",
-    metricFamilies: "familles logicielles",
-    metricYears: "ans sur systèmes critiques",
-    metricMarket: "disponible à distance",
-    metricLine: "De l’idée produit à l’application web publiée.",
-    metricLineSub: "Architecture, UX, frontend, backend, intégration IA, déploiement.",
-    productsTitle: "Produits conçus et livrés.",
-    productsCopy: "Descriptions courtes, liens directs, langage visuel unique. L’objectif est simple : montrer les produits, pas décorer le processus.",
-    filterAll: "Tous",
-    filterAi: "IA",
-    filterReg: "Réglementaire",
-    filterOps: "Opérations",
-    filterPublic: "Apps publiques",
-    stackTitle: "Largeur technique, focus produit.",
-    stackCopy: "Le portfolio couvre toute la chaîne : interface, données, automatisation, IA, sécurité et déploiement.",
-    stackFrontend: "Interfaces modernes, dashboards, formulaires, pages produit et parcours de conversion.",
-    stackBackend: "APIs, modèles de données, logique métier, authentification et services opérationnels.",
-    stackAi: "Workflows agentiques, appels d’outils, copilotes produit, classification et aide à la décision.",
-    stackOps: "Docker, nginx, déploiement produit, bases de monitoring et hygiène de production.",
-    contactEyebrow: "Disponible pour du produit concret",
-    contactTitle: "Un produit à clarifier, automatiser ou publier ?",
-    contactCopy: "Je suis le plus utile sur des produits internet concrets : un outil utile, un workflow à automatiser, un assistant IA à intégrer, ou un MVP qui doit faire sérieux dès le premier jour.",
-    open: "Ouvrir"
+    role:"Concepteur de produits IA", scrollHint:"Molette pour explorer", footerLeft:"Produits live",
+    location:"Avignon / À distance", open:"Ouvrir", source:"Code",
+    fam:{ ai:"IA", reg:"Réglementaire", ops:"Opérations", public:"App publique" },
+    filt:{ all:"Tous", ai:"IA", reg:"Réglementaire", ops:"Opérations", public:"Apps publiques" }
   }
 };
 
-const labels = {
-  en: { ai: "AI", reg: "Regulation", ops: "Operations", public: "Public app" },
-  fr: { ai: "IA", reg: "Réglementaire", ops: "Opérations", public: "App publique" }
-};
-
-const products = [
-  { id: "accessibiliteexpress", name: "Accessibilité Express", family: "ops", url: "https://accessibiliteexpress.leandro-sierra.com", en: "Fast accessibility audit for clearer, more usable websites.", fr: "Audit rapide pour rendre un site plus lisible, accessible et actionnable." },
-  { id: "ageassuranceready", name: "Age Assurance Ready", family: "reg", url: "https://ageassuranceready.leandro-sierra.com", en: "Preparation for age checks, assurance flows and verification readiness.", fr: "Préparation aux contrôles d’âge, parcours d’assurance et vérifications." },
-  { id: "agentcommerceready", name: "Agent Commerce Ready", family: "ai", url: "https://agentcommerceready.leandro-sierra.com", en: "Readiness checklist for products sold through conversational agents.", fr: "Checklist pour préparer un produit au commerce via agents conversationnels." },
-  { id: "agentcostguard", name: "Agent Cost Guard", family: "ai", url: "https://agentcostguard.leandro-sierra.com", en: "Cost guardrails for AI-agent workloads and tool usage.", fr: "Garde-fous de coûts pour workloads d’agents IA et appels d’outils." },
-  { id: "aicodeprovenanceready", name: "AI Code Provenance Ready", family: "ai", url: "https://aicodeprovenanceready.leandro-sierra.com", en: "Evidence trail for AI-generated code and software provenance.", fr: "Traçabilité du code généré par IA et preuves d’origine logicielle." },
-  { id: "aipresencecheck", name: "AI Presence Check", family: "ai", url: "https://aipresencecheck.leandro-sierra.com", en: "Checks where AI appears in product and operational flows.", fr: "Repère où l’IA intervient dans les parcours produit et opérationnels." },
-  { id: "autoentrepreneurai", name: "Auto Entrepreneur AI", family: "ops", url: "https://autoentrepreneurai.leandro-sierra.com", en: "Assistant for solo entrepreneurs, declarations and recurring obligations.", fr: "Assistant pour micro-entrepreneurs, déclarations et obligations récurrentes." },
-  { id: "babybox", name: "Babybox", family: "public", url: "https://babybox.leandro-sierra.com", en: "Parenting tracker for sleep, feeding and early routines.", fr: "Suivi parental pour sommeil, repas et routines des premiers mois." },
-  { id: "batterypassportready", name: "Battery Passport Ready", family: "reg", url: "https://batterypassportready.leandro-sierra.com", en: "Battery passport readiness and product-data preparation.", fr: "Préparation au passeport batterie et aux données produit associées." },
-  { id: "cbamready", name: "CBAM Ready", family: "reg", url: "https://cbamready.leandro-sierra.com", en: "Readiness kit for carbon border adjustment obligations.", fr: "Kit de préparation au mécanisme carbone aux frontières." },
-  { id: "craready", name: "CRA Ready", family: "reg", url: "https://craready.leandro-sierra.com", en: "Cyber Resilience Act preparation for digital products.", fr: "Préparation au Cyber Resilience Act pour produits numériques." },
-  { id: "devaitools", name: "DevAI Tools", family: "ai", url: "https://devai-tools.leandro-sierra.com", en: "Tooling for developers integrating AI into real products.", fr: "Boîte à outils pour développeurs qui intègrent l’IA dans des produits." },
-  { id: "devicesunsetcheck", name: "Device Sunset Check", family: "ops", url: "https://devicesunsetcheck.leandro-sierra.com", en: "End-of-support checks, risk view and replacement planning.", fr: "Contrôle de fin de support, risques et plan de remplacement." },
-  { id: "digitalproductpassportready", name: "Digital Product Passport Ready", family: "reg", url: "https://digitalproductpassportready.leandro-sierra.com", en: "Readiness path for digital product passports.", fr: "Parcours de préparation aux passeports numériques produits." },
-  { id: "doravendorready", name: "DORA Vendor Ready", family: "reg", url: "https://doravendorready.leandro-sierra.com", en: "Supplier readiness for DORA operational resilience requirements.", fr: "Préparation fournisseur aux exigences de résilience opérationnelle DORA." },
-  { id: "einvoicingfranceready", name: "E-Invoicing France Ready", family: "reg", url: "https://einvoicingfranceready.leandro-sierra.com", en: "French e-invoicing reform preparation.", fr: "Préparation à la réforme française de la facture électronique." },
-  { id: "factureelectroniqueready", name: "Facture Électronique Ready", family: "reg", url: "https://factureelectroniqueready.leandro-sierra.com", en: "Clear implementation path for e-invoicing obligations.", fr: "Parcours clair pour anticiper les obligations de facture électronique." },
-  { id: "fidaopenfinanceready", name: "FiDA Open Finance Ready", family: "reg", url: "https://fidaopenfinanceready.leandro-sierra.com", en: "Open-finance readiness for FiDA obligations.", fr: "Préparation open finance pour les obligations FiDA." },
-  { id: "gpsrready", name: "GPSR Ready", family: "reg", url: "https://gpsrready.leandro-sierra.com", en: "General Product Safety Regulation readiness.", fr: "Préparation au règlement sur la sécurité générale des produits." },
-  { id: "hierarchie", name: "Hiérarchie", family: "public", url: "https://hierarchie.leandro-sierra.com", en: "Visual exploration of geographic and administrative structures.", fr: "Exploration visuelle de structures géographiques et administratives." },
-  { id: "highriskaiclassifier", name: "High Risk AI Classifier", family: "ai", url: "https://highriskaiclassifier.leandro-sierra.com", en: "Fast AI use-case classification against high-risk obligations.", fr: "Classification rapide des cas IA face aux obligations high-risk." },
-  { id: "immifrance", name: "ImmiFrance", family: "public", url: "https://immifrance.leandro-sierra.com", en: "Guidance for navigating French immigration procedures.", fr: "Aide à la lecture des parcours administratifs d’immigration française." },
-  { id: "instantpayready", name: "Instant Pay Ready", family: "reg", url: "https://instantpayready.leandro-sierra.com", en: "Instant-payment readiness and operational impact mapping.", fr: "Préparation aux paiements instantanés et impacts opérationnels." },
-  { id: "mcpsecurityready", name: "MCP Security Ready", family: "ai", url: "https://mcpsecurityready.leandro-sierra.com", en: "Security checks for MCP integrations and agent toolchains.", fr: "Contrôles sécurité pour intégrations MCP et chaînes d’outils agents." },
-  { id: "methaneimportready", name: "Methane Import Ready", family: "reg", url: "https://methaneimportready.leandro-sierra.com", en: "Methane import readiness and reporting preparation.", fr: "Préparation aux obligations d’import méthane et reporting." },
-  { id: "nis2supplierkit", name: "NIS2 Supplier Kit", family: "reg", url: "https://nis2supplierkit.leandro-sierra.com", en: "Supplier kit for NIS2 cybersecurity requirements.", fr: "Kit fournisseur pour exigences cybersécurité NIS2." },
-  { id: "opensourceforkshield", name: "Open Source Fork Shield", family: "ops", url: "https://opensourceforkshield.leandro-sierra.com", en: "Risk checks for forks, dependencies and open-source exposure.", fr: "Évaluation des risques de forks, dépendances et exposition open source." },
-  { id: "paytransparencyready", name: "Pay Transparency Ready", family: "reg", url: "https://paytransparencyready.leandro-sierra.com", en: "Preparation for pay transparency requirements.", fr: "Préparation aux exigences de transparence salariale." },
-  { id: "pentestai", name: "PentestAI", family: "ai", url: "https://pentestai.leandro-sierra.com", en: "AI-assisted security testing lab.", fr: "Laboratoire outillé pour tests sécurité assistés par IA." },
-  { id: "popbackend", name: "Pop Backend", family: "ops", url: "https://api.pop.leandro-sierra.com", en: "API and data foundation for the civic participation product.", fr: "API et socle données du produit de participation citoyenne." },
-  { id: "pop", name: "Pop", family: "public", url: "https://pop.leandro-sierra.com", en: "Civic product for debates, proposals and local participation.", fr: "Produit citoyen pour débats, propositions et participation locale." },
-  { id: "portfolio", name: "Portfolio", family: "ops", url: "https://leandro-sierra.com", en: "The product index and technical presentation you are reading.", fr: "L’index produit et la présentation technique que vous consultez." },
-  { id: "postquantumready", name: "Post Quantum Ready", family: "reg", url: "https://postquantumready.leandro-sierra.com", en: "Preparation for post-quantum cryptography risks.", fr: "Préparation aux risques cryptographiques post-quantiques." },
-  { id: "ppwrready", name: "PPWR Ready", family: "reg", url: "https://ppwrready.leandro-sierra.com", en: "Readiness for packaging and packaging-waste regulation.", fr: "Préparation au règlement emballages et déchets d’emballages." },
-  { id: "repowereugasimportready", name: "REPowerEU Gas Import Ready", family: "reg", url: "https://repowereugasimportready.leandro-sierra.com", en: "Gas import controls and energy-data readiness.", fr: "Préparation aux contrôles gaz import et données énergie." },
-  { id: "softwareproductliabilityready", name: "Software Product Liability Ready", family: "reg", url: "https://softwareproductliabilityready.leandro-sierra.com", en: "Software product-liability risk preparation.", fr: "Préparation aux risques de responsabilité produit logiciel." }
-];
-
-const accents = {
-  ai: "var(--blue)",
-  reg: "var(--green)",
-  ops: "var(--amber)",
-  public: "var(--violet)"
-};
-
+/* ---------- state ---------- */
 let lang = localStorage.getItem("portfolio-lang") || "en";
 let activeFilter = "all";
+let view = [];
+let cards = [];
+let progress = 0, target = 0, lastActive = -1;
 
-function hashCode(text) {
-  let hash = 0;
-  for (let i = 0; i < text.length; i += 1) hash = ((hash << 5) - hash + text.charCodeAt(i)) | 0;
-  return Math.abs(hash);
+const GAP = 128, ANGLE = 18, DEPTH = 122;
+
+const stage = document.getElementById("stage");
+const glow = document.getElementById("glow");
+const track = document.getElementById("track");
+const panel = document.getElementById("panel");
+const railThumb = document.getElementById("railThumb");
+const rail = document.querySelector(".rail");
+const slideshow = document.getElementById("slideshow");
+const famActive = document.getElementById("famActive");
+
+const clamp = (v,a,b) => Math.max(a, Math.min(b,v));
+const pad2 = n => String(n+1).padStart(2,"0");
+function hashCode(t){ let h=0; for(let i=0;i<t.length;i++) h=((h<<5)-h+t.charCodeAt(i))|0; return Math.abs(h); }
+function host(u){ try { return new URL(u).hostname.replace(/^www\./,""); } catch(e){ return u; } }
+
+/* ---------- generative mock screen ---------- */
+function mockSVG(p){
+  const tint = TINT[p.family];
+  const h = hashCode(p.id);
+  const b1 = 70+h%70, b2 = 50+((h>>3)%80), b3 = 40+((h>>5)%70);
+  const ring = 26+(h%16);
+  const initials = p.name.split(/\s+/).map(w=>w[0]).join("").slice(0,3).toUpperCase();
+  const dash = (ring*2*Math.PI)*(0.35+((h>>7)%40)/100);
+  return `<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="320" height="200" fill="none"/>
+    <g opacity="0.95">
+      <rect x="22" y="24" width="64" height="22" rx="6" fill="${tint}" opacity="0.92"/>
+      <text x="54" y="40" text-anchor="middle" fill="#0a0b12" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700">${initials}</text>
+      <rect x="22" y="72" width="${b1}" height="9" rx="4" fill="#fff" opacity="0.16"/>
+      <rect x="22" y="94" width="${b2}" height="9" rx="4" fill="#fff" opacity="0.11"/>
+      <rect x="22" y="116" width="${b3}" height="9" rx="4" fill="#fff" opacity="0.08"/>
+      <circle cx="252" cy="100" r="${ring}" fill="none" stroke="#fff" stroke-width="9" opacity="0.08"/>
+      <circle cx="252" cy="100" r="${ring}" fill="none" stroke="${tint}" stroke-width="9" opacity="0.65"
+        stroke-linecap="round" stroke-dasharray="${dash.toFixed(0)} 999" transform="rotate(-90 252 100)"/>
+      <rect x="22" y="150" width="120" height="26" rx="7" fill="#fff" opacity="0.05"/>
+      <rect x="34" y="159" width="${40+h%40}" height="8" rx="4" fill="${tint}" opacity="0.6"/>
+    </g>
+  </svg>`;
 }
 
-function productVisual(product) {
-  const h = hashCode(product.id);
-  const bars = [26 + (h % 48), 22 + ((h >> 3) % 52), 18 + ((h >> 5) % 56)];
-  const offset = h % 26;
-  const label = product.name.split(" ").map((part) => part[0]).join("").slice(0, 3).toUpperCase();
-  return `
-    <svg viewBox="0 0 520 250" role="img" aria-label="${product.name} interface illustration">
-      <rect width="520" height="250" fill="white"/>
-      <path d="M0 42H520M0 94H520M0 146H520M0 198H520M74 0V250M148 0V250M222 0V250M296 0V250M370 0V250M444 0V250" stroke="rgba(11,13,16,.06)" stroke-width="1"/>
-      <rect x="38" y="34" width="444" height="182" rx="8" fill="rgba(255,255,255,.82)" stroke="rgba(11,13,16,.16)"/>
-      <rect x="60" y="57" width="124" height="34" rx="6" fill="currentColor" opacity=".95"/>
-      <text x="76" y="80" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="700">${label}</text>
-      <rect x="60" y="115" width="${bars[0] + 80}" height="10" rx="5" fill="currentColor" opacity=".34"/>
-      <rect x="60" y="139" width="${bars[1] + 138}" height="10" rx="5" fill="currentColor" opacity=".22"/>
-      <rect x="60" y="163" width="${bars[2] + 106}" height="10" rx="5" fill="currentColor" opacity=".16"/>
-      <circle cx="${342 + offset}" cy="118" r="48" fill="none" stroke="currentColor" stroke-width="14" opacity=".18"/>
-      <path d="M${314 + offset} 118h${57 + offset / 4}M${342 + offset} 90v57" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity=".72"/>
-      <rect x="326" y="169" width="104" height="24" rx="6" fill="currentColor" opacity=".12"/>
-      <rect x="344" y="176" width="68" height="10" rx="5" fill="currentColor" opacity=".42"/>
-    </svg>`;
+/* ---------- build ---------- */
+function rebuild(){
+  view = products.filter(p => activeFilter === "all" || p.family === activeFilter);
+  track.innerHTML = view.map((p,i) => `
+    <article class="card" data-i="${i}">
+      <div class="card-inner" style="--tint:${TINT[p.family]}">
+        <div class="card-screen">${mockSVG(p)}</div>
+        <span class="card-tag">${i18n[lang].fam[p.family]}</span>
+        <span class="card-host">${host(p.url)}</span>
+        <span class="card-name">${p.name}</span>
+      </div>
+    </article>`).join("");
+  cards = [...track.querySelectorAll(".card")];
+  cards.forEach((el,i) => el.addEventListener("click", () => { target = i; }));
+  target = clamp(target, 0, view.length-1);
+  progress = clamp(progress, 0, view.length-1);
+  lastActive = -1;
+  layout();
 }
 
-function renderProducts() {
-  const grid = document.getElementById("productGrid");
-  const filtered = products.filter((product) => activeFilter === "all" || product.family === activeFilter);
-  document.getElementById("productTotal").textContent = products.length;
-  grid.innerHTML = filtered.map((product) => {
-    const host = new URL(product.url).hostname;
-    return `
-      <a class="product-card" style="--accent:${accents[product.family]}" href="${product.url}" target="_blank" rel="noopener">
-        <div class="visual">${productVisual(product)}</div>
-        <div class="product-body">
-          <div class="product-kicker"><span>${labels[lang][product.family]}</span><span>${host}</span></div>
-          <h3>${product.name}</h3>
-          <p>${product[lang]}</p>
-          <div class="product-foot"><span>${copy[lang].open}</span><b aria-hidden="true">↗</b></div>
-        </div>
-      </a>`;
-  }).join("");
+function setActive(i){
+  const p = view[i];
+  if(!p) return;
+  const tint = TINT[p.family];
+  stage.style.setProperty("--tint", tint);
+  const isGit = p.url.includes("github.com");
+  panel.innerHTML = `
+    <div class="p-eyebrow"><span class="dash"></span>${i18n[lang].fam[p.family]} · ${isGit ? "OPEN SOURCE" : "LIVE"}</div>
+    <h2 class="p-name">${p.name}</h2>
+    <div class="p-host"><b>${host(p.url)}</b></div>
+    <p class="p-desc">${p[lang]}</p>
+    <div class="p-actions">
+      <a class="btn btn-primary" href="${p.url}" target="_blank" rel="noopener">${isGit ? i18n[lang].source : i18n[lang].open}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+      </a>
+      <span class="p-count"><b>${pad2(i)}</b> / ${pad2(view.length-1)}</span>
+    </div>`;
+  // retrigger entrance animation only when painting (frozen tab keeps base visible)
+  requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.add("anim")));
+  panel.classList.remove("anim");
+  famActive.textContent = `${i18n[lang].fam[p.family]} · ${pad2(i)}/${pad2(view.length-1)}`;
+  cards.forEach((el,idx) => el.classList.toggle("on", idx === i));
 }
 
-function applyLanguage(nextLang) {
-  lang = copy[nextLang] ? nextLang : "en";
+function layout(){
+  for(let i=0;i<cards.length;i++){
+    const d = i - progress, ad = Math.abs(d), el = cards[i];
+    if(ad > 7){ el.style.display = "none"; continue; }
+    el.style.display = "block";
+    const ty = d*GAP, tz = -ad*DEPTH, rx = -d*ANGLE, sc = Math.max(0.6, 1-ad*0.08);
+    el.style.transform = `translate(-50%,-50%) translateY(${ty}px) translateZ(${tz}px) rotateX(${rx}deg) scale(${sc})`;
+    el.style.opacity = clamp(1-ad*0.16, 0.05, 1);
+    el.style.filter = `blur(${Math.min(ad*1.2,5).toFixed(2)}px)`;
+    el.style.zIndex = String(100 - Math.round(ad*10));
+  }
+  const n = view.length;
+  if(n > 1){
+    const railH = rail.clientHeight - railThumb.offsetHeight;
+    railThumb.style.top = (clamp(progress/(n-1),0,1) * railH) + "px";
+  } else { railThumb.style.top = "0px"; }
+  const active = clamp(Math.round(progress), 0, n-1);
+  if(active !== lastActive){ setActive(active); lastActive = active; }
+}
+
+/* ---------- loop + input ---------- */
+function tick(){
+  requestAnimationFrame(tick);
+  const diff = target - progress;
+  if(Math.abs(diff) > 0.0004){ progress += diff*0.12; layout(); }
+  else if(progress !== target){ progress = target; layout(); }
+}
+requestAnimationFrame(tick);
+
+function wheelDelta(e){ let d=e.deltaY; if(e.deltaMode===1) d*=16; else if(e.deltaMode===2) d*=window.innerHeight; return d; }
+slideshow.addEventListener("wheel", e => {
+  e.preventDefault();
+  target = clamp(target + wheelDelta(e)*0.0019, 0, view.length-1);
+}, { passive:false });
+
+(function(){
+  let drag=false, sy=0, st=0;
+  slideshow.addEventListener("pointerdown", e => { drag=true; sy=e.clientY; st=target; slideshow.setPointerCapture?.(e.pointerId); });
+  window.addEventListener("pointermove", e => { if(!drag) return; target = clamp(st - (e.clientY-sy)/GAP, 0, view.length-1); });
+  window.addEventListener("pointerup", () => drag=false);
+})();
+
+window.addEventListener("keydown", e => {
+  if(e.key==="ArrowDown"||e.key==="ArrowRight"){ e.preventDefault(); target = clamp(Math.round(target)+1, 0, view.length-1); }
+  if(e.key==="ArrowUp"||e.key==="ArrowLeft"){ e.preventDefault(); target = clamp(Math.round(target)-1, 0, view.length-1); }
+});
+
+/* ---------- filters + lang ---------- */
+function buildFilters(){
+  const fams = ["all","ai","reg","ops","public"];
+  document.getElementById("filters").innerHTML = fams.map(f =>
+    `<button class="filter ${f===activeFilter?"on":""}" data-filter="${f}">${i18n[lang].filt[f]}</button>`).join("");
+  document.querySelectorAll("[data-filter]").forEach(b => b.addEventListener("click", () => {
+    activeFilter = b.dataset.filter;
+    document.querySelectorAll("[data-filter]").forEach(x => x.classList.toggle("on", x===b));
+    target = 0; progress = 0;
+    rebuild();
+  }));
+}
+
+function applyLang(next){
+  lang = i18n[next] ? next : "en";
   localStorage.setItem("portfolio-lang", lang);
   document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach((node) => {
-    const key = node.dataset.i18n;
-    node.textContent = copy[lang][key] || node.textContent;
-  });
-  document.querySelectorAll("[data-lang]").forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.lang === lang);
-  });
-  renderProducts();
+  document.querySelectorAll("[data-i18n]").forEach(n => { const k=n.dataset.i18n; if(i18n[lang][k]) n.textContent = i18n[lang][k]; });
+  document.querySelectorAll("[data-lang]").forEach(b => b.classList.toggle("on", b.dataset.lang===lang));
+  buildFilters();
+  rebuild();
+  lastActive = -1; layout();
 }
+document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
 
-document.querySelectorAll("[data-lang]").forEach((button) => {
-  button.addEventListener("click", () => applyLanguage(button.dataset.lang));
-});
-
-document.querySelectorAll("[data-filter]").forEach((button) => {
-  button.addEventListener("click", () => {
-    activeFilter = button.dataset.filter;
-    document.querySelectorAll("[data-filter]").forEach((item) => item.classList.toggle("is-active", item === button));
-    renderProducts();
-  });
-});
-
-applyLanguage(lang);
+applyLang(lang);
 </script>
 </body>
 </html>
