@@ -82,7 +82,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   cursor: grab; touch-action: none; }
 .slideshow:active { cursor: grabbing; }
 .track { position: absolute; inset: 0; transform-style: preserve-3d; }
-.card { position: absolute; left: 50%; top: 50%; width: clamp(280px, 30vw, 392px); transform-style: preserve-3d; will-change: transform, opacity; -webkit-user-select: none; user-select: none; }
+.card { position: absolute; left: 50%; top: 50%; width: clamp(280px, 30vw, 392px); transform-style: preserve-3d; will-change: transform, opacity; -webkit-user-select: none; user-select: none; cursor: pointer; }
 .card-inner { position: relative; aspect-ratio: 16 / 10; border-radius: 18px; overflow: hidden; border: 1px solid var(--line);
   background: linear-gradient(160deg, #13151f, #0a0b12); color: var(--tint);
   box-shadow: 0 38px 76px -30px rgba(0,0,0,0.85), 0 2px 0 0 rgba(255,255,255,0.05) inset; transition: border-color 0.35s, box-shadow 0.35s; }
@@ -300,6 +300,7 @@ let activeFilter = "all";
 let view = [];
 let cards = [];
 let progress = 0, target = 0, lastActive = -1;
+let ignoreCardClick = false;
 
 const GAP = 128, ANGLE = 18, DEPTH = 122;
 
@@ -316,6 +317,7 @@ const clamp = (v,a,b) => Math.max(a, Math.min(b,v));
 const pad2 = n => String(n+1).padStart(2,"0");
 function hashCode(t){ let h=0; for(let i=0;i<t.length;i++) h=((h<<5)-h+t.charCodeAt(i))|0; return Math.abs(h); }
 function host(u){ try { return new URL(u).hostname.replace(/^www\./,""); } catch(e){ return u; } }
+function openProduct(p){ if(p?.url) window.open(p.url, "_blank", "noopener,noreferrer"); }
 
 /* ---------- generative mock screen ---------- */
 function mockSVG(p){
@@ -346,7 +348,7 @@ function mockSVG(p){
 function rebuild(){
   view = products.filter(p => activeFilter === "all" || p.family === activeFilter);
   track.innerHTML = view.map((p,i) => `
-    <article class="card" data-i="${i}">
+    <article class="card" data-i="${i}" role="link" tabindex="0" title="${i18n[lang].open} ${p.name}">
       <div class="card-inner" style="--tint:${TINT[p.family]}">
         <div class="card-screen">${mockSVG(p)}</div>
         <span class="card-tag">${i18n[lang].fam[p.family]}</span>
@@ -355,7 +357,15 @@ function rebuild(){
       </div>
     </article>`).join("");
   cards = [...track.querySelectorAll(".card")];
-  cards.forEach((el,i) => el.addEventListener("click", () => { target = i; }));
+  cards.forEach((el,i) => el.addEventListener("click", () => {
+    if(ignoreCardClick){ ignoreCardClick = false; return; }
+    openProduct(view[i]);
+  }));
+  cards.forEach((el,i) => el.addEventListener("keydown", e => {
+    if(e.key !== "Enter" && e.key !== " ") return;
+    e.preventDefault();
+    openProduct(view[i]);
+  }));
   target = clamp(target, 0, view.length-1);
   progress = clamp(progress, 0, view.length-1);
   lastActive = -1;
@@ -424,7 +434,11 @@ slideshow.addEventListener("wheel", e => {
 (function(){
   let drag=false, sy=0, st=0;
   slideshow.addEventListener("pointerdown", e => { drag=true; sy=e.clientY; st=target; slideshow.setPointerCapture?.(e.pointerId); });
-  window.addEventListener("pointermove", e => { if(!drag) return; target = clamp(st - (e.clientY-sy)/GAP, 0, view.length-1); });
+  window.addEventListener("pointermove", e => {
+    if(!drag) return;
+    if(Math.abs(e.clientY - sy) > 8) ignoreCardClick = true;
+    target = clamp(st - (e.clientY-sy)/GAP, 0, view.length-1);
+  });
   window.addEventListener("pointerup", () => drag=false);
 })();
 
