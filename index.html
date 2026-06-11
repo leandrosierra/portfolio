@@ -90,8 +90,10 @@ input { font: inherit; color: inherit; }
   mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
   cursor: grab; touch-action: none; }
 .slideshow:active { cursor: grabbing; }
-.track { position: absolute; inset: 0; transform-style: preserve-3d; }
-.card { position: absolute; left: 50%; top: 50%; width: clamp(280px, 30vw, 392px); transform-style: preserve-3d; will-change: transform, opacity; -webkit-user-select: none; user-select: none; cursor: pointer; }
+/* pointer-events:none : le track couvre tout le slideshow au plan z=0 alors que les
+   fiches sont en translateZ negatif — sans ca il intercepte tous leurs clics. */
+.track { position: absolute; inset: 0; transform-style: preserve-3d; pointer-events: none; }
+.card { position: absolute; left: 50%; top: 50%; width: clamp(280px, 30vw, 392px); transform-style: preserve-3d; will-change: transform, opacity; -webkit-user-select: none; user-select: none; cursor: pointer; pointer-events: auto; }
 .card-inner { position: relative; aspect-ratio: 16 / 10; border-radius: 18px; overflow: hidden; border: 1px solid var(--line);
   background: linear-gradient(160deg, #13151f, #0a0b12); color: var(--tint);
   box-shadow: 0 38px 76px -30px rgba(0,0,0,0.85), 0 2px 0 0 rgba(255,255,255,0.05) inset; transition: border-color 0.35s, box-shadow 0.35s; }
