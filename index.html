@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#07080d">
 <meta name="color-scheme" content="dark">
 <title>Leandro Sierra — Internet products & AI software</title>
-<meta name="description" content="Portfolio of 126 live internet products built by Leandro Sierra: AI tools, regulatory readiness products, operational software and public web applications.">
+<meta name="description" content="Portfolio of 127 live internet products built by Leandro Sierra: AI tools, regulatory readiness products, operational software and public web applications.">
 <meta property="og:title" content="Leandro Sierra — Product portfolio">
 <meta property="og:description" content="A live index of AI, compliance and internet software products built and shipped by Leandro Sierra.">
 <meta property="og:type" content="website">
@@ -314,6 +314,7 @@ const products = [
   { id:"pentestai", name:"PentestAI", family:"ai", url:"https://pentestai.leandro-sierra.com", en:"AI-automated penetration testing as SaaS: plans by scope, automated runs and a findings dashboard.", fr:"Pentest automatisé par IA : forfaits par périmètre, exécution automatisée et dashboard des vulnérabilités." },
   { id:"pfasproof", name:"PFAS Proof", family:"reg", url:"https://pfasproof.leandro-sierra.com", en:"PFAS pre-audit for textile, cosmetics and packaging brands: product inventory, supplier requests, deadlines.", fr:"Pré-audit PFAS : inventaire produits, demandes fournisseurs, déclaration de conformité et échéances." },
   { id:"pickora", name:"Pickora", family:"public", url:"https://pickora.leandro-sierra.com", en:"Purchase-decision helper: product links and needs become a visual comparison table with price alerts.", fr:"Aide à la décision d'achat : liens produits et besoins transformés en tableau comparatif avec alertes prix." },
+  { id:"pop", name:"Pop", family:"public", url:"https://pop.leandro-sierra.com", en:"Civic platform for debates, proposals and local participation, with its own public API.", fr:"Plateforme citoyenne pour débats, propositions et participation locale, avec son API publique." },
   { id:"postquantumready", name:"Post Quantum Ready", family:"reg", url:"https://postquantumready.leandro-sierra.com", en:"Post-quantum readiness audit: crypto-agility diagnosis, TLS/SSH inventory and a NIST PQC roadmap.", fr:"Audit post-quantique : diagnostic crypto-agility, inventaire TLS/SSH et roadmap NIST PQC." },
   { id:"ppwrready", name:"PPWR Ready", family:"reg", url:"https://ppwrready.leandro-sierra.com", en:"PPWR 2026 diagnosis: packaging inventory, checklist, supplier requests and a mini-report.", fr:"Diagnostic PPWR 2026 : inventaire emballages, checklist, demandes fournisseurs et mini-rapport." },
   { id:"proxyledger", name:"ProxyLedger", family:"ai", url:"https://proxyledger.leandro-sierra.com", en:"Governance for AI agents that buy: mandate policies, per-agent budgets, approval logs, audit exports.", fr:"Gouvernance des agents IA acheteurs : mandats, budgets par agent, journal d'approbation, exports audit." },
@@ -380,7 +381,6 @@ let query = "";
 let view = [];
 let cards = [];
 let progress = 0, target = 0, lastActive = -1;
-let ignoreCardClick = false;
 
 const GAP = 128, ANGLE = 18, DEPTH = 122, CURVE = 7, TILT = 2.2;
 
@@ -447,11 +447,6 @@ function rebuild(){
       </div>
     </article>`).join("");
   cards = [...track.querySelectorAll(".card")];
-  cards.forEach((el,i) => el.addEventListener("click", () => {
-    if(ignoreCardClick){ ignoreCardClick = false; return; }
-    target = i;
-    openProduct(view[i]);
-  }));
   cards.forEach((el,i) => el.addEventListener("keydown", e => {
     if(e.key !== "Enter" && e.key !== " ") return;
     e.preventDefault();
@@ -540,15 +535,27 @@ slideshow.addEventListener("wheel", e => {
   target = clamp(target + wheelDelta(e)*0.0019, 0, view.length-1);
 }, { passive:false });
 
+/* Le slideshow capture le pointeur pour le drag : l'événement click est alors
+   re-ciblé sur le conteneur, jamais sur la fiche. L'ouverture se décide donc au
+   pointerup : pas de mouvement (>8px) = clic sur la fiche sous le doigt. */
 (function(){
-  let drag=false, sy=0, st=0;
-  slideshow.addEventListener("pointerdown", e => { drag=true; sy=e.clientY; st=target; slideshow.setPointerCapture?.(e.pointerId); });
+  let drag=false, moved=false, sy=0, st=0, downEl=null;
+  slideshow.addEventListener("pointerdown", e => { drag=true; moved=false; sy=e.clientY; st=target; downEl=e.target; slideshow.setPointerCapture?.(e.pointerId); });
   window.addEventListener("pointermove", e => {
     if(!drag) return;
-    if(Math.abs(e.clientY - sy) > 8) ignoreCardClick = true;
-    target = clamp(st - (e.clientY-sy)/GAP, 0, view.length-1);
+    if(Math.abs(e.clientY - sy) > 8) moved = true;
+    if(moved) target = clamp(st - (e.clientY-sy)/GAP, 0, view.length-1);
   });
-  window.addEventListener("pointerup", () => drag=false);
+  window.addEventListener("pointerup", () => {
+    if(!drag) return;
+    drag = false;
+    if(moved) return;
+    const card = downEl instanceof Element ? downEl.closest(".card") : null;
+    if(!card) return;
+    const i = +card.dataset.i;
+    target = i;
+    openProduct(view[i]);
+  });
 })();
 
 (function(){
