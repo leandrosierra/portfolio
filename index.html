@@ -11,6 +11,11 @@
 <meta property="og:description" content="A live index of AI, compliance and internet software products built and shipped by Leandro Sierra.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://leandro-sierra.com">
+<meta property="og:image" content="https://leandro-sierra.com/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://leandro-sierra.com/og.jpg">
 <link rel="canonical" href="https://leandro-sierra.com">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307080d'/%3E%3Cpath d='M16 42h31v6H16zM16 16h7v26h-7zM29 16h7v26h-7zM42 16h7v26h-7z' fill='%23f4f5fb'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,6 +122,23 @@ input { font: inherit; color: inherit; }
 /* hero */
 .hero { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 18px; }
 
+/* intro mosaique (jouee une fois par session) */
+.intro { position: fixed; inset: 0; z-index: 60; pointer-events: none; background-size: cover; background-position: center; opacity: 0; }
+.intro::after { content: ""; position: absolute; inset: 0;
+  background: radial-gradient(120% 90% at 50% 50%, transparent 28%, rgba(7,8,13,0.94) 100%), rgba(7,8,13,0.30); }
+.intro.play { animation: introZoom 1.05s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes introZoom { 0% { opacity: 1; transform: scale(1.02); } 62% { opacity: 1; } 100% { opacity: 0; transform: scale(1.22); } }
+
+/* choregraphie d'entree */
+@media (prefers-reduced-motion: no-preference) {
+  .boot .card .card-inner { animation: dealIn 0.7s cubic-bezier(0.16,1,0.3,1) both; animation-delay: calc(var(--di, 0) * 60ms + 180ms); }
+  .boot .bg-glow { animation: glowIn 1.5s ease both; }
+  .card.on .card-screen img.shot { animation: kenburns 16s ease-in-out infinite alternate; }
+}
+@keyframes dealIn { from { opacity: 0; transform: translateY(56px) scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes glowIn { from { opacity: 0; } to { opacity: 0.5; } }
+@keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.09) translateY(-2.5%); } }
+
 /* grid view */
 .main.as-grid { display: block; align-items: initial; overflow-y: auto; padding-top: 14px; scrollbar-width: thin; scrollbar-color: var(--ink-dim) transparent; }
 .main.as-grid .slideshow, .main.as-grid .panel { display: none; }
@@ -126,6 +148,8 @@ input { font: inherit; color: inherit; }
 .gcard:hover { transform: translateY(-3px); border-color: color-mix(in oklch, var(--tint) 55%, var(--line)); box-shadow: 0 18px 44px -18px rgba(0,0,0,0.85); }
 .gshot { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--line); }
 .gshot svg, .gshot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.gshot img { transition: transform 0.5s ease; }
+.gcard:hover .gshot img { transform: scale(1.05); }
 .gmeta { display: block; padding: 10px 13px 12px; }
 .gtag { display: block; font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--tint); margin-bottom: 4px; }
 .gname { display: block; font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 2px; }
@@ -191,6 +215,7 @@ input { font: inherit; color: inherit; }
 </style>
 </head>
 <body>
+<div class="intro" id="intro" aria-hidden="true"></div>
 <main class="stage" id="stage">
   <div class="bg-field"></div>
   <div class="bg-glow" id="glow"></div>
@@ -481,7 +506,7 @@ function shotIMG(p, cls){
 function rebuild(){
   view = catalog.filter(matches);
   track.innerHTML = view.map((p,i) => `
-    <a class="card" data-i="${i}" href="${p.url}" target="_blank" rel="noopener noreferrer" draggable="false" title="${p.name}">
+    <a class="card" data-i="${i}" style="--di:${Math.min(i, 9)}" href="${p.url}" target="_blank" rel="noopener noreferrer" draggable="false" title="${p.name}">
       <div class="card-inner" style="--tint:${TINT[p.family]}">
         <div class="card-screen">${mockSVG(p)}${shotIMG(p, "shot")}</div>
         <span class="card-tag">${i18n[lang].fam[p.family]}</span>
@@ -691,6 +716,67 @@ if(initialDeepLink){
   const i = view.findIndex(p => p.id === initialDeepLink);
   if(i >= 0){ target = i; progress = i; lastActive = -1; setMode("stack"); layout(); }
 }
+
+/* ---------- accroche : intro mosaique, entree, compteur ---------- */
+(function(){
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const intro = document.getElementById("intro");
+  let introDone = false;
+  const killIntro = () => { if(!introDone){ introDone = true; intro.remove(); } };
+  if(reduced || sessionStorage.getItem("introSeen")){
+    killIntro();
+  } else {
+    const img = new Image();
+    img.onload = () => {
+      if(introDone) return;
+      intro.style.backgroundImage = `url(${img.src})`;
+      intro.classList.add("play");
+      sessionStorage.setItem("introSeen", "1");
+      intro.addEventListener("animationend", killIntro);
+      setTimeout(killIntro, 2200);
+    };
+    img.src = "sprite.jpg";
+    setTimeout(killIntro, 2500);
+  }
+  if(reduced) return;
+  stage.classList.add("boot");
+  setTimeout(() => stage.classList.remove("boot"), 1900);
+  const t0 = performance.now(), DUR = 950, total = catalog.length;
+  (function step(){
+    const e = Math.min(1, (performance.now() - t0) / DUR);
+    const n = Math.round((1 - Math.pow(1 - e, 3)) * total);
+    document.querySelectorAll('[data-i18n="hero"]').forEach(el => el.textContent = i18n[lang].hero.replace("{n}", n));
+    if(e < 1) requestAnimationFrame(step);
+  })();
+})();
+
+/* ---------- parallaxe pointeur / gyroscope ---------- */
+(function(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let nx = 0, ny = 0, cx = 0, cy = 0, raf = 0;
+  function apply(){
+    raf = 0;
+    cx += (nx - cx) * 0.12; cy += (ny - cy) * 0.12;
+    slideshow.style.perspectiveOrigin = `${(60 + cx * 7).toFixed(2)}% ${(50 + cy * 7).toFixed(2)}%`;
+    track.style.transform = `rotateY(${(cx * 2.5).toFixed(2)}deg)`;
+    glow.style.transform = `translate(calc(-50% + ${(cx * 36).toFixed(0)}px), calc(-50% + ${(cy * 24).toFixed(0)}px))`;
+    if(Math.abs(nx - cx) + Math.abs(ny - cy) > 0.002) raf = requestAnimationFrame(apply);
+  }
+  const wake = () => { if(!raf) raf = requestAnimationFrame(apply); };
+  stage.addEventListener("mousemove", e => {
+    nx = (e.clientX / innerWidth) * 2 - 1;
+    ny = (e.clientY / innerHeight) * 2 - 1;
+    wake();
+  });
+  if(typeof DeviceOrientationEvent !== "undefined" && !DeviceOrientationEvent.requestPermission){
+    addEventListener("deviceorientation", e => {
+      if(e.gamma == null || e.beta == null) return;
+      nx = clamp(e.gamma / 30, -1, 1);
+      ny = clamp((e.beta - 45) / 30, -1, 1);
+      wake();
+    });
+  }
+})();
 </script>
 </body>
 </html>
