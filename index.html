@@ -449,7 +449,7 @@ function rebuild(){
   cards = [...track.querySelectorAll(".card")];
   cards.forEach((el,i) => el.addEventListener("click", () => {
     if(ignoreCardClick){ ignoreCardClick = false; return; }
-    if(i !== activeIndex()){ target = i; return; }
+    target = i;
     openProduct(view[i]);
   }));
   cards.forEach((el,i) => el.addEventListener("keydown", e => {
