@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#07080d">
 <meta name="color-scheme" content="dark">
 <title>Leandro Sierra — Internet products & AI software</title>
-<meta name="description" content="Portfolio of internet products built by Leandro Sierra: AI tools, regulatory readiness products, operational software and public web applications.">
+<meta name="description" content="Portfolio of 126 live internet products built by Leandro Sierra: AI tools, regulatory readiness products, operational software and public web applications.">
 <meta property="og:title" content="Leandro Sierra — Product portfolio">
 <meta property="og:description" content="A live index of AI, compliance and internet software products built and shipped by Leandro Sierra.">
 <meta property="og:type" content="website">
@@ -40,9 +40,10 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+input { font: inherit; color: inherit; }
 ::selection { background: color-mix(in oklch, var(--tint) 40%, transparent); color: #fff; }
 
-.stage { position: relative; height: 100vh; width: 100vw; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; }
+.stage { position: relative; height: 100vh; height: 100dvh; width: 100vw; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; }
 
 .bg-field { position: absolute; inset: 0; z-index: 0;
   background: radial-gradient(120% 80% at 50% -10%, #11131f 0%, transparent 55%),
@@ -55,17 +56,25 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"); }
 
 /* topbar */
-.topbar { position: relative; z-index: 6; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px clamp(22px, 4vw, 48px) 0; }
+.topbar { position: relative; z-index: 6; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 24px clamp(22px, 4vw, 48px) 0; }
 .brand { display: flex; align-items: center; gap: 13px; flex: none; }
 .brand-mark { width: 34px; height: 34px; flex: none; }
 .brand-name { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.01em; }
 .brand-name small { display: block; font-family: "JetBrains Mono", monospace; font-weight: 400; font-size: 10.5px; letter-spacing: 0.03em; color: var(--ink-dim); margin-top: 1px; text-transform: uppercase; }
-.filters { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
-.filter { min-height: 34px; padding: 7px 14px; border-radius: 100px; border: 1px solid transparent; color: var(--ink-dim); font-size: 13px; transition: all 0.2s; }
+.filters { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; min-width: 0; }
+.filter { min-height: 34px; padding: 7px 13px; border-radius: 100px; border: 1px solid transparent; color: var(--ink-dim); font-size: 13px; transition: all 0.2s; white-space: nowrap; }
 .filter:hover { color: var(--ink); }
 .filter.on { color: var(--ink); border-color: var(--line); background: var(--glass); }
 .filter.on::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 100px; background: currentColor; margin-right: 7px; vertical-align: middle; color: var(--tint); }
+.filter .n { font-family: "JetBrains Mono", monospace; font-size: 10.5px; opacity: 0.55; margin-left: 5px; }
 .top-right { display: flex; align-items: center; gap: 8px; flex: none; }
+.search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 100px; padding: 7px 14px; background: var(--glass); color: var(--ink-dim); transition: border-color 0.25s; }
+.search:focus-within { border-color: color-mix(in oklch, var(--tint) 50%, var(--line)); color: var(--ink-soft); }
+.search svg { width: 14px; height: 14px; flex: none; }
+.search input { background: none; border: none; outline: none; width: 13ch; font-size: 13px; color: var(--ink); transition: width 0.25s ease; }
+.search input:focus { width: 19ch; }
+.search input::placeholder { color: var(--ink-dim); }
+.search input::-webkit-search-cancel-button { -webkit-appearance: none; }
 .lang { display: flex; gap: 2px; border: 1px solid var(--line); border-radius: 100px; padding: 3px; }
 .lang button { min-height: 28px; padding: 4px 11px; border-radius: 100px; font-size: 12px; color: var(--ink-dim); }
 .lang button.on { color: var(--ink); background: var(--glass); }
@@ -86,9 +95,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .card-inner { position: relative; aspect-ratio: 16 / 10; border-radius: 18px; overflow: hidden; border: 1px solid var(--line);
   background: linear-gradient(160deg, #13151f, #0a0b12); color: var(--tint);
   box-shadow: 0 38px 76px -30px rgba(0,0,0,0.85), 0 2px 0 0 rgba(255,255,255,0.05) inset; transition: border-color 0.35s, box-shadow 0.35s; }
+.card:hover .card-inner { border-color: color-mix(in oklch, var(--tint) 35%, var(--line)); }
 .card.on .card-inner { border-color: color-mix(in oklch, var(--tint) 55%, var(--line));
   box-shadow: 0 50px 90px -28px rgba(0,0,0,0.9), 0 0 0 1px color-mix(in oklch, var(--tint) 30%, transparent), 0 0 60px -12px color-mix(in oklch, var(--tint) 42%, transparent), 0 2px 0 0 rgba(255,255,255,0.06) inset; }
-.card-inner.on, .card.on .card-inner { }
 .card-inner::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 48%; z-index: 2; pointer-events: none; background: linear-gradient(to top, rgba(7,8,13,0.82), rgba(7,8,13,0.3) 55%, transparent); }
 .card-screen { position: absolute; inset: 0; }
 .card-screen svg { width: 100%; height: 100%; display: block; }
@@ -97,8 +106,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .card-name { position: absolute; left: 15px; right: 15px; bottom: 13px; z-index: 3; font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 17px; line-height: 1.08; letter-spacing: -0.01em; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,0.6); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* rail */
-.rail { position: absolute; left: -6px; top: 12%; bottom: 12%; width: 3px; border-radius: 100px; background: rgba(255,255,255,0.08); z-index: 6; }
-.rail-thumb { position: absolute; left: -1.5px; width: 6px; height: 34px; border-radius: 100px; background: var(--tint); box-shadow: 0 0 14px color-mix(in oklch, var(--tint) 70%, transparent); transition: background 0.5s; }
+.rail { position: absolute; left: -16px; top: 12%; bottom: 12%; width: 18px; z-index: 6; cursor: pointer; touch-action: none; }
+.rail::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; transform: translateX(-50%); border-radius: 100px; background: rgba(255,255,255,0.08); }
+.rail-thumb { position: absolute; left: 50%; transform: translateX(-50%); width: 6px; height: 34px; border-radius: 100px; background: var(--tint); box-shadow: 0 0 14px color-mix(in oklch, var(--tint) 70%, transparent); transition: background 0.5s; }
 
 /* panel */
 .panel { position: relative; padding-left: clamp(18px, 4vw, 70px); max-width: 620px; }
@@ -108,7 +118,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 @keyframes rise { from { opacity: 0; transform: translateY(13px); } to { opacity: 1; transform: translateY(0); } }
 .p-eyebrow { display: flex; align-items: center; gap: 12px; font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--tint); margin-bottom: 20px; transition: color 0.5s; }
 .p-eyebrow .dash { width: 28px; height: 1px; background: currentColor; opacity: 0.6; }
-.p-name { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: clamp(34px, 4.6vw, 64px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 12px; }
+.p-name { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: clamp(34px, 4.6vw, 64px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 12px; text-wrap: balance; }
 .p-host { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--ink-soft); margin-bottom: 26px; }
 .p-host b { color: var(--tint); font-weight: 500; }
 .p-desc { font-size: clamp(17px, 1.7vw, 21px); line-height: 1.45; color: var(--ink); margin-bottom: 30px; max-width: 500px; text-wrap: pretty; font-weight: 360; }
@@ -131,13 +141,30 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .socials { display: flex; gap: 20px; }
 .socials a:hover { color: var(--tint); }
 
+@media (max-width: 980px) {
+  .filters { gap: 3px; }
+  .filter { padding: 7px 10px; }
+}
 @media (max-width: 860px) {
-  .main { grid-template-columns: 1fr; }
-  .slideshow { display: none; }
-  .panel { padding-left: 0; }
-  .filters { display: none; }
+  .topbar { flex-wrap: wrap; padding-top: 14px; row-gap: 10px; }
+  .filters { order: 3; width: 100%; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  .filters::-webkit-scrollbar { display: none; }
+  .search input { width: 9ch; }
+  .search input:focus { width: 14ch; }
+  .main { grid-template-columns: 1fr; grid-template-rows: minmax(170px, 1fr) auto; padding: 0 20px 6px; }
+  .slideshow { height: 100%; min-height: 170px; perspective-origin: 50% 50%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%); }
+  .card { width: clamp(210px, 60vw, 320px); }
+  .rail { left: 0; top: 8%; bottom: 8%; }
+  .panel { padding: 12px 2px 6px; max-width: none; }
+  .p-eyebrow { margin-bottom: 10px; }
+  .p-name { font-size: clamp(26px, 7.5vw, 40px); }
+  .p-host { margin-bottom: 12px; }
+  .p-desc { font-size: 15.5px; margin-bottom: 16px; }
+  .btn { padding: 11px 18px; }
   .scroll-hint { display: none; }
-  .footer { justify-content: space-between; }
+  .footer { justify-content: space-between; padding-bottom: 14px; }
 }
 </style>
 </head>
@@ -161,6 +188,10 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     </a>
     <nav class="filters" id="filters" aria-label="Product families"></nav>
     <div class="top-right">
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="search" type="search" autocomplete="off" spellcheck="false" aria-label="Search products">
+      </label>
       <span class="lang" id="lang" aria-label="Language">
         <button data-lang="en" class="on">EN</button>
         <button data-lang="fr">FR</button>
@@ -171,7 +202,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
   <div class="main">
     <div class="slideshow" id="slideshow">
-      <div class="rail"><div class="rail-thumb" id="railThumb"></div></div>
+      <div class="rail" id="rail"><div class="rail-thumb" id="railThumb"></div></div>
       <div class="track" id="track"></div>
     </div>
     <div class="panel"><div class="panel-card" id="panel"></div></div>
@@ -184,97 +215,143 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
       <span data-i18n="scrollHint">Scroll to explore</span>
     </div>
     <div class="socials">
-      <a href="/cdn-cgi/l/email-protection#741811151a10061b071d1106061545341319151d185a171b19"><span class="__cf_email__" data-cfemail="92fef7f3fcf6e0fde1fbf7e0e0f3a3d2f5fff3fbfebcf1fdff">[email&#160;protected]</span></a>
+      <a href="mailto:leandrosierra1@gmail.com">leandrosierra1@gmail.com</a>
       <a href="https://www.linkedin.com/in/leandro-sierra-ai/" target="_blank" rel="noopener">linkedin</a>
       <span data-i18n="location">Avignon / Remote</span>
     </div>
   </footer>
 </main>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ---------- data (real products) ---------- */
+<script>
+/* ---------- data (live products, verified) ---------- */
 const products = [
-  { id:"portfolio", name:"Portfolio", family:"ops", url:"https://leandro-sierra.com", en:"The product index and technical presentation you are reading.", fr:"L’index produit et la présentation technique que vous consultez." },
-  { id:"accessibiliteexpress", name:"Accessibilité Express", family:"ops", url:"https://accessibiliteexpress.leandro-sierra.com", en:"Fast accessibility audit for clearer, more usable websites.", fr:"Audit rapide pour rendre un site plus lisible, accessible et actionnable." },
-  { id:"ageassuranceready", name:"Age Assurance Ready", family:"reg", url:"https://ageassuranceready.leandro-sierra.com", en:"Preparation for age checks, assurance flows and verification readiness.", fr:"Préparation aux contrôles d’âge, parcours d’assurance et vérifications." },
-  { id:"agentcommerceready", name:"Agent Commerce Ready", family:"ai", url:"https://agentcommerceready.leandro-sierra.com", en:"Readiness checklist for products sold through conversational agents.", fr:"Checklist pour préparer un produit au commerce via agents conversationnels." },
-  { id:"agentcostguard", name:"Agent Cost Guard", family:"ai", url:"https://agentcostguard.leandro-sierra.com", en:"Cost guardrails for AI-agent workloads and tool usage.", fr:"Garde-fous de coûts pour workloads d’agents IA et appels d’outils." },
-  { id:"agenticcontainmentready", name:"ScopeLock", family:"ai", url:"https://agenticcontainmentready.leandro-sierra.com", en:"Webapp B2B pour DSI/RSSI qui doivent sécuriser des agents IA autonomes avec accès outils: inventaire des permissions, sandboxing, kill switch…", fr:"Webapp B2B pour DSI/RSSI qui doivent sécuriser des agents IA autonomes avec accès outils: inventaire des permissions, sandboxing, kill switch…" },
-  { id:"aicodeprovenanceready", name:"AI Code Provenance Ready", family:"ai", url:"https://aicodeprovenanceready.leandro-sierra.com", en:"Evidence trail for AI-generated code and software provenance.", fr:"Traçabilité du code généré par IA et preuves d’origine logicielle." },
-  { id:"aipresencecheck", name:"AI Presence Check", family:"ai", url:"https://aipresencecheck.leandro-sierra.com", en:"Checks where AI appears in product and operational flows.", fr:"Repère où l’IA intervient dans les parcours produit et opérationnels." },
-  { id:"algodesk", name:"AlgoDesk", family:"ai", url:"https://algodesk.leandro-sierra.com", en:"Outil de conformité EU Platform Work Directive pour opérateurs de plateformes numériques : audit algorithme de gestion, registre travailleurs de…", fr:"Outil de conformité EU Platform Work Directive pour opérateurs de plateformes numériques : audit algorithme de gestion, registre travailleurs de…" },
-  { id:"autoentrepreneurai", name:"Auto Entrepreneur AI", family:"ops", url:"https://autoentrepreneurai.leandro-sierra.com", en:"Assistant for solo entrepreneurs, declarations and recurring obligations.", fr:"Assistant pour micro-entrepreneurs, déclarations et obligations récurrentes." },
-  { id:"babybox", name:"Babybox", family:"public", url:"https://babybox.leandro-sierra.com", en:"Parenting tracker for sleep, feeding and early routines.", fr:"Suivi parental pour sommeil, repas et routines des premiers mois." },
-  { id:"batteryduediligenceready", name:"BatteryDueDiligenceReady", family:"reg", url:"https://batteryduediligenceready.leandro-sierra.com", en:"Pré-audit conformité EU Battery Regulation pour importateurs, marques e-bike/électronique/outillage et distributeurs: due diligence fournisseurs…", fr:"Pré-audit conformité EU Battery Regulation pour importateurs, marques e-bike/électronique/outillage et distributeurs: due diligence fournisseurs…" },
-  { id:"batterypassportready", name:"Battery Passport Ready", family:"reg", url:"https://batterypassportready.leandro-sierra.com", en:"Battery passport readiness and product-data preparation.", fr:"Préparation au passeport batterie et aux données produit associées." },
-  { id:"brandwave", name:"Brandwave", family:"ai", url:"https://brandwave.leandro-sierra.com", en:"Générateur IA de jingles et d'identité sonore de marque : saisir nom de marque, secteur, personnalité (bold/warm/playful/pro) → recevoir un jingle…", fr:"Générateur IA de jingles et d'identité sonore de marque : saisir nom de marque, secteur, personnalité (bold/warm/playful/pro) → recevoir un jingle…" },
-  { id:"carvia", name:"Carvia", family:"ai", url:"https://carvia.leandro-sierra.com", en:"Assistant IA de reconversion professionnelle : inventaire de compétences transférables, cartographie de carrières compatibles, gap analysis, plan de…", fr:"Assistant IA de reconversion professionnelle : inventaire de compétences transférables, cartographie de carrières compatibles, gap analysis, plan de…" },
-  { id:"caspeo", name:"Caspeo", family:"ai", url:"https://caspeo.leandro-sierra.com", en:"Wizard de conformité MiCA (Markets in Crypto-Assets) pour les prestataires de services sur crypto-actifs (CASPs) : auto-diagnostic licence, checklist…", fr:"Wizard de conformité MiCA (Markets in Crypto-Assets) pour les prestataires de services sur crypto-actifs (CASPs) : auto-diagnostic licence, checklist…" },
-  { id:"cbamready", name:"CBAM Ready", family:"reg", url:"https://cbamready.leandro-sierra.com", en:"Readiness kit for carbon border adjustment obligations.", fr:"Kit de préparation au mécanisme carbone aux frontières." },
-  { id:"clickfixdefensekit", name:"ClickFixDefenseKit", family:"reg", url:"https://clickfixdefensekit.leandro-sierra.com", en:"Kit de prévention ClickFix pour PME, agences web et MSP: audit de site, checklist anti-faux captcha/clipboard, mini-simulateur de sensibilisation…", fr:"Kit de prévention ClickFix pour PME, agences web et MSP: audit de site, checklist anti-faux captcha/clipboard, mini-simulateur de sensibilisation…" },
-  { id:"coloradoaiactready", name:"Ailex", family:"ai", url:"https://coloradoaiactready.leandro-sierra.com", en:"Diagnostic de préparation Colorado AI Act (SB 205) pour deployers de systèmes IA à haut risque en RH, fintech, assurance, santé, éducation et legaltech…", fr:"Diagnostic de préparation Colorado AI Act (SB 205) pour deployers de systèmes IA à haut risque en RH, fintech, assurance, santé, éducation et legaltech…" },
-  { id:"consularswitchguide", name:"ConsularSwitchGuide", family:"ai", url:"https://consularswitchguide.leandro-sierra.com", en:"Guide SEO multilingue et checklist de préparation pour étrangers concernés par le basculement vers le consular processing US: scénarios, documents…", fr:"Guide SEO multilingue et checklist de préparation pour étrangers concernés par le basculement vers le consular processing US: scénarios, documents…" },
-  { id:"copyleftforkaudit", name:"Copyleftforkaudit", family:"reg", url:"https://copyleftforkaudit.leandro-sierra.com", en:"Live product deployed at copyleftforkaudit.leandro-sierra.com.", fr:"Produit live déployé sur copyleftforkaudit.leandro-sierra.com." },
-  { id:"craready", name:"CRA Ready", family:"reg", url:"https://craready.leandro-sierra.com", en:"Cyber Resilience Act preparation for digital products.", fr:"Préparation au Cyber Resilience Act pour produits numériques." },
-  { id:"dataactready", name:"DataActReady", family:"reg", url:"https://dataactready.leandro-sierra.com", en:"Kit de conformité EU Data Act pour fabricants IoT, SaaS liés à des produits connectés et PME industrielles : diagnostic obligations data access, modèle…", fr:"Kit de conformité EU Data Act pour fabricants IoT, SaaS liés à des produits connectés et PME industrielles : diagnostic obligations data access, modèle…" },
-  { id:"datastoryai", name:"DataStoryAI", family:"ai", url:"https://datastoryai.leandro-sierra.com", en:"Visualisation de données + narrative IA automatique : transforme des CSV/Excel en dashboards interactifs avec explications rédigées par IA. Cible les…", fr:"Visualisation de données + narrative IA automatique : transforme des CSV/Excel en dashboards interactifs avec explications rédigées par IA. Cible les…" },
-  { id:"devaitools", name:"DevAI Tools", family:"ai", url:"https://devai-tools.leandro-sierra.com", en:"Tooling for developers integrating AI into real products.", fr:"Boîte à outils pour développeurs qui intègrent l’IA dans des produits." },
-  { id:"devicesunsetcheck", name:"Device Sunset Check", family:"ops", url:"https://devicesunsetcheck.leandro-sierra.com", en:"End-of-support checks, risk view and replacement planning.", fr:"Contrôle de fin de support, risques et plan de remplacement." },
-  { id:"digitaleuroready", name:"DigitalEuroReady", family:"reg", url:"https://digitaleuroready.leandro-sierra.com", en:"Diagnostic pour PSP, banques locales, fintechs et e-commerçants préparant l’acceptation/distribution du futur euro numérique: parcours wallet…", fr:"Diagnostic pour PSP, banques locales, fintechs et e-commerçants préparant l’acceptation/distribution du futur euro numérique: parcours wallet…" },
-  { id:"digitalproductpassportready", name:"Digital Product Passport Ready", family:"reg", url:"https://digitalproductpassportready.leandro-sierra.com", en:"Readiness path for digital product passports.", fr:"Parcours de préparation aux passeports numériques produits." },
-  { id:"disclo", name:"Disclo", family:"ai", url:"https://disclo.leandro-sierra.com", en:"Outil de préparation CSRD (Corporate Sustainability Reporting Directive) pour entreprises EU 250+ salariés : évaluation de matérialité double, collecte…", fr:"Outil de préparation CSRD (Corporate Sustainability Reporting Directive) pour entreprises EU 250+ salariés : évaluation de matérialité double, collecte…" },
-  { id:"doravendorready", name:"DORA Vendor Ready", family:"reg", url:"https://doravendorready.leandro-sierra.com", en:"Supplier readiness for DORA operational resilience requirements.", fr:"Préparation fournisseur aux exigences de résilience opérationnelle DORA." },
-  { id:"dutio", name:"Dutio", family:"public", url:"https://dutio.leandro-sierra.com", en:"Outil interactif de conformité douanière pour e-commerçants ciblant l'UE : calculateur de droits de douane post-de minimis (fin exemption <150€ au 1er…", fr:"Outil interactif de conformité douanière pour e-commerçants ciblant l'UE : calculateur de droits de douane post-de minimis (fin exemption <150€ au 1er…" },
-  { id:"einvoicingfranceready", name:"E-Invoicing France Ready", family:"reg", url:"https://einvoicingfranceready.leandro-sierra.com", en:"French e-invoicing reform preparation.", fr:"Préparation à la réforme française de la facture électronique." },
-  { id:"equive", name:"Equive", family:"ai", url:"https://equive.leandro-sierra.com", en:"Outil de conformité EU Pay Transparency Directive pour RH et DG : wizard d'évaluation des emplois à critères neutres, calcul et déclaration des écarts…", fr:"Outil de conformité EU Pay Transparency Directive pour RH et DG : wizard d'évaluation des emplois à critères neutres, calcul et déclaration des écarts…" },
-  { id:"factureelectroniqueready", name:"Facture Électronique Ready", family:"reg", url:"https://factureelectroniqueready.leandro-sierra.com", en:"Clear implementation path for e-invoicing obligations.", fr:"Parcours clair pour anticiper les obligations de facture électronique." },
-  { id:"fidaopenfinanceready", name:"FiDA Open Finance Ready", family:"reg", url:"https://fidaopenfinanceready.leandro-sierra.com", en:"Open-finance readiness for FiDA obligations.", fr:"Préparation open finance pour les obligations FiDA." },
-  { id:"focali", name:"Focali", family:"ai", url:"https://focali.leandro-sierra.com", en:"App de productivité conçue pour les cerveaux ADHD/neurodivergents : chunking de tâches adaptatif, time-boxing visuel, mode 'body doubling' virtuel…", fr:"App de productivité conçue pour les cerveaux ADHD/neurodivergents : chunking de tâches adaptatif, time-boxing visuel, mode 'body doubling' virtuel…" },
-  { id:"framepulse", name:"FramePulse", family:"ops", url:"https://framepulse.leandro-sierra.com", en:"Studio web grand public pour transformer une photo produit, une idée de post ou une annonce locale en storyboard court, variantes de hooks, assets…", fr:"Studio web grand public pour transformer une photo produit, une idée de post ou une annonce locale en storyboard court, variantes de hooks, assets…" },
-  { id:"friggo", name:"Friggo", family:"ai", url:"https://friggo.leandro-sierra.com", en:"Assistant IA de recettes personnalisées depuis les ingrédients disponibles dans le frigo ou placard : saisie rapide ou reconnaissance photo, recettes…", fr:"Assistant IA de recettes personnalisées depuis les ingrédients disponibles dans le frigo ou placard : saisie rapide ou reconnaissance photo, recettes…" },
-  { id:"gatelens", name:"GateLens", family:"ai", url:"https://gatelens.leandro-sierra.com", en:"Outil d'analyse de conformité Digital Markets Act (DMA) pour plateformes, entreprises tech et leurs partenaires commerciaux : diagnostic exposition…", fr:"Outil d'analyse de conformité Digital Markets Act (DMA) pour plateformes, entreprises tech et leurs partenaires commerciaux : diagnostic exposition…" },
-  { id:"gpsrready", name:"GPSR Ready", family:"reg", url:"https://gpsrready.leandro-sierra.com", en:"General Product Safety Regulation readiness.", fr:"Préparation au règlement sur la sécurité générale des produits." },
-  { id:"hierarchie", name:"Hiérarchie", family:"public", url:"https://hierarchie.leandro-sierra.com", en:"Visual exploration of geographic and administrative structures.", fr:"Exploration visuelle de structures géographiques et administratives." },
-  { id:"highriskaiclassifier", name:"High Risk AI Classifier", family:"ai", url:"https://highriskaiclassifier.leandro-sierra.com", en:"Fast AI use-case classification against high-risk obligations.", fr:"Classification rapide des cas IA face aux obligations high-risk." },
-  { id:"immifrance", name:"ImmiFrance", family:"public", url:"https://immifrance.leandro-sierra.com", en:"Guidance for navigating French immigration procedures.", fr:"Aide à la lecture des parcours administratifs d’immigration française." },
-  { id:"instantpayready", name:"Instant Pay Ready", family:"reg", url:"https://instantpayready.leandro-sierra.com", en:"Instant-payment readiness and operational impact mapping.", fr:"Préparation aux paiements instantanés et impacts opérationnels." },
-  { id:"kinora", name:"Kinora", family:"public", url:"https://kinora.leandro-sierra.com", en:"Coach sportif et nutritionnel IA en français : plans d'entraînement personnalisés (niveau, équipement, objectif), suivi nutrition avec calcul macros…", fr:"Coach sportif et nutritionnel IA en français : plans d'entraînement personnalisés (niveau, équipement, objectif), suivi nutrition avec calcul macros…" },
-  { id:"maplore", name:"Maplore", family:"public", url:"https://maplore.leandro-sierra.com", en:"App web grand public pour cartographier sa vie en voyages et lieux vécus : épingler les pays/villes visités, enrichir avec photos et souvenirs, générer…", fr:"App web grand public pour cartographier sa vie en voyages et lieux vécus : épingler les pays/villes visités, enrichir avec photos et souvenirs, générer…" },
-  { id:"mcpsecurityready", name:"MCP Security Ready", family:"ai", url:"https://mcpsecurityready.leandro-sierra.com", en:"Security checks for MCP integrations and agent toolchains.", fr:"Contrôles sécurité pour intégrations MCP et chaînes d’outils agents." },
-  { id:"mecanex", name:"Mecanex", family:"ops", url:"https://mecanex.leandro-sierra.com", en:"SaaS de mise en conformité au Règlement UE Machines 2023/1230 (obligatoire janvier 2027, remplace directive 2006/42) : checklist d'écart par rapport à…", fr:"SaaS de mise en conformité au Règlement UE Machines 2023/1230 (obligatoire janvier 2027, remplace directive 2006/42) : checklist d'écart par rapport à…" },
-  { id:"methaneimportready", name:"Methane Import Ready", family:"reg", url:"https://methaneimportready.leandro-sierra.com", en:"Methane import readiness and reporting preparation.", fr:"Préparation aux obligations d’import méthane et reporting." },
-  { id:"mondio", name:"Mondio", family:"public", url:"https://mondio.leandro-sierra.com", en:"Quiz quotidien de culture mondiale façon Wordle : une question par jour sur géographie, histoire, science, culture — résultat partageable, streak…", fr:"Quiz quotidien de culture mondiale façon Wordle : une question par jour sur géographie, histoire, science, culture — résultat partageable, streak…" },
-  { id:"nis2supplierkit", name:"NIS2 Supplier Kit", family:"reg", url:"https://nis2supplierkit.leandro-sierra.com", en:"Supplier kit for NIS2 cybersecurity requirements.", fr:"Kit fournisseur pour exigences cybersécurité NIS2." },
-  { id:"nixor", name:"Nixor", family:"ai", url:"https://nixor.leandro-sierra.com", en:"Plateforme de conformité NIS2 pour entreprises essentielles et importantes en Europe : classification entité (essentiel/important), inventaire…", fr:"Plateforme de conformité NIS2 pour entreprises essentielles et importantes en Europe : classification entité (essentiel/important), inventaire…" },
-  { id:"nomadico", name:"Nomadico", family:"public", url:"https://nomadico.leandro-sierra.com", en:"Hub de référence pour digital nomads francophones : base de données visas nomades avec calculateur d'éligibilité par nationalité/durée, comparateur…", fr:"Hub de référence pour digital nomads francophones : base de données visas nomades avec calculateur d'éligibilité par nationalité/durée, comparateur…" },
-  { id:"nostalgix", name:"Nostalgix", family:"public", url:"https://nostalgix.leandro-sierra.com", en:"Colorisation IA de photos N&B familiales et d'archives : upload d'une photo, résultat colorisé HD en 20 secondes, options de style (vintage, naturel…", fr:"Colorisation IA de photos N&B familiales et d'archives : upload d'une photo, résultat colorisé HD en 20 secondes, options de style (vintage, naturel…" },
-  { id:"opensourceforkshield", name:"Open Source Fork Shield", family:"ops", url:"https://opensourceforkshield.leandro-sierra.com", en:"Risk checks for forks, dependencies and open-source exposure.", fr:"Évaluation des risques de forks, dépendances et exposition open source." },
-  { id:"pawio", name:"Pawio", family:"public", url:"https://pawio.leandro-sierra.com", en:"Assistant santé animale IA pour propriétaires de chiens et chats : analyse de symptômes, conseils vétérinaires, carnet de santé numérique, rappels…", fr:"Assistant santé animale IA pour propriétaires de chiens et chats : analyse de symptômes, conseils vétérinaires, carnet de santé numérique, rappels…" },
-  { id:"paytransparencyready", name:"Pay Transparency Ready", family:"reg", url:"https://paytransparencyready.leandro-sierra.com", en:"Preparation for pay transparency requirements.", fr:"Préparation aux exigences de transparence salariale." },
-  { id:"pentestai", name:"PentestAI", family:"ai", url:"https://pentestai.leandro-sierra.com", en:"AI-assisted security testing lab.", fr:"Laboratoire outillé pour tests sécurité assistés par IA." },
-  { id:"pickora", name:"Pickora", family:"reg", url:"https://pickora.leandro-sierra.com", en:"App grand public de décision d’achat qui transforme liens produits, captures d’écran, besoins et budget en tableau comparatif visuel: fiches…", fr:"App grand public de décision d’achat qui transforme liens produits, captures d’écran, besoins et budget en tableau comparatif visuel: fiches…" },
-  { id:"pop", name:"Pop", family:"public", url:"https://pop.leandro-sierra.com", en:"Civic product for debates, proposals and local participation.", fr:"Produit citoyen pour débats, propositions et participation locale." },
-  { id:"popbackend", name:"Pop Backend", family:"ops", url:"https://api.pop.leandro-sierra.com", en:"API and data foundation for the civic participation product.", fr:"API et socle données du produit de participation citoyenne." },
-  { id:"postquantumready", name:"Post Quantum Ready", family:"reg", url:"https://postquantumready.leandro-sierra.com", en:"Preparation for post-quantum cryptography risks.", fr:"Préparation aux risques cryptographiques post-quantiques." },
-  { id:"ppwrready", name:"PPWR Ready", family:"reg", url:"https://ppwrready.leandro-sierra.com", en:"Readiness for packaging and packaging-waste regulation.", fr:"Préparation au règlement emballages et déchets d’emballages." },
-  { id:"repowereugasimportready", name:"REPowerEU Gas Import Ready", family:"reg", url:"https://repowereugasimportready.leandro-sierra.com", en:"Gas import controls and energy-data readiness.", fr:"Préparation aux contrôles gaz import et données énergie." },
-  { id:"revio", name:"Revio", family:"ai", url:"https://revio.leandro-sierra.com", en:"Journal de rêves IA avec interprétation personnalisée : saisie vocale ou texte au réveil, interprétation symbolique par IA (archétypes, émotions…", fr:"Journal de rêves IA avec interprétation personnalisée : saisie vocale ou texte au réveil, interprétation symbolique par IA (archétypes, émotions…" },
-  { id:"seafoodsanctionswatch", name:"SeafoodSanctionsWatch", family:"reg", url:"https://seafoodsanctionswatch.leandro-sierra.com", en:"Veille SEO-first pour importateurs, distributeurs et restaurateurs sur risques de sanctions seafood: pays/espèces à risque, pétitions/règles US-EU…", fr:"Veille SEO-first pour importateurs, distributeurs et restaurateurs sur risques de sanctions seafood: pays/espèces à risque, pétitions/règles US-EU…" },
-  { id:"siteblockingappealready", name:"SiteBlockingAppealReady", family:"reg", url:"https://siteblockingappealready.leandro-sierra.com", en:"Kit B2B pour sites légitimes, SaaS, médias, e-commerce et agences SEO qui détectent les blocages DNS/ISP/anti-piratage abusifs: monitoring…", fr:"Kit B2B pour sites légitimes, SaaS, médias, e-commerce et agences SEO qui détectent les blocages DNS/ISP/anti-piratage abusifs: monitoring…" },
-  { id:"softwareproductliabilityready", name:"Software Product Liability Ready", family:"reg", url:"https://softwareproductliabilityready.leandro-sierra.com", en:"Software product-liability risk preparation.", fr:"Préparation aux risques de responsabilité produit logiciel." },
-  { id:"solario", name:"Solario", family:"ai", url:"https://solario.leandro-sierra.com", en:"Simulateur interactif de rentabilité solaire pour propriétaires FR : saisie logement (surface, orientation, région) + consommation électrique → calcul…", fr:"Simulateur interactif de rentabilité solaire pour propriétaires FR : saisie logement (surface, orientation, région) + consommation électrique → calcul…" },
-  { id:"sonosphere", name:"Sonosphere", family:"ai", url:"https://sonosphere.leandro-sierra.com", en:"Globe interactif des sons ambiants du monde : cliquez sur n'importe quelle ville ou lieu emblématique pour écouter une ambiance sonore immersive…", fr:"Globe interactif des sons ambiants du monde : cliquez sur n'importe quelle ville ou lieu emblématique pour écouter une ambiance sonore immersive…" },
-  { id:"stateside", name:"Stateside", family:"ai", url:"https://stateside.leandro-sierra.com", en:"Guide SEO multilingue pour non-Américains souhaitant immigrer, travailler ou maintenir leur statut aux USA dans le contexte Trump 2026 (green card…", fr:"Guide SEO multilingue pour non-Américains souhaitant immigrer, travailler ou maintenir leur statut aux USA dans le contexte Trump 2026 (green card…" },
-  { id:"stylio", name:"Stylio", family:"ai", url:"https://stylio.leandro-sierra.com", en:"App grand public de stylisme IA : photo de garde-robe → inventaire visuel, suggestions de tenues du jour par IA selon météo/occasion, coach style…", fr:"App grand public de stylisme IA : photo de garde-robe → inventaire visuel, suggestions de tenues du jour par IA selon météo/occasion, coach style…" },
-  { id:"subsidra", name:"Subsidra", family:"ai", url:"https://subsidra.leandro-sierra.com", en:"Plateforme de conformité EU Foreign Subsidies Regulation (FSR) pour entreprises répondant à des marchés publics européens ou réalisant des M&A…", fr:"Plateforme de conformité EU Foreign Subsidies Regulation (FSR) pour entreprises répondant à des marchés publics européens ou réalisant des M&A…" },
-  { id:"synkly", name:"Synkly", family:"ai", url:"https://synkly.leandro-sierra.com", en:"Outil ESG simplifié pour PME soumises aux questionnaires supply chain de leurs grands donneurs d'ordre (post-directive Omnibus qui a sorti 80% des…", fr:"Outil ESG simplifié pour PME soumises aux questionnaires supply chain de leurs grands donneurs d'ordre (post-directive Omnibus qui a sorti 80% des…" },
-  { id:"tracio", name:"Tracio", family:"ai", url:"https://tracio.leandro-sierra.com", en:"App grand public de cartographie visuelle de sa vie : timeline interactive avec géolocalisation des souvenirs, jalons personnels, photos, IA qui aide à…", fr:"App grand public de cartographie visuelle de sa vie : timeline interactive avec géolocalisation des souvenirs, jalons personnels, photos, IA qui aide à…" },
-  { id:"verdeo", name:"Verdeo", family:"ai", url:"https://verdeo.leandro-sierra.com", en:"Outil d'audit des allégations environnementales pour équipes marketing et PME : vérifie la conformité EU Green Claims Directive (sanctions jusqu'à 4%…", fr:"Outil d'audit des allégations environnementales pour équipes marketing et PME : vérifie la conformité EU Green Claims Directive (sanctions jusqu'à 4%…" },
-  { id:"voicerightswatch", name:"VoiceRightsWatch", family:"reg", url:"https://voicerightswatch.leandro-sierra.com", en:"Centre de ressources et pré-audit pour créateurs, podcasteurs et familles sur les risques de clonage vocal IA : checklist consentement, modèles de…", fr:"Centre de ressources et pré-audit pour créateurs, podcasteurs et familles sur les risques de clonage vocal IA : checklist consentement, modèles de…" },
-  { id:"voxia", name:"Voxia", family:"reg", url:"https://voxia.leandro-sierra.com", en:"Plateforme SaaS de signalement interne anonyme conforme à la Directive EU Whistleblowing (2019/1937) pour entreprises 50+ salariés : canal de…", fr:"Plateforme SaaS de signalement interne anonyme conforme à la Directive EU Whistleblowing (2019/1937) pour entreprises 50+ salariés : canal de…" },
-  { id:"vpnblockwatch", name:"VPNBlockWatch", family:"ai", url:"https://vpnblockwatch.leandro-sierra.com", en:"Observatoire FR/EN des blocages VPN, DNS et accès contenus en Europe pour consommateurs, expatriés, streamers et petites équipes: alertes…", fr:"Observatoire FR/EN des blocages VPN, DNS et accès contenus en Europe pour consommateurs, expatriés, streamers et petites équipes: alertes…" },
-  { id:"wellova", name:"Wellova", family:"ai", url:"https://wellova.leandro-sierra.com", en:"Compagnon de bien-être émotionnel quotidien : check-in en 30 secondes (humeur, énergie, gratitude), Wellova construit une courbe de bien-être…", fr:"Compagnon de bien-être émotionnel quotidien : check-in en 30 secondes (humeur, énergie, gratitude), Wellova construit une courbe de bien-être…" },
-  { id:"workflowai", name:"WorkflowAI", family:"ai", url:"https://workflowai.leandro-sierra.com", en:"Orchestration d'agents IA pour PMEs : automatise les workflows métier (factures, emails, approvals, data entry) en coordonnant plusieurs micro-agents…", fr:"Orchestration d'agents IA pour PMEs : automatise les workflows métier (factures, emails, approvals, data entry) en coordonnant plusieurs micro-agents…" }
+  { id:"portfolio", name:"Portfolio", family:"ops", url:"https://leandro-sierra.com", en:"The product index and technical presentation you are reading.", fr:"L'index produit et la présentation technique que vous consultez." },
+  { id:"accessibiliteexpress", name:"Accessibilité Express", family:"ops", url:"https://accessibiliteexpress.leandro-sierra.com", en:"Fast EAA/RGAA accessibility audit with a prioritized fix list and compliance statement templates.", fr:"Audit d'accessibilité EAA/RGAA express : checklist priorisée et modèles de déclaration." },
+  { id:"ageassuranceready", name:"Age Assurance Ready", family:"reg", url:"https://ageassuranceready.leandro-sierra.com", en:"Readiness kit for UK OSA and EU DSA age-assurance duties: self-diagnosis, minor-risk mapping, vendor checklist.", fr:"Kit de préparation age assurance (OSA UK / DSA UE) : diagnostic, risques mineurs, checklist prestataires." },
+  { id:"agentcommerceready", name:"Agent Commerce Ready", family:"ai", url:"https://agentcommerceready.leandro-sierra.com", en:"Gets e-commerce stores ready for AI-agent shopping: feeds, schema, checkout and agent-readable policies.", fr:"Prépare une boutique au commerce par agents IA : feeds, schema, checkout et politiques lisibles par agents." },
+  { id:"agentcostguard", name:"Agent Cost Guard", family:"ai", url:"https://agentcostguard.leandro-sierra.com", en:"Cost guardrails for AI-agent workloads: token-burn estimates, budgets per workflow and drift alerts.", fr:"Garde-fous de coûts pour agents IA : estimation token burn, budgets par workflow, alertes de dérive." },
+  { id:"agentdocsready", name:"Agent Docs Ready", family:"ai", url:"https://agentdocsready.leandro-sierra.com", en:"Audits documentation sites for AI-agent readability: llms.txt, cited pages, agent traffic and fixes.", fr:"Audite la lisibilité d'une doc par les agents IA : llms.txt, pages citées, trafic agents et correctifs." },
+  { id:"agenticcontainmentready", name:"ScopeLock", family:"ai", url:"https://agenticcontainmentready.leandro-sierra.com", en:"Containment toolkit for autonomous AI agents: permission inventory, sandboxing, kill switch, audit-ready logs.", fr:"Confinement d'agents IA autonomes : inventaire des permissions, sandboxing, kill switch, journaux prêts audit." },
+  { id:"agenttraceqa", name:"AgentTraceQA", family:"ai", url:"https://agenttraceqa.leandro-sierra.com", en:"QA and lightweight observability for deployed AI agents: regression scenarios, injection tests, trace review.", fr:"QA et observabilité légère d'agents IA : scénarios de régression, tests d'injection, revue de traces." },
+  { id:"aibrowserextensionaudit", name:"ExtensionLedger", family:"ai", url:"https://aibrowserextensionaudit.leandro-sierra.com", en:"Inventories risky AI browser extensions, scores sensitive permissions and outputs a Chrome/Edge blocking plan.", fr:"Inventorie les extensions IA à risque, score les permissions sensibles et produit un plan de blocage Chrome/Edge." },
+  { id:"aicodeprovenanceready", name:"AI Code Provenance Ready", family:"ai", url:"https://aicodeprovenanceready.leandro-sierra.com", en:"Audit trail for AI-generated code: tool registry, usage policy, artifact traceability and a CISO-ready report.", fr:"Traçabilité du code généré par IA : registre d'outils, politique d'usage, SBOM et rapport prêt RSSI." },
+  { id:"aipresencecheck", name:"AI Presence Check", family:"ai", url:"https://aipresencecheck.leandro-sierra.com", en:"Checks how a business shows up in ChatGPT, Gemini and Perplexity: citations, brand mentions, pages to fix.", fr:"Vérifie la visibilité d'une PME dans ChatGPT, Gemini, Perplexity : citations, mentions et pages à corriger." },
+  { id:"algodesk", name:"AlgoDesk", family:"reg", url:"https://algodesk.leandro-sierra.com", en:"EU Platform Work Directive compliance: management-algorithm audit, worker registry, employment-presumption test.", fr:"Conformité Platform Work Directive : audit d'algorithme, registre travailleurs, test de présomption de salariat." },
+  { id:"autoentrepreneurai", name:"AutoEntrepreneur AI", family:"ops", url:"https://autoentrepreneurai.leandro-sierra.com", en:"All-in-one assistant for French solo entrepreneurs: guided URSSAF filings, invoicing, VAT-threshold tracking.", fr:"Assistant tout-en-un du micro-entrepreneur : déclarations URSSAF guidées, facturation, suivi des seuils TVA." },
+  { id:"babybox", name:"Babybox", family:"public", url:"https://babybox.leandro-sierra.com", en:"Parenting tracker for sleep, feeding and the first months' routines.", fr:"Suivi parental : sommeil, repas et routines des premiers mois." },
+  { id:"batteryduediligenceready", name:"Battery Due Diligence Ready", family:"reg", url:"https://batteryduediligenceready.leandro-sierra.com", en:"EU Battery Regulation pre-audit: supplier due diligence, material traceability and deadline tracking.", fr:"Pré-audit règlement batteries UE : due diligence fournisseurs, traçabilité matières, échéances." },
+  { id:"batterypassportready", name:"Battery Passport Ready", family:"reg", url:"https://batterypassportready.leandro-sierra.com", en:"Battery-passport readiness: SKU inventory, carbon and supply-chain data, QR readiness, DPP solution choice.", fr:"Préparation passeport batterie : inventaire SKU, données carbone, QR readiness et choix de solution DPP." },
+  { id:"bordex", name:"Bordex", family:"reg", url:"https://bordex.leandro-sierra.com", en:"CBAM workflow app: embedded-emission calculations, import declarations and carbon-certificate registry.", fr:"Workflow CBAM : calcul des émissions embarquées, déclarations d'importation et registre de certificats." },
+  { id:"brandwave", name:"Brandwave", family:"ops", url:"https://brandwave.leandro-sierra.com", en:"AI jingle and sonic-branding generator: an original 3-15 s jingle and sound logo from your brand profile.", fr:"Générateur IA de jingles et d'identité sonore : jingle original de 3-15 s et sound logo prêts à l'emploi." },
+  { id:"capsulo", name:"Capsulo", family:"public", url:"https://capsulo.leandro-sierra.com", en:"Digital time capsules: write a message or memory to be opened in months or years, by you or someone you love.", fr:"Capsules temporelles numériques : un message ou un souvenir à ouvrir dans des mois ou des années." },
+  { id:"careercompass", name:"CareerCompass", family:"public", url:"https://careercompass.leandro-sierra.com", en:"AI career guidance for students: skills diagnosis, personalized career paths and upskilling resources.", fr:"Orientation carrière IA pour étudiants : diagnostic de compétences, chemins métier personnalisés, ressources." },
+  { id:"carevo", name:"Carevo", family:"public", url:"https://carevo.leandro-sierra.com", en:"AI resume and cover-letter optimizer: ATS-ready resume, match score and a tailored letter in 30 seconds.", fr:"Optimiseur de CV par IA : CV ATS-ready, score de compatibilité et lettre personnalisée en 30 secondes." },
+  { id:"carvia", name:"Carvia", family:"public", url:"https://carvia.leandro-sierra.com", en:"Career-change assistant: transferable-skill analysis, compatible paths and a six-week reskilling plan.", fr:"Assistant de reconversion : compétences transférables, pistes compatibles et plan de reskilling en 6 semaines." },
+  { id:"caspeo", name:"Caspeo", family:"reg", url:"https://caspeo.leandro-sierra.com", en:"MiCA compliance wizard for crypto-asset service providers: licence self-diagnosis and AML checklists.", fr:"Wizard de conformité MiCA pour CASPs : auto-diagnostic licence et checklists AML." },
+  { id:"cbamready", name:"CBAM Ready", family:"reg", url:"https://cbamready.leandro-sierra.com", en:"CBAM 2026 readiness assistant for SMEs importing into the EU.", fr:"Assistant de préparation CBAM 2026 pour PME importatrices vers l'UE." },
+  { id:"chronicla", name:"Chronicla", family:"public", url:"https://chronicla.leandro-sierra.com", en:"Interactive world-history explorer: enriched timeline, synced map and causal links between events.", fr:"Exploration interactive de l'histoire mondiale : timeline enrichie, carte synchronisée, liens de causalité." },
+  { id:"circulex", name:"Circulex", family:"reg", url:"https://circulex.leandro-sierra.com", en:"ESPR ecodesign compliance: requirements audit, repairability score and Digital Product Passport preparation.", fr:"Conformité écoconception ESPR : audit des exigences, score de réparabilité et préparation au DPP." },
+  { id:"clickfixdefensekit", name:"ClickFix Defense Kit", family:"ops", url:"https://clickfixdefensekit.leandro-sierra.com", en:"ClickFix attack prevention for SMBs and MSPs: site audit, anti-fake-captcha checklist, awareness simulator.", fr:"Prévention ClickFix pour PME et MSP : audit de site, checklist anti-faux captcha, simulateur de sensibilisation." },
+  { id:"coloradoaiactready", name:"Ailex", family:"reg", url:"https://coloradoaiactready.leandro-sierra.com", en:"Colorado ADMT readiness diagnosis: covered-system detection, notices, consumer rights, evidence retention.", fr:"Diagnostic Colorado ADMT : détection des systèmes couverts, notices, droits consommateurs et preuves." },
+  { id:"consularswitchguide", name:"Consular Switch Guide", family:"public", url:"https://consularswitchguide.leandro-sierra.com", en:"Multilingual guide to the US consular-processing switch: scenarios, documents, timelines, lawyer questions.", fr:"Guide multilingue du basculement consular processing US : scénarios, documents, timeline, questions avocat." },
+  { id:"copyleftforkaudit", name:"Copyleft Fork Audit", family:"reg", url:"https://copyleftforkaudit.leandro-sierra.com", en:"Pre-audit for teams forking AGPL/GPL software: source obligations, attributions and cease-and-desist risks.", fr:"Pré-audit des forks AGPL/GPL : obligations de source, attributions et risques de mise en demeure." },
+  { id:"courrio", name:"Courrio", family:"public", url:"https://courrio.leandro-sierra.com", en:"Administrative-letter assistant: structured cancellation, complaint or formal-notice letters with proof checklists.", fr:"Assistant courriers administratifs : résiliation, réclamation, mise en demeure, avec checklist des preuves." },
+  { id:"craready", name:"CRA Ready", family:"reg", url:"https://craready.leandro-sierra.com", en:"Cyber Resilience Act preparation for manufacturers, SaaS vendors and EU importers.", fr:"Préparation au Cyber Resilience Act pour fabricants, éditeurs SaaS et importateurs UE." },
+  { id:"culinai", name:"Culinai", family:"public", url:"https://culinai.leandro-sierra.com", en:"Recipe generator from what's in your fridge: three recipes, a shopping list and a mini meal plan.", fr:"Recettes depuis le contenu du frigo : trois recettes, liste de courses et mini-plan repas." },
+  { id:"dataactready", name:"Data Act Ready", family:"reg", url:"https://dataactready.leandro-sierra.com", en:"EU Data Act compliance kit: data-access obligations diagnosis, pre-contract notices and B2B clauses.", fr:"Kit conformité Data Act : diagnostic des obligations d'accès, notices précontractuelles et clauses B2B." },
+  { id:"datachat-lite", name:"DataChat Lite", family:"ai", url:"https://datachat-lite.leandro-sierra.com", en:"Conversational analytics for SMBs: chat with your data, auto-dashboards and CSV/PDF export.", fr:"Analytics conversationnel pour PME : chattez avec vos données, dashboards automatiques, export CSV/PDF." },
+  { id:"dataporter", name:"DataPorter", family:"reg", url:"https://dataporter.leandro-sierra.com", en:"EU Data Act workflow: product-data inventory, user-access matrix, sharing requests, compliance file export.", fr:"Workflow Data Act : inventaire des données produit, matrice d'accès, demandes de partage et dossier export." },
+  { id:"datastoryai", name:"DataStoryAI", family:"ai", url:"https://datastoryai.leandro-sierra.com", en:"Turns CSV and Excel files into interactive dashboards with AI-written explanations.", fr:"Transforme CSV/Excel en dashboards interactifs avec explications rédigées par IA." },
+  { id:"dayline", name:"Dayline", family:"public", url:"https://dayline.leandro-sierra.com", en:"Local-first personal timeline linking calendar, notes and journal: daily brief and contextual reminders.", fr:"Timeline personnelle local-first reliant agenda, notes et journal : brief du jour et rappels contextuels." },
+  { id:"devaitools", name:"DevAI Tools", family:"ai", url:"https://devai-tools.leandro-sierra.com", en:"Bilingual comparator of 8 AI developer tools with a guided picker and pricing/usage matrix.", fr:"Comparateur bilingue de 8 outils IA pour développeurs : assistant de choix, matrice prix/usage." },
+  { id:"devicesunsetcheck", name:"Device Sunset Check", family:"public", url:"https://devicesunsetcheck.leandro-sierra.com", en:"End-of-support tracker for connected devices: risks, fixes, alternatives and replacement offers.", fr:"Fin de support des objets connectés : risques, correctifs, alternatives et offres de remplacement." },
+  { id:"devlicopsready", name:"DevLicOps Ready", family:"reg", url:"https://devlicopsready.leandro-sierra.com", en:"Open-source licence risk pre-audit for AI-generated code: GPL/AGPL detection, redistribution checklist.", fr:"Pré-audit licences open source du code généré par IA : détection GPL/AGPL, checklist redistribution." },
+  { id:"digitaleuroready", name:"Digital Euro Ready", family:"reg", url:"https://digitaleuroready.leandro-sierra.com", en:"Digital-euro readiness for PSPs and merchants: wallet journeys, acceptance duties, e-commerce integration.", fr:"Préparation euro numérique pour PSP et marchands : parcours wallet, obligations d'acceptation, intégration." },
+  { id:"digitalfairnessready", name:"Digital Fairness Ready", family:"reg", url:"https://digitalfairnessready.leandro-sierra.com", en:"Digital Fairness Act UX audit: dark patterns, cancellation flows, renewals and personalized pricing.", fr:"Audit UX Digital Fairness Act : dark patterns, résiliation, renouvellements et pricing personnalisé." },
+  { id:"digitalproductpassportready", name:"Digital Product Passport Ready", family:"reg", url:"https://digitalproductpassportready.leandro-sierra.com", en:"ESPR Digital Product Passport readiness: diagnosis, data checklist, supplier templates, QR readiness.", fr:"Préparation DPP ESPR : diagnostic, checklist données, modèles fournisseurs et QR readiness." },
+  { id:"disclo", name:"Disclo", family:"reg", url:"https://disclo.leandro-sierra.com", en:"CSRD preparation for large EU companies: double-materiality assessment, ESRS data collection, gap analysis.", fr:"Préparation CSRD : évaluation de matérialité double, collecte ESRS et gap analysis par pilier ESG." },
+  { id:"doravendorready", name:"DORA Vendor Ready", family:"reg", url:"https://doravendorready.leandro-sierra.com", en:"DORA readiness for ICT suppliers: diagnosis, critical-services registry, Article 30 clauses, client evidence.", fr:"Préparation DORA fournisseurs ICT : diagnostic, registre services critiques, clauses Article 30." },
+  { id:"dutio", name:"Dutio", family:"reg", url:"https://dutio.leandro-sierra.com", en:"EU customs compliance for e-merchants: post-de-minimis duty calculator, AI-assisted HS-code classification.", fr:"Conformité douanière e-commerce : calcul des droits post-de minimis et classification HS assistée par IA." },
+  { id:"einvoicingfranceready", name:"E-Invoicing France Ready", family:"reg", url:"https://einvoicingfranceready.leandro-sierra.com", en:"French 2026-2027 e-invoicing reform kit: send/receive diagnosis, PDP choice and migration checklist.", fr:"Kit réforme facture électronique 2026-2027 : diagnostic émission/réception, choix PDP, checklist migration." },
+  { id:"equive", name:"Equive", family:"reg", url:"https://equive.leandro-sierra.com", en:"EU Pay Transparency compliance: neutral job evaluation, gender pay-gap calculation and legal reporting.", fr:"Conformité transparence salariale UE : évaluation des emplois, calcul des écarts F/H et rapport légal." },
+  { id:"eudiwalletready", name:"EUDI Wallet Ready", family:"reg", url:"https://eudiwalletready.leandro-sierra.com", en:"eIDAS 2.0 wallet readiness: KYC and login journey mapping, acceptance checklist, 2026-2027 migration plan.", fr:"Préparation EU Digital Identity Wallet : cartographie KYC/login, checklist d'acceptation, plan 2026-2027." },
+  { id:"factureelectroniqueready", name:"Facture Électronique Ready", family:"reg", url:"https://factureelectroniqueready.leandro-sierra.com", en:"Clear path to the French e-invoicing mandate: PDP checklist, email templates and tool comparison.", fr:"Parcours clair vers la facture électronique : checklist PDP, modèles d'emails et comparatif d'outils." },
+  { id:"fidaopenfinanceready", name:"FiDA Open Finance Ready", family:"reg", url:"https://fidaopenfinanceready.leandro-sierra.com", en:"FiDA open-finance diagnosis: customer-data inventory, consent, API readiness and provider comparison.", fr:"Diagnostic FiDA open finance : inventaire des données client, consentement, API readiness, comparatif." },
+  { id:"focali", name:"Focali", family:"public", url:"https://focali.leandro-sierra.com", en:"Productivity app designed for ADHD brains: adaptive task chunking, visual time-boxing, virtual body doubling.", fr:"Productivité pensée pour les cerveaux TDAH : chunking adaptatif, time-boxing visuel, body doubling virtuel." },
+  { id:"foresta", name:"Foresta", family:"reg", url:"https://foresta.leandro-sierra.com", en:"EUDR compliance kit: due-diligence statements, supplier checks and geospatial commodity traceability.", fr:"Kit conformité EUDR : déclarations de due diligence, vérification fournisseurs, traçabilité géospatiale." },
+  { id:"forfio", name:"Forfio", family:"public", url:"https://forfio.leandro-sierra.com", en:"Smart French mobile and broadband plan comparator: personalized scoring, price history and drop alerts.", fr:"Comparateur intelligent de forfaits mobiles et box : scoring personnalisé, historique de prix, alertes." },
+  { id:"framepulse", name:"FramePulse", family:"ops", url:"https://framepulse.leandro-sierra.com", en:"Turns a product photo or post idea into a short storyboard, hook variants and exportable social assets.", fr:"Transforme une photo produit ou une idée de post en storyboard, variantes de hooks et assets sociaux." },
+  { id:"friggo", name:"Friggo", family:"public", url:"https://friggo.leandro-sierra.com", en:"AI recipes from whatever is in your fridge: photo recognition, weekly meal planning and anti-waste mode.", fr:"Recettes IA depuis votre frigo : reconnaissance photo, plan de repas hebdomadaire et mode anti-gaspi." },
+  { id:"gatelens", name:"GateLens", family:"reg", url:"https://gatelens.leandro-sierra.com", en:"DMA exposure workspace: diagnose gatekeeper obligations and produce an actionable impact brief.", fr:"Workspace DMA : diagnostic d'exposition gatekeeper et brief d'impact exploitable." },
+  { id:"gpsrready", name:"GPSR Ready", family:"reg", url:"https://gpsrready.leandro-sierra.com", en:"General Product Safety Regulation diagnosis: EU responsible person, traceability and risk assessment.", fr:"Diagnostic GPSR : responsable UE, traçabilité fournisseur et risk assessment produit." },
+  { id:"habio", name:"Habio", family:"public", url:"https://habio.leandro-sierra.com", en:"Gamified habit coach: a challenge matched to your energy, a 7-day plan, streaks and shareable rewards.", fr:"Coach d'habitudes gamifié : défi adapté à ton énergie, plan de 7 jours, streaks et récompenses à partager." },
+  { id:"hackle", name:"Hackle", family:"public", url:"https://hackle.leandro-sierra.com", en:"Daily Wordle-style trivia: one timed five-question challenge a day, shareable scores, weekly rankings.", fr:"Quiz quotidien façon Wordle : 5 questions chronométrées par jour, score partageable, classements hebdo." },
+  { id:"harbora", name:"Harbora", family:"reg", url:"https://harbora.leandro-sierra.com", en:"MiCA compliance platform: asset classification, obligation checklists, compliant whitepaper generator.", fr:"Plateforme MiCA : classification d'actifs, checklists d'obligations, générateur de whitepaper conforme." },
+  { id:"hierarchie", name:"Hiérarchie", family:"public", url:"https://hierarchie.leandro-sierra.com", en:"Interactive world atlas of governments: D3 globe, historical time travel, country comparison and quizzes.", fr:"Atlas mondial interactif des gouvernements : globe D3, voyage temporel, comparaison de pays et quiz." },
+  { id:"highriskaiclassifier", name:"High Risk AI Classifier", family:"reg", url:"https://highriskaiclassifier.leandro-sierra.com", en:"EU AI Act diagnosis for SMEs: high-risk classification, Article 6 evidence and compliance plan.", fr:"Diagnostic AI Act : classification high-risk, preuves Article 6 et plan de conformité." },
+  { id:"immifrance", name:"ImmiFrance", family:"public", url:"https://immifrance.leandro-sierra.com", en:"Editorial guide to French immigration: step-by-step paths, official links and practical resources.", fr:"Guide éditorial de l'immigration en France : parcours pas-à-pas, liens officiels, ressources pratiques." },
+  { id:"instantpayready", name:"Instant Pay Ready", family:"reg", url:"https://instantpayready.leandro-sierra.com", en:"EU Instant Payments and Verification-of-Payee readiness diagnosis.", fr:"Diagnostic de préparation aux paiements instantanés SEPA et à la Verification of Payee." },
+  { id:"intervia", name:"Intervia", family:"public", url:"https://intervia.leandro-sierra.com", en:"AI interview coach: paste a job offer, practice under real conditions, get scored feedback and a plan.", fr:"Coach d'entretien IA : collez une offre, entraînez-vous en conditions réelles, score et feedback argumenté." },
+  { id:"kinora", name:"Kinora", family:"public", url:"https://kinora.leandro-sierra.com", en:"French AI fitness and nutrition coach: personalized training plans, macro tracking, weekly progression.", fr:"Coach sportif et nutritionnel IA : plans personnalisés, suivi des macros et progression hebdomadaire." },
+  { id:"lexio", name:"Lexio", family:"public", url:"https://lexio.leandro-sierra.com", en:"AI plain-language analysis of legal documents: risky clauses flagged, clear summaries, Q&A on your contract.", fr:"Analyse IA de documents juridiques : clauses à risque, résumés clairs et questions sur votre contrat." },
+  { id:"maplore", name:"Maplore", family:"public", url:"https://maplore.leandro-sierra.com", en:"An autobiographical map turning places and trips into a shareable story, poster or print.", fr:"Carte autobiographique : lieux vécus et voyages transformés en récit partageable ou poster." },
+  { id:"maplr", name:"Maplr", family:"public", url:"https://maplr.leandro-sierra.com", en:"Neighborhood explorer for renters and buyers: noise, prices, schools and transit layers, personal score.", fr:"Explorateur de quartiers : bruit, prix au m², écoles et transports superposés, score personnalisé." },
+  { id:"mcpsecurityready", name:"MCP Security Ready", family:"ai", url:"https://mcpsecurityready.leandro-sierra.com", en:"Security scanner for MCP servers: tool inventory, permissions, prompt-injection risks, CISO-ready report.", fr:"Sécurité des serveurs MCP : inventaire d'outils, permissions, risques d'injection et rapport prêt RSSI." },
+  { id:"mecanex", name:"Mecanex", family:"reg", url:"https://mecanex.leandro-sierra.com", en:"EU Machinery Regulation 2023/1230 compliance: gap checklist, CE technical file generator and risk wizard.", fr:"Conformité règlement Machines 2023/1230 : checklist d'écarts, dossier technique CE, wizard de risques." },
+  { id:"memora", name:"Memora", family:"public", url:"https://memora.leandro-sierra.com", en:"A personal time capsule: write a letter to your future self, lock it, open it on the date you chose.", fr:"Capsule temporelle personnelle : une lettre à ton futur toi, verrouillée jusqu'à la date choisie." },
+  { id:"methaneimportready", name:"Methane Import Ready", family:"reg", url:"https://methaneimportready.leandro-sierra.com", en:"EU methane regulation pre-audit for energy importers: origin data, MRV/OGMP 2.0, 2026-2028 reporting.", fr:"Pré-audit règlement méthane : données d'origine, MRV/OGMP 2.0 et préparation du reporting 2026-2028." },
+  { id:"mirrora", name:"Mirrora", family:"public", url:"https://mirrora.leandro-sierra.com", en:"AI self-discovery: daily micro-reflections build an evolving personal mirror of patterns and blind spots.", fr:"Self-discovery par IA : micro-réflexions quotidiennes, miroir personnel évolutif, patterns et blind spots." },
+  { id:"mondio", name:"Mondio", family:"public", url:"https://mondio.leandro-sierra.com", en:"Daily world-culture quiz: one question a day, shareable results, streaks and a global leaderboard.", fr:"Quiz quotidien de culture mondiale : une question par jour, résultat partageable, streak et classement." },
+  { id:"nis2supplierkit", name:"NIS2 Supplier Kit", family:"reg", url:"https://nis2supplierkit.leandro-sierra.com", en:"NIS2 supplier diagnosis: security questionnaire, minimal-measures checklist and policy templates.", fr:"Diagnostic NIS2 fournisseurs : questionnaire sécurité, checklist de mesures et modèles de politiques." },
+  { id:"nixor", name:"Nixor", family:"reg", url:"https://nixor.leandro-sierra.com", en:"NIS2 compliance platform: entity classification, technical-measure mapping, incident plan and scoring.", fr:"Plateforme NIS2 : classification d'entité, cartographie des mesures, plan incidents et scoring continu." },
+  { id:"nomadico", name:"Nomadico", family:"public", url:"https://nomadico.leandro-sierra.com", en:"Reference hub for digital nomads: visa eligibility calculator, cost-of-living comparison and tax guides.", fr:"Hub des digital nomads : calculateur d'éligibilité visa, comparateur coût de la vie et guides fiscaux." },
+  { id:"nostalgix", name:"Nostalgix", family:"public", url:"https://nostalgix.leandro-sierra.com", en:"AI colorization of family black-and-white photos: HD result in 20 seconds, vintage or natural styles.", fr:"Colorisation IA de photos N&B : résultat HD en 20 secondes, styles vintage ou naturel." },
+  { id:"packora", name:"Packora", family:"reg", url:"https://packora.leandro-sierra.com", en:"PPWR workspace: packaging inventory, recyclability duties, supplier evidence and 2026-2030 deadlines.", fr:"Workspace PPWR : inventaire emballages, obligations de recyclabilité, preuves fournisseurs, échéances." },
+  { id:"pactio", name:"Pactio", family:"ops", url:"https://pactio.leandro-sierra.com", en:"AI contract analyzer for freelancers: abusive clauses, risk scoring per section and market benchmarks.", fr:"Analyse de contrats IA pour freelances : clauses abusives, score de risque par section, comparaison marché." },
+  { id:"pariva", name:"Pariva", family:"reg", url:"https://pariva.leandro-sierra.com", en:"Pay-transparency HR tool: salary-grid audit, gender pay-gap calculation and the 2027 legal report.", fr:"Outil RH transparence salariale : audit des grilles, calcul de l'écart F/H et rapport légal 2027." },
+  { id:"pawio", name:"Pawio", family:"public", url:"https://pawio.leandro-sierra.com", en:"AI pet-health assistant: symptom analysis, digital health record and vaccine reminders for dogs and cats.", fr:"Assistant santé animale IA : analyse de symptômes, carnet de santé numérique et rappels vaccins." },
+  { id:"paytransparencyready", name:"Pay Transparency Ready", family:"reg", url:"https://paytransparencyready.leandro-sierra.com", en:"EU pay-transparency readiness for SMB HR: job-ad audit, salary ranges and a risk mini-report.", fr:"Préparation transparence salariale : audit d'annonces, fourchettes salariales et mini-rapport de risques." },
+  { id:"pentestai", name:"PentestAI", family:"ai", url:"https://pentestai.leandro-sierra.com", en:"AI-automated penetration testing as SaaS: plans by scope, automated runs and a findings dashboard.", fr:"Pentest automatisé par IA : forfaits par périmètre, exécution automatisée et dashboard des vulnérabilités." },
+  { id:"pfasproof", name:"PFAS Proof", family:"reg", url:"https://pfasproof.leandro-sierra.com", en:"PFAS pre-audit for textile, cosmetics and packaging brands: product inventory, supplier requests, deadlines.", fr:"Pré-audit PFAS : inventaire produits, demandes fournisseurs, déclaration de conformité et échéances." },
+  { id:"pickora", name:"Pickora", family:"public", url:"https://pickora.leandro-sierra.com", en:"Purchase-decision helper: product links and needs become a visual comparison table with price alerts.", fr:"Aide à la décision d'achat : liens produits et besoins transformés en tableau comparatif avec alertes prix." },
+  { id:"postquantumready", name:"Post Quantum Ready", family:"reg", url:"https://postquantumready.leandro-sierra.com", en:"Post-quantum readiness audit: crypto-agility diagnosis, TLS/SSH inventory and a NIST PQC roadmap.", fr:"Audit post-quantique : diagnostic crypto-agility, inventaire TLS/SSH et roadmap NIST PQC." },
+  { id:"ppwrready", name:"PPWR Ready", family:"reg", url:"https://ppwrready.leandro-sierra.com", en:"PPWR 2026 diagnosis: packaging inventory, checklist, supplier requests and a mini-report.", fr:"Diagnostic PPWR 2026 : inventaire emballages, checklist, demandes fournisseurs et mini-rapport." },
+  { id:"proxyledger", name:"ProxyLedger", family:"ai", url:"https://proxyledger.leandro-sierra.com", en:"Governance for AI agents that buy: mandate policies, per-agent budgets, approval logs, audit exports.", fr:"Gouvernance des agents IA acheteurs : mandats, budgets par agent, journal d'approbation, exports audit." },
+  { id:"pulsio", name:"Pulsio", family:"ops", url:"https://pulsio.leandro-sierra.com", en:"Anonymous pulse surveys for SMBs: wellbeing and workload metrics with burnout alerts and action plans.", fr:"Pulse survey anonyme pour PME : bien-être et charge mesurés, alertes burnout et plans d'action." },
+  { id:"renovi", name:"Rénovi", family:"public", url:"https://renovi.leandro-sierra.com", en:"French DPE renovation assistant: work-impact simulation, MaPrimeRénov aid calculation and ROI estimates.", fr:"Assistant DPE et rénovation : simulation d'impact des travaux, aides MaPrimeRénov et estimation du ROI." },
+  { id:"repowereugasimportready", name:"REPowerEU Gas Import Ready", family:"reg", url:"https://repowereugasimportready.leandro-sierra.com", en:"Checklist for the EU exit from Russian gas: prior authorizations, origin proof and customs files.", fr:"Checklist sortie du gaz russe : autorisations préalables, preuve d'origine et dossier douane." },
+  { id:"retraito", name:"Retraito", family:"public", url:"https://retraito.leandro-sierra.com", en:"AI retirement simulator for French workers: pension estimate, optimal departure age, savings strategies.", fr:"Simulateur de retraite IA : estimation de pension, âge optimal de départ et stratégies d'épargne." },
+  { id:"revio", name:"Revio", family:"public", url:"https://revio.leandro-sierra.com", en:"AI dream journal: voice or text entries at wake-up, symbolic interpretation and recurring-theme history.", fr:"Journal de rêves IA : saisie vocale au réveil, interprétation symbolique et thèmes récurrents." },
+  { id:"riscope", name:"Riscope", family:"reg", url:"https://riscope.leandro-sierra.com", en:"AI Act classification for companies using AI: high-risk wizard, obligation checklist, PDF compliance file.", fr:"Classification AI Act : wizard high-risk, checklist d'obligations et dossier de conformité PDF." },
+  { id:"scenelet", name:"Scenelet", family:"ops", url:"https://scenelet.leandro-sierra.com", en:"AI studio for short vertical videos: narrative arcs, storyboards, shot lists and publishing calendars.", fr:"Studio IA de vidéos verticales : arcs narratifs, storyboards, shot lists et calendrier de publication." },
+  { id:"seafoodsanctionswatch", name:"Seafood Sanctions Watch", family:"reg", url:"https://seafoodsanctionswatch.leandro-sierra.com", en:"Sanctions watch for seafood importers: at-risk countries and species, US-EU rules, due-diligence checklist.", fr:"Veille sanctions seafood : pays et espèces à risque, règles US-UE et checklist due diligence." },
+  { id:"sentrio", name:"Sentrio", family:"reg", url:"https://sentrio.leandro-sierra.com", en:"EU AMLA/AML compliance hub: obligations audit, reporting registry and direct-supervision preparation.", fr:"Hub conformité AMLA/AML : audit des obligations, registre des signalements, préparation supervision." },
+  { id:"simulo", name:"Simulo", family:"public", url:"https://simulo.leandro-sierra.com", en:"Financial life simulator for French households: 5-20 year projections, buy-vs-rent and life scenarios.", fr:"Simulateur de vie financière : projections 5-20 ans, achat vs location et scénarios de vie." },
+  { id:"siteblockingappealready", name:"Site Blocking Appeal Ready", family:"reg", url:"https://siteblockingappealready.leandro-sierra.com", en:"Detects abusive DNS/ISP blocking of legitimate sites: multi-network monitoring, evidence file, appeals.", fr:"Détection des blocages DNS/FAI abusifs : monitoring multi-réseaux, dossier de preuve et recours." },
+  { id:"snapfix", name:"Snapfix", family:"public", url:"https://snapfix.leandro-sierra.com", en:"AI home-repair assistant: photo of what's broken, a step-by-step guide, parts list and matching videos.", fr:"Réparation maison par IA : photo de la panne, guide pas-à-pas, liste de pièces et vidéos pertinentes." },
+  { id:"softwareproductliabilityready", name:"Software Product Liability Ready", family:"reg", url:"https://softwareproductliabilityready.leandro-sierra.com", en:"EU software product-liability pre-audit and readiness checklist.", fr:"Pré-audit et checklist de préparation à la responsabilité produit logiciel UE." },
+  { id:"solario", name:"Solario", family:"public", url:"https://solario.leandro-sierra.com", en:"Solar profitability simulator for French homeowners: ROI, yearly savings and available subsidies.", fr:"Simulateur de rentabilité solaire : ROI, économies annuelles et primes disponibles." },
+  { id:"sonosphere", name:"Sonosphere", family:"public", url:"https://sonosphere.leandro-sierra.com", en:"Interactive globe of ambient sounds: click any city to hear an immersive soundscape.", fr:"Globe interactif des sons du monde : cliquez sur une ville pour écouter son ambiance sonore." },
+  { id:"stateframe", name:"Stateframe", family:"reg", url:"https://stateframe.leandro-sierra.com", en:"Multi-state navigator of US AI laws: obligations map by state, risk matrix, cross-compliance checklist.", fr:"Navigateur des lois IA américaines : obligations par État, matrice de risques, checklist croisée." },
+  { id:"stateprivacymapready", name:"State Privacy Map Ready", family:"reg", url:"https://stateprivacymapready.leandro-sierra.com", en:"US state privacy laws 2026 checklist: applicability thresholds, consumer rights and action plan.", fr:"Checklist lois privacy US 2026 : seuils d'applicabilité, droits consommateurs et plan d'action." },
+  { id:"stateside", name:"Stateside", family:"public", url:"https://stateside.leandro-sierra.com", en:"Multilingual guide to US immigration routes: USCIS, H-1B, OPT, green card and status maintenance.", fr:"Guide multilingue de l'immigration US : USCIS, H-1B, OPT, green card et maintien de statut." },
+  { id:"stylio", name:"Stylio", family:"public", url:"https://stylio.leandro-sierra.com", en:"AI styling app: photograph your wardrobe, get daily outfit suggestions by weather and occasion.", fr:"Stylisme IA : photographiez votre garde-robe, recevez des tenues du jour selon météo et occasion." },
+  { id:"synkly", name:"Synkly", family:"reg", url:"https://synkly.leandro-sierra.com", en:"Simplified ESG for SMBs: answer supply-chain questionnaires in 20 minutes, export an assessment report.", fr:"ESG simplifié pour PME : questionnaires supply chain en 20 minutes et rapport d'évaluation exportable." },
+  { id:"tokena", name:"Tokena", family:"reg", url:"https://tokena.leandro-sierra.com", en:"Multi-regime crypto compliance: MiCA CASP wizard, GENIUS Act checklist and AML gap analysis.", fr:"Conformité crypto multi-régimes : wizard MiCA CASP, checklist GENIUS Act et gap analysis AML." },
+  { id:"tracio", name:"Tracio", family:"public", url:"https://tracio.leandro-sierra.com", en:"Visual life mapping: interactive timeline with geolocated memories, milestones and AI summaries.", fr:"Cartographie visuelle de sa vie : timeline interactive, souvenirs géolocalisés et résumés IA." },
+  { id:"trezia", name:"Trezia", family:"ops", url:"https://trezia.leandro-sierra.com", en:"AI financial copilot for French solo entrepreneurs: cash tracking, URSSAF simulation, VAT management.", fr:"Copilote financier IA des micro-entrepreneurs : trésorerie, simulation URSSAF et gestion TVA." },
+  { id:"tutio", name:"Tutio", family:"public", url:"https://tutio.leandro-sierra.com", en:"Adaptive AI tutoring for French students: personalized explanations, generated exercises, progress tracking.", fr:"Soutien scolaire IA adaptatif : explications personnalisées, exercices générés et suivi de progression." },
+  { id:"verdeo", name:"Verdeo", family:"reg", url:"https://verdeo.leandro-sierra.com", en:"Green-claims audit for marketing teams: EU Green Claims compliance, evidence report and safe wording.", fr:"Audit des allégations environnementales : conformité Green Claims, rapport de preuves, wording défendable." },
+  { id:"verifio", name:"Verifio", family:"reg", url:"https://verifio.leandro-sierra.com", en:"AMLA-compliant KYC workflow: due-diligence wizard, third-party risk scoring, automatic case files.", fr:"Workflow KYC conforme AMLA : wizard de due diligence, scoring de risque tiers et dossiers automatiques." },
+  { id:"vineo", name:"Vineo", family:"public", url:"https://vineo.leandro-sierra.com", en:"AI sommelier: label recognition by photo, detailed wine profiles, virtual cellar and food pairings.", fr:"Sommelier IA : reconnaissance d'étiquette par photo, fiches vins, cave virtuelle et accords mets-vins." },
+  { id:"voicerightswatch", name:"Voice Rights Watch", family:"reg", url:"https://voicerightswatch.leandro-sierra.com", en:"Resources and pre-audit on AI voice-cloning risks: consent checklist, takedown templates, monitoring.", fr:"Ressources et pré-audit clonage vocal IA : checklist consentement, modèles de takedown et surveillance." },
+  { id:"voltledger", name:"VoltLedger", family:"reg", url:"https://voltledger.leandro-sierra.com", en:"EU battery-passport workflow: model and supplier registry, carbon data collection and DPP fields.", fr:"Workflow passeport batterie : registre modèles et fournisseurs, données carbone et champs DPP." },
+  { id:"voxia", name:"Voxia", family:"reg", url:"https://voxia.leandro-sierra.com", en:"EU Whistleblowing-compliant reporting platform: secure anonymous channel, case management, audit log.", fr:"Signalement interne conforme à la directive UE : canal anonyme sécurisé, gestion de dossiers, audit log." },
+  { id:"vpnblockwatch", name:"VPN Block Watch", family:"public", url:"https://vpnblockwatch.leandro-sierra.com", en:"FR/EN observatory of VPN, DNS and content blocking in Europe: alerts, neutral legal context, lawful options.", fr:"Observatoire des blocages VPN et DNS en Europe : alertes, explications légales neutres, alternatives licites." },
+  { id:"vsmereportready", name:"VSME Report Ready", family:"reg", url:"https://vsmereportready.leandro-sierra.com", en:"VSME mini-report generator for EU SMEs: simplified energy, workforce and emissions data, PDF export.", fr:"Générateur de mini-rapport VSME : énergie, effectifs et émissions simplifiés, export PDF." },
+  { id:"vulnledger", name:"VulnLedger", family:"reg", url:"https://vulnledger.leandro-sierra.com", en:"CRA Article 14 vulnerability registry: 24-hour timestamping, SBOM, remediation and ENISA evidence.", fr:"Registre CRA Article 14 : horodatage 24 h, SBOM, assignation de remédiation et preuves ENISA." },
+  { id:"wellova", name:"Wellova", family:"public", url:"https://wellova.leandro-sierra.com", en:"Daily emotional wellbeing companion: 30-second check-ins, personal wellbeing curve, AI micro-advice.", fr:"Compagnon de bien-être émotionnel : check-in de 30 secondes, courbe personnelle et micro-conseils IA." },
+  { id:"workflowai", name:"WorkflowAI", family:"ai", url:"https://workflowai.leandro-sierra.com", en:"AI-agent orchestration for SMBs: automate invoices, emails and approvals by coordinating micro-agents.", fr:"Orchestration d'agents IA pour PME : factures, emails et validations automatisés par micro-agents." }
 ];
 
 const TINT = { ai:"#5B8CFF", reg:"#34D399", ops:"#F2B33D", public:"#B388FF" };
@@ -283,41 +360,46 @@ const i18n = {
   en: {
     role:"AI product developer", scrollHint:"Scroll to explore", footerLeft:"Live products",
     location:"Avignon / Remote", open:"Open", source:"Source",
+    searchPh:"Search {n} products", empty:"No product matches.", reset:"Clear search",
     fam:{ ai:"AI", reg:"Regulation", ops:"Operations", public:"Public app" },
     filt:{ all:"All", ai:"AI", reg:"Regulation", ops:"Operations", public:"Public" }
   },
   fr: {
     role:"Concepteur de produits IA", scrollHint:"Molette pour explorer", footerLeft:"Produits live",
     location:"Avignon / À distance", open:"Ouvrir", source:"Code",
+    searchPh:"Chercher parmi {n} produits", empty:"Aucun produit ne correspond.", reset:"Effacer la recherche",
     fam:{ ai:"IA", reg:"Réglementaire", ops:"Opérations", public:"App publique" },
-    filt:{ all:"Tous", ai:"IA", reg:"Réglementaire", ops:"Opérations", public:"Apps publiques" }
+    filt:{ all:"Tous", ai:"IA", reg:"Réglementaire", ops:"Opérations", public:"Public" }
   }
 };
 
 /* ---------- state ---------- */
 let lang = localStorage.getItem("portfolio-lang") || "en";
 let activeFilter = "all";
+let query = "";
 let view = [];
 let cards = [];
 let progress = 0, target = 0, lastActive = -1;
 let ignoreCardClick = false;
 
-const GAP = 128, ANGLE = 18, DEPTH = 122;
+const GAP = 128, ANGLE = 18, DEPTH = 122, CURVE = 7, TILT = 2.2;
 
 const stage = document.getElementById("stage");
 const glow = document.getElementById("glow");
 const track = document.getElementById("track");
 const panel = document.getElementById("panel");
 const railThumb = document.getElementById("railThumb");
-const rail = document.querySelector(".rail");
+const rail = document.getElementById("rail");
 const slideshow = document.getElementById("slideshow");
 const famActive = document.getElementById("famActive");
+const searchInput = document.getElementById("search");
 
 const clamp = (v,a,b) => Math.max(a, Math.min(b,v));
 const pad2 = n => String(n+1).padStart(2,"0");
 function hashCode(t){ let h=0; for(let i=0;i<t.length;i++) h=((h<<5)-h+t.charCodeAt(i))|0; return Math.abs(h); }
 function host(u){ try { return new URL(u).hostname.replace(/^www\./,""); } catch(e){ return u; } }
 function openProduct(p){ if(p?.url) window.open(p.url, "_blank", "noopener,noreferrer"); }
+function activeIndex(){ return clamp(Math.round(progress), 0, view.length-1); }
 
 /* ---------- generative mock screen ---------- */
 function mockSVG(p){
@@ -345,10 +427,18 @@ function mockSVG(p){
 }
 
 /* ---------- build ---------- */
+function matches(p){
+  if(activeFilter !== "all" && p.family !== activeFilter) return false;
+  if(!query) return true;
+  const q = query.toLowerCase();
+  return p.name.toLowerCase().includes(q) || p.id.includes(q)
+    || p[lang].toLowerCase().includes(q) || host(p.url).includes(q);
+}
+
 function rebuild(){
-  view = products.filter(p => activeFilter === "all" || p.family === activeFilter);
+  view = products.filter(matches);
   track.innerHTML = view.map((p,i) => `
-    <article class="card" data-i="${i}" role="link" tabindex="0" title="${i18n[lang].open} ${p.name}">
+    <article class="card" data-i="${i}" role="link" tabindex="0" title="${p.name}">
       <div class="card-inner" style="--tint:${TINT[p.family]}">
         <div class="card-screen">${mockSVG(p)}</div>
         <span class="card-tag">${i18n[lang].fam[p.family]}</span>
@@ -359,6 +449,7 @@ function rebuild(){
   cards = [...track.querySelectorAll(".card")];
   cards.forEach((el,i) => el.addEventListener("click", () => {
     if(ignoreCardClick){ ignoreCardClick = false; return; }
+    if(i !== activeIndex()){ target = i; return; }
     openProduct(view[i]);
   }));
   cards.forEach((el,i) => el.addEventListener("keydown", e => {
@@ -366,10 +457,26 @@ function rebuild(){
     e.preventDefault();
     openProduct(view[i]);
   }));
+  railThumb.style.display = view.length ? "block" : "none";
+  if(!view.length){ renderEmpty(); return; }
   target = clamp(target, 0, view.length-1);
   progress = clamp(progress, 0, view.length-1);
   lastActive = -1;
   layout();
+}
+
+function renderEmpty(){
+  stage.style.setProperty("--tint", "#7C9BFF");
+  panel.innerHTML = `
+    <div class="p-eyebrow"><span class="dash"></span>0 / ${pad2(products.length-1)}</div>
+    <p class="p-desc">${i18n[lang].empty}</p>
+    <div class="p-actions"><button class="btn btn-ghost" id="resetSearch">${i18n[lang].reset}</button></div>`;
+  famActive.textContent = "0";
+  document.getElementById("resetSearch").addEventListener("click", () => {
+    searchInput.value = ""; query = "";
+    target = 0; progress = 0;
+    rebuild();
+  });
 }
 
 function setActive(i){
@@ -401,8 +508,9 @@ function layout(){
     const d = i - progress, ad = Math.abs(d), el = cards[i];
     if(ad > 7){ el.style.display = "none"; continue; }
     el.style.display = "block";
-    const ty = d*GAP, tz = -ad*DEPTH, rx = -d*ANGLE, sc = Math.max(0.6, 1-ad*0.08);
-    el.style.transform = `translate(-50%,-50%) translateY(${ty}px) translateZ(${tz}px) rotateX(${rx}deg) scale(${sc})`;
+    const tx = -ad*ad*CURVE, ty = d*GAP, tz = -ad*DEPTH;
+    const rx = -d*ANGLE, rz = d*TILT, sc = Math.max(0.6, 1-ad*0.08);
+    el.style.transform = `translate(-50%,-50%) translate3d(${tx.toFixed(1)}px, ${ty.toFixed(1)}px, ${tz.toFixed(1)}px) rotateX(${rx.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
     el.style.opacity = clamp(1-ad*0.16, 0.05, 1);
     el.style.filter = `blur(${Math.min(ad*1.2,5).toFixed(2)}px)`;
     el.style.zIndex = String(100 - Math.round(ad*10));
@@ -412,7 +520,8 @@ function layout(){
     const railH = rail.clientHeight - railThumb.offsetHeight;
     railThumb.style.top = (clamp(progress/(n-1),0,1) * railH) + "px";
   } else { railThumb.style.top = "0px"; }
-  const active = clamp(Math.round(progress), 0, n-1);
+  if(!n) return;
+  const active = activeIndex();
   if(active !== lastActive){ setActive(active); lastActive = active; }
 }
 
@@ -442,16 +551,44 @@ slideshow.addEventListener("wheel", e => {
   window.addEventListener("pointerup", () => drag=false);
 })();
 
+(function(){
+  let seeking=false;
+  function railSeek(e){
+    const r = rail.getBoundingClientRect();
+    if(r.height <= 0 || view.length < 2) return;
+    target = clamp((e.clientY - r.top)/r.height, 0, 1) * (view.length-1);
+  }
+  rail.addEventListener("pointerdown", e => { e.stopPropagation(); seeking=true; rail.setPointerCapture?.(e.pointerId); railSeek(e); });
+  rail.addEventListener("pointermove", e => { if(seeking) railSeek(e); });
+  rail.addEventListener("pointerup", () => seeking=false);
+})();
+
 window.addEventListener("keydown", e => {
+  if(e.target === searchInput){
+    if(e.key === "Escape"){ searchInput.value=""; searchInput.blur(); applySearch(""); }
+    return;
+  }
+  if(e.key === "/" && !e.ctrlKey && !e.metaKey){ e.preventDefault(); searchInput.focus(); return; }
   if(e.key==="ArrowDown"||e.key==="ArrowRight"){ e.preventDefault(); target = clamp(Math.round(target)+1, 0, view.length-1); }
   if(e.key==="ArrowUp"||e.key==="ArrowLeft"){ e.preventDefault(); target = clamp(Math.round(target)-1, 0, view.length-1); }
 });
 
-/* ---------- filters + lang ---------- */
+/* ---------- search + filters + lang ---------- */
+function applySearch(value){
+  const next = value.trim();
+  if(next === query) return;
+  query = next;
+  target = 0; progress = 0;
+  rebuild();
+}
+searchInput.addEventListener("input", () => applySearch(searchInput.value));
+
 function buildFilters(){
   const fams = ["all","ai","reg","ops","public"];
+  const counts = { all: products.length };
+  for(const p of products) counts[p.family] = (counts[p.family]||0)+1;
   document.getElementById("filters").innerHTML = fams.map(f =>
-    `<button class="filter ${f===activeFilter?"on":""}" data-filter="${f}">${i18n[lang].filt[f]}</button>`).join("");
+    `<button class="filter ${f===activeFilter?"on":""}" data-filter="${f}">${i18n[lang].filt[f]}<span class="n">${counts[f]||0}</span></button>`).join("");
   document.querySelectorAll("[data-filter]").forEach(b => b.addEventListener("click", () => {
     activeFilter = b.dataset.filter;
     document.querySelectorAll("[data-filter]").forEach(x => x.classList.toggle("on", x===b));
@@ -466,6 +603,7 @@ function applyLang(next){
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach(n => { const k=n.dataset.i18n; if(i18n[lang][k]) n.textContent = i18n[lang][k]; });
   document.querySelectorAll("[data-lang]").forEach(b => b.classList.toggle("on", b.dataset.lang===lang));
+  searchInput.placeholder = i18n[lang].searchPh.replace("{n}", products.length);
   buildFilters();
   rebuild();
   lastActive = -1; layout();
