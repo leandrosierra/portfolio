@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3481333024960723" crossorigin="anonymous"></script>
+<script data-goatcounter="https://analytics.leandro-sierra.com/count" async src="https://analytics.leandro-sierra.com/count.js"></script>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -78,6 +78,7 @@ input { font: inherit; color: inherit; }
 .lang { display: flex; gap: 2px; border: 1px solid var(--line); border-radius: 100px; padding: 3px; }
 .lang button { min-height: 28px; padding: 4px 11px; border-radius: 100px; font-size: 12px; color: var(--ink-dim); }
 .lang button.on { color: var(--ink); background: var(--glass); }
+.lang button svg { width: 14px; height: 14px; display: block; }
 .pill { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); padding: 8px 15px; border-radius: 100px; background: var(--glass); font-size: 13px; color: var(--ink-soft); transition: all 0.2s; }
 .pill:hover { color: var(--ink); border-color: color-mix(in oklch, var(--tint) 50%, var(--line)); }
 
@@ -103,6 +104,7 @@ input { font: inherit; color: inherit; }
 .card-inner::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 48%; z-index: 2; pointer-events: none; background: linear-gradient(to top, rgba(7,8,13,0.82), rgba(7,8,13,0.3) 55%, transparent); }
 .card-screen { position: absolute; inset: 0; }
 .card-screen svg { width: 100%; height: 100%; display: block; }
+.card-screen img.shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .card-tag { position: absolute; left: 13px; top: 12px; z-index: 3; font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.82); background: rgba(0,0,0,0.32); border: 1px solid rgba(255,255,255,0.12); padding: 4px 9px; border-radius: 100px; backdrop-filter: blur(6px); }
 .card-host { position: absolute; right: 13px; top: 13px; z-index: 3; font-family: "JetBrains Mono", monospace; font-size: 9.5px; color: rgba(255,255,255,0.42); }
 .card-name { position: absolute; left: 15px; right: 15px; bottom: 13px; z-index: 3; font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 17px; line-height: 1.08; letter-spacing: -0.01em; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,0.6); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -111,6 +113,24 @@ input { font: inherit; color: inherit; }
 .rail { position: absolute; left: -16px; top: 12%; bottom: 12%; width: 18px; z-index: 6; cursor: pointer; touch-action: none; }
 .rail::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; transform: translateX(-50%); border-radius: 100px; background: rgba(255,255,255,0.08); }
 .rail-thumb { position: absolute; left: 50%; transform: translateX(-50%); width: 6px; height: 34px; border-radius: 100px; background: var(--tint); box-shadow: 0 0 14px color-mix(in oklch, var(--tint) 70%, transparent); transition: background 0.5s; }
+
+/* hero */
+.hero { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 18px; }
+
+/* grid view */
+.main.as-grid { display: block; align-items: initial; overflow-y: auto; padding-top: 14px; scrollbar-width: thin; scrollbar-color: var(--ink-dim) transparent; }
+.main.as-grid .slideshow, .main.as-grid .panel { display: none; }
+.gridwrap .hero { margin: 2px 0 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; padding-bottom: 28px; }
+.gcard { position: relative; display: block; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(160deg, #13151f, #0a0b12); transition: transform 0.2s, border-color 0.25s, box-shadow 0.25s; }
+.gcard:hover { transform: translateY(-3px); border-color: color-mix(in oklch, var(--tint) 55%, var(--line)); box-shadow: 0 18px 44px -18px rgba(0,0,0,0.85); }
+.gshot { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--line); }
+.gshot svg, .gshot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.gmeta { display: block; padding: 10px 13px 12px; }
+.gtag { display: block; font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--tint); margin-bottom: 4px; }
+.gname { display: block; font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 2px; }
+.ghost { display: block; font-family: "JetBrains Mono", monospace; font-size: 10px; color: var(--ink-dim); }
+.gempty { color: var(--ink-dim); font-size: 14px; }
 
 /* panel */
 .panel { position: relative; padding-left: clamp(18px, 4vw, 70px); max-width: 620px; }
@@ -194,6 +214,10 @@ input { font: inherit; color: inherit; }
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
         <input id="search" type="search" autocomplete="off" spellcheck="false" aria-label="Search products">
       </label>
+      <span class="lang" aria-label="View mode">
+        <button data-mode="stack" class="on" title="Stack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="4" width="14" height="6" rx="2"/><rect x="5" y="14" width="14" height="6" rx="2"/></svg></button>
+        <button data-mode="grid" title="Grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></button>
+      </span>
       <span class="lang" id="lang" aria-label="Language">
         <button data-lang="en" class="on">EN</button>
         <button data-lang="fr">FR</button>
@@ -202,12 +226,13 @@ input { font: inherit; color: inherit; }
     </div>
   </header>
 
-  <div class="main">
+  <div class="main" id="main">
     <div class="slideshow" id="slideshow">
       <div class="rail" id="rail"><div class="rail-thumb" id="railThumb"></div></div>
       <div class="track" id="track"></div>
     </div>
-    <div class="panel"><div class="panel-card" id="panel"></div></div>
+    <div class="panel"><div class="hero" data-i18n="hero"></div><div class="panel-card" id="panel"></div></div>
+    <div class="gridwrap" id="gridwrap" hidden><div class="hero" data-i18n="hero"></div><div class="grid" id="grid"></div></div>
   </div>
 
   <footer class="footer">
@@ -227,7 +252,6 @@ input { font: inherit; color: inherit; }
 <script>
 /* ---------- data (live products, verified) ---------- */
 const products = [
-  { id:"portfolio", name:"Portfolio", family:"ops", url:"https://leandro-sierra.com", en:"The product index and technical presentation you are reading.", fr:"L'index produit et la présentation technique que vous consultez." },
   { id:"accessibiliteexpress", name:"Accessibilité Express", family:"ops", url:"https://accessibiliteexpress.leandro-sierra.com", en:"Fast EAA/RGAA accessibility audit with a prioritized fix list and compliance statement templates.", fr:"Audit d'accessibilité EAA/RGAA express : checklist priorisée et modèles de déclaration." },
   { id:"ageassuranceready", name:"Age Assurance Ready", family:"reg", url:"https://ageassuranceready.leandro-sierra.com", en:"Readiness kit for UK OSA and EU DSA age-assurance duties: self-diagnosis, minor-risk mapping, vendor checklist.", fr:"Kit de préparation age assurance (OSA UK / DSA UE) : diagnostic, risques mineurs, checklist prestataires." },
   { id:"agentcommerceready", name:"Agent Commerce Ready", family:"ai", url:"https://agentcommerceready.leandro-sierra.com", en:"Gets e-commerce stores ready for AI-agent shopping: feeds, schema, checkout and agent-readable policies.", fr:"Prépare une boutique au commerce par agents IA : feeds, schema, checkout et politiques lisibles par agents." },
@@ -357,12 +381,19 @@ const products = [
   { id:"workflowai", name:"WorkflowAI", family:"ai", url:"https://workflowai.leandro-sierra.com", en:"AI-agent orchestration for SMBs: automate invoices, emails and approvals by coordinating micro-agents.", fr:"Orchestration d'agents IA pour PME : factures, emails et validations automatisés par micro-agents." }
 ];
 
+const FEATURED = ["hierarchie","sonosphere","mondio","nostalgix","maplr","vineo","focali","snapfix","hackle","chronicla"];
+const catalog = [
+  ...FEATURED.map(id => products.find(p => p.id === id)).filter(Boolean),
+  ...products.filter(p => !FEATURED.includes(p.id)),
+];
+
 const TINT = { ai:"#5B8CFF", reg:"#34D399", ops:"#F2B33D", public:"#B388FF" };
 
 const i18n = {
   en: {
     role:"AI product developer", scrollHint:"Scroll to explore", footerLeft:"Live products",
     location:"Avignon / Remote", open:"Open", source:"Source",
+    hero:"{n} live web products — EU compliance readiness, AI tooling, consumer apps",
     searchPh:"Search {n} products", empty:"No product matches.", reset:"Clear search",
     fam:{ ai:"AI", reg:"Regulation", ops:"Operations", public:"Public app" },
     filt:{ all:"All", ai:"AI", reg:"Regulation", ops:"Operations", public:"Public" }
@@ -370,6 +401,7 @@ const i18n = {
   fr: {
     role:"Concepteur de produits IA", scrollHint:"Molette pour explorer", footerLeft:"Produits live",
     location:"Avignon / À distance", open:"Ouvrir", source:"Code",
+    hero:"{n} produits web en ligne — conformité UE, outils IA, apps grand public",
     searchPh:"Chercher parmi {n} produits", empty:"Aucun produit ne correspond.", reset:"Effacer la recherche",
     fam:{ ai:"IA", reg:"Réglementaire", ops:"Opérations", public:"App publique" },
     filt:{ all:"Tous", ai:"IA", reg:"Réglementaire", ops:"Opérations", public:"Public" }
@@ -383,6 +415,7 @@ let query = "";
 let view = [];
 let cards = [];
 let progress = 0, target = 0, lastActive = -1;
+let mode = localStorage.getItem("portfolio-view") === "grid" ? "grid" : "stack";
 
 const GAP = 128, ANGLE = 18, DEPTH = 122, CURVE = 7, TILT = 2.2;
 
@@ -395,12 +428,16 @@ const rail = document.getElementById("rail");
 const slideshow = document.getElementById("slideshow");
 const famActive = document.getElementById("famActive");
 const searchInput = document.getElementById("search");
+const main = document.getElementById("main");
+const gridwrap = document.getElementById("gridwrap");
+const grid = document.getElementById("grid");
 
 const clamp = (v,a,b) => Math.max(a, Math.min(b,v));
 const pad2 = n => String(n+1).padStart(2,"0");
 function hashCode(t){ let h=0; for(let i=0;i<t.length;i++) h=((h<<5)-h+t.charCodeAt(i))|0; return Math.abs(h); }
 function host(u){ try { return new URL(u).hostname.replace(/^www\./,""); } catch(e){ return u; } }
-function openProduct(p){ if(p?.url) window.open(p.url, "_blank", "noopener,noreferrer"); }
+function trackOut(id, src){ window.goatcounter?.count?.({ path: `out/${id}`, title: src, event: true }); }
+function openProduct(p, src){ if(!p?.url) return; trackOut(p.id, src || "stack"); window.open(p.url, "_blank", "noopener,noreferrer"); }
 function activeIndex(){ return clamp(Math.round(progress), 0, view.length-1); }
 
 /* ---------- generative mock screen ---------- */
@@ -437,24 +474,29 @@ function matches(p){
     || p[lang].toLowerCase().includes(q) || host(p.url).includes(q);
 }
 
+function shotIMG(p, cls){
+  return `<img class="${cls}" loading="lazy" decoding="async" draggable="false" src="shots/${p.id}.jpg" alt="" onerror="this.remove()">`;
+}
+
 function rebuild(){
-  view = products.filter(matches);
+  view = catalog.filter(matches);
   track.innerHTML = view.map((p,i) => `
-    <article class="card" data-i="${i}" role="link" tabindex="0" title="${p.name}">
+    <a class="card" data-i="${i}" href="${p.url}" target="_blank" rel="noopener noreferrer" draggable="false" title="${p.name}">
       <div class="card-inner" style="--tint:${TINT[p.family]}">
-        <div class="card-screen">${mockSVG(p)}</div>
+        <div class="card-screen">${mockSVG(p)}${shotIMG(p, "shot")}</div>
         <span class="card-tag">${i18n[lang].fam[p.family]}</span>
         <span class="card-host">${host(p.url)}</span>
         <span class="card-name">${p.name}</span>
       </div>
-    </article>`).join("");
+    </a>`).join("");
   cards = [...track.querySelectorAll(".card")];
-  cards.forEach((el,i) => el.addEventListener("keydown", e => {
-    if(e.key !== "Enter" && e.key !== " ") return;
-    e.preventDefault();
-    openProduct(view[i]);
-  }));
+  grid.innerHTML = view.length ? view.map(p => `
+    <a class="gcard" style="--tint:${TINT[p.family]}" data-id="${p.id}" href="${p.url}" target="_blank" rel="noopener noreferrer">
+      <span class="gshot">${mockSVG(p)}${shotIMG(p, "")}</span>
+      <span class="gmeta"><span class="gtag">${i18n[lang].fam[p.family]}</span><b class="gname">${p.name}</b><span class="ghost">${host(p.url)}</span></span>
+    </a>`).join("") : `<p class="gempty">${i18n[lang].empty}</p>`;
   railThumb.style.display = view.length ? "block" : "none";
+  if(mode === "grid") famActive.textContent = String(view.length);
   if(!view.length){ renderEmpty(); return; }
   target = clamp(target, 0, view.length-1);
   progress = clamp(progress, 0, view.length-1);
@@ -465,7 +507,7 @@ function rebuild(){
 function renderEmpty(){
   stage.style.setProperty("--tint", "#7C9BFF");
   panel.innerHTML = `
-    <div class="p-eyebrow"><span class="dash"></span>0 / ${pad2(products.length-1)}</div>
+    <div class="p-eyebrow"><span class="dash"></span>0 / ${pad2(catalog.length-1)}</div>
     <p class="p-desc">${i18n[lang].empty}</p>
     <div class="p-actions"><button class="btn btn-ghost" id="resetSearch">${i18n[lang].reset}</button></div>`;
   famActive.textContent = "0";
@@ -498,6 +540,7 @@ function setActive(i){
   panel.classList.remove("anim");
   famActive.textContent = `${i18n[lang].fam[p.family]} · ${pad2(i)}/${pad2(view.length-1)}`;
   cards.forEach((el,idx) => el.classList.toggle("on", idx === i));
+  history.replaceState(null, "", "#p=" + p.id);
 }
 
 function layout(){
@@ -542,7 +585,11 @@ slideshow.addEventListener("wheel", e => {
    pointerup : pas de mouvement (>8px) = clic sur la fiche sous le doigt. */
 (function(){
   let drag=false, moved=false, sy=0, st=0, downEl=null;
-  slideshow.addEventListener("pointerdown", e => { drag=true; moved=false; sy=e.clientY; st=target; downEl=e.target; slideshow.setPointerCapture?.(e.pointerId); });
+  // Les fiches sont de vrais liens : on neutralise la navigation au clic souris
+  // (l'ouverture est gérée au pointerup) mais on garde Entrée clavier (detail=0)
+  // et le clic-molette/cmd+clic natifs.
+  track.addEventListener("click", e => { if(e.detail !== 0) e.preventDefault(); });
+  slideshow.addEventListener("pointerdown", e => { if(e.button !== 0) return; drag=true; moved=false; sy=e.clientY; st=target; downEl=e.target; slideshow.setPointerCapture?.(e.pointerId); });
   window.addEventListener("pointermove", e => {
     if(!drag) return;
     if(Math.abs(e.clientY - sy) > 8) moved = true;
@@ -556,9 +603,14 @@ slideshow.addEventListener("wheel", e => {
     if(!card) return;
     const i = +card.dataset.i;
     target = i;
-    openProduct(view[i]);
+    openProduct(view[i], "stack");
   });
 })();
+
+grid.addEventListener("click", e => {
+  const a = e.target.closest(".gcard");
+  if(a) trackOut(a.dataset.id, "grid");
+});
 
 (function(){
   let seeking=false;
@@ -578,9 +630,22 @@ window.addEventListener("keydown", e => {
     return;
   }
   if(e.key === "/" && !e.ctrlKey && !e.metaKey){ e.preventDefault(); searchInput.focus(); return; }
+  if(mode === "grid") return;
   if(e.key==="ArrowDown"||e.key==="ArrowRight"){ e.preventDefault(); target = clamp(Math.round(target)+1, 0, view.length-1); }
   if(e.key==="ArrowUp"||e.key==="ArrowLeft"){ e.preventDefault(); target = clamp(Math.round(target)-1, 0, view.length-1); }
 });
+
+/* ---------- view mode ---------- */
+function setMode(next){
+  mode = next === "grid" ? "grid" : "stack";
+  localStorage.setItem("portfolio-view", mode);
+  main.classList.toggle("as-grid", mode === "grid");
+  gridwrap.hidden = mode !== "grid";
+  document.querySelectorAll("[data-mode]").forEach(b => b.classList.toggle("on", b.dataset.mode === mode));
+  if(mode === "grid") famActive.textContent = String(view.length);
+  else { lastActive = -1; layout(); }
+}
+document.querySelectorAll("[data-mode]").forEach(b => b.addEventListener("click", () => setMode(b.dataset.mode)));
 
 /* ---------- search + filters + lang ---------- */
 function applySearch(value){
@@ -594,8 +659,8 @@ searchInput.addEventListener("input", () => applySearch(searchInput.value));
 
 function buildFilters(){
   const fams = ["all","ai","reg","ops","public"];
-  const counts = { all: products.length };
-  for(const p of products) counts[p.family] = (counts[p.family]||0)+1;
+  const counts = { all: catalog.length };
+  for(const p of catalog) counts[p.family] = (counts[p.family]||0)+1;
   document.getElementById("filters").innerHTML = fams.map(f =>
     `<button class="filter ${f===activeFilter?"on":""}" data-filter="${f}">${i18n[lang].filt[f]}<span class="n">${counts[f]||0}</span></button>`).join("");
   document.querySelectorAll("[data-filter]").forEach(b => b.addEventListener("click", () => {
@@ -610,16 +675,22 @@ function applyLang(next){
   lang = i18n[next] ? next : "en";
   localStorage.setItem("portfolio-lang", lang);
   document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach(n => { const k=n.dataset.i18n; if(i18n[lang][k]) n.textContent = i18n[lang][k]; });
+  document.querySelectorAll("[data-i18n]").forEach(n => { const k=n.dataset.i18n; if(i18n[lang][k]) n.textContent = i18n[lang][k].replace("{n}", catalog.length); });
   document.querySelectorAll("[data-lang]").forEach(b => b.classList.toggle("on", b.dataset.lang===lang));
-  searchInput.placeholder = i18n[lang].searchPh.replace("{n}", products.length);
+  searchInput.placeholder = i18n[lang].searchPh.replace("{n}", catalog.length);
   buildFilters();
   rebuild();
   lastActive = -1; layout();
 }
 document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
 
+const initialDeepLink = (location.hash.match(/^#p=([\w-]+)/) || [])[1] || "";
 applyLang(lang);
+setMode(mode);
+if(initialDeepLink){
+  const i = view.findIndex(p => p.id === initialDeepLink);
+  if(i >= 0){ target = i; progress = i; lastActive = -1; setMode("stack"); layout(); }
+}
 </script>
 </body>
 </html>
