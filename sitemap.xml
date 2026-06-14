@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://leandro-sierra.com/</loc></url>
+  <url><loc>https://leandro-sierra.com/products.html</loc></url>
+  <url><loc>https://leandro-sierra.com/about.html</loc></url>
+  <url><loc>https://leandro-sierra.com/contact.html</loc></url>
+  <url><loc>https://leandro-sierra.com/privacy.html</loc></url>
+  <url><loc>https://leandro-sierra.com/terms.html</loc></url>
   <url><loc>https://accessibiliteexpress.leandro-sierra.com</loc></url>
   <url><loc>https://ageassuranceready.leandro-sierra.com</loc></url>
   <url><loc>https://agentcommerceready.leandro-sierra.com</loc></url>

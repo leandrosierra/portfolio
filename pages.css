@@ -1,0 +1,87 @@
+/* Shared styles for content pages (about, contact, privacy, terms). */
+:root {
+  --bg: #07080d;
+  --ink: #f4f5fb;
+  --ink-soft: #aab0c4;
+  --ink-dim: #717892;
+  --line: rgba(255, 255, 255, 0.09);
+  --glass: rgba(255, 255, 255, 0.035);
+  --accent: #7c9bff;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Sora", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.65;
+  font-size: 17px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+header.site {
+  border-bottom: 1px solid var(--line);
+  background: rgba(7, 8, 13, 0.85);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+header.site .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+header.site .brand {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 18px;
+}
+header.site nav a { color: var(--ink-soft); margin-left: 22px; font-size: 15px; }
+header.site nav a:hover { color: var(--ink); text-decoration: none; }
+
+main { padding: 56px 0 72px; }
+h1 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 5vw, 44px);
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+.lead { color: var(--ink-soft); font-size: 19px; margin: 0 0 36px; }
+h2 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  margin: 40px 0 12px;
+}
+h3 { font-size: 19px; margin: 28px 0 8px; }
+p, li { color: var(--ink-soft); }
+p { margin: 0 0 16px; }
+strong { color: var(--ink); }
+ul { padding-left: 22px; margin: 0 0 18px; }
+li { margin: 0 0 8px; }
+.meta { color: var(--ink-dim); font-size: 14px; }
+.card {
+  border: 1px solid var(--line);
+  background: var(--glass);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin: 0 0 18px;
+}
+hr { border: 0; border-top: 1px solid var(--line); margin: 40px 0; }
+
+footer.site {
+  border-top: 1px solid var(--line);
+  padding: 32px 0;
+  color: var(--ink-dim);
+  font-size: 14px;
+}
+footer.site .wrap { display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center; }
+footer.site a { color: var(--ink-soft); }
+footer.site .sep { color: var(--line); }
