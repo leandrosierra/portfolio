@@ -5,8 +5,10 @@
 FROM nginx:alpine
 
 # Copie le site + config nginx avec headers de securite stricts.
-COPY index.html /usr/share/nginx/html/index.html
-COPY ads.txt /usr/share/nginx/html/ads.txt
+COPY index.html products.html about.html contact.html privacy.html terms.html /usr/share/nginx/html/
+COPY pages.css /usr/share/nginx/html/pages.css
+COPY ads.txt robots.txt sitemap.xml /usr/share/nginx/html/
+COPY og.jpg sprite.jpg /usr/share/nginx/html/
 COPY security_headers.conf /etc/nginx/snippets/security_headers.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
