@@ -1,6 +1,6 @@
 # Portfolio statique servi par nginx:alpine.
-# Image minimale (~40 MB), HEALTHCHECK inclus pour que Coolify report
-# `running:healthy` directement.
+# Image minimale (~40 MB), HEALTHCHECK inclus pour que l'orchestrateur
+# report `running:healthy` directement.
 
 FROM nginx:alpine
 

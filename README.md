@@ -1,7 +1,7 @@
 # Portfolio — leandro-sierra.com
 
-Site personnel one-page, statique, servi par nginx:alpine dans un container
-Coolify. ~40 MB d'image, HEALTHCHECK inclus, CSP compatible i18n + AdSense.
+Site personnel statique (portfolio + pages de contenu), servi par
+nginx:alpine. ~40 MB d'image, HEALTHCHECK inclus, CSP compatible i18n + AdSense.
 
 ## Stack
 
@@ -9,12 +9,13 @@ Coolify. ~40 MB d'image, HEALTHCHECK inclus, CSP compatible i18n + AdSense.
 - I18n client : FR, EN, ES, PT
 - Navigation flottante gauche + grille produits filtree
 - nginx:alpine avec headers de securite stricts (CSP, HSTS, etc.)
-- Docker HEALTHCHECK wget pour Coolify
+- Docker HEALTHCHECK wget pour l'orchestrateur
 
 ## Déploiement
 
-Auto-deploy via Coolify connecte au repo github.com/leandrosierra/portfolio.
-Domaine cible : `https://leandro-sierra.com`.
+Déployé par l'orchestrateur Hetzner (Traefik ada-proxy) : pull du repo
+github.com/leandrosierra/portfolio + `docker build` de l'image nginx, route
+TLS Traefik. Domaine cible : `https://leandro-sierra.com`.
 
 ## Local dev
 
@@ -26,5 +27,5 @@ docker run --rm -p 8080:80 portfolio
 
 ## Edit
 
-Modifier `index.html` directement. Pas de build step.
-Le push declenche un redeploy Coolify (~1 min).
+Modifier les fichiers HTML/CSS directement. Pas de build step.
+Après push, déclencher un redeploy via l'orchestrateur Hetzner (build_image).
