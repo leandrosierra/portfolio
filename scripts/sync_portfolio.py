@@ -8,6 +8,7 @@ import re
 import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
+from textwrap import wrap
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT.parent
@@ -379,7 +380,71 @@ async def capture_screenshots(products: list[Product], *, only_missing: bool, li
         await browser.close()
         await pw.stop()
     errors = [{"slug": slug, "error": status} for slug, status in results if status != "ok"]
-    return {"total": len(results), "ok": len(results) - len(errors), "errors": errors}
+    repaired = repair_low_variance_previews(targets)
+    return {"total": len(results), "ok": len(results) - len(errors), "errors": errors, "repaired": repaired}
+
+
+def font(size: int, bold: bool = False):
+    from PIL import ImageFont
+
+    candidates = [
+        Path("C:/Windows/Fonts/segoeuib.ttf" if bold else "C:/Windows/Fonts/segoeui.ttf"),
+        Path("C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf"),
+    ]
+    for path in candidates:
+        if path.exists():
+            return ImageFont.truetype(str(path), size)
+    return ImageFont.load_default()
+
+
+def image_variance(path: Path) -> float:
+    from PIL import Image, ImageStat
+
+    image = Image.open(path).convert("RGB").resize((120, 75))
+    return max(ImageStat.Stat(image).stddev)
+
+
+def draw_fallback_preview(product: Product) -> None:
+    from PIL import Image, ImageDraw
+
+    width, height = 1200, 750
+    base = Image.new("RGB", (width, height), "#07080d")
+    draw = ImageDraw.Draw(base)
+    colors = {
+        "ai": ("#7C9BFF", "#16234d"),
+        "reg": ("#50D39B", "#123829"),
+        "ops": ("#FFB86B", "#3f2812"),
+        "public": ("#E879F9", "#351a3d"),
+    }
+    accent, deep = colors.get(product.family, colors["public"])
+    for y in range(height):
+        ratio = y / height
+        shade = int(12 + ratio * 20)
+        draw.line([(0, y), (width, y)], fill=(shade, shade + 2, shade + 9))
+    draw.ellipse((-220, -120, 520, 520), fill=deep)
+    draw.ellipse((760, 430, 1420, 980), fill="#111827")
+    draw.rounded_rectangle((72, 72, width - 72, height - 72), radius=34, outline="#2d3345", width=2, fill="#0c0f19")
+    draw.rounded_rectangle((104, 104, 330, 154), radius=25, fill=accent)
+    draw.text((132, 116), FAMILY_LABEL.get(product.family, "Product").upper(), fill="#07080d", font=font(20, True))
+    draw.text((104, 210), product.name, fill="#f8fafc", font=font(62, True))
+    y = 320
+    for line in wrap(product.en, width=58)[:4]:
+        draw.text((108, y), line, fill="#cbd5e1", font=font(31))
+        y += 44
+    draw.line((108, 596, width - 108, 596), fill="#263042", width=2)
+    draw.text((108, 626), product.url.replace("https://", ""), fill=accent, font=font(27, True))
+    draw.text((width - 310, 626), "leandro-sierra.com", fill="#64748b", font=font(24))
+    base.save(ROOT / "shots" / f"{product.slug}.jpg", "JPEG", quality=88, optimize=True)
+
+
+def repair_low_variance_previews(products: list[Product]) -> list[str]:
+    repaired: list[str] = []
+    for product in products:
+        path = ROOT / "shots" / f"{product.slug}.jpg"
+        if path.exists() and image_variance(path) < 8:
+            draw_fallback_preview(product)
+            repaired.append(product.slug)
+    return repaired
 
 
 def main() -> int:
