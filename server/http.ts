@@ -7,10 +7,7 @@ import { readFile, stat } from "node:fs/promises";
 import { extname, join, normalize, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-export type ServerConfig = {
-  port: number;
-  productSlug: string;
-};
+import type { ServerConfig } from "./config.js";
 
 // Site root computed relatively to THIS module (server/dist/http.js -> ../../), NEVER via
 // process.cwd(): inside a bucket the cwd is that of the shared runner, not the product.

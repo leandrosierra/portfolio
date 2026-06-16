@@ -1,12 +1,9 @@
-// Mono-process entry point (standalone): reads the port, listens. The request logic
-// lives in http.ts (createAppHandler), shareable with the mutualised bucket-runner.
-import { createAppServer, type ServerConfig } from "./http.js";
+// Mono-process entry point (standalone): reads config, listens. The request logic lives
+// in http.ts (createAppHandler), shareable with the mutualised bucket-runner.
+import { readServerConfig } from "./config.js";
+import { createAppServer } from "./http.js";
 
-const config: ServerConfig = {
-  port: Number(process.env.PORT) || 3000,
-  productSlug: "portfolio",
-};
-
+const config = readServerConfig();
 createAppServer(config).listen(config.port, () =>
   console.log(`portfolio static server on :${config.port}`),
 );
