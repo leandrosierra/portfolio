@@ -87,7 +87,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 input { font: inherit; color: inherit; }
 ::selection { background: color-mix(in oklch, var(--tint) 40%, transparent); color: #fff; }
 
-.stage { position: relative; height: 100vh; height: 100dvh; width: 100vw; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; }
+.stage { position: relative; height: 100vh; height: 100dvh; width: 100vw; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; grid-template-columns: minmax(0, 1fr); }
+.stage > * { min-width: 0; }
 
 .bg-field { position: absolute; inset: 0; z-index: 0;
   background: radial-gradient(120% 80% at 50% -10%, var(--field-1) 0%, transparent 55%),
@@ -289,7 +290,8 @@ input { font: inherit; color: inherit; }
   .filters::-webkit-scrollbar { display: none; }
   .search input { width: 9ch; }
   .search input:focus { width: 14ch; }
-  .main { grid-template-columns: 1fr; grid-template-rows: minmax(170px, 1fr) auto; padding: 0 20px 6px; }
+  .main { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(170px, 1fr) auto; padding: 0 20px 6px; min-width: 0; }
+  .main > * { min-width: 0; }
   .slideshow { height: 100%; min-height: 170px; perspective-origin: 50% 50%;
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%);
     mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%); }
