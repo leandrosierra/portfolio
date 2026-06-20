@@ -12,9 +12,14 @@ RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
 FROM 127.0.0.1:5000/ada-node-base:latest
 ENV NODE_ENV=production
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=build /app/dist ./dist
 COPY --from=build /app/server/dist ./server/dist
 COPY package*.json ./
+# Static site assets served by server/http.ts from the app root (ROOT = ../../ from server/dist).
+COPY index.html products.html about.html contact.html privacy.html terms.html ./
+COPY pages.css fonts.css pages-i18n.js ./
+COPY robots.txt sitemap.xml ads.txt sprite.jpg og.jpg ./
+COPY fonts ./fonts
+COPY shots ./shots
 EXPOSE 3000
 HEALTHCHECK --interval=120s --timeout=3s --start-period=10s --retries=3 CMD wget -q --spider http://127.0.0.1:3000/api/health || exit 1
 CMD ["node", "server/dist/index.js"]
