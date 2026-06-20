@@ -273,6 +273,23 @@ input { font: inherit; color: inherit; }
 .modal-body { font-size: 16px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 28px; text-wrap: pretty; }
 .modal-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 @media (prefers-reduced-motion: reduce) { .modal, .modal-card { animation: none; } }
+.about-lead { margin-bottom: 20px; color: var(--ink); font-size: 16.5px; }
+.about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; margin-bottom: 22px; }
+.about-stat { display: flex; flex-direction: column; gap: 3px; padding: 12px 10px; border-radius: 13px; border: 1px solid var(--line); background: var(--chip-bg); }
+.about-stat b { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 21px; line-height: 1; color: var(--ink); }
+.about-stat span { font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-dim); }
+.about-points { list-style: none; margin: 0 0 26px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.about-points li { position: relative; padding-left: 22px; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+.about-points li::before { content: ""; position: absolute; left: 2px; top: 8px; width: 7px; height: 7px; border-radius: 100px; background: var(--tint); box-shadow: 0 0 10px color-mix(in oklch, var(--tint) 60%, transparent); }
+@media (max-width: 520px) { .about-stats { grid-template-columns: repeat(2, 1fr); } }
+
+/* hero stat strip (slideshow + grid) */
+.hero-stats { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 22px; }
+.hero-stat { display: inline-flex; align-items: baseline; gap: 7px; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink-dim); }
+.hero-stat b { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.01em; color: var(--ink); text-transform: none; }
+.hero-stat .dot { width: 6px; height: 6px; border-radius: 100px; background: var(--tint); align-self: center; }
+.gridwrap .hero-stats { margin-bottom: 18px; }
+@media (max-width: 860px) { .hero-stats { gap: 6px 10px; margin-bottom: 12px; } .hero-stat b { font-size: 14px; } }
 
 /* static SEO index — visuellement masque, lu par crawlers/no-JS */
 .seo-index { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -535,8 +552,8 @@ input { font: inherit; color: inherit; }
       <div class="rail" id="rail"><div class="rail-thumb" id="railThumb"></div></div>
       <div class="track" id="track"></div>
     </div>
-    <div class="panel"><div class="hero" data-i18n="hero"></div><div class="panel-card" id="panel"></div></div>
-    <div class="gridwrap" id="gridwrap" hidden><div class="hero" data-i18n="hero"></div><div class="grid" id="grid"></div></div>
+    <div class="panel"><div class="hero" data-i18n="hero"></div><div class="hero-stats" id="heroStats"></div><div class="panel-card" id="panel"></div></div>
+    <div class="gridwrap" id="gridwrap" hidden><div class="hero" data-i18n="hero"></div><div class="hero-stats" id="heroStatsGrid"></div><div class="grid" id="grid"></div></div>
   </div>
 
   <footer class="footer">
@@ -564,12 +581,19 @@ input { font: inherit; color: inherit; }
       <button class="modal-x" id="aboutClose" aria-label="Close">&times;</button>
       <div class="p-eyebrow"><span class="dash"></span><span data-i18n="aboutKicker">About</span></div>
       <h2 class="modal-title" id="aboutTitle">Leandro Sierra</h2>
-      <p class="modal-body" data-i18n="aboutBody"></p>
+      <p class="about-lead modal-body" data-i18n="aboutLead"></p>
+      <div class="about-stats" id="aboutStats"></div>
+      <ul class="about-points">
+        <li data-i18n="aboutPoint1"></li>
+        <li data-i18n="aboutPoint2"></li>
+        <li data-i18n="aboutPoint3"></li>
+      </ul>
       <div class="modal-actions">
         <a class="btn btn-primary" href="mailto:leandrosierra1@gmail.com" data-i18n="aboutCta">Get in touch
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
         </a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/leandro-sierra-ai/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/leandrosierra" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </div>
@@ -764,9 +788,14 @@ const i18n = {
     location:"Avignon / Remote", open:"Open", source:"Source",
     hero:"{n} live web products — EU compliance readiness, AI tooling, consumer apps",
     about:"About", aboutKicker:"About",
-    aboutBody:"I design, build and ship internet products end to end — from idea to a live, deployed web app. This portfolio indexes {n} of them, spanning EU regulatory-readiness tools, AI tooling and consumer apps. Open to freelance work, collaborations and conversations.",
+    aboutLead:"I design, build and ship internet products end to end — from a raw idea to a live, deployed web app with its own domain, auth, billing and analytics. This index is the running proof: {n} products shipped solo.",
+    aboutPoint1:"Full-stack and solo: product, UX, frontend, backend, infrastructure and deployment — each app runs in production on its own subdomain.",
+    aboutPoint2:"Three core veins: EU regulatory-readiness tools, AI tooling and consumer web apps — built fast, shipped real, never left as a mockup.",
+    aboutPoint3:"Open to freelance work, product collaborations and conversations. The fastest way to judge the work is to open any product and use it.",
+    statLive:"Live products", statReg:"Regulation", statAI:"AI tooling", statShipped:"Shipped solo",
     aboutCta:"Get in touch",
     searchPh:"Search {n} products", empty:"No product matches.", reset:"Clear search",
+    hsLive:"live products", hsCats:"categories", hsSolo:"shipped solo",
     fam:{ ai:"AI", reg:"Regulation", ops:"Operations", public:"Public app" },
     filt:{ all:"All", ai:"AI", reg:"Regulation", ops:"Operations", public:"Public" }
   },
@@ -775,9 +804,14 @@ const i18n = {
     location:"Avignon / À distance", open:"Ouvrir", source:"Code",
     hero:"{n} produits web en ligne — conformité UE, outils IA, apps grand public",
     about:"À propos", aboutKicker:"À propos",
-    aboutBody:"Je conçois, construis et déploie des produits web de bout en bout — de l'idée à l'application en ligne. Ce portfolio recense {n} d'entre eux : outils de conformité réglementaire UE, outils IA et apps grand public. Ouvert au freelance, aux collaborations et aux échanges.",
+    aboutLead:"Je conçois, construis et déploie des produits web de bout en bout — de l'idée brute à l'application en ligne, avec son domaine, son auth, sa facturation et ses analytics. Cet index en est la preuve : {n} produits livrés en solo.",
+    aboutPoint1:"Full-stack et en solo : produit, UX, frontend, backend, infrastructure et déploiement — chaque app tourne en production sur son propre sous-domaine.",
+    aboutPoint2:"Trois axes : outils de conformité réglementaire UE, outils IA et apps web grand public — construits vite, mis en ligne pour de vrai, jamais laissés en maquette.",
+    aboutPoint3:"Ouvert au freelance, aux collaborations produit et aux échanges. Le plus simple pour juger le travail : ouvrir n'importe quel produit et l'utiliser.",
+    statLive:"Produits live", statReg:"Réglementaire", statAI:"Outils IA", statShipped:"Livrés solo",
     aboutCta:"Me contacter",
     searchPh:"Chercher parmi {n} produits", empty:"Aucun produit ne correspond.", reset:"Effacer la recherche",
+    hsLive:"produits live", hsCats:"catégories", hsSolo:"livrés solo",
     fam:{ ai:"IA", reg:"Réglementaire", ops:"Opérations", public:"App publique" },
     filt:{ all:"Tous", ai:"IA", reg:"Réglementaire", ops:"Opérations", public:"Public" }
   }
@@ -1101,6 +1135,24 @@ function buildFilters(){
   }));
 }
 
+const FAM_COUNTS = (() => { const c = { ai:0, reg:0, ops:0, public:0 }; for(const p of catalog){ if(c[p.family]!=null) c[p.family]+=1; } return c; })();
+
+function renderStats(){
+  const t = i18n[lang], total = catalog.length;
+  const strip = `
+    <span class="hero-stat"><b>${total}</b>${t.hsLive}</span><span class="dot"></span>
+    <span class="hero-stat"><b>4</b>${t.hsCats}</span><span class="dot"></span>
+    <span class="hero-stat"><b>100%</b>${t.hsSolo}</span>`;
+  const hs = document.getElementById("heroStats"); if(hs) hs.innerHTML = strip;
+  const hsg = document.getElementById("heroStatsGrid"); if(hsg) hsg.innerHTML = strip;
+  const as = document.getElementById("aboutStats");
+  if(as) as.innerHTML = `
+    <div class="about-stat"><b>${total}</b><span>${t.statLive}</span></div>
+    <div class="about-stat"><b>${FAM_COUNTS.reg}</b><span>${t.statReg}</span></div>
+    <div class="about-stat"><b>${FAM_COUNTS.ai}</b><span>${t.statAI}</span></div>
+    <div class="about-stat"><b>100%</b><span>${t.statShipped}</span></div>`;
+}
+
 function applyLang(next){
   lang = i18n[next] ? next : "en";
   localStorage.setItem("portfolio-lang", lang);
@@ -1109,6 +1161,7 @@ function applyLang(next){
   document.querySelectorAll("[data-lang]").forEach(b => b.classList.toggle("on", b.dataset.lang===lang));
   searchInput.placeholder = i18n[lang].searchPh.replace("{n}", catalog.length);
   updateSearchClear();
+  renderStats();
   buildFilters();
   rebuild();
   lastActive = -1; layout();
