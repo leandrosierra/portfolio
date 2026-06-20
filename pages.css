@@ -128,7 +128,14 @@ footer.site .sep { color: var(--line); }
   header.site .navwrap { gap: 10px; }
   .lang-switch button { padding: 5px 8px; }
 }
+@media (max-width: 460px) {
+  header.site .wrap { flex-wrap: wrap; height: auto; padding-top: 10px; padding-bottom: 10px; gap: 8px 12px; }
+  header.site .brand { flex: 0 0 auto; }
+  header.site .navwrap { flex: 1 1 100%; flex-wrap: wrap; gap: 8px 10px; justify-content: flex-start; }
+  header.site nav { display: flex; flex-wrap: wrap; gap: 0 4px; }
+  header.site nav a { margin-left: 0; margin-right: 12px; }
+}
 @media (max-width: 400px) {
-  header.site nav a:first-child { margin-left: 0; }
   header.site .brand { font-size: 16px; }
+  header.site nav a { margin-right: 12px; font-size: 13px; }
 }
