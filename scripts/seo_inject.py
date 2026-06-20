@@ -73,6 +73,7 @@ jsonld = {
                     "url": u,
                     "name": n,
                     "description": unescape_js(en),
+                    "image": f"{APEX}/shots/{i}.jpg",
                 }
                 for idx, (i, n, f, u, en, fr) in enumerate(rows)
             ],
@@ -90,8 +91,18 @@ src = re.sub(r"<!-- SEO-INDEX:START -->.*?<!-- SEO-INDEX:END -->", lambda _: seo
 src = re.sub(r"<!-- SEO-JSONLD:START -->.*?<!-- SEO-JSONLD:END -->", lambda _: seo_jsonld, src, flags=re.S)
 INDEX.write_text(src, encoding="utf-8")
 
-# --- sitemap.xml : apex + tous les produits ---
-urls = [APEX + "/"] + [u for (i, n, f, u, en, fr) in rows]
+# --- sitemap.xml : apex + pages de contenu + tous les produits ---
+# Les produits sont des sous-domaines du meme domaine racine (*.leandro-sierra.com),
+# possedes et exploites par le meme operateur : cross-submission legitime.
+content_pages = [
+    APEX + "/",
+    APEX + "/products.html",
+    APEX + "/about.html",
+    APEX + "/contact.html",
+    APEX + "/privacy.html",
+    APEX + "/terms.html",
+]
+urls = content_pages + [u for (i, n, f, u, en, fr) in rows]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 for u in urls:
     sm.append(f"  <url><loc>{html.escape(u)}</loc></url>")
