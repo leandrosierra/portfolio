@@ -908,8 +908,9 @@ function matches(p){
   return matchesQuery(p);
 }
 
-function shotIMG(p, cls){
-  return `<img class="${cls}" loading="lazy" decoding="async" draggable="false" src="shots/${p.id}.jpg" alt="" onload="markShotReady(this)" onerror="this.remove()">`;
+function shotIMG(p, cls, eager){
+  const load = eager ? `loading="eager" fetchpriority="high"` : `loading="lazy" fetchpriority="low"`;
+  return `<img class="${cls}" ${load} decoding="async" draggable="false" width="320" height="200" src="shots/${p.id}.jpg" alt="" onload="markShotReady(this)" onerror="this.remove()">`;
 }
 
 function rebuild(){
@@ -917,16 +918,16 @@ function rebuild(){
   track.innerHTML = view.map((p,i) => `
     <a class="card" data-i="${i}" style="--di:${Math.min(i, 9)}" href="${p.url}" target="_blank" rel="noopener noreferrer" draggable="false" title="${p.name}">
       <div class="card-inner" style="--tint:${TINT[p.family]}">
-        <div class="card-screen">${mockSVG(p)}${shotIMG(p, "shot")}</div>
+        <div class="card-screen">${mockSVG(p)}${shotIMG(p, "shot", i === 0)}</div>
         <span class="card-tag">${i18n[lang].fam[p.family]}</span>
         <span class="card-host">${host(p.url)}</span>
         <span class="card-name">${p.name}</span>
       </div>
     </a>`).join("");
   cards = [...track.querySelectorAll(".card")];
-  grid.innerHTML = view.length ? view.map(p => `
+  grid.innerHTML = view.length ? view.map((p, gi) => `
     <a class="gcard" style="--tint:${TINT[p.family]}" data-id="${p.id}" href="${p.url}" target="_blank" rel="noopener noreferrer">
-      <span class="gshot">${mockSVG(p)}${shotIMG(p, "")}</span>
+      <span class="gshot">${mockSVG(p)}${shotIMG(p, "", gi < 8)}</span>
       <span class="gmeta"><span class="gtag">${i18n[lang].fam[p.family]}</span><b class="gname">${p.name}</b><span class="ghost">${host(p.url)}</span></span>
     </a>`).join("") : `<p class="gempty">${i18n[lang].empty}</p>`;
   railThumb.style.display = view.length ? "block" : "none";
