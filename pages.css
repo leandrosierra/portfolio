@@ -7,6 +7,19 @@
   --line: rgba(255, 255, 255, 0.09);
   --glass: rgba(255, 255, 255, 0.035);
   --accent: #7c9bff;
+  --header-bg: rgba(7, 8, 13, 0.85);
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg: #f6f7fb;
+  --ink: #14161f;
+  --ink-soft: #474d60;
+  --ink-dim: #6b7184;
+  --line: rgba(13, 16, 28, 0.12);
+  --glass: rgba(13, 16, 28, 0.045);
+  --accent: #4f6cf0;
+  --header-bg: rgba(246, 247, 251, 0.85);
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -24,12 +37,24 @@ a:hover { text-decoration: underline; }
 
 header.site {
   border-bottom: 1px solid var(--line);
-  background: rgba(7, 8, 13, 0.85);
+  background: var(--header-bg);
   backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
   z-index: 10;
 }
+header.site .navwrap { display: flex; align-items: center; gap: 16px; }
+.iconbtn {
+  display: inline-grid; place-items: center; width: 36px; height: 36px;
+  border-radius: 100px; border: 1px solid var(--line); background: var(--glass);
+  color: var(--ink-soft); cursor: pointer; transition: color 0.2s, border-color 0.2s;
+}
+.iconbtn:hover { color: var(--ink); border-color: color-mix(in oklch, var(--accent) 50%, var(--line)); }
+.iconbtn svg { width: 17px; height: 17px; display: block; }
+.iconbtn .i-sun { display: none; }
+.iconbtn .i-moon { display: block; }
+[data-theme="light"] .iconbtn .i-sun { display: block; }
+[data-theme="light"] .iconbtn .i-moon { display: none; }
 header.site .wrap {
   display: flex;
   align-items: center;

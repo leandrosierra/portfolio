@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#07080d">
 <meta name="color-scheme" content="dark">
+<script>(function(){try{var t=localStorage.getItem("portfolio-theme");if(!t){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";}document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute("content",t==="light"?"#f6f7fb":"#07080d");}catch(e){}})();</script>
 <title>Leandro Sierra — Internet products & AI software</title>
 <meta name="description" content="Portfolio of 170 live internet products built by Leandro Sierra: AI tools, regulatory readiness products, operational software and public web applications.">
 <meta property="og:title" content="Leandro Sierra — Product portfolio">
@@ -36,6 +37,40 @@
   --glass: rgba(255,255,255,0.035);
   --accent: #7C9BFF;
   --tint: #7C9BFF;
+  --card-grad: linear-gradient(160deg, #13151f, #0a0b12);
+  --panel-grad: linear-gradient(165deg, rgba(16,18,28,0.94), rgba(9,10,17,0.9));
+  --modal-grad: linear-gradient(165deg, #14161f, #0a0b12);
+  --scrim: linear-gradient(to top, rgba(7,8,13,0.82), rgba(7,8,13,0.3) 55%, transparent);
+  --field-1: #11131f;
+  --field-2: #0c0e18;
+  --chip-bg: rgba(255,255,255,0.03);
+  --btn-ink: #07080d;
+  --grain-op: 0.35;
+  --glow-op: 0.5;
+  --shadow-strong: 0 34px 90px -42px rgba(0,0,0,0.9);
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg: #f6f7fb;
+  --ink: #14161f;
+  --ink-soft: #474d60;
+  --ink-dim: #6b7184;
+  --line: rgba(13,16,28,0.12);
+  --glass: rgba(13,16,28,0.045);
+  --accent: #4f6cf0;
+  --tint: #4f6cf0;
+  --card-grad: linear-gradient(160deg, #ffffff, #eef0f7);
+  --panel-grad: linear-gradient(165deg, rgba(255,255,255,0.97), rgba(244,246,251,0.94));
+  --modal-grad: linear-gradient(165deg, #ffffff, #f1f3fa);
+  --scrim: linear-gradient(to top, rgba(20,22,31,0.58), rgba(20,22,31,0.16) 55%, transparent);
+  --field-1: #ffffff;
+  --field-2: #e9ecf5;
+  --chip-bg: rgba(13,16,28,0.04);
+  --btn-ink: #ffffff;
+  --grain-op: 0.14;
+  --glow-op: 0.34;
+  --shadow-strong: 0 30px 68px -38px rgba(40,52,90,0.45);
+  color-scheme: light;
 }
 html, body { height: 100%; }
 body {
@@ -54,13 +89,13 @@ input { font: inherit; color: inherit; }
 .stage { position: relative; height: 100vh; height: 100dvh; width: 100vw; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; }
 
 .bg-field { position: absolute; inset: 0; z-index: 0;
-  background: radial-gradient(120% 80% at 50% -10%, #11131f 0%, transparent 55%),
-             radial-gradient(100% 100% at 100% 110%, #0c0e18 0%, transparent 60%), var(--bg); }
+  background: radial-gradient(120% 80% at 50% -10%, var(--field-1) 0%, transparent 55%),
+             radial-gradient(100% 100% at 100% 110%, var(--field-2) 0%, transparent 60%), var(--bg); }
 .bg-glow { position: absolute; z-index: 0; left: 25%; top: 52%; width: 46vw; height: 72vh;
-  transform: translate(-50%, -50%); filter: blur(48px); opacity: 0.5; pointer-events: none;
+  transform: translate(-50%, -50%); filter: blur(48px); opacity: var(--glow-op); pointer-events: none;
   transition: background 0.7s ease;
   background: radial-gradient(closest-side, color-mix(in oklch, var(--tint) 34%, transparent), transparent 72%); }
-.bg-grain { position: absolute; inset: 0; z-index: 1; opacity: 0.35; pointer-events: none; mix-blend-mode: overlay;
+.bg-grain { position: absolute; inset: 0; z-index: 1; opacity: var(--grain-op); pointer-events: none; mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"); }
 
 /* topbar */
@@ -89,6 +124,13 @@ input { font: inherit; color: inherit; }
 .lang { display: flex; gap: 2px; border: 1px solid var(--line); border-radius: 100px; padding: 3px; }
 .lang button { min-height: 28px; padding: 4px 11px; border-radius: 100px; font-size: 12px; color: var(--ink-dim); }
 .lang button.on { color: var(--ink); background: var(--glass); }
+.iconbtn { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 100px; border: 1px solid var(--line); background: var(--glass); color: var(--ink-soft); transition: color 0.2s, border-color 0.2s, background 0.2s; }
+.iconbtn:hover { color: var(--ink); border-color: color-mix(in oklch, var(--tint) 50%, var(--line)); }
+.iconbtn svg { width: 17px; height: 17px; display: block; }
+.iconbtn .i-sun { display: none; }
+.iconbtn .i-moon { display: block; }
+[data-theme="light"] .iconbtn .i-sun { display: block; }
+[data-theme="light"] .iconbtn .i-moon { display: none; }
 .lang button svg { width: 14px; height: 14px; display: block; }
 .pill { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); padding: 8px 15px; border-radius: 100px; background: var(--glass); font-size: 13px; color: var(--ink-soft); transition: all 0.2s; }
 .pill:hover { color: var(--ink); border-color: color-mix(in oklch, var(--tint) 50%, var(--line)); }
@@ -107,12 +149,12 @@ input { font: inherit; color: inherit; }
 .track { position: absolute; inset: 0; transform-style: preserve-3d; pointer-events: none; }
 .card { position: absolute; left: 50%; top: 50%; width: clamp(304px, 33vw, 430px); transform-style: preserve-3d; will-change: transform, opacity; -webkit-user-select: none; user-select: none; cursor: pointer; pointer-events: auto; }
 .card-inner { position: relative; aspect-ratio: 16 / 10; border-radius: 18px; overflow: hidden; border: 1px solid var(--line);
-  background: linear-gradient(160deg, #13151f, #0a0b12); color: var(--tint);
+  background: var(--card-grad); color: var(--tint);
   box-shadow: 0 38px 76px -30px rgba(0,0,0,0.85), 0 2px 0 0 rgba(255,255,255,0.05) inset; transition: border-color 0.35s, box-shadow 0.35s; }
 .card:hover .card-inner { border-color: color-mix(in oklch, var(--tint) 35%, var(--line)); }
 .card.on .card-inner { border-color: color-mix(in oklch, var(--tint) 55%, var(--line));
   box-shadow: 0 50px 90px -28px rgba(0,0,0,0.9), 0 0 0 1px color-mix(in oklch, var(--tint) 30%, transparent), 0 0 60px -12px color-mix(in oklch, var(--tint) 42%, transparent), 0 2px 0 0 rgba(255,255,255,0.06) inset; }
-.card-inner::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 48%; z-index: 2; pointer-events: none; background: linear-gradient(to top, rgba(7,8,13,0.82), rgba(7,8,13,0.3) 55%, transparent); }
+.card-inner::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 48%; z-index: 2; pointer-events: none; background: var(--scrim); }
 .card-screen { position: absolute; inset: 0; }
 .card-screen svg { width: 100%; height: 100%; display: block; opacity: 0.84; transition: opacity 0.34s ease; }
 .card-screen img.shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transform: scale(1.018); transition: opacity 0.38s ease, transform 0.62s ease, filter 0.38s ease; filter: saturate(0.9) brightness(0.94); }
@@ -153,7 +195,7 @@ input { font: inherit; color: inherit; }
 .main.as-grid .slideshow, .main.as-grid .panel { display: none; }
 .gridwrap .hero { margin: 2px 0 16px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; padding-bottom: 28px; }
-.gcard { position: relative; display: block; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(160deg, #13151f, #0a0b12); transition: transform 0.2s, border-color 0.25s, box-shadow 0.25s; }
+.gcard { position: relative; display: block; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--card-grad); transition: transform 0.2s, border-color 0.25s, box-shadow 0.25s; }
 .gcard:hover { transform: translateY(-3px); border-color: color-mix(in oklch, var(--tint) 55%, var(--line)); box-shadow: 0 18px 44px -18px rgba(0,0,0,0.85); }
 .gshot { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--line); }
 .gshot svg, .gshot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
@@ -172,8 +214,8 @@ input { font: inherit; color: inherit; }
   padding: clamp(22px, 3vw, 34px);
   border-radius: 28px;
   border: 1px solid color-mix(in oklch, var(--tint) 20%, var(--line));
-  background: linear-gradient(165deg, rgba(16,18,28,0.94), rgba(9,10,17,0.9));
-  box-shadow: 0 34px 90px -42px rgba(0,0,0,0.9);
+  background: var(--panel-grad);
+  box-shadow: var(--shadow-strong, 0 34px 90px -42px rgba(0,0,0,0.9));
   backdrop-filter: blur(14px);
   overflow: hidden;
 }
@@ -197,12 +239,12 @@ input { font: inherit; color: inherit; }
 .p-desc { font-size: clamp(17px, 1.78vw, 21px); line-height: 1.45; color: var(--ink); margin-bottom: 30px; max-width: 60ch; text-wrap: pretty; font-weight: 360; }
 .p-actions { display: flex; align-items: center; gap: 13px; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500; padding: 13px 22px; border-radius: 12px; transition: all 0.25s; border: 1px solid transparent; }
-.btn-primary { background: var(--tint); color: #07080d; box-shadow: 0 10px 30px -10px color-mix(in oklch, var(--tint) 70%, transparent); }
+.btn-primary { background: var(--tint); color: var(--btn-ink); box-shadow: 0 10px 30px -10px color-mix(in oklch, var(--tint) 70%, transparent); }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -12px color-mix(in oklch, var(--tint) 80%, transparent); }
 .btn-ghost { background: var(--glass); border-color: var(--line); color: var(--ink); }
 .btn-ghost:hover { border-color: color-mix(in oklch, var(--tint) 50%, var(--line)); }
 .btn svg { width: 16px; height: 16px; }
-.p-count { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.03); font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--ink-dim); margin-left: 4px; }
+.p-count { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--chip-bg); font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--ink-dim); margin-left: 4px; }
 .p-count b { color: var(--ink); font-weight: 500; }
 
 /* footer */
@@ -220,8 +262,8 @@ input { font: inherit; color: inherit; }
 .modal[hidden] { display: none; }
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 .modal-card { position: relative; width: min(540px, 100%); padding: 38px clamp(26px, 5vw, 44px); border-radius: 22px;
-  border: 1px solid var(--line); background: linear-gradient(165deg, #14161f, #0a0b12);
-  box-shadow: 0 50px 110px -34px rgba(0,0,0,0.9); animation: pop 0.32s cubic-bezier(0.16,1,0.3,1) both; }
+  border: 1px solid var(--line); background: var(--modal-grad);
+  box-shadow: var(--shadow-strong, 0 50px 110px -34px rgba(0,0,0,0.9)); animation: pop 0.32s cubic-bezier(0.16,1,0.3,1) both; }
 @keyframes pop { from { opacity: 0; transform: translateY(16px) scale(0.97); } to { opacity: 1; transform: none; } }
 .modal-x { position: absolute; top: 14px; right: 16px; width: 34px; height: 34px; border-radius: 100px; font-size: 22px; line-height: 1; color: var(--ink-dim); transition: all 0.2s; }
 .modal-x:hover { color: var(--ink); background: var(--glass); }
@@ -472,6 +514,10 @@ input { font: inherit; color: inherit; }
         <button data-mode="stack" class="on" title="Stack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="4" width="14" height="6" rx="2"/><rect x="5" y="14" width="14" height="6" rx="2"/></svg></button>
         <button data-mode="grid" title="Grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></button>
       </span>
+      <button class="iconbtn" id="themeBtn" type="button" aria-label="Toggle light or dark theme" title="Theme">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.4 6.4 0 0 0 10.5 10.5z"/></svg>
+      </button>
       <span class="lang" id="lang" aria-label="Language">
         <button data-lang="en" class="on">EN</button>
         <button data-lang="fr">FR</button>
@@ -1065,6 +1111,25 @@ function applyLang(next){
   lastActive = -1; layout();
 }
 document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+
+/* ---------- theme ---------- */
+function applyTheme(next){
+  const t = next === "light" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", t);
+  localStorage.setItem("portfolio-theme", t);
+  const m = document.querySelector('meta[name="theme-color"]');
+  if(m) m.setAttribute("content", t === "light" ? "#f6f7fb" : "#07080d");
+  const btn = document.getElementById("themeBtn");
+  if(btn) btn.setAttribute("aria-label", t === "light" ? "Switch to dark theme" : "Switch to light theme");
+}
+(function(){
+  const cur = document.documentElement.getAttribute("data-theme") || "dark";
+  applyTheme(cur);
+  document.getElementById("themeBtn").addEventListener("click", () => {
+    const now = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+    applyTheme(now);
+  });
+})();
 
 const initialDeepLink = (location.hash.match(/^#p=([\w-]+)/) || [])[1] || "";
 applyLang(lang);

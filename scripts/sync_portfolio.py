@@ -206,6 +206,7 @@ def sync_products_page(products: list[Product]) -> None:
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#07080d">
 <meta name="color-scheme" content="dark">
+<script>(function(){{try{{var t=localStorage.getItem("portfolio-theme");if(!t){{t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";}}document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute("content",t==="light"?"#f6f7fb":"#07080d");}}catch(e){{}}}})();</script>
 <title>All products — Leandro Sierra</title>
 <meta name="description" content="The full catalogue of {len(products)} live web products by Leandro Sierra, grouped by category: AI tooling, EU regulatory-readiness kits, operations and consumer apps.">
 <link rel="canonical" href="{APEX}/products.html">
@@ -234,7 +235,13 @@ def sync_products_page(products: list[Product]) -> None:
 <body>
 <header class="site"><div class="wrap wide">
   <a class="brand" href="/">Leandro Sierra</a>
-  <nav><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a></nav>
+  <div class="navwrap">
+    <nav><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a></nav>
+    <button class="iconbtn" id="themeBtn" type="button" aria-label="Toggle light or dark theme" title="Theme">
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.4 6.4 0 0 0 10.5 10.5z"/></svg>
+    </button>
+  </div>
 </div></header>
 <main><div class="wrap wide">
   <h1>All products</h1>
@@ -252,6 +259,20 @@ def sync_products_page(products: list[Product]) -> None:
   <a href="/contact.html">Contact</a><span class="sep">·</span>
   <a href="/privacy.html">Privacy</a>
 </div></footer>
+<script>
+(function(){{
+  function applyTheme(t){{
+    t = t==="light" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", t);
+    localStorage.setItem("portfolio-theme", t);
+    var m=document.querySelector('meta[name="theme-color"]'); if(m) m.setAttribute("content", t==="light"?"#f6f7fb":"#07080d");
+  }}
+  var btn=document.getElementById("themeBtn");
+  if(btn) btn.addEventListener("click", function(){{
+    applyTheme(document.documentElement.getAttribute("data-theme")==="light"?"dark":"light");
+  }});
+}})();
+</script>
 </body>
 </html>
 """
@@ -314,10 +335,11 @@ def preview_targets(slug: str) -> list[Path]:
     return out
 
 
-def sync_previews(products: list[Product]) -> dict[str, int]:
+def sync_previews(products: list[Product], *, target_slug: str = "") -> dict[str, int]:
     changed = 0
     skipped = 0
-    for p in products:
+    targets = [p for p in products if not target_slug or p.slug == target_slug]
+    for p in targets:
         block = preview_block(p.slug, p.name, clamp(p.en), p.url)
         targets = preview_targets(p.slug)
         hits = 0
@@ -330,8 +352,10 @@ def sync_previews(products: list[Product]) -> dict[str, int]:
                     hits += 1
                     changed += int(before != after)
         skipped += int(hits == 0)
-    bootstrap_block = preview_block("__PRODUCT_SLUG__", "__PRODUCT_NAME__", "__PRODUCT_PITCH__", "https://__PRODUCT_SLUG__.leandro-sierra.com")
-    bootstrap_changed = inject_preview(BOOTSTRAP_INDEX, bootstrap_block)
+    bootstrap_changed = False
+    if not target_slug:
+        bootstrap_block = preview_block("__PRODUCT_SLUG__", "__PRODUCT_NAME__", "__PRODUCT_PITCH__", "https://__PRODUCT_SLUG__.leandro-sierra.com")
+        bootstrap_changed = inject_preview(BOOTSTRAP_INDEX, bootstrap_block)
     return {"changed": changed, "skipped": skipped, "bootstrap_changed": int(bootstrap_changed)}
 
 
@@ -363,10 +387,19 @@ async def capture_one(browser, product: Product, sem: asyncio.Semaphore) -> tupl
             await page.close()
 
 
-async def capture_screenshots(products: list[Product], *, only_missing: bool, limit: int, concurrency: int) -> dict[str, object]:
-    targets = products
+async def capture_screenshots(
+    products: list[Product],
+    *,
+    only_missing: bool,
+    limit: int,
+    concurrency: int,
+    target_slug: str = "",
+) -> dict[str, object]:
+    targets = [p for p in products if not target_slug or p.slug == target_slug]
     if only_missing:
         targets = [p for p in products if not (ROOT / "shots" / f"{p.slug}.jpg").exists()]
+        if target_slug:
+            targets = [p for p in targets if p.slug == target_slug]
     if limit:
         targets = targets[:limit]
     (ROOT / "shots").mkdir(exist_ok=True)
@@ -453,13 +486,22 @@ def main() -> int:
     parser.add_argument("--missing-screenshots", action="store_true")
     parser.add_argument("--limit-screenshots", type=int, default=0)
     parser.add_argument("--concurrency", type=int, default=6)
+    parser.add_argument("--screenshot-slug", default="")
+    parser.add_argument("--preview-slug", default="")
+    parser.add_argument("--skip-previews", action="store_true")
     args = parser.parse_args()
 
     products = load_products()
+    known_slugs = {p.slug for p in products}
+    for option, slug in (("--screenshot-slug", args.screenshot_slug), ("--preview-slug", args.preview_slug)):
+        if slug and slug not in known_slugs:
+            parser.error(f"{option}: produit absent du portfolio: {slug}")
     sync_index(products)
     sync_products_page(products)
     sync_sitemap(products)
-    previews = sync_previews(products)
+    previews = {"changed": 0, "skipped": 0, "bootstrap_changed": 0}
+    if not args.skip_previews:
+        previews = sync_previews(products, target_slug=args.preview_slug)
 
     shots = {"total": 0, "ok": 0, "errors": []}
     if not args.no_screenshots:
@@ -468,6 +510,7 @@ def main() -> int:
             only_missing=args.missing_screenshots,
             limit=args.limit_screenshots,
             concurrency=max(1, args.concurrency),
+            target_slug=args.screenshot_slug,
         ))
     print(json.dumps({
         "products": len(products),
