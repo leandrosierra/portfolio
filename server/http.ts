@@ -26,12 +26,15 @@ const TYPES: Record<string, string> = {
   ".png": "image/png",
   ".ico": "image/x-icon",
   ".webmanifest": "application/manifest+json",
+  ".ttf": "font/ttf",
+  ".woff": "font/woff",
+  ".woff2": "font/woff2",
 };
 
 const CSP =
   "default-src 'self'; " +
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-  "font-src https://fonts.gstatic.com; " +
+  "style-src 'self' 'unsafe-inline'; " +
+  "font-src 'self'; " +
   "img-src 'self' data: https:; " +
   "script-src 'self' 'unsafe-inline' https://analytics.leandro-sierra.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; " +
   "connect-src 'self' https://analytics.leandro-sierra.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; " +

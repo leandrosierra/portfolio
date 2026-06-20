@@ -217,9 +217,7 @@ def sync_products_page(products: list[Product]) -> None:
 <meta property="og:image" content="{APEX}/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{APEX}/og.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts.css">
 <link rel="stylesheet" href="/pages.css">
 <style>
   .wrap.wide {{ max-width: 940px; }}
