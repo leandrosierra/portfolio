@@ -44,7 +44,18 @@ header.site {
   top: 0;
   z-index: 10;
 }
-header.site .navwrap { display: flex; align-items: center; gap: 16px; }
+header.site .navwrap { display: flex; align-items: center; gap: 14px; }
+.lang-switch {
+  display: inline-flex; align-items: center; gap: 2px;
+  border: 1px solid var(--line); border-radius: 100px; padding: 2px; background: var(--glass);
+}
+.lang-switch button {
+  font: inherit; font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  color: var(--ink-dim); background: none; border: 0; cursor: pointer;
+  padding: 5px 10px; border-radius: 100px; line-height: 1; transition: color 0.2s, background 0.2s;
+}
+.lang-switch button:hover { color: var(--ink); }
+.lang-switch button.on { color: var(--ink); background: color-mix(in oklch, var(--accent) 22%, transparent); }
 .iconbtn {
   display: inline-grid; place-items: center; width: 36px; height: 36px;
   border-radius: 100px; border: 1px solid var(--line); background: var(--glass);
@@ -111,3 +122,13 @@ footer.site {
 footer.site .wrap { display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center; }
 footer.site a { color: var(--ink-soft); }
 footer.site .sep { color: var(--line); }
+
+@media (max-width: 560px) {
+  header.site nav a { margin-left: 14px; font-size: 14px; }
+  header.site .navwrap { gap: 10px; }
+  .lang-switch button { padding: 5px 8px; }
+}
+@media (max-width: 400px) {
+  header.site nav a:first-child { margin-left: 0; }
+  header.site .brand { font-size: 16px; }
+}

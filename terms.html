@@ -16,11 +16,15 @@
 <link rel="stylesheet" href="/fonts.css">
 <link rel="stylesheet" href="/pages.css">
 </head>
-<body>
+<body data-page="terms">
 <header class="site"><div class="wrap">
   <a class="brand" href="/">Leandro Sierra</a>
   <div class="navwrap">
-  <nav><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a></nav>
+  <nav><a href="/about.html" data-i18n="nav.about">About</a><a href="/contact.html" data-i18n="nav.contact">Contact</a><a href="/privacy.html" data-i18n="nav.privacy">Privacy</a></nav>
+  <span class="lang-switch" aria-label="Language">
+    <button type="button" data-lang="en" class="on" aria-pressed="true">EN</button>
+    <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+  </span>
   <button class="iconbtn" id="themeBtn" type="button" aria-label="Toggle light or dark theme" title="Theme">
     <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
     <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.4 6.4 0 0 0 10.5 10.5z"/></svg>
@@ -29,47 +33,47 @@
 </div></header>
 
 <main><div class="wrap">
-  <h1>Terms &amp; Legal Notice</h1>
-  <p class="lead">These terms govern your use of <strong>leandro-sierra.com</strong> and the products hosted on its subdomains. By using the sites you agree to them.</p>
-  <p class="meta">Last updated: 14 June 2026.</p>
+  <h1 data-i18n="terms.title">Terms &amp; Legal Notice</h1>
+  <p class="lead" data-i18n="terms.lead">These terms govern your use of <strong>leandro-sierra.com</strong> and the products hosted on its subdomains. By using the sites you agree to them.</p>
+  <p class="meta" data-i18n="terms.updated">Last updated: 14 June 2026.</p>
 
-  <h2>Site identity</h2>
-  <p>These sites are published and operated by Leandro Sierra, an independent developer. Contact: <a href="mailto:leandrosierra1@gmail.com">leandrosierra1&#64;gmail.com</a>. Hosting is provided by third-party infrastructure providers.</p>
+  <h2 data-i18n="terms.h_identity">Site identity</h2>
+  <p data-i18n="terms.p_identity">These sites are published and operated by Leandro Sierra, an independent developer. Contact: <a href="mailto:leandrosierra1@gmail.com">leandrosierra1&#64;gmail.com</a>. Hosting is provided by third-party infrastructure providers.</p>
 
-  <h2>Acceptable use</h2>
-  <p>You may use the products for their intended purpose. You agree not to:</p>
+  <h2 data-i18n="terms.h_use">Acceptable use</h2>
+  <p data-i18n="terms.p_use">You may use the products for their intended purpose. You agree not to:</p>
   <ul>
-    <li>attempt to disrupt, overload, or gain unauthorised access to the services;</li>
-    <li>scrape or republish content at scale without permission;</li>
-    <li>use the services to break any applicable law.</li>
+    <li data-i18n="terms.li_disrupt">attempt to disrupt, overload, or gain unauthorised access to the services;</li>
+    <li data-i18n="terms.li_scrape">scrape or republish content at scale without permission;</li>
+    <li data-i18n="terms.li_law">use the services to break any applicable law.</li>
   </ul>
 
-  <h2>Informational content &amp; no legal advice</h2>
-  <p>Many products summarise regulations and provide checklists, guides and document templates. This material is <strong>informational only and is not legal, financial or professional advice</strong>. Regulations change and your situation may differ; verify against official sources and consult a qualified professional before relying on it. The operator is not liable for decisions made on the basis of this content.</p>
+  <h2 data-i18n="terms.h_info">Informational content &amp; no legal advice</h2>
+  <p data-i18n="terms.p_info">Many products summarise regulations and provide checklists, guides and document templates. This material is <strong>informational only and is not legal, financial or professional advice</strong>. Regulations change and your situation may differ; verify against official sources and consult a qualified professional before relying on it. The operator is not liable for decisions made on the basis of this content.</p>
 
-  <h2>Availability &amp; changes</h2>
-  <p>The services are provided "as is" and "as available". We may modify, suspend or discontinue any product at any time. We aim for accuracy and uptime but make no guarantee that content is complete, current or error-free.</p>
+  <h2 data-i18n="terms.h_avail">Availability &amp; changes</h2>
+  <p data-i18n="terms.p_avail">The services are provided "as is" and "as available". We may modify, suspend or discontinue any product at any time. We aim for accuracy and uptime but make no guarantee that content is complete, current or error-free.</p>
 
-  <h2>Intellectual property</h2>
-  <p>The text, design and original templates on these sites are the property of the operator unless stated otherwise. Official regulatory texts referenced or quoted remain the property of their respective authorities. You may use the templates for your own compliance work; you may not resell them as a standalone product.</p>
+  <h2 data-i18n="terms.h_ip">Intellectual property</h2>
+  <p data-i18n="terms.p_ip">The text, design and original templates on these sites are the property of the operator unless stated otherwise. Official regulatory texts referenced or quoted remain the property of their respective authorities. You may use the templates for your own compliance work; you may not resell them as a standalone product.</p>
 
-  <h2>Advertising</h2>
-  <p>Some products are funded by advertising. Ads are clearly distinguishable from editorial content. The presence of an ad is not an endorsement of the advertiser by the operator.</p>
+  <h2 data-i18n="terms.h_ads">Advertising</h2>
+  <p data-i18n="terms.p_ads">Some products are funded by advertising. Ads are clearly distinguishable from editorial content. The presence of an ad is not an endorsement of the advertiser by the operator.</p>
 
-  <h2>Liability</h2>
-  <p>To the maximum extent permitted by law, the operator is not liable for any indirect or consequential loss arising from use of the services. Nothing in these terms limits liability that cannot be limited by law.</p>
+  <h2 data-i18n="terms.h_liability">Liability</h2>
+  <p data-i18n="terms.p_liability">To the maximum extent permitted by law, the operator is not liable for any indirect or consequential loss arising from use of the services. Nothing in these terms limits liability that cannot be limited by law.</p>
 
-  <h2>Governing law</h2>
-  <p>These terms are governed by French law, without prejudice to mandatory consumer protections in your country of residence.</p>
+  <h2 data-i18n="terms.h_law">Governing law</h2>
+  <p data-i18n="terms.p_law">These terms are governed by French law, without prejudice to mandatory consumer protections in your country of residence.</p>
 </div></main>
 
 <footer class="site"><div class="wrap">
-  <span>© 2026 Leandro Sierra</span><span class="sep">·</span>
-  <a href="/">Products</a><span class="sep">·</span>
-  <a href="/about.html">About</a><span class="sep">·</span>
-  <a href="/contact.html">Contact</a><span class="sep">·</span>
-  <a href="/privacy.html">Privacy</a><span class="sep">·</span>
-  <a href="/terms.html">Terms</a>
+  <span data-i18n="foot.copy">© 2026 Leandro Sierra</span><span class="sep">·</span>
+  <a href="/" data-i18n="foot.products">Products</a><span class="sep">·</span>
+  <a href="/about.html" data-i18n="foot.about">About</a><span class="sep">·</span>
+  <a href="/contact.html" data-i18n="foot.contact">Contact</a><span class="sep">·</span>
+  <a href="/privacy.html" data-i18n="foot.privacy">Privacy</a><span class="sep">·</span>
+  <a href="/terms.html" data-i18n="foot.terms">Terms</a>
 </div></footer>
 <script>
 (function(){
@@ -85,5 +89,6 @@
   });
 })();
 </script>
+<script src="/pages-i18n.js" defer></script>
 </body>
 </html>

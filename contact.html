@@ -16,11 +16,15 @@
 <link rel="stylesheet" href="/fonts.css">
 <link rel="stylesheet" href="/pages.css">
 </head>
-<body>
+<body data-page="contact">
 <header class="site"><div class="wrap">
   <a class="brand" href="/">Leandro Sierra</a>
   <div class="navwrap">
-  <nav><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a></nav>
+  <nav><a href="/about.html" data-i18n="nav.about">About</a><a href="/contact.html" data-i18n="nav.contact">Contact</a><a href="/privacy.html" data-i18n="nav.privacy">Privacy</a></nav>
+  <span class="lang-switch" aria-label="Language">
+    <button type="button" data-lang="en" class="on" aria-pressed="true">EN</button>
+    <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+  </span>
   <button class="iconbtn" id="themeBtn" type="button" aria-label="Toggle light or dark theme" title="Theme">
     <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
     <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.4 6.4 0 0 0 10.5 10.5z"/></svg>
@@ -29,40 +33,40 @@
 </div></header>
 
 <main><div class="wrap">
-  <h1>Contact</h1>
-  <p class="lead">Questions, corrections, bug reports or partnership enquiries about any product on this site are welcome.</p>
+  <h1 data-i18n="contact.title">Contact</h1>
+  <p class="lead" data-i18n="contact.lead">Questions, corrections, bug reports or partnership enquiries about any product on this site are welcome.</p>
 
   <div class="card">
-    <h3>Email</h3>
-    <p>The fastest way to reach me is by email:</p>
+    <h3 data-i18n="contact.card_h">Email</h3>
+    <p data-i18n="contact.card_p">The fastest way to reach me is by email:</p>
     <p><strong><a href="mailto:leandrosierra1@gmail.com">leandrosierra1&#64;gmail.com</a></strong></p>
-    <p class="meta">I read every message and usually reply within a few business days.</p>
+    <p class="meta" data-i18n="contact.card_meta">I read every message and usually reply within a few business days.</p>
   </div>
 
-  <h2>What to include</h2>
-  <p>To get a useful answer quickly, please mention:</p>
+  <h2 data-i18n="contact.h_include">What to include</h2>
+  <p data-i18n="contact.p_include">To get a useful answer quickly, please mention:</p>
   <ul>
-    <li>The <strong>product name or URL</strong> you are writing about (for example <code>dataactready.leandro-sierra.com</code>).</li>
-    <li>What you expected to happen and what actually happened, if it is a bug.</li>
-    <li>For content corrections, the page and the specific point you believe is inaccurate, ideally with a source.</li>
+    <li data-i18n="contact.li_url">The <strong>product name or URL</strong> you are writing about (for example <code>dataactready.leandro-sierra.com</code>).</li>
+    <li data-i18n="contact.li_bug">What you expected to happen and what actually happened, if it is a bug.</li>
+    <li data-i18n="contact.li_correction">For content corrections, the page and the specific point you believe is inaccurate, ideally with a source.</li>
   </ul>
 
-  <h2>Corrections &amp; takedowns</h2>
-  <p>The regulatory and informational content on these products is kept as accurate as possible, but mistakes happen and rules change. If you spot an error, or you are a rights holder requesting a takedown, email the address above with the relevant URL and details. Verified issues are corrected promptly.</p>
+  <h2 data-i18n="contact.h_takedown">Corrections &amp; takedowns</h2>
+  <p data-i18n="contact.p_takedown">The regulatory and informational content on these products is kept as accurate as possible, but mistakes happen and rules change. If you spot an error, or you are a rights holder requesting a takedown, email the address above with the relevant URL and details. Verified issues are corrected promptly.</p>
 
-  <h2>Business &amp; press</h2>
-  <p>For partnerships, advertising, or press enquiries, use the same email and include "partnership" or "press" in the subject line.</p>
+  <h2 data-i18n="contact.h_press">Business &amp; press</h2>
+  <p data-i18n="contact.p_press">For partnerships, advertising, or press enquiries, use the same email and include "partnership" or "press" in the subject line.</p>
 
-  <p class="meta">This site is operated by Leandro Sierra as an independent developer. See the <a href="/about.html">about page</a> for background and the <a href="/privacy.html">privacy policy</a> for how data is handled.</p>
+  <p class="meta" data-i18n="contact.p_foot">This site is operated by Leandro Sierra as an independent developer. See the <a href="/about.html">about page</a> for background and the <a href="/privacy.html">privacy policy</a> for how data is handled.</p>
 </div></main>
 
 <footer class="site"><div class="wrap">
-  <span>© 2026 Leandro Sierra</span><span class="sep">·</span>
-  <a href="/">Products</a><span class="sep">·</span>
-  <a href="/about.html">About</a><span class="sep">·</span>
-  <a href="/contact.html">Contact</a><span class="sep">·</span>
-  <a href="/privacy.html">Privacy</a><span class="sep">·</span>
-  <a href="/terms.html">Terms</a>
+  <span data-i18n="foot.copy">© 2026 Leandro Sierra</span><span class="sep">·</span>
+  <a href="/" data-i18n="foot.products">Products</a><span class="sep">·</span>
+  <a href="/about.html" data-i18n="foot.about">About</a><span class="sep">·</span>
+  <a href="/contact.html" data-i18n="foot.contact">Contact</a><span class="sep">·</span>
+  <a href="/privacy.html" data-i18n="foot.privacy">Privacy</a><span class="sep">·</span>
+  <a href="/terms.html" data-i18n="foot.terms">Terms</a>
 </div></footer>
 <script>
 (function(){
@@ -78,5 +82,6 @@
   });
 })();
 </script>
+<script src="/pages-i18n.js" defer></script>
 </body>
 </html>

@@ -16,11 +16,15 @@
 <link rel="stylesheet" href="/fonts.css">
 <link rel="stylesheet" href="/pages.css">
 </head>
-<body>
+<body data-page="about">
 <header class="site"><div class="wrap">
   <a class="brand" href="/">Leandro Sierra</a>
   <div class="navwrap">
-  <nav><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a></nav>
+  <nav><a href="/about.html" data-i18n="nav.about">About</a><a href="/contact.html" data-i18n="nav.contact">Contact</a><a href="/privacy.html" data-i18n="nav.privacy">Privacy</a></nav>
+  <span class="lang-switch" aria-label="Language">
+    <button type="button" data-lang="en" class="on" aria-pressed="true">EN</button>
+    <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+  </span>
   <button class="iconbtn" id="themeBtn" type="button" aria-label="Toggle light or dark theme" title="Theme">
     <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
     <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.4 6.4 0 0 0 10.5 10.5z"/></svg>
@@ -29,43 +33,43 @@
 </div></header>
 
 <main><div class="wrap">
-  <h1>About this portfolio</h1>
-  <p class="lead">Leandro Sierra is an independent product developer building and operating live internet software — AI tooling, EU regulatory-readiness products and consumer web apps. This site is the public index of those products.</p>
+  <h1 data-i18n="about.title">About this portfolio</h1>
+  <p class="lead" data-i18n="about.lead">Leandro Sierra is an independent product developer building and operating live internet software — AI tooling, EU regulatory-readiness products and consumer web apps. This site is the public index of those products.</p>
 
-  <h2>What you'll find here</h2>
-  <p>The homepage links to a catalogue of independent web products, each running on its own subdomain of <strong>leandro-sierra.com</strong>. They fall into a few recurring families:</p>
+  <h2 data-i18n="about.h_find">What you'll find here</h2>
+  <p data-i18n="about.p_find">The homepage links to a catalogue of independent web products, each running on its own subdomain of <strong>leandro-sierra.com</strong>. They fall into a few recurring families:</p>
   <ul>
-    <li><strong>Regulatory-readiness tools</strong> — practical self-assessment kits for EU and international rules (Data Act, CRA, GPSR, EAA accessibility, battery passport, AI Act and others): a diagnosis, a prioritised fix list and ready-to-adapt document templates.</li>
-    <li><strong>AI tooling</strong> — utilities for teams shipping AI features: cost guardrails for agent workloads, QA and observability for deployed agents, documentation audits for AI readability, and provenance trails for AI-generated code.</li>
-    <li><strong>Consumer and operations apps</strong> — focused single-purpose web apps that solve one concrete task well, without sign-up friction.</li>
+    <li data-i18n="about.li_reg"><strong>Regulatory-readiness tools</strong> — practical self-assessment kits for EU and international rules (Data Act, CRA, GPSR, EAA accessibility, battery passport, AI Act and others): a diagnosis, a prioritised fix list and ready-to-adapt document templates.</li>
+    <li data-i18n="about.li_ai"><strong>AI tooling</strong> — utilities for teams shipping AI features: cost guardrails for agent workloads, QA and observability for deployed agents, documentation audits for AI readability, and provenance trails for AI-generated code.</li>
+    <li data-i18n="about.li_consumer"><strong>Consumer and operations apps</strong> — focused single-purpose web apps that solve one concrete task well, without sign-up friction.</li>
   </ul>
 
-  <h2>How the products are built</h2>
-  <p>Every product follows the same opinionated path so the catalogue stays consistent and trustworthy:</p>
+  <h2 data-i18n="about.h_built">How the products are built</h2>
+  <p data-i18n="about.p_built">Every product follows the same opinionated path so the catalogue stays consistent and trustworthy:</p>
   <ul>
-    <li><strong>One job per product.</strong> Each app does a single thing and states plainly what it does and does not cover.</li>
-    <li><strong>Real, original content.</strong> Checklists, guides and templates are written for the specific regulation or task — not generic filler.</li>
-    <li><strong>Privacy-first analytics.</strong> Traffic is measured with cookieless analytics; on the products that carry advertising, it loads only after explicit consent.</li>
-    <li><strong>Accessibility and performance.</strong> Pages are built to be fast, keyboard-navigable and readable on any device, in both light and dark themes.</li>
-    <li><strong>Honest monetisation.</strong> This index is free and ad-free. The individual products are funded through clearly-labelled advertising and, for some, optional paid features — never dark patterns.</li>
+    <li data-i18n="about.li_onejob"><strong>One job per product.</strong> Each app does a single thing and states plainly what it does and does not cover.</li>
+    <li data-i18n="about.li_content"><strong>Real, original content.</strong> Checklists, guides and templates are written for the specific regulation or task — not generic filler.</li>
+    <li data-i18n="about.li_privacy"><strong>Privacy-first analytics.</strong> Traffic is measured with cookieless analytics; on the products that carry advertising, it loads only after explicit consent.</li>
+    <li data-i18n="about.li_a11y"><strong>Accessibility and performance.</strong> Pages are built to be fast, keyboard-navigable and readable on any device, in both light and dark themes.</li>
+    <li data-i18n="about.li_money"><strong>Honest monetisation.</strong> This index is free and ad-free. The individual products are funded through clearly-labelled advertising and, for some, optional paid features — never dark patterns.</li>
   </ul>
 
-  <h2>Why a single domain</h2>
-  <p>Hosting every product under one root domain keeps a clear, accountable home for the work: one place to learn who is behind a product, how to get in touch, and how data is handled. The same privacy policy, contact route and editorial standards apply across every subdomain.</p>
+  <h2 data-i18n="about.h_domain">Why a single domain</h2>
+  <p data-i18n="about.p_domain">Hosting every product under one root domain keeps a clear, accountable home for the work: one place to learn who is behind a product, how to get in touch, and how data is handled. The same privacy policy, contact route and editorial standards apply across every subdomain.</p>
 
-  <h2>Editorial standards</h2>
-  <p>Content is reviewed for accuracy and kept current as rules and best practices change. Regulatory products summarise official sources and link to them; they are practical aids, not legal advice. Where a product cannot yet verify something, it says so rather than guessing.</p>
+  <h2 data-i18n="about.h_editorial">Editorial standards</h2>
+  <p data-i18n="about.p_editorial">Content is reviewed for accuracy and kept current as rules and best practices change. Regulatory products summarise official sources and link to them; they are practical aids, not legal advice. Where a product cannot yet verify something, it says so rather than guessing.</p>
 
-  <p class="meta">For questions, corrections or partnership enquiries, see the <a href="/contact.html">contact page</a>.</p>
+  <p class="meta" data-i18n="about.p_foot">For questions, corrections or partnership enquiries, see the <a href="/contact.html">contact page</a>.</p>
 </div></main>
 
 <footer class="site"><div class="wrap">
-  <span>© 2026 Leandro Sierra</span><span class="sep">·</span>
-  <a href="/">Products</a><span class="sep">·</span>
-  <a href="/about.html">About</a><span class="sep">·</span>
-  <a href="/contact.html">Contact</a><span class="sep">·</span>
-  <a href="/privacy.html">Privacy</a><span class="sep">·</span>
-  <a href="/terms.html">Terms</a>
+  <span data-i18n="foot.copy">© 2026 Leandro Sierra</span><span class="sep">·</span>
+  <a href="/" data-i18n="foot.products">Products</a><span class="sep">·</span>
+  <a href="/about.html" data-i18n="foot.about">About</a><span class="sep">·</span>
+  <a href="/contact.html" data-i18n="foot.contact">Contact</a><span class="sep">·</span>
+  <a href="/privacy.html" data-i18n="foot.privacy">Privacy</a><span class="sep">·</span>
+  <a href="/terms.html" data-i18n="foot.terms">Terms</a>
 </div></footer>
 <script>
 (function(){
@@ -81,5 +85,6 @@
   });
 })();
 </script>
+<script src="/pages-i18n.js" defer></script>
 </body>
 </html>
