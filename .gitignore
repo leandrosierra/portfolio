@@ -4,3 +4,6 @@ Thumbs.db
 
 node_modules/
 server/dist/
+__pycache__/
+*.pyc
+data/
