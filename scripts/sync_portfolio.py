@@ -53,30 +53,13 @@ def load_existing() -> dict[str, Product]:
     return out
 
 
-def infer_family(name: str, pitch: str) -> str:
-    text = f"{name} {pitch}".lower()
-    reg_terms = (
-        "compliance", "regulation", "ready", "audit", "eu ", "european", "act", "dora",
-        "nis2", "csrd", "cbam", "mica", "gdpr", "aml", "passport", "sanctions",
-        "traceability", "due diligence", "whistleblowing", "cyber resilience",
-    )
-    if any(term in text for term in reg_terms):
-        return "reg"
-    if "ai" in text or "agent" in text or "llm" in text:
-        return "ai"
-    ops_terms = ("business", "freelance", "invoice", "contract", "review", "workflow", "team", "smb", "hr")
-    if any(term in text for term in ops_terms):
-        return "ops"
-    return "public"
-
-
 def load_products() -> list[Product]:
     existing = load_existing()
     con = sqlite3.connect(ADA_DB)
     con.row_factory = sqlite3.Row
     rows = con.execute(
         """
-        SELECT slug, name, pitch, domain
+        SELECT slug, name, pitch, category, domain
         FROM products
         WHERE coalesce(domain, '') <> ''
           AND slug NOT IN ('adatestdesk', 'portfolio')
@@ -89,11 +72,12 @@ def load_products() -> list[Product]:
         current = existing.get(slug)
         name = str(row["name"] or slug)
         pitch = clamp(str(row["pitch"] or name))
+        family = str(row["category"] or "public").strip().lower() or "public"
         url = str(row["domain"] or f"https://{slug}.leandro-sierra.com").rstrip("/")
         products.append(Product(
             slug=slug,
             name=name,
-            family=current.family if current else infer_family(name, pitch),
+            family=family,
             url=url,
             en=current.en if current else pitch,
             fr=current.fr if current else pitch,
