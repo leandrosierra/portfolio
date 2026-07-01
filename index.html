@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#07080d">
-<meta name="color-scheme" content="dark">
-<script>(function(){try{var t=localStorage.getItem("portfolio-theme");if(!t){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";}document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute("content",t==="light"?"#f6f7fb":"#07080d");}catch(e){}})();</script>
+<meta name="theme-color" content="#f6f7fb">
+<meta name="color-scheme" content="light dark">
+<script>(function(){try{var t=localStorage.getItem("portfolio-theme")||"light";document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute("content",t==="light"?"#f6f7fb":"#07080d");}catch(e){}})();</script>
 <title>Leandro Sierra — Internet products & AI software</title>
 <meta name="description" content="Portfolio of 170 live internet products built by Leandro Sierra: AI tools, regulatory readiness products, operational software and public web applications.">
 <meta property="og:title" content="Leandro Sierra — Product portfolio">
@@ -117,8 +117,8 @@ input { font: inherit; color: inherit; }
 .search { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 100px; padding: 7px 14px; background: var(--glass); color: var(--ink-dim); transition: border-color 0.25s; }
 .search:focus-within { border-color: color-mix(in oklch, var(--tint) 50%, var(--line)); color: var(--ink-soft); }
 .search svg { width: 14px; height: 14px; flex: none; }
-.search input { background: none; border: none; outline: none; width: 13ch; font-size: 13px; color: var(--ink); transition: width 0.25s ease; }
-.search input:focus { width: 19ch; }
+.search input { background: none; border: none; outline: none; width: 26ch; font-size: 13px; color: var(--ink); transition: width 0.25s ease; }
+.search input:focus { width: 30ch; }
 .search input::placeholder { color: var(--ink-dim); }
 .search input::-webkit-search-cancel-button { -webkit-appearance: none; }
 .search-clear { display: none; width: 22px; height: 22px; border-radius: 999px; place-items: center; color: var(--ink-dim); background: rgba(255,255,255,0.06); line-height: 1; font-size: 16px; transition: all 0.18s ease; }
@@ -174,7 +174,7 @@ input { font: inherit; color: inherit; }
 .rail-thumb { position: absolute; left: 50%; transform: translateX(-50%); width: 6px; height: 34px; border-radius: 100px; background: var(--tint); box-shadow: 0 0 14px color-mix(in oklch, var(--tint) 70%, transparent); transition: background 0.5s; }
 
 /* hero */
-.hero { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 18px; }
+.hero { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 18px; padding-left: clamp(22px, 3vw, 34px); }
 
 /* intro mosaique (jouee une fois par session) */
 .intro { position: fixed; inset: 0; z-index: 60; pointer-events: none; background-size: cover; background-position: center; opacity: 0; }
@@ -196,7 +196,7 @@ input { font: inherit; color: inherit; }
 /* grid view */
 .main.as-grid { display: block; align-items: initial; overflow-y: auto; padding-top: 14px; scrollbar-width: thin; scrollbar-color: var(--ink-dim) transparent; }
 .main.as-grid .slideshow, .main.as-grid .panel { display: none; }
-.gridwrap .hero { margin: 2px 0 16px; }
+.gridwrap .hero { margin: 2px 0 16px; padding-left: 0; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; padding-bottom: 28px; }
 .gcard { position: relative; display: block; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--card-grad); transition: transform 0.2s, border-color 0.25s, box-shadow 0.25s; }
 .gcard:hover { transform: translateY(-3px); border-color: color-mix(in oklch, var(--tint) 55%, var(--line)); box-shadow: 0 18px 44px -18px rgba(0,0,0,0.85); }
@@ -285,11 +285,11 @@ input { font: inherit; color: inherit; }
 @media (max-width: 520px) { .about-stats { grid-template-columns: repeat(2, 1fr); } }
 
 /* hero stat strip (slideshow + grid) */
-.hero-stats { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 22px; }
+.hero-stats { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 22px; padding-left: clamp(22px, 3vw, 34px); }
 .hero-stat { display: inline-flex; align-items: baseline; gap: 7px; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink-dim); }
 .hero-stat b { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.01em; color: var(--ink); text-transform: none; }
 .hero-stat .dot { width: 6px; height: 6px; border-radius: 100px; background: var(--tint); align-self: center; }
-.gridwrap .hero-stats { margin-bottom: 18px; }
+.gridwrap .hero-stats { margin-bottom: 18px; padding-left: 0; }
 @media (max-width: 860px) { .hero-stats { gap: 6px 10px; margin-bottom: 12px; } .hero-stat b { font-size: 14px; } }
 
 /* static SEO index — visuellement masque, lu par crawlers/no-JS */
@@ -306,8 +306,8 @@ input { font: inherit; color: inherit; }
   .topbar { flex-wrap: wrap; padding-top: 14px; row-gap: 10px; }
   .filters { order: 3; width: 100%; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
   .filters::-webkit-scrollbar { display: none; }
-  .search input { width: 9ch; }
-  .search input:focus { width: 14ch; }
+  .search input { width: 20ch; }
+  .search input:focus { width: 24ch; }
   .main { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(170px, 1fr) auto; padding: 0 20px 6px; min-width: 0; }
   .main > * { min-width: 0; }
   .slideshow { height: 100%; min-height: 170px; perspective-origin: 50% 50%;
@@ -544,7 +544,6 @@ input { font: inherit; color: inherit; }
         <button data-lang="fr">FR</button>
       </span>
       <button class="pill" id="aboutBtn" data-i18n="about" type="button">About</button>
-      <a class="pill" href="https://github.com/leandrosierra" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </header>
 
@@ -564,9 +563,9 @@ input { font: inherit; color: inherit; }
       <span data-i18n="scrollHint">Scroll to explore</span>
     </div>
     <div class="socials">
-      <a href="mailto:leandrosierra1@gmail.com">leandrosierra1@gmail.com</a>
+      <a href="mailto:contact@leandro-sierra.com">contact@leandro-sierra.com</a>
       <a href="https://www.linkedin.com/in/leandro-sierra-ai/" target="_blank" rel="noopener">linkedin</a>
-      <span data-i18n="location">Avignon / Remote</span>
+      <a href="https://github.com/leandrosierra" target="_blank" rel="noopener">github</a>
     </div>
     <nav class="footer-links">
       <a href="/products.html">All products</a>
@@ -590,7 +589,7 @@ input { font: inherit; color: inherit; }
         <li data-i18n="aboutPoint3"></li>
       </ul>
       <div class="modal-actions">
-        <a class="btn btn-primary" href="mailto:leandrosierra1@gmail.com" data-i18n="aboutCta">Get in touch
+        <a class="btn btn-primary" href="mailto:contact@leandro-sierra.com" data-i18n="aboutCta">Get in touch
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
         </a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/leandro-sierra-ai/" target="_blank" rel="noopener">LinkedIn</a>
@@ -786,8 +785,8 @@ const TINT = { ai:"#5B8CFF", reg:"#34D399", ops:"#F2B33D", public:"#B388FF" };
 const i18n = {
   en: {
     role:"Web product developer", scrollHint:"Scroll to explore", footerLeft:"Live products",
-    location:"Avignon / Remote", open:"Open", source:"Source",
-    hero:"{n} live web products — EU compliance readiness, AI tooling, consumer apps",
+    open:"Open", source:"Source",
+    hero:"I've shipped {n} live web products — EU compliance readiness, AI tooling, consumer apps",
     about:"About", aboutKicker:"About",
     aboutLead:"I design, build and ship internet products end to end — from a raw idea to a live, deployed web app with its own domain, auth, billing and analytics. This index is the running proof: {n} products shipped solo.",
     aboutPoint1:"Full-stack and solo: product, UX, frontend, backend, infrastructure and deployment — each app runs in production on its own subdomain.",
@@ -802,8 +801,8 @@ const i18n = {
   },
   fr: {
     role:"Concepteur de produits web", scrollHint:"Molette pour explorer", footerLeft:"Produits live",
-    location:"Avignon / À distance", open:"Ouvrir", source:"Code",
-    hero:"{n} produits web en ligne — conformité UE, outils IA, apps grand public",
+    open:"Ouvrir", source:"Code",
+    hero:"J'ai mis en ligne {n} produits web — conformité UE, outils IA, apps grand public",
     about:"À propos", aboutKicker:"À propos",
     aboutLead:"Je conçois, construis et déploie des produits web de bout en bout — de l'idée brute à l'application en ligne, avec son domaine, son auth, sa facturation et ses analytics. Cet index en est la preuve : {n} produits livrés en solo.",
     aboutPoint1:"Full-stack et en solo : produit, UX, frontend, backend, infrastructure et déploiement — chaque app tourne en production sur son propre sous-domaine.",
@@ -1013,10 +1012,15 @@ function tick(){
 requestAnimationFrame(tick);
 
 function wheelDelta(e){ let d=e.deltaY; if(e.deltaMode===1) d*=16; else if(e.deltaMode===2) d*=window.innerHeight; return d; }
-slideshow.addEventListener("wheel", e => {
+function onWheelNav(e){
   e.preventDefault();
   target = clamp(target + wheelDelta(e)*0.0019, 0, view.length-1);
-}, { passive:false });
+}
+slideshow.addEventListener("wheel", onWheelNav, { passive:false });
+// La molette sur le bloc de description (gauche) pilote aussi le carrousel,
+// en synchro avec les miniatures — même comportement que sur le slideshow.
+const panelWrap = panel.closest(".panel");
+if(panelWrap) panelWrap.addEventListener("wheel", onWheelNav, { passive:false });
 
 /* Le slideshow capture le pointeur pour le drag : l'événement click est alors
    re-ciblé sur le conteneur, jamais sur la fiche. L'ouverture se décide donc au
