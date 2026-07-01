@@ -789,7 +789,7 @@ const i18n = {
     aboutPoint1:"Full-stack and solo: product, UX, frontend, backend, infrastructure and deployment — each app runs in production on its own subdomain.",
     aboutPoint2:"Three core veins: EU regulatory-readiness tools, AI tooling and consumer web apps — built fast, shipped real, never left as a mockup.",
     aboutPoint3:"Open to freelance work, product collaborations and conversations. The fastest way to judge the work is to open any product and use it.",
-    statLive:"Live products", statReg:"Regulation", statAI:"AI tooling", statShipped:"Shipped solo",
+    statLive:"Live products", statReg:"Regulation", statAI:"AI tooling",
     aboutCta:"Get in touch",
     searchPh:"Search {n} products", empty:"No product matches.", reset:"Clear search",
     hsLive:"live products", hsCats:"categories",
@@ -804,7 +804,7 @@ const i18n = {
     aboutPoint1:"Full-stack et en solo : produit, UX, frontend, backend, infrastructure et déploiement — chaque app tourne en production sur son propre sous-domaine.",
     aboutPoint2:"Trois axes : outils de conformité réglementaire UE, outils IA et apps web grand public — construits vite, mis en ligne pour de vrai, jamais laissés en maquette.",
     aboutPoint3:"Ouvert au freelance, aux collaborations produit et aux échanges. Le plus simple pour juger le travail : ouvrir n'importe quel produit et l'utiliser.",
-    statLive:"Produits live", statReg:"Réglementaire", statAI:"Outils IA", statShipped:"Livrés solo",
+    statLive:"Produits live", statReg:"Réglementaire", statAI:"Outils IA",
     aboutCta:"Me contacter",
     searchPh:"Chercher parmi {n} produits", empty:"Aucun produit ne correspond.", reset:"Effacer la recherche",
     hsLive:"produits live", hsCats:"catégories",
@@ -1150,8 +1150,7 @@ function renderStats(){
   if(as) as.innerHTML = `
     <div class="about-stat"><b>${total}</b><span>${t.statLive}</span></div>
     <div class="about-stat"><b>${FAM_COUNTS.reg}</b><span>${t.statReg}</span></div>
-    <div class="about-stat"><b>${FAM_COUNTS.ai}</b><span>${t.statAI}</span></div>
-    <div class="about-stat"><b>100%</b><span>${t.statShipped}</span></div>`;
+    <div class="about-stat"><b>${FAM_COUNTS.ai}</b><span>${t.statAI}</span></div>`;
 }
 
 function applyLang(next){
