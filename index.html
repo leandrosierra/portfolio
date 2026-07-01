@@ -174,7 +174,6 @@ input { font: inherit; color: inherit; }
 .rail-thumb { position: absolute; left: 50%; transform: translateX(-50%); width: 6px; height: 34px; border-radius: 100px; background: var(--tint); box-shadow: 0 0 14px color-mix(in oklch, var(--tint) 70%, transparent); transition: background 0.5s; }
 
 /* hero */
-.hero { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 18px; padding-left: 4px; }
 
 /* intro mosaique (jouee une fois par session) */
 .intro { position: fixed; inset: 0; z-index: 60; pointer-events: none; background-size: cover; background-position: center; opacity: 0; }
@@ -196,7 +195,6 @@ input { font: inherit; color: inherit; }
 /* grid view */
 .main.as-grid { display: block; align-items: initial; overflow-y: auto; padding-top: 14px; scrollbar-width: thin; scrollbar-color: var(--ink-dim) transparent; }
 .main.as-grid .slideshow, .main.as-grid .panel { display: none; }
-.gridwrap .hero { margin: 2px 0 16px; padding-left: 0; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; padding-bottom: 28px; }
 .gcard { position: relative; display: block; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--card-grad); transition: transform 0.2s, border-color 0.25s, box-shadow 0.25s; }
 .gcard:hover { transform: translateY(-3px); border-color: color-mix(in oklch, var(--tint) 55%, var(--line)); box-shadow: 0 18px 44px -18px rgba(0,0,0,0.85); }
@@ -552,8 +550,8 @@ input { font: inherit; color: inherit; }
       <div class="rail" id="rail"><div class="rail-thumb" id="railThumb"></div></div>
       <div class="track" id="track"></div>
     </div>
-    <div class="panel"><div class="hero" data-i18n="hero"></div><div class="hero-stats" id="heroStats"></div><div class="panel-card" id="panel"></div></div>
-    <div class="gridwrap" id="gridwrap" hidden><div class="hero" data-i18n="hero"></div><div class="hero-stats" id="heroStatsGrid"></div><div class="grid" id="grid"></div></div>
+    <div class="panel"><div class="hero-stats" id="heroStats"></div><div class="panel-card" id="panel"></div></div>
+    <div class="gridwrap" id="gridwrap" hidden><div class="hero-stats" id="heroStatsGrid"></div><div class="grid" id="grid"></div></div>
   </div>
 
   <footer class="footer">
@@ -786,7 +784,6 @@ const i18n = {
   en: {
     role:"Web product developer", scrollHint:"Scroll to explore", footerLeft:"Live products",
     open:"Open", source:"Source",
-    hero:"I've shipped {n} live web products — EU compliance readiness, AI tooling, consumer apps",
     about:"About", aboutKicker:"About",
     aboutLead:"I design, build and ship internet products end to end — from a raw idea to a live, deployed web app with its own domain, auth, billing and analytics. This index is the running proof: {n} products shipped solo.",
     aboutPoint1:"Full-stack and solo: product, UX, frontend, backend, infrastructure and deployment — each app runs in production on its own subdomain.",
@@ -795,14 +792,13 @@ const i18n = {
     statLive:"Live products", statReg:"Regulation", statAI:"AI tooling", statShipped:"Shipped solo",
     aboutCta:"Get in touch",
     searchPh:"Search {n} products", empty:"No product matches.", reset:"Clear search",
-    hsLive:"live products", hsCats:"categories", hsSolo:"shipped solo",
+    hsLive:"live products", hsCats:"categories",
     fam:{ ai:"AI", reg:"Regulation", ops:"Operations", public:"Public app" },
     filt:{ all:"All", ai:"AI", reg:"Regulation", ops:"Operations", public:"Public" }
   },
   fr: {
     role:"Concepteur de produits web", scrollHint:"Molette pour explorer", footerLeft:"Produits live",
     open:"Ouvrir", source:"Code",
-    hero:"J'ai mis en ligne {n} produits web — conformité UE, outils IA, apps grand public",
     about:"À propos", aboutKicker:"À propos",
     aboutLead:"Je conçois, construis et déploie des produits web de bout en bout — de l'idée brute à l'application en ligne, avec son domaine, son auth, sa facturation et ses analytics. Cet index en est la preuve : {n} produits livrés en solo.",
     aboutPoint1:"Full-stack et en solo : produit, UX, frontend, backend, infrastructure et déploiement — chaque app tourne en production sur son propre sous-domaine.",
@@ -811,7 +807,7 @@ const i18n = {
     statLive:"Produits live", statReg:"Réglementaire", statAI:"Outils IA", statShipped:"Livrés solo",
     aboutCta:"Me contacter",
     searchPh:"Chercher parmi {n} produits", empty:"Aucun produit ne correspond.", reset:"Effacer la recherche",
-    hsLive:"produits live", hsCats:"catégories", hsSolo:"livrés solo",
+    hsLive:"produits live", hsCats:"catégories",
     fam:{ ai:"IA", reg:"Réglementaire", ops:"Opérations", public:"App publique" },
     filt:{ all:"Tous", ai:"IA", reg:"Réglementaire", ops:"Opérations", public:"Public" }
   }
@@ -1147,8 +1143,7 @@ function renderStats(){
   const t = i18n[lang], total = catalog.length;
   const strip = `
     <span class="hero-stat"><b>${total}</b>${t.hsLive}</span><span class="dot"></span>
-    <span class="hero-stat"><b>4</b>${t.hsCats}</span><span class="dot"></span>
-    <span class="hero-stat"><b>100%</b>${t.hsSolo}</span>`;
+    <span class="hero-stat"><b>4</b>${t.hsCats}</span>`;
   const hs = document.getElementById("heroStats"); if(hs) hs.innerHTML = strip;
   const hsg = document.getElementById("heroStatsGrid"); if(hsg) hsg.innerHTML = strip;
   const as = document.getElementById("aboutStats");
@@ -1225,13 +1220,6 @@ if(initialDeepLink){
   if(reduced) return;
   stage.classList.add("boot");
   setTimeout(() => stage.classList.remove("boot"), 1900);
-  const t0 = performance.now(), DUR = 950, total = catalog.length;
-  (function step(){
-    const e = Math.min(1, (performance.now() - t0) / DUR);
-    const n = Math.round((1 - Math.pow(1 - e, 3)) * total);
-    document.querySelectorAll('[data-i18n="hero"]').forEach(el => el.textContent = i18n[lang].hero.replace("{n}", n));
-    if(e < 1) requestAnimationFrame(step);
-  })();
 })();
 
 /* ---------- parallaxe pointeur / gyroscope ---------- */
