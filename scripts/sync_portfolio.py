@@ -57,11 +57,14 @@ def load_products() -> list[Product]:
     existing = load_existing()
     con = sqlite3.connect(ADA_DB)
     con.row_factory = sqlite3.Row
+    # Portfolio public = produits EN LIGNE uniquement (statut `live`). Un produit
+    # `build`/`validated` avec un vieux domaine ne doit pas apparaître.
     rows = con.execute(
         """
         SELECT slug, name, pitch, category, domain
         FROM products
-        WHERE coalesce(domain, '') <> ''
+        WHERE status = 'live'
+          AND coalesce(domain, '') <> ''
           AND slug NOT IN ('adatestdesk', 'portfolio')
         ORDER BY slug
         """
@@ -73,7 +76,9 @@ def load_products() -> list[Product]:
         name = str(row["name"] or slug)
         pitch = clamp(str(row["pitch"] or name))
         family = str(row["category"] or "public").strip().lower() or "public"
-        url = str(row["domain"] or f"https://{slug}.leandro-sierra.com").rstrip("/")
+        # `domain` = URL publique réelle (domaine custom compris, ex. comparedevtools.com) ;
+        # fallback au host par défaut du parc si jamais absent.
+        url = str(row["domain"] or f"https://{slug}.webapp-hub.com").rstrip("/")
         products.append(Product(
             slug=slug,
             name=name,
