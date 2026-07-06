@@ -9,6 +9,7 @@ import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
 from textwrap import wrap
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT.parent
@@ -16,7 +17,7 @@ ADA_DB = WORKSPACE / "ada" / "data" / "db" / "ada.db"
 BOOTSTRAP_INDEX = WORKSPACE / "ada" / "data" / "products" / "bootstrap" / "index.html"
 APEX = "https://leandro-sierra.com"
 EXCLUDED = {"adatestdesk", "portfolio"}
-FAMILY_LABEL = {"ai": "AI", "reg": "Regulation", "ops": "Operations", "public": "Public app"}
+FAMILY_LABEL = {"ai": "AI", "reg": "Regulation", "extension": "Extension", "ops": "Operations", "public": "Public app"}
 
 
 @dataclass
@@ -168,7 +169,7 @@ def sync_index(products: list[Product]) -> None:
 
 def sync_sitemap(products: list[Product]) -> None:
     urls = [APEX + "/", APEX + "/products.html", APEX + "/about.html", APEX + "/contact.html", APEX + "/privacy.html", APEX + "/terms.html"]
-    urls.extend(p.url for p in products)
+    urls.extend(p.url for p in products if (urlparse(p.url).hostname or "").endswith("leandro-sierra.com"))
     body = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     body.extend(f"  <url><loc>{html.escape(url)}</loc></url>" for url in urls)
     body.append("</urlset>\n")
@@ -178,7 +179,7 @@ def sync_sitemap(products: list[Product]) -> None:
 def sync_products_page(products: list[Product]) -> None:
     groups = {key: [p for p in products if p.family == key] for key in FAMILY_LABEL}
     sections = []
-    anchors = {"ai": "ai", "reg": "regulation", "ops": "operations", "public": "public-app"}
+    anchors = {"ai": "ai", "reg": "regulation", "extension": "extension", "ops": "operations", "public": "public-app"}
     for family, label in FAMILY_LABEL.items():
         items = "\n".join(
             f'      <li><a href="{html.escape(p.url)}" rel="noopener"><strong>{html.escape(p.name)}</strong></a> — {html.escape(p.en)}</li>'
@@ -233,7 +234,7 @@ def sync_products_page(products: list[Product]) -> None:
 <main><div class="wrap wide">
   <h1>All products</h1>
   <p class="lead">A complete, browsable index of the {len(products)} live web products built and operated by Leandro Sierra. Each runs on its own subdomain and solves one focused task. Browse by category below.</p>
-  <div class="catnav"><a href="#ai">AI</a> <a href="#regulation">Regulation</a> <a href="#operations">Operations</a> <a href="#public-app">Public app</a></div>
+  <div class="catnav"><a href="#ai">AI</a> <a href="#regulation">Regulation</a> <a href="#extension">Extension</a> <a href="#operations">Operations</a> <a href="#public-app">Public app</a></div>
 {chr(10).join(sections)}
   <hr>
   <p class="meta">Looking for context on how these are built? See the <a href="/about.html">about page</a>. Questions or corrections: <a href="/contact.html">contact</a>.</p>
