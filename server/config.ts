@@ -4,11 +4,17 @@
 export type ServerConfig = {
   port: number;
   productSlug: string;
+  experimentId: number;
+  experimentsUrl: string;
+  experimentsToken: string;
 };
 
 export function readServerConfig(env: NodeJS.ProcessEnv = process.env): ServerConfig {
   return {
     port: Number(env.PORT) || 3000,
     productSlug: env.PUBLIC_PRODUCT_SLUG || "portfolio",
+    experimentId: Number(env.ADA_EXPERIMENT_ID || "1"),
+    experimentsUrl: (env.ADA_EXPERIMENTS_URL || "").replace(/\/$/, ""),
+    experimentsToken: env.ADA_EXPERIMENTS_TOKEN || "",
   };
 }

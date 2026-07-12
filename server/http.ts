@@ -33,9 +33,6 @@ const TYPES: Record<string, string> = {
 };
 
 const ANALYTICS_HOST = "https://analytics.leandro-sierra.com";
-const EXPERIMENT_ID = Number(process.env.ADA_EXPERIMENT_ID || "1");
-const EXPERIMENT_URL = (process.env.ADA_EXPERIMENTS_URL || "").replace(/\/$/, "");
-const EXPERIMENT_TOKEN = process.env.ADA_EXPERIMENTS_TOKEN || "";
 const ANALYTICS_SNIPPET = `<script>
 (function(){
   var analyticsHost = "${ANALYTICS_HOST}";
@@ -87,10 +84,10 @@ function subjectCookie(request: IncomingMessage): { subject: string; created: bo
   return match ? { subject: match[1], created: false } : { subject: randomUUID(), created: true };
 }
 
-async function causal(path: "assign" | "events", payload: Record<string, unknown>): Promise<Record<string, unknown>> {
-  if (!EXPERIMENT_URL || !EXPERIMENT_TOKEN || !Number.isInteger(EXPERIMENT_ID)) return {};
-  const response = await fetch(`${EXPERIMENT_URL}/api/product-experiments/${EXPERIMENT_ID}/${path}`, {
-    method: "POST", headers: { authorization: `Bearer ${EXPERIMENT_TOKEN}`, "content-type": "application/json" },
+async function causal(config: ServerConfig, path: "assign" | "events", payload: Record<string, unknown>): Promise<Record<string, unknown>> {
+  if (!config.experimentsUrl || !config.experimentsToken || !Number.isInteger(config.experimentId)) return {};
+  const response = await fetch(`${config.experimentsUrl}/api/product-experiments/${config.experimentId}/${path}`, {
+    method: "POST", headers: { authorization: `Bearer ${config.experimentsToken}`, "content-type": "application/json" },
     body: JSON.stringify(payload), signal: AbortSignal.timeout(2500),
   });
   return response.ok ? await response.json() as Record<string, unknown> : {};
@@ -142,7 +139,7 @@ export function createAppHandler(config: ServerConfig) {
     }
     if (pathname === "/api/experiment/contact-intent" && request.method === "POST") {
       const { subject } = subjectCookie(request);
-      await causal("events", { subject_key: subject, metric: "contact_intent", value: 1, dedup_key: `contact:${subject}` }).catch(() => ({}));
+      await causal(config, "events", { subject_key: subject, metric: "contact_intent", value: 1, dedup_key: `contact:${subject}` }).catch(() => ({}));
       response.writeHead(202, { "content-type": "application/json", ...securityHeaders() });
       response.end('{"accepted":true}');
       return;
@@ -179,7 +176,7 @@ export function createAppHandler(config: ServerConfig) {
         let variant = "control";
         const cookie = subjectCookie(request);
         if (isHtml && cand.endsWith("index.html")) {
-          const assigned: Record<string, unknown> = await causal("assign", { subject_key: cookie.subject }).catch(() => ({}));
+          const assigned: Record<string, unknown> = await causal(config, "assign", { subject_key: cookie.subject }).catch(() => ({}));
           variant = typeof assigned.variant === "string" ? assigned.variant : "control";
         }
         const payload = isHtml ? withAnalytics(body.toString("utf8"), variant) : body;
