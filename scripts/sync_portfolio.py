@@ -76,7 +76,8 @@ def load_products() -> list[Product]:
         current = existing.get(slug)
         name = str(row["name"] or slug)
         pitch = clamp(str(row["pitch"] or name))
-        family = str(row["category"] or "public").strip().lower() or "public"
+        raw_family = str(row["category"] or "public").strip().lower() or "public"
+        family = raw_family if raw_family in FAMILY_LABEL else "public"
         # `domain` = URL publique réelle (domaine custom compris, ex. comparedevtools.com) ;
         # fallback au host par défaut du parc si jamais absent.
         url = str(row["domain"] or f"https://{slug}.webapp-hub.com").rstrip("/")
