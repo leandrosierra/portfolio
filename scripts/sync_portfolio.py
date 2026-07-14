@@ -58,13 +58,13 @@ def load_products() -> list[Product]:
     existing = load_existing()
     con = sqlite3.connect(ADA_DB)
     con.row_factory = sqlite3.Row
-    # Portfolio public = produits EN LIGNE uniquement (statut `live`). Un produit
+    # Portfolio public = produits EN LIGNE uniquement (statut `deployed`). Un produit
     # `build`/`validated` avec un vieux domaine ne doit pas apparaître.
     rows = con.execute(
         """
         SELECT slug, name, pitch, category, domain
         FROM products
-        WHERE status = 'live'
+        WHERE status = 'deployed'
           AND coalesce(domain, '') <> ''
           AND slug NOT IN ('adatestdesk', 'portfolio')
         ORDER BY slug
