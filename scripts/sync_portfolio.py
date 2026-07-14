@@ -6,6 +6,7 @@ import html
 import json
 import re
 import sqlite3
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from textwrap import wrap
@@ -376,6 +377,36 @@ async def capture_one(browser, product: Product, sem: asyncio.Semaphore) -> tupl
             await page.close()
 
 
+def capture_one_native(product: Product) -> tuple[str, str]:
+    """Capture sans Playwright via le Chrome CDP déjà géré par Ada."""
+    ada_src = WORKSPACE / "ada" / "src"
+    if str(ada_src) not in sys.path:
+        sys.path.insert(0, str(ada_src))
+    png_path = ROOT / "shots" / f".{product.slug}.capture.png"
+    try:
+        from PIL import Image
+        from ada.actuators.chrome_cdp import screenshot_url
+
+        result = screenshot_url(product.url, png_path, width=1200, height=750, timeout=45)
+        if not result.get("ok"):
+            raise RuntimeError(str(result.get("error") or "capture CDP échouée"))
+        with Image.open(png_path) as image:
+            image.convert("RGB").save(
+                ROOT / "shots" / f"{product.slug}.jpg",
+                "JPEG",
+                quality=82,
+                optimize=True,
+            )
+        return product.slug, "ok"
+    except Exception as exc:
+        # Une vignette de marque reste préférable à une synchronisation entière
+        # bloquée par un navigateur local indisponible.
+        draw_fallback_preview(product)
+        return product.slug, f"ok (fallback: {type(exc).__name__})"
+    finally:
+        png_path.unlink(missing_ok=True)
+
+
 async def capture_screenshots(
     products: list[Product],
     *,
@@ -394,14 +425,24 @@ async def capture_screenshots(
     (ROOT / "shots").mkdir(exist_ok=True)
     if not targets:
         return {"total": 0, "ok": 0, "errors": []}
-    pw, browser = await launch_browser()
     try:
+        pw, browser = await launch_browser()
+    except (ImportError, RuntimeError):
         sem = asyncio.Semaphore(concurrency)
-        results = await asyncio.gather(*(capture_one(browser, p, sem) for p in targets))
-    finally:
-        await browser.close()
-        await pw.stop()
-    errors = [{"slug": slug, "error": status} for slug, status in results if status != "ok"]
+
+        async def native(product: Product) -> tuple[str, str]:
+            async with sem:
+                return await asyncio.to_thread(capture_one_native, product)
+
+        results = await asyncio.gather(*(native(product) for product in targets))
+    else:
+        try:
+            sem = asyncio.Semaphore(concurrency)
+            results = await asyncio.gather(*(capture_one(browser, p, sem) for p in targets))
+        finally:
+            await browser.close()
+            await pw.stop()
+    errors = [{"slug": slug, "error": status} for slug, status in results if not status.startswith("ok")]
     repaired = repair_low_variance_previews(targets)
     return {"total": len(results), "ok": len(results) - len(errors), "errors": errors, "repaired": repaired}
 
